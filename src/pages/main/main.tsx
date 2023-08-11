@@ -1,7 +1,8 @@
 import React from 'react';
+import style from './main.module.scss';
 
 const Main = () => (
-  <main>
+  <main className={style.main}>
     <div>
       test
     </div>

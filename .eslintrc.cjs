@@ -39,8 +39,9 @@ module.exports = {
     'no-underscore-dangle': ['error', {
       allow: ['_id', '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'],
       enforceInMethodNames: true,
-      allowAfterThis: true
+      allowAfterThis: true,
     }],
+    "@typescript-eslint/no-explicit-any": "off",
     'jsx-quotes': ['error', 'prefer-single'],
     'react/jsx-closing-bracket-location': ['error', 'after-props'],
     'class-methods-use-this': ['error'],
@@ -62,7 +63,8 @@ module.exports = {
           classPropertiesAllowed: false,
         },
       ],
-    'default-param-last': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
   },
 }
 ;
