@@ -18,9 +18,4 @@
     "jsx": "react-jsx"
   },
   "include": ["src", "declaration.d.ts"],
-  "plugins": [
-    {
-    "name": "typescript-plugin-css-modules"
-      }
-    ],
 }
