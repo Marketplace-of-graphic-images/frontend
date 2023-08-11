@@ -1,4 +1,6 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Main from '../pages/main/main';
 import './App.css';
 
 const App = () => (
@@ -19,6 +21,10 @@ const App = () => (
         Learn React
       </a>
     </header>
+    <Routes>
+      <Route path='/' element={<Main />} />
+    </Routes>
+
   </div>
 );
 
