@@ -11,9 +11,8 @@ const App = () => (
         {' '}
         <code>src/App.js</code>
         {' '}
-        and save to reload.
-        Roboto SemiBold
-        Raleway Bold
+        and save to reload. Roboto SemiBold Raleway
+        Bold
       </p>
       <a
         className='App-link'
@@ -26,7 +25,6 @@ const App = () => (
     <Routes>
       <Route path='/' element={<Main />} />
     </Routes>
-
   </div>
 );
 

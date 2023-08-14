@@ -2,16 +2,17 @@
     Универсальный миксин
     для подключения любого шрифта и начертания
 */
-@mixin fonts ($family, $style: normal, $weight: 400, $dir, $type){
-    @font-face {
-        font-family: $family;
-        font-style:  $style;
-        font-weight: $weight;
-        font-display: swap;
-        src: url($dir + $family + $type) format("truetype"),
-             url($dir + $family + $type) format("woff"),
-             url($dir + $family + $type) format("woff2"),
-      }
+@mixin fonts($family, $style: normal, $weight: 400, $dir, $type) {
+	@font-face {
+		font-family: $family;
+		font-style: $style;
+		font-weight: $weight;
+		font-display: swap;
+		src:
+			url($dir + $family + $type) format('truetype'),
+			url($dir + $family + $type) format('woff'),
+			url($dir + $family + $type) format('woff2');
+	}
 }
 /*  
     Набор "Типографика" из Фигмы
@@ -19,31 +20,31 @@
     именно этот набор
 */
 @mixin Header {
-    font-family: Raleway-Bold, sans-serif;;
-    font-size: 28px;
-    line-height: 140%;
+	font-family: Raleway-Bold, sans-serif;
+	font-size: 28px;
+	line-height: 140%;
 }
 @mixin Body {
-    font-family: Raleway-Medium, sans-serif;;
-    font-size: 16px;
-    line-height: 145%;
+	font-family: Raleway-Medium, sans-serif;
+	font-size: 16px;
+	line-height: 145%;
 }
 @mixin Link {
-    font-family: Raleway-Medium, sans-serif;;
-    font-size: 16px;
-    line-height: 155%;
+	font-family: Raleway-Medium, sans-serif;
+	font-size: 16px;
+	line-height: 155%;
 }
 @mixin Code {
-    font-family: Roboto, sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 140%;
-    font-style: normal;
+	font-family: Roboto, sans-serif;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 140%;
+	font-style: normal;
 }
 @mixin Numbers {
-    font-family: Roboto, sans-serif;;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 140%;
-    font-style: normal;
+	font-family: Roboto, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 140%;
+	font-style: normal;
 }
