@@ -34,11 +34,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0", 
     "@types/node-sass": "^4.11.3",
-<<<<<<< HEAD
-=======
     "lint-staged": "^13.2.3",
-    "node-sass": "^7.0.3",
->>>>>>> edb86957e9d461bfb6e5f1a9841930be90eb9f9b
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
