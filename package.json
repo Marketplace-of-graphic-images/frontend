@@ -60,7 +60,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": "npm run lint",
-    "*.{ts,tsx,css,scss,html}": "npm run format"
+    "*.{css,scss,html}": "npm run format"
   },
   "eslintConfig": {
     "extends": [
