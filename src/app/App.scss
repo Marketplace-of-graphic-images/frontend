@@ -1,3 +1,7 @@
+@use '../globalStyle/variables' as v;
+@use '../globalStyle/mixins.scss' as m;
+@include m.fonts('Roboto-Thin', normal, 100, '../fonts/Roboto/', '.woff2');
+
 .App {
   text-align: center;
 }
@@ -14,13 +18,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  @include m.Code;
+  background-color: v.$black-color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 

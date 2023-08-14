@@ -12,6 +12,8 @@ const App = () => (
         <code>src/App.js</code>
         {' '}
         and save to reload.
+        Roboto SemiBold
+        Raleway Bold
       </p>
       <a
         className='App-link'
