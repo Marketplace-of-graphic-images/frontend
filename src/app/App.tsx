@@ -10,7 +10,7 @@ const App = () => (
         Edit
         {' '}
         <code>src/App.js</code>
-        {' '}
+        {' test'}
         and save to reload. Roboto SemiBold Raleway
         Bold
       </p>
