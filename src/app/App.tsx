@@ -5,27 +5,13 @@ import './App.scss';
 
 const App = () => (
   <div className='App'>
-    <header className='App-header'>
-      <p>
-        Edit
-        {' '}
-        <code>src/App.js</code>
-        {' '}
-        and save to reload. Roboto SemiBold Raleway
-        Bold
-      </p>
-      <a
-        className='App-link'
-        href='https://reactjs.org'
-        target='_blank'
-        rel='noopener noreferrer'>
-        Learn React
-      </a>
-    </header>
     <Routes>
       <Route path='/' element={<Main />} />
     </Routes>
+    <div>
+      Заготовка будущего контейнера для Tooltip.
+      Все тултипы в компонентах *телепортировать* сюда, ипользуя реакт функцию createPortal()
+    </div>
   </div>
 );
-
 export default App;
