@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Main from '../pages/main/main';
 import './App.scss';
 
-const App = () => (
+const hpp = () => (
   <div className='App'>
     <header className='App-header'>
       <p>
