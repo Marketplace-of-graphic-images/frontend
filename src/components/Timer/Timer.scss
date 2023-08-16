@@ -1,0 +1,38 @@
+.timer {
+    background-color: white;
+    font-family: 'Raleway';
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 500;
+    color: rgba(6, 6, 6, 1);
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 20px 20px;
+}
+.timer__conteiner {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.timer__text {
+    margin: 0;
+    padding: 0;
+    margin-right: 8px;
+}
+.timer__countdown {
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: 700;
+    color:rgba(2, 153, 146, 1);
+    margin: 0;
+    padding: 0;
+}
+.timer__link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway';
+    color:rgba(2, 153, 146, 1);
+}

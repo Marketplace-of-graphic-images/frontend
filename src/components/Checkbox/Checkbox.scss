@@ -1,0 +1,17 @@
+.checkbox {
+    height: 24px;
+    width: 24px;
+    border: 1px solid rgba(6, 6, 6, 1);
+    border-radius: 4px;
+    padding: 0;
+}
+.checkbox:hover {
+    cursor: pointer;
+}
+.checkbox_active {
+    height: 24px;
+    width: 24px;
+    border: none;
+    background: url(../../ui-lib/checkmark.svg);
+    background-color: #029992;
+}
