@@ -1,9 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from '../pages/main/main';
-import './App.scss';
 
+<<<<<<< HEAD
 const App = () => (
+  <>
+    {/* <header className='App-header'>test</header> */}
+
+const hpp = () => (
   <div className='App'>
     <header className='App-header'>
       <p>
@@ -22,10 +26,11 @@ const App = () => (
         Learn React
       </a>
     </header>
+>>>>>>> 24b065977d7717c0df325a5a4865320058b1ca2c
     <Routes>
       <Route path='/' element={<Main />} />
     </Routes>
-  </div>
+  </>
 );
 
 export default App;

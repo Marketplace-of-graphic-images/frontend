@@ -2,3 +2,7 @@
 @use './globalStyle/mixins.scss';
 @use './fonts/raleway.scss';
 @use './fonts/roboto.scss';
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,31 @@
+@import '/src/globalStyle/variables.scss';
+@import '/src/globalStyle/mixins.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background: #029992;
+  color: var(--white, #fff);
+  width: 484px;
+  height: 55px;
+  @include Body;
+  @include noselect;
+
+  &:hover {
+    background: $accent_on_hover-color;
+  }
+
+  &:disabled {
+    background: $disabled-color;
+  }
+}
+
+.medium {
+  width: 284px;
+  height: 55px;
+}
