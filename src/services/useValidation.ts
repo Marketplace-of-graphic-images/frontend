@@ -1,14 +1,29 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 type Values = Record<string, string>;
 type CheckboxValues = Record<string, boolean>;
 type Errors = Record<string, boolean>;
 
 const useValidation = () => {
-  const [values, setValues] = React.useState<Values>({});
-  const [checkboxValues, setCheckboxValues] = React.useState<CheckboxValues>({});
-  const [errors, setErrors] = React.useState<Errors>({});
-  const [isValid, setIsValid] = React.useState(false);
+  const [values, setValues] = useState<Values>({});
+  const [checkboxValues, setCheckboxValues] = useState<CheckboxValues>({});
+  const [errors, setErrors] = useState<Errors>({});
+  const [isValid, setIsValid] = useState(false);
+  const [form, setForm] = useState<HTMLFormElement | null>(null);
+
+  useEffect(() => {
+    if (form !== null) {
+      setIsValid(form.checkValidity());
+      Object.keys(values).forEach((name: string) => {
+        const input: HTMLInputElement = form[name];
+        if (input?.validity?.valid) {
+          setErrors((prevErrors) => ({ ...prevErrors, [name]: false }));
+        } else {
+          setErrors((prevErrors) => ({ ...prevErrors, [name]: true }));
+        }
+      });
+    }
+  }, [values, form]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
@@ -22,10 +37,9 @@ const useValidation = () => {
         setValues({ ...values, [name]: value });
     }
 
-    setErrors({ ...errors, [name]: !!target.validationMessage });
+    setErrors({ ...errors, [name]: !target.validity.valid });
 
-    const form = target.closest('form');
-    setIsValid(form !== null ? form.checkValidity() : isValid);
+    if (form === null) setForm(target.closest('form'));
   };
 
   const resetForm = useCallback(
@@ -39,8 +53,9 @@ const useValidation = () => {
       setCheckboxValues(newCheckboxValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
+      setForm(null);
     },
-    [setValues, setErrors, setIsValid],
+    [setValues, setCheckboxValues, setErrors, setIsValid],
   );
 
   return {
