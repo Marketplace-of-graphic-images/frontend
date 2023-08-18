@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { createSelector } from '@reduxjs/toolkit';
 import './Timer.scss';
 
 const Timer = (props) => {
   useEffect(() => {
   }, []);
-  // const valueCheckbox = createSelector(
-  //   (state) => state.Checkbox.
-  // );
   return (
     <div className='timer'>
       <div className='timer__conteiner'>

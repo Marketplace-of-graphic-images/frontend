@@ -19,7 +19,16 @@
 }
 .input-code:focus {
     outline: none;
+    appearance: none;
 }
 .input-code_error {
     border-color: rgba(205, 11, 11, 1);
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+    margin:0;
+}
+input[type=number]{
+  -moz-appearance:textfield;
 }

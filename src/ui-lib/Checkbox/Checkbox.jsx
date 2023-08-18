@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { createSelector } from '@reduxjs/toolkit';
 import './Checkbox.scss';
 
 const Checkbox = (props) => {
@@ -9,9 +7,6 @@ const Checkbox = (props) => {
   useEffect(() => {
     setChecked(isActiveCheckbox);
   }, [isActiveCheckbox]);
-  // const valueCheckbox = createSelector(
-  //   (state) => state.Checkbox.
-  // );
   function toggleCheckbox() {
     const newValue = !checked;
     setChecked(newValue);
