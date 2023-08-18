@@ -1,3 +1,6 @@
+/* eslint-disable */
+// Отключаем eslint, т.к. он ругается на spread оператор в пропсах,
+// считаю что он нужен в данном случае
 import React from 'react';
 import styles from './UniversalButton.module.scss';
 

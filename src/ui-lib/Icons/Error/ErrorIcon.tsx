@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 type TError = {
+  // eslint-disable-next-line react/require-default-props
   onClick?: () => void;
 };
 

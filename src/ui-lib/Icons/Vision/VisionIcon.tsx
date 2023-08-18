@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
+import styles from './VisionIcon.module.scss';
 
 type TVisionIcon = {
+  // eslint-disable-next-line react/require-default-props
   onClick?: () => void;
 };
 
 const VisionIcon: FC<TVisionIcon> = ({ onClick }) => (
   <svg
+    className={styles.icon}
     onClick={onClick}
     width='24'
     height='24'

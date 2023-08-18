@@ -9,6 +9,7 @@ import YandexIcon from '../../ui-lib/Icons/Yandex/YandexIcon';
 import EmailInput from '../../ui-lib/Input/EmailInput/EmailInput';
 import PasswordInput from '../../ui-lib/Input/PasswordInput/PasswordInput';
 import style from './main.module.scss';
+import UniversalInput from '../../ui-lib/Input/UniversalInput/UniversalInput';
 
 function press() {}
 
@@ -29,6 +30,11 @@ const Main = () => (
     </UniversalButton>
     <EmailInput />
     <PasswordInput />
+    <UniversalInput
+      type='text'
+      errorMessage='Данное имя пользователя уже занято'
+      label='Имя пользователя'
+      placeholder='Введите имя...' />
   </main>
 );
 export default Main;

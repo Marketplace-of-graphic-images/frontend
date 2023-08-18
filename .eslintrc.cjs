@@ -43,6 +43,7 @@ module.exports = {
 	},
 	ignorePatterns: ['*.cjs', 'src/reportWebVitals.js', 'src/reportWebVitals.ts'],
 	rules: {
+		'linebreak-style': ["error", "unix"],
 		'no-underscore-dangle': [
 			'error',
 			{

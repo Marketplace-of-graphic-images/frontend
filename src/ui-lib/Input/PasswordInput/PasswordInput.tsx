@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 
 // Иконки
@@ -8,10 +10,14 @@ import VisionIcon from '../../Icons/Vision/VisionIcon';
 // Стили
 import styles from './PasswordInput.module.scss';
 
-const PasswordInput: React.FC<React.ComponentPropsWithoutRef<'input'>> = () => {
+interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
+  errorMessage?: string;
+}
+
+// Как лучше состояние warning реализовать? Через пропсы или через внутреннее состояние компонента
+const PasswordInput: React.FC<IPasswordInput> = ({ errorMessage }) => {
   const [inputState, setInputState] = useState({
     type: 'password',
-    warning: false,
     visionIcon: false,
   });
 
@@ -25,21 +31,27 @@ const PasswordInput: React.FC<React.ComponentPropsWithoutRef<'input'>> = () => {
     }
   };
   return (
-    <div
-      className={`${styles.inputContainer} ${
-        inputState.warning ? styles.warning : ''
-      }`}>
-      <input
-        className={styles.input}
-        placeholder='Введите пароль...'
-        type={inputState.type} />
+    <div>
 
-      {inputState.visionIcon ? (
-        <VisionIcon onClick={toggleType} />
-      ) : (
-        <NoVisionIcon onClick={toggleType} />
-      )}
-      {inputState.warning && <ErrorIcon />}
+      <label className={styles.label} htmlFor='pass'>Пароль</label>
+      <div
+        className={`${styles.inputContainer} ${
+          errorMessage ? styles.warning : ''
+        }`}>
+        <input
+          id='pass'
+          className={styles.input}
+          placeholder='Введите пароль...'
+          type={inputState.type} />
+
+        {inputState.visionIcon ? (
+          <VisionIcon onClick={toggleType} />
+        ) : (
+          <NoVisionIcon onClick={toggleType} />
+        )}
+        {errorMessage && <ErrorIcon />}
+      </div>
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </div>
   );
 };

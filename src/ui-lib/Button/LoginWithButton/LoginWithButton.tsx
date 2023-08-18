@@ -11,6 +11,7 @@ const LoginWithButton: React.FC<ILoginWithButton> = ({
   icon,
   ...rest
 }) => (
+  // eslint-disable-next-line
   <button type='button' className={styles.button} {...rest}>
     {icon}
     {title}

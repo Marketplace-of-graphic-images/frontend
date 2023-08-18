@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
+import styles from './NoVisionIcon.module.scss';
 
 type TNoVisionIcon = {
+  // eslint-disable-next-line react/require-default-props
   onClick?: () => void;
 };
 
 const NoVisionIcon: FC<TNoVisionIcon> = ({ onClick }) => (
   <svg
+    className={styles.icon}
     onClick={onClick}
     width='24'
     height='24'
