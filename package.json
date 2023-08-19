@@ -21,7 +21,7 @@
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-ternary": "^2.0.0",
-
+    "husky": "^8.0.3",
     "react-scripts": "5.0.1"
   },
   "dependencies": {
@@ -58,10 +58,6 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier . --write --ignore-path ./.prettierignore"
 
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": "npm run lint",
-    "*.{css,scss,html}": "npm run format"
   },
   "eslintConfig": {
     "extends": [
