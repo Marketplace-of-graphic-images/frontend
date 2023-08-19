@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import styles from './NoVisionIcon.module.scss';
 
-type TTemplateIcone = {
+type TTemplateIcon = {
   icon: any;
   width?: string | number;
   alt?: string;
@@ -9,7 +8,7 @@ type TTemplateIcone = {
   className?:string;
 };
 
-const TemplateIcone: FC<TTemplateIcone> = ({
+const TemplateIcon: FC<TTemplateIcon> = ({
   icon, alt, width = '24', height = '24',
   className = '',
 
@@ -20,11 +19,11 @@ const TemplateIcone: FC<TTemplateIcone> = ({
     src={icon}
     alt={alt} />
 );
-TemplateIcone.defaultProps = {
+TemplateIcon.defaultProps = {
   alt: 'Картинка',
   width: '24',
   height: '24',
   className: '',
 };
 
-export default TemplateIcone;
+export default TemplateIcon;
