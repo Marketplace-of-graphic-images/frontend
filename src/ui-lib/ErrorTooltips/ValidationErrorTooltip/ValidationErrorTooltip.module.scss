@@ -1,0 +1,45 @@
+@use '../../../globalStyle/variables' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.validation-tooltip {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 370px;
+  height: min-content;
+  margin-left: 14px;
+  padding: 20px 24px;
+  border-radius: 8px;
+  background: v.$error_background-color;
+  @include m.Body;
+  text-align: left;
+  transition: opacity 0.1s ease-in;
+
+  &:before {
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    content: "";
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    background: v.$error_background-color;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  &__item {
+    padding-left: 10px;
+  }
+
+  &__item::marker {
+    content: '•';
+  }
+}
