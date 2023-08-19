@@ -17,7 +17,7 @@ const Main = () => (
   <main className={style.main}>
     <NoVisionIcon />
     <VisionIcon />
-    <ErrorIcon />
+    <ErrorIcon className={style.error} />
     <GoogleIcon />
     <YandexIcon />
     <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />

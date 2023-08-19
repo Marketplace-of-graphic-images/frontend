@@ -1,13 +1,15 @@
+/* eslint-disable react/require-default-props */
 import React, { FC } from 'react';
 
 type TError = {
-  // eslint-disable-next-line react/require-default-props
   onClick?: () => void;
+  className?: any;
 };
 
-const ErrorIcon: FC<TError> = ({ onClick }) => (
+const ErrorIcon: FC<TError> = ({ onClick, className }) => (
   <svg
     onClick={onClick}
+    className={className}
     width='24'
     height='24'
     viewBox='0 0 24 24'
