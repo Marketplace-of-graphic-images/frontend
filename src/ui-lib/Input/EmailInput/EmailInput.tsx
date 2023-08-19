@@ -1,28 +1,26 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/require-default-props */
 import React from 'react';
-import ErrorIcon from '../../Icons/Error/ErrorIcon';
 import styles from './EmailInput.module.scss';
+import UniversalInput from '../UniversalInput/UniversalInput';
 
 interface IEmailInput extends React.ComponentPropsWithoutRef<'input'> {
-  errorMessage?: string;
+  apiError?: string;
+  label?:string;
+  validError? : boolean;
 }
 
 // Как лучше состояние warning реализовать? Через пропсы или через внутреннее состояние компонента
-const EmailInput: React.FC<IEmailInput> = ({ errorMessage }) => (
-  <div>
-    <label className={styles.label} htmlFor='email'>Адрес электронной почты</label>
-    <div className={`${styles.inputContainer} ${errorMessage ? styles.warning : ''}`}>
-
-      <input
-        id='email'
-        className={styles.input}
-        placeholder='Введите Email...'
-        type='email' />
-      {errorMessage && <ErrorIcon />}
-    </div>
-    {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-  </div>
+const EmailInput: React.FC<IEmailInput> = ({ apiError, label, validError }) => (
+  <UniversalInput
+    type='email'
+    placeholder='Введите Email...'
+    label={label}
+    errorMessage={apiError}
+    validError={validError} />
 );
+EmailInput.defaultProps = {
+  apiError: '',
+  label: 'Адрес электронной почты',
+  validError: false,
+};
 
 export default EmailInput;

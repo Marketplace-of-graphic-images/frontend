@@ -81,5 +81,6 @@ module.exports = {
 		],
 		'@typescript-eslint/no-unsafe-assignment': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
+		"react/jsx-props-no-spreading": "off"
 	},
 };

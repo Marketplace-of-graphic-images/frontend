@@ -1,18 +1,18 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/require-default-props */
-import React from 'react';
-import ErrorIcon from '../../Icons/Error/ErrorIcon';
+import React, { ReactComponentElement, FC } from 'react';
+import FieldErrorIcon from '../../other/FieldError/FieldErrorIcon';
 import styles from './UniversalInput.module.scss';
 
 interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'> {
-  errorMessage?: string;
+  errorMessage?: string | null;
   label?: string;
   type?: string;
+  validError?: boolean;
   placeholder?: string;
+  icon?: ReactComponentElement<FC> | null;
 }
 
 const UniversalInput: React.FC<IUniversalInput> = ({
-  errorMessage, label, type = 'text', placeholder,
+  errorMessage, label, type = 'text', placeholder, validError = false, icon = null,
 }) => (
   <div>
     <label className={styles.label} htmlFor='inp'>{label}</label>
@@ -22,10 +22,19 @@ const UniversalInput: React.FC<IUniversalInput> = ({
         className={styles.input}
         placeholder={placeholder}
         type={type} />
-      {errorMessage && <ErrorIcon />}
+      { icon && icon }
+      {(errorMessage || validError) && <FieldErrorIcon />}
     </div>
     {errorMessage && <p className={styles.error}>{errorMessage}</p>}
   </div>
 );
+UniversalInput.defaultProps = {
+  errorMessage: '',
+  label: '',
+  type: 'text',
+  validError: false,
+  placeholder: '',
+  icon: null,
+};
 
 export default UniversalInput;

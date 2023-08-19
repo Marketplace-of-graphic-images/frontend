@@ -1,21 +1,17 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
-
-// Иконки
-import ErrorIcon from '../../Icons/Error/ErrorIcon';
-import NoVisionIcon from '../../Icons/NoVision/NoVisionIcon';
-import VisionIcon from '../../Icons/Vision/VisionIcon';
-
+import UniversalInput from '../UniversalInput/UniversalInput';
+import PasswordFieldButton from '../../Button/PasswordFieldButton/PasswordFieldButton';
 // Стили
 import styles from './PasswordInput.module.scss';
 
 interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
-  errorMessage?: string;
+  apiError?: string;
+  label?:string;
+  validError? : boolean;
 }
 
 // Как лучше состояние warning реализовать? Через пропсы или через внутреннее состояние компонента
-const PasswordInput: React.FC<IPasswordInput> = ({ errorMessage }) => {
+const PasswordInput: React.FC<IPasswordInput> = ({ validError, apiError, label }) => {
   const [inputState, setInputState] = useState({
     type: 'password',
     visionIcon: false,
@@ -23,37 +19,32 @@ const PasswordInput: React.FC<IPasswordInput> = ({ errorMessage }) => {
 
   const toggleType = () => {
     if (inputState.type === 'password') {
-      setInputState((prev) => ({ ...prev, type: 'text' }));
-      setInputState((prev) => ({ ...prev, visionIcon: true }));
+      setInputState({ type: 'text', visionIcon: true });
     } else {
-      setInputState((prev) => ({ ...prev, type: 'password' }));
-      setInputState((prev) => ({ ...prev, visionIcon: false }));
+      setInputState({ type: 'password', visionIcon: false });
     }
   };
   return (
-    <div>
-
-      <label className={styles.label} htmlFor='pass'>Пароль</label>
-      <div
-        className={`${styles.inputContainer} ${
-          errorMessage ? styles.warning : ''
-        }`}>
-        <input
-          id='pass'
-          className={styles.input}
-          placeholder='Введите пароль...'
-          type={inputState.type} />
-
-        {inputState.visionIcon ? (
-          <VisionIcon onClick={toggleType} />
-        ) : (
-          <NoVisionIcon onClick={toggleType} />
-        )}
-        {errorMessage && <ErrorIcon />}
-      </div>
-      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-    </div>
+    <UniversalInput
+      type={inputState.type}
+      placeholder='Введите пароль...'
+      label={label}
+      errorMessage={apiError}
+      validError={validError}
+      icon={(
+        <PasswordFieldButton
+          isVision={inputState.visionIcon}
+          onClick={toggleType}
+          error={
+          !!(validError || apiError)
+        } />
+)} />
   );
+};
+PasswordInput.defaultProps = {
+  apiError: '',
+  label: 'Пароль',
+  validError: false,
 };
 
 export default PasswordInput;
