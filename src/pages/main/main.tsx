@@ -1,9 +1,10 @@
 import React from 'react';
+import { PasswordInput } from '../../ui-lib/Input';
 import style from './main.module.scss';
 
 const Main = () => (
   <main className={style.main}>
-    <div>test</div>
+    <PasswordInput apiError='test' />
   </main>
 );
 export default Main;
