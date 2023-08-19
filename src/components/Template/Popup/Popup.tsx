@@ -5,7 +5,8 @@ import styles from './Popup.module.scss';
 import ClosePopupButton from '../../../ui-lib/Button/ClosePopupButton/ClosePopupButton';
 
 interface PopupProps extends PropsWithChildren {
-  maxWidth?: string;
+  width?: string;
+  height?: string;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -15,7 +16,8 @@ const Popup: FC<PopupProps> = (
     children,
     isOpen,
     onClose,
-    maxWidth,
+    width,
+    height,
   },
 ) => {
   const [overlay, setOverlay] = useState<Element | null>(null);
@@ -46,7 +48,7 @@ const Popup: FC<PopupProps> = (
     // eslint-disable-next-line max-len
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <section className={styles.popup} style={{ display: isOpen ? 'block' : 'none' }} onClick={handleClickOverlay}>
-      <div className={styles.popup__container} style={{ maxWidth }}>
+      <div className={styles.popup__container} style={{ maxWidth: width, height }}>
 
         <ClosePopupButton onClick={onClose} aria-label='Закрыть' />
         {children}
@@ -57,7 +59,8 @@ const Popup: FC<PopupProps> = (
 };
 
 Popup.defaultProps = {
-  maxWidth: '580px',
+  width: '580px',
+  height: 'min-content',
 };
 
 export default Popup;
