@@ -5,13 +5,18 @@ import './App.scss';
 
 const App = () => (
   <div className='App'>
+
     <Routes>
-      <Route path='/' element={<Main />} />
+      <Route
+        path='/'
+        element={<Main />} />
     </Routes>
-    <div>
-      Заготовка будущего контейнера для Tooltip.
-      Все тултипы в компонентах *телепортировать* сюда, ипользуя реакт функцию createPortal()
+
+    <div className='popups-container'>
+      Контейнер для Popup.
+      Все попапы в компонентах *телепортировать* сюда, ипользуя реакт функцию createPortal()
     </div>
+
   </div>
 );
 export default App;
