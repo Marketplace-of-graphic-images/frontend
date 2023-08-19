@@ -2,20 +2,20 @@ import React from 'react';
 import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
 } from '../../assets/images/icons';
-import TemplateIcone from './TemplateIcone/TemplateIcone';
+import TemplateIcon from './TemplateIcon/TemplateIcon';
 
 export const ErrorIcon = (props) => (
-  <TemplateIcone {...props} icon={errorIcon} />
+  <TemplateIcon {...props} icon={errorIcon} />
 );
 export const NoVisionIcon = (props) => (
-  <TemplateIcone {...props} icon={noVisionIcon} />
+  <TemplateIcon {...props} icon={noVisionIcon} />
 );
 export const YandexIcon = (props) => (
-  <TemplateIcone {...props} icon={yandexIcon} />
+  <TemplateIcon {...props} icon={yandexIcon} />
 );
 export const GoogleIcon = (props) => (
-  <TemplateIcone {...props} icon={googleIcon} />
+  <TemplateIcon {...props} icon={googleIcon} />
 );
 export const VisionIcon = (props) => (
-  <TemplateIcone {...props} icon={visionIcon} />
+  <TemplateIcon {...props} icon={visionIcon} />
 );
