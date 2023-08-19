@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from '../pages/main/main';
-import './App.scss';
 
 const App = () => (
   <div className='App'>

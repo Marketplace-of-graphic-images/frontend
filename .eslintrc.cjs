@@ -43,6 +43,7 @@ module.exports = {
 	},
 	ignorePatterns: ['*.cjs', 'src/reportWebVitals.js', 'src/reportWebVitals.ts'],
 	rules: {
+		'linebreak-style': ["error", "unix"],
 		'no-underscore-dangle': [
 			'error',
 			{
@@ -79,7 +80,7 @@ module.exports = {
 			},
 		],
 		'@typescript-eslint/no-unsafe-assignment': 'off',
-		'@typescript-eslint/no-explicit-any': 'off',
-		'no-trailing-spaces': 'off'
+		'no-trailing-spaces': 'off',
+		'react/jsx-props-no-spreading': 'off'
 	},
 };
