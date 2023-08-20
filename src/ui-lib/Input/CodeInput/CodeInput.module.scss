@@ -1,0 +1,20 @@
+@use '../../../globalStyle/mixins' as m;
+@use '../../../globalStyle/variables' as v;
+
+.input-code {
+  height: 48px;
+  width: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid v.$black-color;
+  border-radius: 8px;
+  @include m.Code;
+  text-align: center;
+}
+.input-code:focus {
+  outline: 1px solid v.$black-color;
+  appearance: none;
+}
+.input-code_error {
+  border-color: v.$error-color;
+}
