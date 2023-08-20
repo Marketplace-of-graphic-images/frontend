@@ -8,7 +8,6 @@ interface IEmailInput extends React.ComponentPropsWithoutRef<'input'> {
   validError? : boolean;
 }
 
-// Как лучше состояние warning реализовать? Через пропсы или через внутреннее состояние компонента
 const EmailInput: React.FC<IEmailInput> = ({ apiError, label, validError }) => (
   <UniversalInput
     type='email'

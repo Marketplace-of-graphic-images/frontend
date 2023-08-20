@@ -10,7 +10,6 @@ interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
   validError? : boolean;
 }
 
-// Как лучше состояние warning реализовать? Через пропсы или через внутреннее состояние компонента
 const PasswordInput: React.FC<IPasswordInput> = ({ validError, apiError, label }) => {
   const [inputState, setInputState] = useState({
     type: 'password',
