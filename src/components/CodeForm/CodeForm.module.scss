@@ -1,0 +1,12 @@
+@use '../../globalStyle/variables' as v;
+
+.code-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__error {
+    color: v.$error-color;
+  }
+}
+
