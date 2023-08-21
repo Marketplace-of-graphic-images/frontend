@@ -33,12 +33,16 @@ const AuthorizationPage = () => {
       <LineWithWord text='Или' />
       <UniversalInput
         name='login'
-        type='email'
+        type='text'
+        minLength={8}
+        maxLength={254}
         value={values.login}
         onChange={handleChange}
         validError={errors.login}
         label='Адрес электронной почты или имя пользователя' />
-      <PasswordInput />
+      <PasswordInput   
+        minLength={8}
+        maxLength={254} />
       <div className={styles.forgotPassword}>
         <LinkWordButton buttonName='Забыли пароль?' />
       </div>

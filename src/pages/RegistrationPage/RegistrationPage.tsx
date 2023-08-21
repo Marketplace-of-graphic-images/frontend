@@ -31,14 +31,33 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <form className={styles.container}>
       <h1 className={styles.title}>Создать аккаунт</h1>
 
       <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
       <LineWithWord text='Или' />
-      <UniversalInput label='Имя пользователя' placeholder='Введите имя...' />
-      <EmailInput />
-      <PasswordInput />
+      <UniversalInput 
+        name='login'
+        type='text'
+        value={values.login}
+        onChange={handleChange}
+        validError={errors.login}
+        label='Имя пользователя'
+        minLength={8}
+        maxLength={254}
+        placeholder='Введите имя...' />
+      <EmailInput 
+        name='email'
+        value={values.email}
+        onChange={handleChange}
+        validError={errors.email} />
+      <PasswordInput
+        name='password'
+        minLength={8}
+        maxLength={254}
+        value={values.password}
+        onChange={handleChange}
+        validError={errors.password} />
       <div className={styles.checkBox}>
         <Checkbox checked={false} onChange={() => {}} />
         <p>Я являюсь автором контента</p>
@@ -47,15 +66,15 @@ const RegistrationPage = () => {
       <div className={styles.checkBox}>
 
         <Checkbox checked onChange={() => {}} />
-        <p>
+        <div>
           <LinkWordButton title='Я принимаю условия' buttonName='Правил и соглашения' />
           об использовании сайта и ознакомлен
           <LinkWordButton title='с' buttonName='Политикой Конфиденциальности' />
-        </p>
+        </div>
       </div>
       <UniversalButton disabled> Создать аккаунт</UniversalButton>
       <LinkWordButton onClick={openAuthModal} title='Есть аккаунт?' buttonName='Войти' />
-    </div>
+    </form>
   );
 };
 
