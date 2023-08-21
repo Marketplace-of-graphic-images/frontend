@@ -16,7 +16,7 @@
 
 .label {
   @include Body;
-
+  @include noselect;
   display: block;
   margin-bottom: 16px;
   text-align:start;
