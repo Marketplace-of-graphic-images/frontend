@@ -32,7 +32,7 @@
 
   &:checked + &__visible {
     border: none;
-    background: v.$accent-color url(../checkmark.svg);
+    background: v.$accent-color url(../../assets/images/icons/checkmark.svg);
   }
 
   &:disabled + &__visible {
