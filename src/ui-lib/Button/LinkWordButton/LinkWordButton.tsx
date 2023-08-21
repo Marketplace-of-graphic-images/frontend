@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './LinkWordButton.module.scss';
 
 type TLinkWordButton = {
-  title: string;
+  title?: string;
   buttonName: string;
   path: string;
 };
@@ -26,6 +26,10 @@ const LinkWordButton: React.FC<TLinkWordButton> = ({
 
     </div>
   );
+};
+
+LinkWordButton.defaultProps = {
+  title: '',
 };
 
 export default LinkWordButton;

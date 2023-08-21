@@ -1,7 +1,7 @@
 @import '../../globalStyle/mixins.scss';
 
 .container {
-  position: relative;
+position: relative;
 display: inline-flex;
 flex-direction: column;
 align-items: center;
@@ -10,19 +10,17 @@ gap: 32px;
 width: 100%;
 height: 100%;
 max-width: 580px;
-max-height: 1000px;
+max-height: 900px;
 border-radius: 16px;
 background-color: burlywood;
+}
+
+.forgotPassword {
+  display: flex;
+  align-self: flex-end;
 }
 
 .title {
   @include Header;
 }
 
-.checkBox {
-  @include Body;
-  display: flex;
-  align-items: center;
-  align-self: flex-start;  
-  gap: 16px;
-}
