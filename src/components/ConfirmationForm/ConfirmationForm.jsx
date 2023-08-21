@@ -3,6 +3,7 @@ import style from './ConfirmationForm.module.scss';
 import ClosePopupButton from '../../ui-lib/Button/ClosePopupButton/ClosePopupButton';
 import CodeNumbers from '../../ui-lib/CodeNumbers/CodeNumbers';
 import { BackPopupButton, UniversalButton } from '../../ui-lib/Button';
+import Timer from '../../ui-lib/Timer/Timer';
 
 const ConfirmationForm = () => {
   console.log('yes');
@@ -17,9 +18,9 @@ const ConfirmationForm = () => {
         </p>
         <CodeNumbers values={123456} />
         <div className={style.confirmationFormSendPassword}>
-          <p className={style.confirmationFormTextSend}>Запросить новый код:</p>
-          <button className={style.confirmationFormButtonLink} type='button'>Отправить</button>
+          <Timer state='codeNotCome' timer='45' />
         </div>
+
         <UniversalButton disabled>Подтвердить</UniversalButton>
       </div>
     </div>
