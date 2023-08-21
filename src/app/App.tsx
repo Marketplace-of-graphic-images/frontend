@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from '../pages/main/main';
+import Popup from '../components/Template/Popup/Popup';
+import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
+import RegistrationPage from '../pages/RegistrationPage/RegistrationPage'; 
+import { useDispatch, useSelector } from '../services/hooks';
+import { closeModal } from '../store';
 
-const App = () => (
-  <div className='App'>
+const App = () => {
+  const dispatch = useDispatch();
+  const { modalState } = useSelector((state) => state.system);
+  const closeModal1 = () => {
+    dispatch(closeModal());
+  };
 
-    <Routes>
-      <Route
-        path='/'
-        element={<Main />} />
-    </Routes>
+  return (
+    <div className='App'>
+      <Routes>
+        <Route
+          path='/'
+          element={<Main />} />
+      </Routes> 
 
-    <div className='popups-container'>
-      {/* Контейнер для Popup.
-      Все попапы в компонентах *телепортировать* сюда, ипользуя реакт функцию createPortal() */}
+      <Popup isOpen={modalState.auth} onClose={closeModal1}>
+        <AuthorizationPage />
+      </Popup>
+      <Popup isOpen={modalState.registr} onClose={closeModal1}>
+        <RegistrationPage />
+      </Popup>
+
     </div>
-
-  </div>
-);
+  );
+};
 export default App;
