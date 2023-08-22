@@ -9,8 +9,6 @@ import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
 
-const clientID = '049e6b67f251461b8eec67c35cf998bc';
-
 const App = () => {
   const dispatch = useDispatch();
   const { modalState } = useSelector((state) => state.system);
