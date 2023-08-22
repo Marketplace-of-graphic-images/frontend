@@ -3,6 +3,7 @@ import UniversalInput from '../UniversalInput/UniversalInput';
 import PasswordFieldButton from '../../Button/PasswordFieldButton/PasswordFieldButton';
 
 interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
+  id: string;
   apiError?: string;
   label?: string;
   validError?: boolean;
@@ -17,6 +18,7 @@ const PasswordInput: React.FC<IPasswordInput> = (
     label,
     placeholder,
     isErrorIconShow,
+    id,
     ...rest
   },
 ) => {
@@ -35,6 +37,7 @@ const PasswordInput: React.FC<IPasswordInput> = (
 
   return (
     <UniversalInput
+      id={id}
       type={inputState.type}
       placeholder={placeholder}
       label={label}

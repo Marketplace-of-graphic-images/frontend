@@ -10,12 +10,14 @@ interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'> {
   placeholder?: string;
   icon?: ReactComponentElement<FC> | null;
   isErrorIconShow?: boolean;
+  id: string;
 }
 
 const UniversalInput: React.FC<IUniversalInput> = (
   {
     errorMessage,
     label,
+    id,
     type = 'text',
     placeholder,
     validError = false,
@@ -25,10 +27,10 @@ const UniversalInput: React.FC<IUniversalInput> = (
   },
 ) => (
   <div>
-    <label className={styles.label} htmlFor='inp'>{label}</label>
+    <label className={styles.label} htmlFor={id}>{label}</label>
     <div className={`${styles.inputContainer} ${errorMessage || validError ? styles.warning : ''}`}>
       <input
-        id='inp'
+        id={id}
         className={styles.input}
         placeholder={placeholder}
         type={type}
