@@ -13,6 +13,7 @@ import { useDispatch } from '../../services/hooks';
 import { openModalRegister } from '../../store';
 // Стили
 import styles from './AuthorizationPage.module.scss';
+import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../constants/inputsId';
 
 const AuthorizationPage = () => {
   const {
@@ -29,27 +30,36 @@ const AuthorizationPage = () => {
   return (
     <form className={styles.container}>
       <h1 className={styles.title}>Авторизация</h1>
+
       <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
       <LineWithWord text='Или' />
+
       <UniversalInput
+        id={AUTH_LOGIN_ID}
         name='login'
         type='text'
-        minLength={8}
         maxLength={254}
-        value={values.login}
+        value={values.login || ''}
         onChange={handleChange}
         validError={errors.login}
+        isErrorIconShow={false}
+        required
         label='Адрес электронной почты или имя пользователя' />
-      <PasswordInput  
-        name='password' 
-        minLength={8}
+
+      <PasswordInput
+        id={AUTH_PASSWORD_ID}
+        name='password'
         maxLength={254}
-        value={values.password}
+        value={values.password || ''}
         onChange={handleChange}
-        validError={errors.password} />
+        validError={errors.password}
+        isErrorIconShow={false}
+        required />
+
       <div className={styles.forgotPassword}>
         <LinkWordButton buttonName='Забыли пароль?' />
       </div>
+
       <UniversalButton disabled={!isValid}> Войти</UniversalButton>
       <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
     </form>

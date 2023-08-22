@@ -17,10 +17,13 @@ import { openModalAuth } from '../../store';
 
 // Стили
 import styles from './RegistrationPage.module.scss';
+import { PATTERN_EMAIL, PATTERN_NAME, PATTERN_PASSWORD } from '../../constants/constants';
+import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../constants/inputsId';
 
 const RegistrationPage = () => {
   const {
     values,
+    checkboxValues,
     handleChange,
     errors,
     isValid,
@@ -36,43 +39,81 @@ const RegistrationPage = () => {
 
       <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
       <LineWithWord text='Или' />
-      <UniversalInput 
+
+      <UniversalInput
+        id={REG_NAME_ID}
         name='login'
         type='text'
-        value={values.login}
+        value={values.login || ''}
         onChange={handleChange}
+        pattern={PATTERN_NAME}
         validError={errors.login}
         label='Имя пользователя'
         minLength={8}
         maxLength={254}
+        required
         placeholder='Введите имя...' />
-      <EmailInput 
+
+      <EmailInput
+        id={REG_EMAIL_ID}
         name='email'
-        value={values.email}
+        value={values.email || ''}
         onChange={handleChange}
-        validError={errors.email} />
+        pattern={PATTERN_EMAIL}
+        validError={errors.email}
+        required />
+
       <PasswordInput
+        id={REG_PASSWORD_ID}
         name='password'
         minLength={8}
         maxLength={254}
-        value={values.password}
+        value={values.password || ''}
         onChange={handleChange}
-        validError={errors.password} />
+        pattern={PATTERN_PASSWORD}
+        validError={errors.password}
+        required />
+
       <div className={styles.checkBox}>
-        <Checkbox checked={false} onChange={() => {}} />
+        <Checkbox
+          name='author'
+          checked={checkboxValues.author || false}
+          onChange={handleChange} />
         <p>Я являюсь автором контента</p>
       </div>
-      <SolidLine />
-      <div className={styles.checkBox}>
 
-        <Checkbox checked onChange={() => {}} />
+      { checkboxValues.author && (
+      <div className={styles.checkBox}>
+        <Checkbox
+          name='authorAgreement'
+          checked={checkboxValues.authorAgreement || false}
+          onChange={handleChange}
+          required />
+
+        <div>
+          <LinkWordButton title='Я ознакомлен с законом об' buttonName='Авторском праве' />
+          <LinkWordButton title='и' buttonName='Смежных правах' />
+        </div>
+      </div>
+      )}
+
+      <SolidLine />
+
+      <div className={styles.checkBox}>
+        <Checkbox
+          name='agreement'
+          checked={checkboxValues.agreement || false}
+          onChange={handleChange}
+          required />
+
         <div>
           <LinkWordButton title='Я принимаю условия' buttonName='Правил и соглашения' />
           об использовании сайта и ознакомлен
           <LinkWordButton title='с' buttonName='Политикой Конфиденциальности' />
         </div>
       </div>
-      <UniversalButton disabled> Создать аккаунт</UniversalButton>
+
+      <UniversalButton disabled={!isValid}> Создать аккаунт</UniversalButton>
       <LinkWordButton onClick={openAuthModal} title='Есть аккаунт?' buttonName='Войти' />
     </form>
   );
