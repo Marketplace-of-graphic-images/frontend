@@ -25,7 +25,7 @@ const UniversalInput: React.FC<IUniversalInput> = ({
         type={type}
         {...rest} />
       { icon && icon }
-      {(errorMessage || validError) && <FieldErrorIcon />}
+      {(errorMessage || validError) && <FieldErrorIcon type={type} />}
     </div>
     {errorMessage && <p className={styles.error}>{errorMessage}</p>}
   </div>
