@@ -40,9 +40,13 @@ const AuthorizationPage = () => {
         onChange={handleChange}
         validError={errors.login}
         label='Адрес электронной почты или имя пользователя' />
-      <PasswordInput   
+      <PasswordInput  
+        name='password' 
         minLength={8}
-        maxLength={254} />
+        maxLength={254}
+        value={values.password}
+        onChange={handleChange}
+        validError={errors.password} />
       <div className={styles.forgotPassword}>
         <LinkWordButton buttonName='Забыли пароль?' />
       </div>

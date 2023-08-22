@@ -15,8 +15,8 @@ const Header = () => {
 
   return (
     <header className={style.main}>
-      <UniversalButton onClick={openModal2} type='button' size='small'> Создать аккаунт</UniversalButton>
-      <LinkWordButton buttonName='Войти' onClick={openModal1} />
+      <UniversalButton onClick={openModal1} type='button' size='small'> Создать аккаунт</UniversalButton>
+      <LinkWordButton buttonName='Войти' onClick={openModal2} />
       {/* <PasswordInput apiError='test' /> */}
       {/* <RegistrationPage /> */}
     </header>
