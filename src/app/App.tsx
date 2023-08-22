@@ -4,6 +4,7 @@ import Main from '../pages/main/main';
 import Popup from '../components/Template/Popup/Popup';
 import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage'; 
+import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
 
@@ -16,6 +17,7 @@ const App = () => {
 
   return (
     <div className='App'>
+      <Header />
       <Routes>
         <Route
           path='/'
