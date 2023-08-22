@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Checkbox.module.scss';
 
-interface CheckboxProps {
+interface CheckboxProps extends React.ComponentPropsWithoutRef<'input'> {
   checked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -9,16 +9,18 @@ interface CheckboxProps {
 const Checkbox: FC<CheckboxProps> = ({
   checked, onChange, ...rest 
 }) => (
-  <label className={styles.checkbox__label} htmlFor={styles.checkbox}>
+  // eslint-disable-next-line jsx-a11y/label-has-associated-control
+  <label className={styles.checkbox__label}>
 
     <input
       type='checkbox'
       checked={checked}
       onChange={onChange}
       className={styles.checkbox}
-      id={styles.checkbox}
       {...rest} />
+
     <span className={styles.checkbox__visible} />
+
   </label>
 );
 
