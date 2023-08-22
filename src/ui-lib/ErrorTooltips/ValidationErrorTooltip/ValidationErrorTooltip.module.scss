@@ -13,8 +13,6 @@
   background: v.$error_background-color;
   @include m.Body;
   text-align: left;
-  transition: opacity 0.1s ease-in;
-  z-index: 20;
 
   &:before {
     position: absolute;
