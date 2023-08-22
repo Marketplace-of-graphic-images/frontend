@@ -10,12 +10,14 @@ interface IUniversalButton extends React.ComponentPropsWithoutRef<'button'> {
 
 const UniversalButton: React.FC<IUniversalButton> = ({
   size = 'large',
+  type = 'submit',
   ...rest
 }) => (
   <button
-    type='submit'
+    type= {type}
     className={`${styles.button} ${size ? styles[size] : ''}`}
     {...rest} />
 );
+
 
 export default UniversalButton;

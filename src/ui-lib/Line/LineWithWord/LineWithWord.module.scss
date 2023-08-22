@@ -1,0 +1,20 @@
+@import '../../../globalStyle/mixins.scss';
+
+.text {
+  display: flex;
+  gap: 16px;
+  max-width: 484px;
+  align-items: center;
+  @include Body;
+
+  &::before, &::after {
+    display: block;
+    content: '';
+    width: 484px;
+    height: 1px;
+    opacity: 0.5;
+    background: #4B4B4B;  
+  }
+
+}
+

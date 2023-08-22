@@ -12,7 +12,7 @@
   background: #029992;
   color: var(--white, #fff);
   width: 484px;
-  height: 55px;
+  height: 48px;
   @include Body;
   @include noselect;
 
@@ -22,7 +22,6 @@
 
   &:disabled {
     background: $disabled-color;
-    cursor: not-allowed;
   }
 }
 
