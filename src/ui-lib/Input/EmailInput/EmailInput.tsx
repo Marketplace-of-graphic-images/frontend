@@ -7,13 +7,16 @@ interface IEmailInput extends React.ComponentPropsWithoutRef<'input'> {
   validError? : boolean;
 }
 
-const EmailInput: React.FC<IEmailInput> = ({ apiError, label, validError }) => (
+const EmailInput: React.FC<IEmailInput> = ({
+  apiError, label, validError, ...rest 
+}) => (
   <UniversalInput
     type='email'
     placeholder='Введите Email...'
     label={label}
     errorMessage={apiError}
-    validError={validError} />
+    validError={validError}
+    {...rest} />
 );
 EmailInput.defaultProps = {
   apiError: '',

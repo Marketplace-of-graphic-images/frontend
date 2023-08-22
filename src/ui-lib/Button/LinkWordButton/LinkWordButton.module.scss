@@ -1,0 +1,20 @@
+@import '/src/globalStyle/variables.scss';
+@import '../../../globalStyle/mixins.scss';
+
+.wrapper {
+  @include Body;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.button {
+  color: $accent-color;
+  text-decoration: underline;
+  font-weight: 600;
+  padding: 0;
+}
+.button:hover {
+  opacity: 0.8;
+}

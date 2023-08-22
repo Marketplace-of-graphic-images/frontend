@@ -6,9 +6,12 @@ interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
   apiError?: string;
   label?:string;
   validError? : boolean;
+  placeholder?:string;
 }
 
-const PasswordInput: React.FC<IPasswordInput> = ({ validError, apiError, label }) => {
+const PasswordInput: React.FC<IPasswordInput> = ({
+  validError, apiError, label, placeholder, ...rest 
+}) => {
   const [inputState, setInputState] = useState({
     type: 'password',
     visionIcon: false,
@@ -24,10 +27,11 @@ const PasswordInput: React.FC<IPasswordInput> = ({ validError, apiError, label }
   return (
     <UniversalInput
       type={inputState.type}
-      placeholder='Введите пароль...'
+      placeholder={placeholder}
       label={label}
       errorMessage={apiError}
       validError={validError}
+      {...rest}
       icon={(
         <PasswordFieldButton
           isVision={inputState.visionIcon}
@@ -42,6 +46,7 @@ PasswordInput.defaultProps = {
   apiError: '',
   label: 'Пароль',
   validError: false,
+  placeholder: 'Введите пароль...',
 };
 
 export default PasswordInput;

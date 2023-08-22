@@ -6,8 +6,11 @@ interface CheckboxProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Checkbox: FC<CheckboxProps> = ({ checked, onChange, ...rest }) => (
+const Checkbox: FC<CheckboxProps> = ({
+  checked, onChange, ...rest 
+}) => (
   <label className={styles.checkbox__label} htmlFor={styles.checkbox}>
+
     <input
       type='checkbox'
       checked={checked}
