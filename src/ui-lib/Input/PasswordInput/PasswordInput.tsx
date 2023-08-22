@@ -4,14 +4,22 @@ import PasswordFieldButton from '../../Button/PasswordFieldButton/PasswordFieldB
 
 interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
   apiError?: string;
-  label?:string;
-  validError? : boolean;
-  placeholder?:string;
+  label?: string;
+  validError?: boolean;
+  placeholder?: string;
+  isErrorIconShow?: boolean;
 }
 
-const PasswordInput: React.FC<IPasswordInput> = ({
-  validError, apiError, label, placeholder, ...rest 
-}) => {
+const PasswordInput: React.FC<IPasswordInput> = (
+  {
+    validError,
+    apiError,
+    label,
+    placeholder,
+    isErrorIconShow,
+    ...rest
+  },
+) => {
   const [inputState, setInputState] = useState({
     type: 'password',
     visionIcon: false,
@@ -24,6 +32,7 @@ const PasswordInput: React.FC<IPasswordInput> = ({
       setInputState({ type: 'password', visionIcon: false });
     }
   };
+
   return (
     <UniversalInput
       type={inputState.type}
@@ -31,6 +40,7 @@ const PasswordInput: React.FC<IPasswordInput> = ({
       label={label}
       errorMessage={apiError}
       validError={validError}
+      isErrorIconShow={isErrorIconShow}
       {...rest}
       icon={(
         <PasswordFieldButton
@@ -39,14 +49,16 @@ const PasswordInput: React.FC<IPasswordInput> = ({
           error={
           !!(validError || apiError)
         } />
-)} />
+      )} />
   );
 };
+
 PasswordInput.defaultProps = {
   apiError: '',
   label: 'Пароль',
   validError: false,
   placeholder: 'Введите пароль...',
+  isErrorIconShow: true,
 };
 
 export default PasswordInput;
