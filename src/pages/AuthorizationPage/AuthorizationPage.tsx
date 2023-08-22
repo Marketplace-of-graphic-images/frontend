@@ -11,9 +11,12 @@ import LinkWordButton from '../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../services/useValidation';
 import { useDispatch } from '../../services/hooks';
 import { openModalRegister } from '../../store';
+import YandexLogin from '../../services/auth/yandex/YandexLogin';
 // Стили
 import styles from './AuthorizationPage.module.scss';
 import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../constants/inputsId';
+
+const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записать в process.env
 
 const AuthorizationPage = () => {
   const {
@@ -30,8 +33,9 @@ const AuthorizationPage = () => {
   return (
     <form className={styles.container}>
       <h1 className={styles.title}>Авторизация</h1>
-
-      <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
+      <YandexLogin clientID={clientID}>
+        <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
+      </YandexLogin>
       <LineWithWord text='Или' />
 
       <UniversalInput
