@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from '../pages/main/main';
+import YandexAuth from '../pages/yandexAuth/yandexAuth';
 import Popup from '../components/Template/Popup/Popup';
 import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage'; 
@@ -14,11 +15,13 @@ const App = () => {
   const closeModal1 = () => {
     dispatch(closeModal());
   };
-
   return (
     <div className='App'>
       <Header />
       <Routes>
+        <Route
+          path='yandexauth'
+          element={<YandexAuth />} />
         <Route
           path='/'
           element={<Main />} />
@@ -30,7 +33,6 @@ const App = () => {
       <Popup isOpen={modalState.registr} onClose={closeModal1}>
         <RegistrationPage />
       </Popup>
-
     </div>
   );
 };

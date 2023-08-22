@@ -23,7 +23,7 @@ const useValidation = () => {
         }
       });
     }
-  }, [values, form]);
+  }, [values, checkboxValues, form]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
