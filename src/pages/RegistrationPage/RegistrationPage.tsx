@@ -14,11 +14,14 @@ import LinkWordButton from '../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../services/useValidation';
 import { useDispatch } from '../../services/hooks';
 import { openModalAuth } from '../../store';
+import YandexLogin from '../../services/auth/yandex/YandexLogin';
 
 // Стили
 import styles from './RegistrationPage.module.scss';
 import { PATTERN_EMAIL, PATTERN_NAME, PATTERN_PASSWORD } from '../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../constants/inputsId';
+
+const clientID = '049e6b67f251461b8eec67c35cf998bc'; 
 
 const RegistrationPage = () => {
   const {
@@ -36,8 +39,9 @@ const RegistrationPage = () => {
   return (
     <form className={styles.container}>
       <h1 className={styles.title}>Создать аккаунт</h1>
-
-      <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
+      <YandexLogin clientID={clientID}>
+        <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
+      </YandexLogin>
       <LineWithWord text='Или' />
 
       <UniversalInput
