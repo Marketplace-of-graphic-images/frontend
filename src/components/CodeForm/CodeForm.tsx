@@ -1,29 +1,18 @@
 import React, { FC, useState } from 'react';
 import styles from './CodeForm.module.scss';
-import CodeNumbers from '../../ui-lib/CodeNumbers/CodeNumbers';
+import OtpCode from '../../ui-lib/OptCode/OtpCode';
 
 const CodeForm: FC = () => {
-  const [values, setValues] = useState(
-    {
-      first: '',
-      second: '',
-      third: '',
-      fourth: '',
-      fifth: '',
-      sixth: '',
-    },
-  );
-  const [error, setError] = useState(false);
-
-  const combineNumbers = () => Object.values(values).reduce((codeStr, num) => codeStr + num, '');
-
-  const changeValues = (newValues: Record<string, string>) => {
-    setValues({ ...values, ...newValues });
-  };
+  const [code, setCode] = useState('');
+  const [error, setError] = useState(true);
 
   return (
     <form className={styles['code-form']}>
-      <CodeNumbers values={values} changeValues={changeValues} isError={error} />
+      <OtpCode
+        value={code}
+        valueLength={6}
+        isError={error}
+        onChange={(value) => setCode(value)} />
 
       {error
         && (
