@@ -5,7 +5,7 @@ const testModal = { auth: false, registr: false, confirmEmail: false };
 interface TmodalState {
   auth: boolean,
   registr: boolean,
-  confirmEmail: boolean 
+  confirmEmail: boolean
 
 }
 type TSystemState = {
