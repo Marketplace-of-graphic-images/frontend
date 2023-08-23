@@ -8,6 +8,7 @@ import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
+import Footer from '../components/Footer/Footer';
 
 const App = () => {
   const dispatch = useDispatch();

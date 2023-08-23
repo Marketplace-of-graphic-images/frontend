@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './UniversalButton.module.scss';
 
 interface IUniversalButton extends React.ComponentPropsWithoutRef<'button'> {
-  size?: 'large' | 'medium' | 'small';
+  size?: 'large' | 'medium' | 'small_medium' |'small';
 }
 
 const UniversalButton: React.FC<IUniversalButton> = ({
