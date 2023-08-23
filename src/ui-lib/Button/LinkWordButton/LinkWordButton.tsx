@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 // Styles
 import styles from './LinkWordButton.module.scss';
