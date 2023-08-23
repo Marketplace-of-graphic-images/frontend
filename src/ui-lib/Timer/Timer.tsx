@@ -1,44 +1,75 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { useTimer } from 'react-timer-hook';
 import styles from './Timer.module.scss';
+import { LinkWordButton } from '../Button';
 
 interface TimerProps {
-  state: 'timer' | 'timerEnd' | 'codeNotCome',
-  timer?: number;
+  // eslint-disable-next-line react/require-default-props
+  numberOfSeconds: number;
 }
 
-const Timer: FC<TimerProps> = ({ state, timer }) => (
-  <div className='timer'>
-    {
-      state === 'timer' && (
-        <div className={styles.timer__container}>
-          <p className={styles.timer__text}>Запросить новый код через:</p>
-          <p className={styles.timer__countdown}>{timer}</p>
-        </div>
-      )
-    }
+const Timer: FC<TimerProps> = ({ numberOfSeconds }) => {
+  const [timerState, setTimerState] = useState<'timer' | 'codeNotCome' | 'timerEnd'>('timer');
+  const [attempts, setAttempts] = useState(2);
 
-    {
-      state === 'timerEnd' && (
-        <div className={styles.timer__container}>
-          <p className={styles.timer__text}>Запросить новый код:</p>
-          <a href='http://localhost:3000/' className={styles.timer__link}>Отправить</a>
-        </div>
-      )
-    }
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + numberOfSeconds);
+  const { seconds, restart } = useTimer({ expiryTimestamp: time });
 
-    {
-      state === 'codeNotCome' && (
-        <div className={styles.timer__container}>
-          <p className={styles.timer__text}>Код не пришёл?</p>
-          <a href='http://localhost:3000/' className={styles.timer__link}>Написать в поддержку</a>
-        </div>
-      )
+  useEffect(() => {
+    if (seconds === 0) {
+      if (attempts > 0) {
+        setTimerState('timerEnd');
+      } else {
+        setTimerState('codeNotCome');
+      }
     }
-  </div>
-);
+  }, [attempts, seconds]);
 
-Timer.defaultProps = {
-  timer: 0,
+  const handleGetNewCode = () => {
+    if (attempts > 0) {
+      setTimerState('timer');
+      setAttempts(attempts - 1);
+
+      const newTime = new Date();
+      newTime.setSeconds(newTime.getSeconds() + numberOfSeconds);
+      restart(newTime);
+    }
+  };
+
+  return (
+    <div className='timer'>
+      {
+        timerState === 'timer' && (
+          <div className={styles.timer__container}>
+            <p className={styles.timer__text}>Запросить новый код через:</p>
+            <p className={styles.timer__countdown}>{seconds}</p>
+          </div>
+        )
+      }
+
+      {
+        timerState === 'timerEnd' && (
+          <div className={styles.timer__container}>
+            <LinkWordButton
+              title='Запросить новый код:'
+              buttonName='Отправить'
+              onClick={handleGetNewCode} />
+          </div>
+        )
+      }
+
+      {
+        timerState === 'codeNotCome' && (
+          <div className={styles.timer__container}>
+            <LinkWordButton
+              title='Код не пришёл?'
+              buttonName='Написать в поддержку' />
+          </div>
+        )
+      }
+    </div>
+  );
 };
 
 export default Timer;
