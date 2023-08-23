@@ -27,6 +27,7 @@
 
   &__text {
     margin: 0;
+    color: v.$black-color;
   }
 
   &__list {
@@ -36,6 +37,7 @@
 
   &__item {
     padding-left: 10px;
+    color: v.$black-color;
   }
 
   &__item::marker {
