@@ -53,7 +53,6 @@ const useValidation = () => {
       setCheckboxValues(newCheckboxValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
-      setForm(null);
     },
     [setValues, setCheckboxValues, setErrors, setIsValid],
   );

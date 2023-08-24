@@ -82,6 +82,7 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-assignment': 'off',
 		'no-trailing-spaces': 'off',
 		'react/jsx-props-no-spreading': 'off',
-		'no-plusplus': 'off'
+		'no-plusplus': 'off',
+		'import/no-extraneous-dependencies': 'off'
 	},
 };

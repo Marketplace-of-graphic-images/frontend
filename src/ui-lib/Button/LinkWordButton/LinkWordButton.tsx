@@ -1,6 +1,4 @@
 import React from 'react';
-
-// Styles
 import styles from './LinkWordButton.module.scss';
 
 type TLinkWordButton = {

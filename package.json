@@ -24,7 +24,8 @@
     "gh-pages": "^6.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "react-timer-hook": "^3.0.7"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

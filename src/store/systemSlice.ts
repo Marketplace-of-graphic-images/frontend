@@ -1,15 +1,20 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const testModal = { auth: false, registr: false, confirmEmail: false };
+const testModal = {
+  auth: false,
+  register: false,
+  confirmEmail: false,
+  passRecovery: false,
+};
 
-interface TmodalState {
+interface TModalState {
   auth: boolean,
-  registr: boolean,
-  confirmEmail: boolean 
-
+  register: boolean,
+  confirmEmail: boolean,
+  passRecovery: boolean,
 }
 type TSystemState = {
-  modalState:TmodalState
+  modalState: TModalState
 };
 
 const initialState: TSystemState = {
@@ -23,12 +28,19 @@ const systemSlice = createSlice({
     openModalAuth: (state: TSystemState) => ({
       ...state,
       modalState: 
-      { ...state.modalState, auth: true, registr: false }, 
+      {
+        ...state.modalState, auth: true, register: false, passRecovery: false, 
+      },
     }),
     openModalRegister: (state: TSystemState) => ({
       ...state,
       modalState: 
-      { ...state.modalState, auth: false, registr: true }, 
+      { ...state.modalState, auth: false, register: true },
+    }),
+    openModalPassRecovery: (state: TSystemState) => ({
+      ...state,
+      modalState:
+        { ...state.modalState, auth: false, passRecovery: true },
     }),
     closeModal: (state: TSystemState) => ({
       ...state,
@@ -43,5 +55,6 @@ export const {
   openModalAuth,
   closeModal,
   openModalRegister,
+  openModalPassRecovery,
 } = systemSlice.actions;
 export default systemReducer;

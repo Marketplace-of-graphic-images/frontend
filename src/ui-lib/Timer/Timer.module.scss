@@ -28,14 +28,4 @@
     @include m.Numbers;
     color: v.$accent-color;
   }
-
-  &__link {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    @include m.Link;
-    text-decoration: underline;
-    color: v.$accent-color;
-  }
 }
