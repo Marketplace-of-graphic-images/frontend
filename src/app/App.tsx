@@ -28,6 +28,13 @@ const App = () => {
         <Route
           path='/'
           element={<Main />} />
+        <Route
+          path='/test'
+          element={(
+            <PrivateRoute path='/'>
+              <Main />
+            </PrivateRoute>
+          )} />
       </Routes> 
 
         <Route
