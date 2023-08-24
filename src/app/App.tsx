@@ -9,6 +9,7 @@ import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
 import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage';
+import PrivateRoute from '../services/PrivateRoute';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const App = () => {
   const closeModal1 = () => {
     dispatch(closeModal());
   };
+  
   return (
     <div className='App'>
       <Header />
@@ -26,7 +28,7 @@ const App = () => {
         <Route
           path='/'
           element={<Main />} />
-      </Routes>
+      </Routes> 
 
       <Popup isOpen={modalState.auth} onClose={closeModal1}>
         <AuthorizationPage />
