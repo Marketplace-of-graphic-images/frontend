@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './Footer.module.scss';
 import { UniversalButton } from '../../ui-lib/Button';
 
@@ -6,25 +7,25 @@ const Footer = () => {
   console.log('footer');
   return (
     <footer className={style.footer}>
-      <div className={style.footer__conteiner_content}>
+      <div className={style.footer__container_content}>
         <div className={style.footer__menu}>
           <div>
             <h4 className={style.footer__title}>«Маркетплейс»</h4>
             <ul className={style.footer__links}>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>О нас</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>О нас</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>FAQ</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>FAQ</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Реквизиты</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Реквизиты</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Вакансии</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Вакансии</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Связаться с нами</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Связаться с нами</Link>
               </li>
             </ul>
           </div>
@@ -32,19 +33,19 @@ const Footer = () => {
             <h4 className={style.footer__title}>Условия пользования</h4>
             <ul className={style.footer__links}>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Об авторском праве</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Об авторском праве</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Приложения</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Приложения</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Конфиденциальность</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Конфиденциальность</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Политика файлов Cookie</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Политика файлов Cookie</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Партнерская программа</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Партнерская программа</Link>
               </li>
             </ul>
           </div>
@@ -52,16 +53,16 @@ const Footer = () => {
             <h4 className={style.footer__title}>Клиентам</h4>
             <ul className={style.footer__links}>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Услуги</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Услуги</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Акции</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Акции</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Специальные предложения</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Специальные предложения</Link>
               </li>
               <li>
-                <a className={style.footer__link} href='http://localhost:3000/' target='blank'>Подписка</a>
+                <Link className={style.footer__link} href='http://localhost:3000/'>Подписка</Link>
               </li>
             </ul>
           </div>
@@ -74,9 +75,12 @@ const Footer = () => {
           <UniversalButton size='small_medium'>Подписаться</UniversalButton>
         </div>
       </div>
-      <div className={style.footer__conteiner}>
+      <div className={style.footer__container}>
         <p className={style.footer__copyright}>
-          &copy; 2023 «Маркетплейс графических изображений» Все права защищены
+          &copy; 2023 «Маркетплейс графических изображений»
+        </p>
+        <p className={style.footer__copyright}>
+          Все права защищены
         </p>
       </div>
     </footer>
