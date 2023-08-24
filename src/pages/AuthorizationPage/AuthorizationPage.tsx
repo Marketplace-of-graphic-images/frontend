@@ -49,7 +49,8 @@ const AuthorizationPage = () => {
         isErrorIconShow={false}
         required
         placeholder='Введите имя или Email...'
-        label='Адрес электронной почты или имя пользователя' />
+        label='Адрес электронной почты или имя пользователя'
+        autoFocus />
 
       <PasswordInput
         id={AUTH_PASSWORD_ID}

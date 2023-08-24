@@ -26,28 +26,37 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
     onSubmitBtnClick,
     apiError = false,
   },
-) => (
-  <fieldset className={styles.passwordRecoveryForm}>
+) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && isFormValid) {
+      onSubmitBtnClick();
+    }
+  };
 
-    <BackPopupButton onClick={onBackClick} />
-    <h1 className={styles.passwordRecoveryForm__title}>Восстановление пароля</h1>
+  return (
+    <fieldset className={styles.passwordRecoveryForm}>
 
-    <p className={styles.passwordRecoveryForm__description}>
-      Для восстановления пароля введите вашу электронную почту или имя пользователя.
-    </p>
+      <BackPopupButton onClick={onBackClick} />
+      <h1 className={styles.passwordRecoveryForm__title}>Восстановление пароля</h1>
 
-    <UniversalInput
-      id={RECOVERY_LOGIN_ID}
-      value={value}
-      name={inputName}
-      onChange={onChange}
-      maxLength={254}
-      required
-      validError={inputError}
-      label='Адрес электронной почты или имя пользователя'
-      isErrorIconShow={false} />
+      <p className={styles.passwordRecoveryForm__description}>
+        Для восстановления пароля введите вашу электронную почту или имя пользователя.
+      </p>
 
-    {apiError
+      <UniversalInput
+        id={RECOVERY_LOGIN_ID}
+        value={value}
+        name={inputName}
+        onChange={onChange}
+        onKeyDown={handleKeyDown}
+        maxLength={254}
+        required
+        validError={inputError}
+        label='Адрес электронной почты или имя пользователя'
+        isErrorIconShow={false}
+        autoFocus />
+
+      {apiError
         && (
           <p className={styles.passwordRecoveryForm__error}>
             Введённый электронный адрес или имя пользователя
@@ -55,11 +64,12 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
           </p>
         )}
 
-    <UniversalButton type='button' disabled={!isFormValid} onClick={onSubmitBtnClick}>
-      Далее
-    </UniversalButton>
-  </fieldset>
-);
+      <UniversalButton type='button' disabled={!isFormValid} onClick={onSubmitBtnClick}>
+        Далее
+      </UniversalButton>
+    </fieldset>
+  );
+};
 
 PasswordRecoveryForm.defaultProps = {
   apiError: false,

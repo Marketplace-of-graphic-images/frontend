@@ -32,8 +32,10 @@ const PasswordRecoveryPage = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('submit data', { login: values.login, password: values.password, code });
-    dispatch(closeModal());
+    if (formStep === 3) {
+      console.log('submit data', { login: values.login, password: values.password, code });
+      dispatch(closeModal());
+    }
   };
 
   return (

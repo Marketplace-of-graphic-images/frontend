@@ -40,7 +40,8 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
       value={code}
       valueLength={6}
       isError={apiError}
-      onChange={onChange} />
+      onChange={onChange}
+      onEnterPress={onSubmitBtnClick} />
 
     {apiError
         && (

@@ -56,7 +56,8 @@ const RegistrationPage = () => {
         minLength={8}
         maxLength={254}
         required
-        placeholder='Введите имя...' />
+        placeholder='Введите имя...'
+        autoFocus />
 
       <EmailInput
         id={REG_EMAIL_ID}
