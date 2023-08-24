@@ -7,11 +7,12 @@ import OtpCode from '../../ui-lib/OptCode/OtpCode';
 interface OtpCodeFormProps {
   code: string;
   onChange: (val: string) => void;
-  onSubmitBtnClick: () => void;
+  onSubmitBtnClick?: () => void;
   onBackClick: () => void;
   title: string;
   description: string;
   email: string;
+  buttonType: 'button' | 'submit' | 'reset';
   apiError?: boolean;
 }
 
@@ -24,6 +25,7 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
     title,
     description,
     email,
+    buttonType,
     apiError = false,
   },
 ) => (
@@ -41,7 +43,7 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
       valueLength={6}
       isError={apiError}
       onChange={onChange}
-      onEnterPress={onSubmitBtnClick} />
+      onEnterPress={onSubmitBtnClick || (() => {})} />
 
     {apiError
         && (
@@ -54,7 +56,10 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
       <Timer numberOfSeconds={3} />
     </div>
 
-    <UniversalButton type='button' disabled={code.trim().length !== 6} onClick={onSubmitBtnClick}>
+    <UniversalButton
+      type={buttonType}
+      disabled={code.trim().length !== 6}
+      onClick={onSubmitBtnClick}>
       Подтвердить
     </UniversalButton>
   </fieldset>
@@ -62,6 +67,7 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
 
 OtpCodeForm.defaultProps = {
   apiError: false,
+  onSubmitBtnClick: undefined,
 };
 
 export default OtpCodeForm;

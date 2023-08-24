@@ -57,6 +57,7 @@ const PasswordRecoveryPage = () => {
           onChange={(val) => setCode(val)}
           onSubmitBtnClick={moveToNextStep}
           onBackClick={moveToPrevStep}
+          buttonType='button'
           email='example@yandex.ru'
           title='Восстановление пароля'
           description='Введите код, отправленный на почту' />

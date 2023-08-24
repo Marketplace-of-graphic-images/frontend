@@ -8,7 +8,9 @@
   gap: 32px;
 
   &__title {
+    max-width: 340px;
     @include m.Header;
+    text-align: center;
   }
 
   &__description {
