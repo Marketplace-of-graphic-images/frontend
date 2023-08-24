@@ -1,7 +1,7 @@
 import React from 'react';
 import { PasswordInput } from '../../ui-lib/Input';
 import style from './main.module.scss';
-import { useDispatch, useSelector } from '../../services/hooks';
+import { useDispatch } from '../../services/hooks';
 import { openModalAuth } from '../../store';
 
 const Main = () => { 
