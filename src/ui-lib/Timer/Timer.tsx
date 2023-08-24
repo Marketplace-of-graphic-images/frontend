@@ -6,15 +6,17 @@ import { LinkWordButton } from '../Button';
 interface TimerProps {
   // eslint-disable-next-line react/require-default-props
   numberOfSeconds: number;
+  numberOfminutes:number;
 }
 
-const Timer: FC<TimerProps> = ({ numberOfSeconds }) => {
+const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfminutes }) => {
   const [timerState, setTimerState] = useState<'timer' | 'codeNotCome' | 'timerEnd'>('timer');
   const [attempts, setAttempts] = useState(2);
 
   const time = new Date();
   time.setSeconds(time.getSeconds() + numberOfSeconds);
-  const { seconds, restart } = useTimer({ expiryTimestamp: time });
+  time.setMinutes(time.getMinutes() + numberOfminutes);
+  const { minutes, seconds, restart } = useTimer({ expiryTimestamp: time });
 
   useEffect(() => {
     if (seconds === 0) {
@@ -43,6 +45,10 @@ const Timer: FC<TimerProps> = ({ numberOfSeconds }) => {
         timerState === 'timer' && (
           <div className={styles.timer__container}>
             <p className={styles.timer__text}>Запросить новый код через:</p>
+            <p className={styles.timer__countdown}>
+              {minutes}
+              :
+            </p>
             <p className={styles.timer__countdown}>{seconds}</p>
           </div>
         )

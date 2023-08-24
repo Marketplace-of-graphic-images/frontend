@@ -62,9 +62,9 @@ const RegistrationPage = () => {
       {formStep === 1 && (
         <fieldset className={styles.container}>
           <h1 className={styles.title}>Создать аккаунт</h1>
-          {/*<YandexLogin clientID={clientID}>*/}
-          <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
-          {/*</YandexLogin>*/}
+          <YandexLogin clientID={clientID}>
+            <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
+          </YandexLogin>
           <LineWithWord text='Или' />
 
           <UniversalInput

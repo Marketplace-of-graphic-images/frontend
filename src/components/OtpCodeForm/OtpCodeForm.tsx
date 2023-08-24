@@ -53,7 +53,7 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
         )}
 
     <div className={styles.otpCodeForm__sendPassword}>
-      <Timer numberOfSeconds={3} />
+      <Timer numberOfminutes={0} numberOfSeconds={59} />
     </div>
 
     <UniversalButton
