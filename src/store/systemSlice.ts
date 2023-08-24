@@ -9,17 +9,21 @@ interface TmodalState {
 
 }
 type TSystemState = {
-  modalState:TmodalState
+  modalState:TmodalState,
+  isLoggedIn:boolean,
 };
 
 const initialState: TSystemState = {
   modalState: testModal,
+  isLoggedIn: false,
 };
 
 const systemSlice = createSlice({
   name: 'system',
   initialState,
   reducers: {
+    onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),
+    onLogout: (state: TSystemState) => ({ ...state, isLoggedIn: false }),
     openModalAuth: (state: TSystemState) => ({
       ...state,
       modalState: 

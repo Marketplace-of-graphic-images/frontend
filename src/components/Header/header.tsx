@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './header.module.scss';
 import { useDispatch, useSelector } from '../../services/hooks';
 import { openModalAuth, openModalRegister } from '../../store';
@@ -15,6 +16,7 @@ const Header = () => {
 
   return (
     <header className={style.main}>
+      <Link to='/profile'>Ссылка</Link>
       <UniversalButton onClick={openModal1} type='button' size='small'> Создать аккаунт</UniversalButton>
       <LinkWordButton buttonName='Войти' onClick={openModal2} />
       {/* <PasswordInput apiError='test' /> */}
