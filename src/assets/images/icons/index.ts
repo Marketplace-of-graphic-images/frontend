@@ -3,7 +3,17 @@ import noVisionIcon from './NoVisionIcon.svg';
 import yandexIcon from './YandexIcon.svg';
 import googleIcon from './GoogleIcon.svg';
 import visionIcon from './VisionIcon.svg';
+import magniferIcon from './MagniferIcon.svg';
+import Loupe from './Loupe.svg';
+import arrowDownIcon from './Arrows_down.svg';
 
 export {
-  errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
+  errorIcon, 
+  noVisionIcon, 
+  yandexIcon, 
+  googleIcon, 
+  visionIcon, 
+  magniferIcon,
+  Loupe,
+  arrowDownIcon,
 };
