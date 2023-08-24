@@ -36,15 +36,6 @@ const App = () => {
             </PrivateRoute>
           )} />
       </Routes> 
-
-        <Route
-          path='/test'
-          element={(
-            <PrivateRoute path='/'>
-              <Main />
-            </PrivateRoute>
-          )} />
-      </Routes> 
       <Popup isOpen={modalState.auth} onClose={closeModal1}>
         <AuthorizationPage />
       </Popup>
