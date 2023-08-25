@@ -1,0 +1,49 @@
+@import '../../../globalStyle/mixins.scss';
+
+.dropdown {
+  @include Body;
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown_content {
+  @include Body;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+  gap: 16px 96px;
+  
+  position: absolute;
+  margin-top: 20px;
+  padding: 36px;  
+  z-index: 1;
+  
+  border-radius: 8px;
+  background-color: #CEDFD5;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+
+  &::before {
+    content: '';
+    
+    display: block;
+    width: 32px;
+    height: 32px;
+    rotate: 45deg;
+
+    position: absolute;
+    top: -12px;
+    left: 70px;
+    
+    background-color: #CEDFD5;    
+  }
+}
+
+.link {
+  color: #223E3C;
+  white-space: nowrap;
+}
+
+.link :hover {
+  font-weight: 700;
+}
