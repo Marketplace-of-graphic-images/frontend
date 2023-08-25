@@ -1,0 +1,29 @@
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 24px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #029992;
+    font-size: 25px;
+    background-color: aliceblue;
+  }
+}
