@@ -1,11 +1,12 @@
 import React, { FC, useState } from 'react';
-import Slide from './Slide';
+import Card from '../Card/Card';
 import styles from './Slider.module.scss';
 import SliderButton from '../../ui-lib/Button/SliderButton/SliderButton';
+import CardList from '../CardList/CardList';
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 
 interface SliderProps {
-  items: Record<string, any>;
+  items: Array<Record<string, any>>;
 }
 
 const Slider: FC<SliderProps> = ({ items }) => {
@@ -58,10 +59,7 @@ const Slider: FC<SliderProps> = ({ items }) => {
         <div
           className={styles.slider__container}
           style={{ transform: `translateX(-${slide * (302 + 24)}px)` }}>
-
-          {items.map(({ title, image, id }) => (
-            <Slide title={title} imageLink={image} key={id} />
-          ))}
+          <CardList items={items} />
         </div>
       </div>
 
