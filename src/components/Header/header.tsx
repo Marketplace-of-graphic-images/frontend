@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './header.module.scss';
-import { useDispatch, useSelector } from '../../services/hooks';
+import { useDispatch } from '../../services/hooks';
 import { openModalAuth, openModalRegister } from '../../store';
 import { UniversalButton, LinkWordButton } from '../../ui-lib/Button';
 
