@@ -11,9 +11,12 @@ import bricksIcon from './BricksIcon.svg';
 import premiumIcon from './PremiumIcon.svg';
 import profileIcon from './ProfileIcon.svg';
 import refreshIcon from './RefreshIcon.svg';
+import magniferIcon from './MagniferIcon.svg';
+import Loupe from './Loupe.svg';
+import arrowDownIcon from './Arrows_down.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
-  refreshIcon,
+  refreshIcon, magniferIcon, Loupe, arrowDownIcon,
 };
