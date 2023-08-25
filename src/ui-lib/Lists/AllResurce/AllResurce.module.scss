@@ -1,0 +1,45 @@
+@import '/src/globalStyle/variables.scss';
+@import '/src/globalStyle/mixins.scss';
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.container {
+    position: relative;
+    display: inline-block;
+    margin-left: 32px;
+    &:before {
+      content: '';
+      right: 0px;
+      top: 0px;
+      width: 48px;
+      height: 48px;
+      background: url('../../../assets/images/icons/Arrows_down.svg') no-repeat;
+      background-position-x: center;
+      background-position-y: center;
+      border-left: $accent-color 1px solid;
+      position: absolute;
+      pointer-events: none;
+      display: block;
+      z-index: 1;
+    }
+    .select {
+      position: relative;
+      width: 200px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: $white-color;
+      border: none;
+      outline: none;
+      padding-left: 32px;
+      margin: 0;
+      @include Body;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      height: 48px;
+    }
+  }

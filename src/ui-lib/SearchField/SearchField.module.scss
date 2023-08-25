@@ -1,0 +1,13 @@
+@import '/src/globalStyle/variables.scss';
+@import '/src/globalStyle/mixins.scss';
+
+.SearchField {
+    width: 628px;
+    height: 48px;
+    background-color: $white-color;
+    border-radius: 8px;
+    @include Body;
+    color: $grey-color;
+    padding-left: 32px;
+    padding-right: 72px;
+}
