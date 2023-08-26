@@ -12,19 +12,24 @@ const Footer = () => {
           <div>
             <h4 className={style.footer__title}>«Маркетплейс»</h4>
             <ul className={style.footer__links}>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>О нас</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>FAQ</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Реквизиты</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Вакансии</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Связаться с нами</Link>
               </li>
             </ul>
@@ -32,19 +37,24 @@ const Footer = () => {
           <div>
             <h4 className={style.footer__title}>Условия пользования</h4>
             <ul className={style.footer__links}>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Об авторском праве</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Приложения</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Конфиденциальность</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Политика файлов Cookie</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Партнерская программа</Link>
               </li>
             </ul>
@@ -52,16 +62,20 @@ const Footer = () => {
           <div>
             <h4 className={style.footer__title}>Клиентам</h4>
             <ul className={style.footer__links}>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Услуги</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Акции</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Специальные предложения</Link>
               </li>
-              <li>
+              <li className={style.footer__container_link}>
+                <div className={style.footer__icon} />
                 <Link className={style.footer__link} href='http://localhost:3000/'>Подписка</Link>
               </li>
             </ul>

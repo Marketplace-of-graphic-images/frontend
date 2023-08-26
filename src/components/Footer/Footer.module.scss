@@ -5,6 +5,7 @@
     background-color: v.$dark-green;
     padding: 48px 80px;
     color: v.$white-color;
+    margin: 0 auto;
 }
 .footer__container_content {
     padding-bottom: 48px;
@@ -24,6 +25,9 @@
 }
 .footer__link {
     @include m.Link_small;
+}
+.footer__link:hover {
+    opacity: 0.7;
 }
 .footer__container {
     padding-top: 48px;
@@ -50,4 +54,13 @@
 .footer__copyright {
     @include m.Link_medium;
     opacity: 0.7;
+}
+.footer__icon {
+    background-image: url(../../assets/images/icons/Arrows_down_white.svg);
+    width: 16px;
+    height: 17px;
+}
+.footer__container_link {
+    display: flex;
+    flex-direction: row;
 }
