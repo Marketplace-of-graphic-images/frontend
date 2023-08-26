@@ -33,10 +33,10 @@ const Advantages = () => {
             <p>icon</p>
           </div>
           <div className={style.advantages__text_container}>
-            <h3 className={style.advantages__card_title}>Качественный авторский контент</h3>
+            <h3 className={style.advantages__card_title}>Готовые ресурсы</h3>
             <p className={style.advantages__card_text}>
-              Поднимите ваши проекты на новый уровень, добавив великолепные изображения, 
-              видео или анимации в высоком качестве.
+              Погрузитесь в огромный арсенал изображений и необычных решений на любой вкус, 
+              который может восхитить любую публику.
             </p>
           </div>
         </div>
@@ -45,10 +45,10 @@ const Advantages = () => {
             <p>icon</p>
           </div>
           <div className={style.advantages__text_container}>
-            <h3 className={style.advantages__card_title}>Качественный авторский контент</h3>
+            <h3 className={style.advantages__card_title}>Детальный поиск</h3>
             <p className={style.advantages__card_text}>
-              Поднимите ваши проекты на новый уровень, добавив великолепные изображения, 
-              видео или анимации в высоком качестве.
+              Каждый проект обретет свою уникальную визуальную концепцию и стиль, 
+              способные воплотить любые из ваших потребностей и фантазий.
             </p>
           </div>
         </div>
@@ -57,10 +57,10 @@ const Advantages = () => {
             <p>icon</p>
           </div>
           <div className={style.advantages__text_container}>
-            <h3 className={style.advantages__card_title}>Качественный авторский контент</h3>
+            <h3 className={style.advantages__card_title}>Постоянные обновления</h3>
             <p className={style.advantages__card_text}>
-              Поднимите ваши проекты на новый уровень, добавив великолепные изображения, 
-              видео или анимации в высоком качестве.
+              В нашей библиотеке всегда найдется что-то новое и вдохновляющее, 
+              благодаря ежедневным обновлениям и пополнениям.
             </p>
           </div>
         </div>
