@@ -1,4 +1,4 @@
-@import '../../globalStyle/mixins.scss';
+@import '../../../globalStyle/mixins.scss';
 
 .container {
   position: relative;
@@ -9,16 +9,18 @@
   width: 100%;
   height: 100%;
   max-width: 580px;
-  max-height: 900px;
+  max-height: 973px;
   border-radius: 16px;
-}
-
-.forgotPassword {
-  display: flex;
-  align-self: flex-end;
 }
 
 .title {
   @include Header;
 }
 
+.checkBox {
+  @include Body;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 16px;
+}

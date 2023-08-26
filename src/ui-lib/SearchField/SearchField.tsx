@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, FC } from 'react';
 import styles from './SearchField.module.scss';
-import SearchForm from '../../components/SearchForm/SearchForm';
+import { SearchForm } from '../../components/Forms';
 import { SearchButton } from '../Button';
 import AllResurce from '../Lists/AllResurce/AllResurce';
 

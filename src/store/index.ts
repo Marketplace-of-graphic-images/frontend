@@ -3,7 +3,7 @@ import {
   closeModal,
   openModalRegister,
   openModalPassRecovery,
-} from './systemSlice';
+} from './modalSlice';
 
 import { setUser, clearUser } from './userSlice';
 

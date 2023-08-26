@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styles from './OtpCodeForm.module.scss';
-import { BackPopupButton, UniversalButton } from '../../ui-lib/Button';
-import Timer from '../../ui-lib/Timer/Timer';
-import OtpCode from '../../ui-lib/OptCode/OtpCode';
+import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
+import Timer from '../../../ui-lib/Timer/Timer';
+import OtpCode from '../../../ui-lib/OptCode/OtpCode';
 
 interface OtpCodeFormProps {
   code: string;
