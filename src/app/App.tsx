@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from '../pages/main/main';
 import YandexAuth from '../pages/yandexAuth/yandexAuth';
 import Popup from '../components/Template/Popup/Popup';
-import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
-import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
-import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage';
+import {
+  PasswordRecoveryUnionForm,
+  RegistrationForm,
+  AuthorizationForm, 
+} from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { modalState } = useSelector((state) => state.system);
-  const closeModal1 = () => {
+  const { authModal, registerModal, passRecoveryModal } = useSelector((state) => state.modals);
+  const closeModalState = () => {
     dispatch(closeModal());
   };
   
@@ -36,14 +38,14 @@ const App = () => {
             </PrivateRoute>
           )} />
       </Routes> 
-      <Popup isOpen={modalState.auth} onClose={closeModal1}>
-        <AuthorizationPage />
+      <Popup isOpen={authModal} onClose={closeModalState}>
+        <AuthorizationForm />
       </Popup>
-      <Popup isOpen={modalState.register} onClose={closeModal1}>
-        <RegistrationPage />
+      <Popup isOpen={registerModal} onClose={closeModalState}>
+        <RegistrationForm />
       </Popup>
-      <Popup isOpen={modalState.passRecovery} onClose={closeModal1}>
-        <PasswordRecoveryPage />
+      <Popup isOpen={passRecoveryModal} onClose={closeModalState}>
+        <PasswordRecoveryUnionForm />
       </Popup>
     </div>
   );

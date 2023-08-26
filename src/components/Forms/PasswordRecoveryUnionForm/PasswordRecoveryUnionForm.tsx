@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import OtpCodeForm from '../../components/OtpCodeForm/OtpCodeForm';
-import PasswordRecoveryForm from '../../components/PasswordRecoveryForm/PasswordRecoveryForm';
-import useValidation from '../../services/useValidation';
-import PasswordChangeForm from '../../components/PasswordChangeForm/PasswordChangeForm';
-import { useDispatch } from '../../services/hooks';
-import { closeModal, openModalAuth } from '../../store';
+import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
+import PasswordRecoveryForm from '../PasswordRecoveryForm/PasswordRecoveryForm';
+import useValidation from '../../../services/useValidation';
+import PasswordChangeForm from '../PasswordChangeForm/PasswordChangeForm';
+import { useDispatch } from '../../../services/hooks';
+import { closeModal, openModalAuth } from '../../../store';
 
-const PasswordRecoveryPage = () => {
+const PasswordRecoveryUnionForm = () => {
   const [formStep, setFormStep] = useState(1);
   const [code, setCode] = useState('');
 
@@ -76,4 +76,4 @@ const PasswordRecoveryPage = () => {
   );
 };
 
-export default PasswordRecoveryPage;
+export default PasswordRecoveryUnionForm;

@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './SearchSection.module.scss';
 import { PopularButton } from '../../ui-lib/Button';
 import SearchField from '../../ui-lib/SearchField/SearchField';
@@ -24,9 +25,7 @@ const SearchSection = () => {
         <div className={styles.fastButtons}>
           {fakeData.map((item, index) => (
             <PopularButton
-        // Это ещё почему нельзя использовать индекс массива?!?!
-        // eslint-disable-next-line react/no-array-index-key 
-              key={index}
+              key={uuidv4()}
               text={item}
               onClick={testClick} 
               icon={(

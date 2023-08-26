@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './AllResurce.module.scss';
 
 interface IAllResurce {
@@ -18,7 +19,7 @@ const AllResurce = () => {
       <select className={styles.select}>
         <option value='all'>Все ресурсы</option>
         {FakeData.map((item) => (
-          <option value={item}>{item}</option>
+          <option key={uuidv4()} value={item}>{item}</option>
         ))}
       </select>
     </div>

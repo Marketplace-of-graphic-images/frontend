@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import PasswordInput from '../../ui-lib/Input/PasswordInput/PasswordInput';
+import PasswordInput from '../../../ui-lib/Input/PasswordInput/PasswordInput';
 import styles from './PasswordChangeForm.module.scss';
-import { RECOVERY_PASSWORD_ID, RECOVERY_REPEAT_PASSWORD_ID } from '../../constants/inputsId';
-import { BackPopupButton, UniversalButton } from '../../ui-lib/Button';
+import { RECOVERY_PASSWORD_ID, RECOVERY_REPEAT_PASSWORD_ID } from '../../../constants/inputsId';
+import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
 
 interface PasswordChangeFormProps {
   values: Record<string, string>;
@@ -38,11 +38,6 @@ const PasswordChangeForm: FC<PasswordChangeFormProps> = (
     <fieldset className={styles.passwordChangeForm}>
       <h2 className={styles.passwordChangeForm__title}>Восстановление пароля</h2>
       <BackPopupButton onClick={onBackClick} />
-
-      <p className={styles.passwordChangeForm__description}>
-        Для восстановления пароля введите вашу электронную почту или имя пользователя.
-      </p>
-
       <PasswordInput
         id={RECOVERY_PASSWORD_ID}
         name='password'

@@ -6,17 +6,17 @@ import { UniversalButton, LinkWordButton } from '../../ui-lib/Button';
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const openModal1 = () => {
+  const openRgisterModal = () => {
     dispatch(openModalRegister());
   };
-  const openModal2 = () => {
+  const openAuthModal = () => {
     dispatch(openModalAuth());
   };
 
   return (
     <header className={style.main}>
-      <UniversalButton onClick={openModal1} type='button' size='small'> Создать аккаунт</UniversalButton>
-      <LinkWordButton buttonName='Войти' onClick={openModal2} />
+      <UniversalButton onClick={openRgisterModal} type='button' size='small'> Создать аккаунт</UniversalButton>
+      <LinkWordButton buttonName='Войти' onClick={openAuthModal} />
       {/* <PasswordInput apiError='test' /> */}
       {/* <RegistrationPage /> */}
     </header>

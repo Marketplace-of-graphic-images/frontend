@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styles from './PasswordRecoveryForm.module.scss';
-import { BackPopupButton, UniversalButton } from '../../ui-lib/Button';
-import { UniversalInput } from '../../ui-lib/Input';
-import { RECOVERY_LOGIN_ID } from '../../constants/inputsId';
+import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
+import { UniversalInput } from '../../../ui-lib/Input';
+import { RECOVERY_LOGIN_ID } from '../../../constants/inputsId';
 
 interface PasswordRecoveryFormProps {
   value: string;
