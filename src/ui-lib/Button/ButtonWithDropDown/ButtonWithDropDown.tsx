@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // styles
@@ -23,8 +25,27 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
 }) => {
   const [dropDownState, setDropDownState] = useState(false);
 
-  // window.addEventListener('click', () =>
-  //  { if (dropDownState === true) setDropDownState(false); });
+  function useOutsideComponent(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setDropDownState(false);
+        }
+      }
+      // Bind the event listener
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideComponent(wrapperRef);
 
   const toggleDropDown = () => {
     if (!dropDownState) {
@@ -36,7 +57,7 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
 
   return (
 
-    <div className={styles.dropdown}>
+    <div ref={wrapperRef} className={styles.dropdown}>
       <button onClick={toggleDropDown} type='button' className={styles.button}>
         {title} 
 
