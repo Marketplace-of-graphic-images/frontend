@@ -2,25 +2,30 @@
 @import '/src/globalStyle/mixins.scss';
 
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-  background: #029992;
-  color: var(--white, #fff);
-
   @include Body;
   @include noselect;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  outline: none;
+  cursor: pointer;
+  
+  border-radius: 8px;
+  border: 1px solid var(--accent, #029992);
+
+  color: $accent-color;
+
   &:hover {
-    background: $accent_on_hover-color;
+    color: $accent_on_hover-color;
+    border: 1px solid var(--accent, #007873);
   }
 
   &:disabled {
-    background: $disabled-color;
+    color: $disabled-color;
+    border: 1px solid var(--accent, #afbfb5);
+    cursor:no-drop;
   }
 }
 
@@ -30,6 +35,6 @@
 }
 
 .medium {
-  width: 174px;
+  width: 208px;
   height: 48px;
 }

@@ -19,6 +19,13 @@
     Похоже, что на данный момент будем использовать
     именно этот набор
 */
+@mixin Header0 {
+  font-family: Raleway-Bold, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  line-height: 140%;
+}
 @mixin Header {
   font-family: Raleway-Bold, sans-serif;
   font-size: 28px;
@@ -28,6 +35,13 @@
   font-family: Raleway-Medium, sans-serif;
   font-size: 16px;
   line-height: 145%;
+}
+
+@mixin Body2 {
+  font-family: Raleway-Medium, sans-serif;
+  font-size: 16px;
+  line-height: 145%;
+  font-weight: 500;
 }
 @mixin Link {
   font-family: Raleway-Medium, sans-serif;
@@ -47,6 +61,13 @@
   font-weight: 700;
   line-height: 140%;
   font-style: normal;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: calc(1280px + 16px * 2);
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 @mixin noselect {

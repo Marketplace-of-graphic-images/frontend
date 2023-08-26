@@ -1,9 +1,18 @@
 @import '../../../globalStyle/mixins.scss';
 
 .dropdown {
+  position: relative;
+}
+
+.button {
   @include Body;
-  float: left;
-  overflow: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px;
 }
 
 .dropdown_content {
@@ -12,12 +21,14 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(4, auto);
-  gap: 16px 96px;
+  gap: 16px 96px; 
   
   position: absolute;
-  margin-top: 20px;
+  bottom: 0;
+  right: 0;
   padding: 36px;  
   z-index: 1;
+  transform: translate(calc(100% - 113px), calc(100% + 20px));
   
   border-radius: 8px;
   background-color: #CEDFD5;
@@ -33,11 +44,12 @@
 
     position: absolute;
     top: -12px;
-    left: 70px;
+    left: 75px;
     
     background-color: #CEDFD5;    
   }
 }
+
 
 .link {
   color: #223E3C;
