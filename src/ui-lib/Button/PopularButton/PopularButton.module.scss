@@ -1,0 +1,35 @@
+@import '/src/globalStyle/variables.scss';
+@import '/src/globalStyle/mixins.scss';
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+    background: $white-color;
+    min-width: 103px;
+    height: 32px;
+    margin-right: 16px;
+    &:hover {
+      background-color: $white-hower;
+    }
+    &:active {
+      background-color: $white-click;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+.text {
+  margin-right: 12px;
+  margin-left: 16px;
+  color: $black-color;
+  @include Body3;
+}
+.magnifer{
+  margin-right: 16px;
+  width: 16px !important;
+  height: 16px !important;
+}

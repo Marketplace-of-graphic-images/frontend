@@ -1,23 +1,15 @@
 import React from 'react';
-import { PasswordInput } from '../../ui-lib/Input';
-import { useDispatch } from '../../services/hooks';
-import { openModalAuth } from '../../store';
-import style from './main.module.scss';
+import styles from './main.module.scss';
+import SectionWithSlider from '../../components/SectionWithSlider/SectionWithSlider';
+import SearchSection from '../../components/SearchSection/SearchSection';
 
-const Main = () => { 
-  const dispatch = useDispatch();
-  const openModal = () => {
-    dispatch(openModalAuth());
-  };
-
-  return (
-    <main className={style.main}>
-      <p className={style.test}>Test</p>
-      <button type='button' onClick={openModal}>Test</button>
-
-      {/* <PasswordInput apiError='test' /> */}
-      {/* <RegistrationPage /> */}
-    </main>
-  );
-};
+const Main = () => (
+  <main className={styles.main}>
+    <SectionWithSlider
+      titleAccent='Погрузитесь в мир'
+      title='популярных категорий'
+      subtitle='Познайте тенденции, которые завоевали сердца, и придайте своему проекту неповторимый шик!' />
+    <SearchSection />
+  </main>
+);
 export default Main;

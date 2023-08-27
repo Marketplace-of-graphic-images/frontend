@@ -14,9 +14,12 @@ import profileIcon from './ProfileIcon.svg';
 import refreshIcon from './RefreshIcon.svg';
 import notificationsYes from './NotificationsYes.svg';
 import notificationsNo from './NotificationsNo.svg';
+import magniferIcon from './MagniferIcon.svg';
+import Loupe from './Loupe.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
-  refreshIcon, arrowDownIcon, notificationsYes, notificationsNo,
+  notificationsYes, notificationsNo,
+  refreshIcon, magniferIcon, Loupe, arrowDownIcon,
 };

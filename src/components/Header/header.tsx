@@ -19,10 +19,10 @@ import styles from './header.module.scss';
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const openModal1 = () => {
+  const openRgisterModal = () => {
     dispatch(openModalRegister());
   };
-  const openModal2 = () => {
+  const openAuthModal = () => {
     dispatch(openModalAuth());
   };
 
@@ -62,8 +62,8 @@ const Header = () => {
         
         {isLoggedIn ? ( 
           <div className={styles.rightBlock}>
-            <LinkWordButton buttonName='Войти' onClick={openModal2} />
-            <UniversalButton onClick={openModal1} type='button' size='medium'>
+            <LinkWordButton buttonName='Войти' onClick={openRgisterModal} />
+            <UniversalButton onClick={openAuthModal} type='button' size='medium'>
               Создать аккаунт
             </UniversalButton>
           </div>

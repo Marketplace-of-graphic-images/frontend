@@ -2,7 +2,8 @@ import React from 'react';
 import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
-  refreshIcon, arrowDownIcon, notificationsNo, notificationsYes,
+  arrowDownIcon, notificationsNo, notificationsYes,
+  refreshIcon, magniferIcon,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -50,4 +51,7 @@ export const NotificationsNo = (props) => (
 );
 export const NotificationsYes = (props) => (
   <TemplateIcon {...props} icon={notificationsYes} />
+);
+export const MagniferIcon = (props) => (
+  <TemplateIcon {...props} icon={magniferIcon} />
 );
