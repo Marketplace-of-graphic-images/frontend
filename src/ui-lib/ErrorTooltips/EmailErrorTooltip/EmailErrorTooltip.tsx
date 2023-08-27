@@ -20,7 +20,7 @@ const EmailErrorTooltip: FC<IValidationErrorTooltipProps> = (
   const listItems = [
     'Латиница',
     'Цифры',
-    'Специальные символы (“@”, “_”, “ . “ )',
+    'Специальные символы (“@”, “-”, “_”, “ . “ )',
   ];
 
   return (

@@ -9,11 +9,12 @@ interface OtpCodeProps {
   value: string;
   valueLength: number;
   onChange: (value: string) => void;
+  onEnterPress: () => void;
   isError: boolean;
 }
 
 const OtpCode: FC<OtpCodeProps> = ({
-  value, valueLength, onChange, isError,
+  value, valueLength, onChange, onEnterPress, isError,
 }) => {
   const valueItems = useMemo(() => {
     const valueArray = value.split('');
@@ -90,6 +91,10 @@ const OtpCode: FC<OtpCodeProps> = ({
     const { key } = e;
     const target = e.target as HTMLInputElement;
 
+    if (key === 'Enter' && value.trim().length === 6) {
+      onEnterPress();
+    }
+
     if (key === 'ArrowRight' || key === 'ArrowDown') {
       e.preventDefault();
       return focusToNextInput(target);
@@ -137,7 +142,8 @@ const OtpCode: FC<OtpCodeProps> = ({
           onChange={(e) => handleChange(e, idx)}
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
-          isError={isError} />
+          isError={isError}
+          autoFocus={idx === 0} />
       ))}
     </div>
   );

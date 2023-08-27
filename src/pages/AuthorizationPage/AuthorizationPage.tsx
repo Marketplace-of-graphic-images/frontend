@@ -1,19 +1,14 @@
 import React from 'react';
-
-// Иконки
-import { YandexIcon } from '../../ui-lib/Icons';
-
-// ui-компоненты
+import styles from './AuthorizationPage.module.scss';
 import { LoginWithButton, UniversalButton } from '../../ui-lib/Button';
 import { PasswordInput, UniversalInput } from '../../ui-lib/Input';
 import LineWithWord from '../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../ui-lib/Button/LinkWordButton/LinkWordButton';
+import { YandexIcon } from '../../ui-lib/Icons';
 import useValidation from '../../services/useValidation';
 import { useDispatch } from '../../services/hooks';
-import { openModalRegister } from '../../store';
+import { openModalPassRecovery, openModalRegister } from '../../store';
 import YandexLogin from '../../services/auth/yandex/YandexLogin';
-// Стили
-import styles from './AuthorizationPage.module.scss';
 import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../constants/inputsId';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записать в process.env
@@ -26,16 +21,22 @@ const AuthorizationPage = () => {
     isValid,
   } = useValidation();
   const dispatch = useDispatch();
+
   const openRegisterModal = () => {
     dispatch(openModalRegister());
   };
 
+  const openPassRecoveryModal = () => {
+    dispatch(openModalPassRecovery());
+  };
+  /* eslint-disable spaced-comment */
   return (
     <form className={styles.container}>
       <h1 className={styles.title}>Авторизация</h1>
       <YandexLogin clientID={clientID}>
         <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
       </YandexLogin>
+      *
       <LineWithWord text='Или' />
 
       <UniversalInput
@@ -48,7 +49,9 @@ const AuthorizationPage = () => {
         validError={errors.login}
         isErrorIconShow={false}
         required
-        label='Адрес электронной почты или имя пользователя' />
+        placeholder='Введите имя или Email...'
+        label='Адрес электронной почты или имя пользователя'
+        autoFocus />
 
       <PasswordInput
         id={AUTH_PASSWORD_ID}
@@ -61,10 +64,10 @@ const AuthorizationPage = () => {
         required />
 
       <div className={styles.forgotPassword}>
-        <LinkWordButton buttonName='Забыли пароль?' />
+        <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
       </div>
 
-      <UniversalButton disabled={!isValid}> Войти</UniversalButton>
+      <UniversalButton disabled={!isValid}>Войти</UniversalButton>
       <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
     </form>
   );
