@@ -29,6 +29,11 @@
   font-size: 16px;
   line-height: 145%;
 }
+@mixin Body1 {
+  font-family: Raleway-Medium, sans-serif;
+  font-size: 18px;
+  line-height: 145%;
+}
 @mixin Body3 {
   font-family: Raleway-Medium, sans-serif;
   font-size: 14px;
@@ -38,6 +43,16 @@
   font-family: Raleway-Medium, sans-serif;
   font-size: 16px;
   line-height: 155%;
+}
+@mixin Link_medium{
+  font-family: Raleway-Medium, sans-serif;
+  font-size: 14px;
+  line-height: 145%;
+}
+@mixin Link_small{
+  font-family: Raleway-Regular, sans-serif;
+  font-size: 12px;
+  line-height: 140%;
 }
 @mixin Code {
   font-family: Roboto, sans-serif;
