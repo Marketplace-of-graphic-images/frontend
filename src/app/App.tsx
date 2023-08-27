@@ -8,6 +8,8 @@ import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
+import Footer from '../components/Footer/Footer';
+
 import PasswordRecoveryPage from '../pages/PasswordRecoveryPage/PasswordRecoveryPage';
 
 const App = () => {
@@ -27,6 +29,7 @@ const App = () => {
           path='/'
           element={<Main />} />
       </Routes>
+      <Footer />
 
       <Popup isOpen={modalState.auth} onClose={closeModal1}>
         <AuthorizationPage />

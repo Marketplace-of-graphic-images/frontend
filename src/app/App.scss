@@ -5,3 +5,8 @@
 .popups-container {
   z-index: 10;
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
