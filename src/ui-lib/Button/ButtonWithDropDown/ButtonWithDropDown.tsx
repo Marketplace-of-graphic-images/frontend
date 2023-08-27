@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -56,7 +55,6 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
   };
 
   return (
-
     <div ref={wrapperRef} className={styles.dropdown}>
       <button onClick={toggleDropDown} type='button' className={styles.button}>
         {title} 
