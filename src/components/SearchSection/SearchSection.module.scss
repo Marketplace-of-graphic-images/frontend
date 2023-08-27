@@ -1,0 +1,28 @@
+@use '../../globalStyle/mixins.scss' as m;
+@use '../../globalStyle/variables' as v;
+
+.SearchSection {
+    width: 1440px;
+    height: 310px;
+    background-color: v.$grey-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dataBlock {
+    width: 846px;
+    height: 183px;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    @include m.Header;
+    color: v.$white-color;
+    margin-bottom: 48px;
+    text-align: center;
+}
+.fastButtons {
+    display: flex;
+    margin-top: 16px;
+    max-width: 846px;
+}

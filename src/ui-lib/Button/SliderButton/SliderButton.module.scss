@@ -1,0 +1,28 @@
+.sliderButton {
+  width: 36px;
+  height: 36px;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:disabled:hover {
+    opacity: 1;
+  }
+
+  &_left {
+    background: url("../../../assets/images/icons/ArrowLeftIcon.svg");
+
+    &:disabled {
+      background: url("../../../assets/images/icons/ArrowLeftIcon_disabled.svg");
+    }
+  }
+
+  &_right {
+    background: url("../../../assets/images/icons/ArrowRightIcon.svg");
+
+    &:disabled {
+      background: url("../../../assets/images/icons/ArrowRightIcon_disabled.svg");
+    }
+  }
+}
