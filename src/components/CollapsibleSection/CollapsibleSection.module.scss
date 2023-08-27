@@ -1,0 +1,55 @@
+@use '../../globalStyle/mixins' as m;
+@use '../../globalStyle/variables' as v;
+
+.collapsibleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 48px 0;
+
+  &__title {
+    @include m.Header;
+    text-align: center;
+
+    &_accent {
+      color: v.$accent-color;
+    }
+  }
+
+  &__subtitle {
+    max-width: 630px;
+    margin: 24px 0 32px;
+    @include m.Body;
+    color: v.$text-green-color;
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1280px;
+    width: 100%;
+    height: 255px;
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+  }
+
+  &__empty {
+    width: 302px;
+    height: 200px;
+    padding: 8px 24px;
+    border-radius: 8px;
+    border: 4px dotted v.$white-on-hover-color;
+    //box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+    @include m.Body;
+    font-size: 40px;
+    color: v.$white-on-hover-color;
+  }
+
+  &__btnContainer {
+    display: flex;
+    margin-top: 30px;
+  }
+}

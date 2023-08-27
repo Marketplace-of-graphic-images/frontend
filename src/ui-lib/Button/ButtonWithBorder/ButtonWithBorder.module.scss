@@ -1,0 +1,10 @@
+@use '../../../globalStyle/variables' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.buttonWithBorder {
+  padding: 12px 36px;
+  border: 1px solid v.$accent-color;
+  border-radius: 8px;
+  @include m.Body;
+  color: v.$accent-color;
+}

@@ -1,0 +1,13 @@
+@use '../../../globalStyle/variables' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.buttonWithArrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 36px;
+  border-radius: 8px;
+  @include m.Body;
+  color: v.$accent-color;
+  text-decoration: underline;
+}

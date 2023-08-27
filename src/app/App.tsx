@@ -12,6 +12,7 @@ import {
   AuthorizationForm, 
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
+import MainAuthor from '../pages/MainAuthor/MainAuthor';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <div className='App'>
       <Header />
+
       <Routes>
         <Route
           path='yandexauth'
@@ -31,19 +33,25 @@ const App = () => {
           path='/'
           element={<Main />} />
         <Route
+          path='/main-author'
+          element={<MainAuthor />} />
+        <Route
           path='/test'
           element={(
             <PrivateRoute path='/'>
               <Main />
             </PrivateRoute>
           )} />
-      </Routes> 
+      </Routes>
+
       <Popup isOpen={authModal} onClose={closeModalState}>
         <AuthorizationForm />
       </Popup>
+
       <Popup isOpen={registerModal} onClose={closeModalState}>
         <RegistrationForm />
       </Popup>
+
       <Popup isOpen={passRecoveryModal} onClose={closeModalState}>
         <PasswordRecoveryUnionForm />
       </Popup>
