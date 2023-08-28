@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react';
-import JoinTheCommunity from 'components/JoinTheCommunity/JoinTheCommunity';
-import AdSection from 'components/AdSection/AdSection';
-import styles from './main.module.scss';
-import SectionWithSlider from '../../components/SectionWithSlider/SectionWithSlider';
+import CollapsibleSection from '../../components/CollapsibleSection/CollapsibleSection';
 import SearchSection from '../../components/SearchSection/SearchSection';
+import SectionWithSlider from '../../components/SectionWithSlider/SectionWithSlider';
 import TitleMainSection from '../../components/TitleMainSection/TitleMainSection';
 
-const Main = () => {
+const MainAuthor = () => {
   const TEST_DATA = useMemo(() => ([
     { id: 0, title: 'Еда', image: '#' },
     { id: 1, title: 'Животные', image: '#' },
@@ -23,18 +21,32 @@ const Main = () => {
   ]), []);
 
   return (
-    <main className={styles.main}>
+    <main>
       <SearchSection />
+
+      <SectionWithSlider items={TEST_DATA}>
+        <TitleMainSection
+          titleAccent='Рекомендации:'
+          title='вам может быть это интересно!'
+          subtitle='Здесь подобраны категории на основе ваших предпочтений' />
+      </SectionWithSlider>
+
+      <CollapsibleSection items={TEST_DATA} isPublicationBtn>
+        <TitleMainSection
+          titleAccent='Творческая атмосфера:'
+          title='Ваш Мир'
+          subtitle='Публикуйте и просматривайте свои работы в любое время!' />
+      </CollapsibleSection>
 
       <SectionWithSlider items={TEST_DATA}>
         <TitleMainSection
           titleAccent='Погрузитесь в мир'
           title='популярных категорий'
           subtitle='Познайте тенденции, которые завоевали сердца, и придайте своему проекту неповторимый шик!' />
-        <AdSection />
-        <JoinTheCommunity />
       </SectionWithSlider>
+
     </main>
   );
 };
-export default Main;
+
+export default MainAuthor;
