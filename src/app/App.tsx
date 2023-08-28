@@ -10,7 +10,7 @@ import Footer from '../components/Footer/Footer';
 import {
   PasswordRecoveryUnionForm,
   RegistrationForm,
-  AuthorizationForm, 
+  AuthorizationForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 import MainAuthor from '../pages/MainAuthor/MainAuthor';
@@ -21,7 +21,7 @@ const App = () => {
   const closeModalState = () => {
     dispatch(closeModal());
   };
-  
+
   return (
     <div className='App'>
       <Header />
