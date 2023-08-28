@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import JoinTheCommunity from 'components/JoinTheCommunity/JoinTheCommunity';
+import AdSection from 'components/AdSection/AdSection';
 import styles from './main.module.scss';
 import SectionWithSlider from '../../components/SectionWithSlider/SectionWithSlider';
 import SearchSection from '../../components/SearchSection/SearchSection';
@@ -29,6 +31,8 @@ const Main = () => {
           titleAccent='Погрузитесь в мир'
           title='популярных категорий'
           subtitle='Познайте тенденции, которые завоевали сердца, и придайте своему проекту неповторимый шик!' />
+        <AdSection />
+        <JoinTheCommunity />
       </SectionWithSlider>
     </main>
   );

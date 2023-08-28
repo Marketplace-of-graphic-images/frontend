@@ -34,15 +34,15 @@
 @mixin Header2 {
   font-family: Raleway-Bold, sans-serif;
   font-size: 20px;
-  line-height: 145%;
-}
+  line-height: 140%;
+} 
 @mixin Body {
   font-family: Raleway-Medium, sans-serif;
   font-size: 16px;
   line-height: 145%;
 }
 
-@mixin Body2 {
+@mixin Body2 {  // этот миксин не нужен, это копия миксина выше, который Body. font-weight указывать не нужно, оно уже в шрифте зашито
   font-family: Raleway-Medium, sans-serif;
   font-size: 16px;
   line-height: 145%;
