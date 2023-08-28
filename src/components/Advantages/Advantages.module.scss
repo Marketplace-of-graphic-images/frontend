@@ -42,6 +42,6 @@
 .advantages__subtitle {
     @include m.Body1;
 }
-.advantages__colortext {
+span {
     color: v.$accent-color;
 }

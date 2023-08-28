@@ -1,13 +1,17 @@
 import React from 'react';
 import style from './Advantages.module.scss';
+import BricksGreenIcon from '../../ui-lib/Icons/Bricks/BricksGreenIcon';
+import LoupeGreenIcon from '../../ui-lib/Icons/Loupe/LoupeGreenIcon';
+import RefreshGreenIcon from '../../ui-lib/Icons/Refresh/RefreshGreenIcon';
+import AuthorGreenIcon from '../../ui-lib/Icons/Autor/AuthorGreenIcon';
 
 const Advantages = () => {
   console.log('Advantages');
   return (
-    <div className={style.advantages}>
+    <section className={style.advantages}>
       <div className={style.advantages__container_title}>
         <h2 className={style.advantages__title}>
-          <span className={style.advantages__colortext}>Идеальный вариант </span> 
+          <span>Идеальный вариант </span> 
           для развития творчества
         </h2>
         <p className={style.advantages__subtitle}>
@@ -15,10 +19,10 @@ const Advantages = () => {
           здесь всегда найдете источник вдохновения
         </p>
       </div>
-      <div className={style.advantages__container_card}>
-        <div className={style.advantages__card}>
+      <ul className={style.advantages__container_card}>
+        <li className={style.advantages__card}>
           <div className={style.advantages__icon_container}>
-            <p>icon</p>
+            <AuthorGreenIcon />
           </div>
           <div className={style.advantages__text_container}>
             <h3 className={style.advantages__card_title}>Качественный авторский контент</h3>
@@ -27,10 +31,10 @@ const Advantages = () => {
               видео или анимации в высоком качестве.
             </p>
           </div>
-        </div>
-        <div className={style.advantages__card}>
+        </li>
+        <li className={style.advantages__card}>
           <div className={style.advantages__icon_container}>
-            <p>icon</p>
+            <BricksGreenIcon />
           </div>
           <div className={style.advantages__text_container}>
             <h3 className={style.advantages__card_title}>Готовые ресурсы</h3>
@@ -39,10 +43,10 @@ const Advantages = () => {
               который может восхитить любую публику.
             </p>
           </div>
-        </div>
-        <div className={style.advantages__card}>
+        </li>
+        <li className={style.advantages__card}>
           <div className={style.advantages__icon_container}>
-            <p>icon</p>
+            <LoupeGreenIcon />
           </div>
           <div className={style.advantages__text_container}>
             <h3 className={style.advantages__card_title}>Детальный поиск</h3>
@@ -51,10 +55,10 @@ const Advantages = () => {
               способные воплотить любые из ваших потребностей и фантазий.
             </p>
           </div>
-        </div>
-        <div className={style.advantages__card}>
+        </li>
+        <li className={style.advantages__card}>
           <div className={style.advantages__icon_container}>
-            <p>icon</p>
+            <RefreshGreenIcon />
           </div>
           <div className={style.advantages__text_container}>
             <h3 className={style.advantages__card_title}>Постоянные обновления</h3>
@@ -63,9 +67,9 @@ const Advantages = () => {
               благодаря ежедневным обновлениям и пополнениям.
             </p>
           </div>
-        </div>
-      </div> 
-    </div>
+        </li>
+      </ul> 
+    </section>
   );
 };
 
