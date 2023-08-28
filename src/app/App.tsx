@@ -44,6 +44,7 @@ const App = () => {
             </PrivateRoute>
           )} />
       </Routes>
+      <Footer />
 
       <Popup isOpen={authModal} onClose={closeModalState}>
         <AuthorizationForm />
