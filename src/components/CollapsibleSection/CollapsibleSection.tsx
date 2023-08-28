@@ -2,7 +2,7 @@ import React, {
   FC, PropsWithChildren, useEffect, useState,
 } from 'react';
 import styles from './CollapsibleSection.module.scss';
-import CardList from '../CardList/CardList';
+import ImageCardRenderer from '../ImageCardRenderer/ImageCardRenderer';
 import ButtonWithBorder from '../../ui-lib/Button/ButtonWithBorder/ButtonWithBorder';
 import ButtonWithArrow from '../../ui-lib/Button/ButtonWithArrow/ButtonWithArrow';
 
@@ -42,7 +42,7 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = (
             место для ваших шедевров
           </div>
         )}
-        <CardList items={items} />
+        <ImageCardRenderer items={items} />
       </div>
 
       <div className={styles.collapsibleSection__btnContainer}>
