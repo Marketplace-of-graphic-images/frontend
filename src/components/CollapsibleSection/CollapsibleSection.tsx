@@ -48,11 +48,11 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = (
       <div className={styles.collapsibleSection__btnContainer}>
         {isPublicationBtn && (
           <ButtonWithBorder
-            text='Загрузить публикацию'
+            text='Загрузить работу'
             onClick={() => {}} />
         )}
         {items.length >= 4 && (
-          <ButtonWithArrow text='Смотреть ещё' onClick={() => setIsOpen(!isOpen)} />
+          <ButtonWithArrow text={isOpen ? 'Скрыть' : 'Смотреть ещё'} onClick={() => setIsOpen(!isOpen)} />
         )}
       </div>
 
