@@ -1,30 +1,20 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import styles from './SectionWithSlider.module.scss';
 import Slider from '../Slider/Slider';
 
-interface SectionWithSliderProps {
+interface SectionWithSliderProps extends PropsWithChildren {
   items: Array<Record<string, any>>;
-  titleAccent: string;
-  title: string;
-  subtitle: string;
 }
 
 const SectionWithSlider: FC<SectionWithSliderProps> = (
   { 
     items,
-    titleAccent, 
-    title, 
-    subtitle, 
+    children,
   },
 ) => (
   <section className={styles.sectionWithSlider}>
 
-    <h2 className={styles.sectionWithSlider__title}>
-      <span className={styles.sectionWithSlider__title_accent}>{`${titleAccent} `}</span>
-      {title}
-    </h2>
-
-    <p className={styles.sectionWithSlider__subtitle}>{subtitle}</p>
+    {children}
     <Slider items={items} />
 
   </section>

@@ -1,16 +1,25 @@
 import React, {
-  FC, useEffect, useState,
+  FC, PropsWithChildren, useEffect, useState,
 } from 'react';
 import styles from './CollapsibleSection.module.scss';
 import CardList from '../CardList/CardList';
 import ButtonWithBorder from '../../ui-lib/Button/ButtonWithBorder/ButtonWithBorder';
 import ButtonWithArrow from '../../ui-lib/Button/ButtonWithArrow/ButtonWithArrow';
 
-interface CollapsibleSectionProps {
-  items: Array<Record<string, any>>
+interface CollapsibleSectionProps extends PropsWithChildren {
+  items: Array<Record<string, any>>;
+  isPublicationBtn?: boolean;
+  sectionStyle?: React.StyleHTMLAttributes<'section'>
 }
 
-const CollapsibleSection: FC<CollapsibleSectionProps> = ({ items }) => {
+const CollapsibleSection: FC<CollapsibleSectionProps> = (
+  { 
+    items,
+    isPublicationBtn = false,
+    children,
+    sectionStyle,
+  },
+) => {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState('255px');
 
@@ -23,15 +32,9 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = ({ items }) => {
   }, [isOpen, items]);
 
   return (
-    <section className={styles.collapsibleSection}>
-      <h2 className={styles.collapsibleSection__title}>
-        <span className={styles.collapsibleSection__title_accent}>{'Творческая атмосфера: '}</span>
-        Ваш Мир
-      </h2>
+    <section className={styles.collapsibleSection} style={sectionStyle}>
 
-      <p className={styles.collapsibleSection__subtitle}>
-        Публикуйте и просматривайте свои работы в любое время!
-      </p>
+      {children}
 
       <div className={styles.collapsibleSection__container} style={{ height }}>
         {items.length === 0 && (
@@ -43,7 +46,11 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = ({ items }) => {
       </div>
 
       <div className={styles.collapsibleSection__btnContainer}>
-        <ButtonWithBorder text='Загрузить публикацию' onClick={() => {}} />
+        {isPublicationBtn && (
+          <ButtonWithBorder
+            text='Загрузить публикацию'
+            onClick={() => {}} />
+        )}
         {items.length >= 4 && (
           <ButtonWithArrow text='Смотреть ещё' onClick={() => setIsOpen(!isOpen)} />
         )}
@@ -51,6 +58,11 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = ({ items }) => {
 
     </section>
   );
+};
+
+CollapsibleSection.defaultProps = {
+  isPublicationBtn: false,
+  sectionStyle: undefined,
 };
 
 export default CollapsibleSection;
