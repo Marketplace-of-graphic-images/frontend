@@ -11,8 +11,7 @@
   border: none;
   background: #029992;
   color: var(--white, #fff);
-  width: 484px;
-  height: 48px;
+
   @include Body;
   @include noselect;
 
@@ -25,7 +24,17 @@
   }
 }
 
+.large {
+  width: 484px;
+  height: 48px;
+}
+
 .medium {
-  width: 284px;
-  height: 55px;
+  width: 174px;
+  height: 48px;
+}
+
+.small_medium {
+  width: 302px;
+  height: 47px;
 }

@@ -1,7 +1,44 @@
-.main {
-    height: 160px;
-    display: flex;
-    gap: 36px;
-    justify-content: center;
-    align-items: center;
+@import '../../globalStyle/mixins.scss';
+
+.header {
+    padding: 16px 0;
 }
+
+.headerContainer {
+    @include container;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 50px;
+}
+
+.leftBlock {
+    display: flex;
+    align-items: center;
+    column-gap: 80px;
+}
+
+.rightBlock {
+    display: flex;
+    align-items: center;
+    column-gap: 36px;
+}
+
+.rightBlockAuthor {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+}
+
+.icon {
+    color: #029992;
+    fill:#029992;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    column-gap: 28px;
+}
+

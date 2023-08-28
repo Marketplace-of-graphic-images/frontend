@@ -25,7 +25,7 @@ const Popup: FC<PopupProps> = (
 
   useEffect(() => {
     setOverlay(document.querySelector(`.${styles.popup}`));
-  }, []);
+  }, [isOpen]);
 
   useEffect(() => {
     const onEscPress = (e: KeyboardEvent) => {

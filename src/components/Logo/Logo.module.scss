@@ -1,0 +1,22 @@
+@import 'globalStyle/variables.scss';
+@import 'globalStyle/mixins.scss';
+
+.logo {
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+}
+
+.name {
+  @include Header0;
+  color: $accent-color;
+  text-transform: uppercase;
+}
+
+.description {
+  @include Body2;
+  letter-spacing: 2.24px;
+  white-space: nowrap;
+}
+

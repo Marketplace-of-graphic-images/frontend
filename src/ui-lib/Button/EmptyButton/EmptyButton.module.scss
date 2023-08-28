@@ -1,0 +1,40 @@
+@import '/src/globalStyle/variables.scss';
+@import '/src/globalStyle/mixins.scss';
+
+.button {
+  @include Body;
+  @include noselect;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  outline: none;
+  cursor: pointer;
+  
+  border-radius: 8px;
+  border: 1px solid var(--accent, #029992);
+
+  color: $accent-color;
+
+  &:hover {
+    color: $accent_on_hover-color;
+    border: 1px solid var(--accent, #007873);
+  }
+
+  &:disabled {
+    color: $disabled-color;
+    border: 1px solid var(--accent, #afbfb5);
+    cursor:no-drop;
+  }
+}
+
+.large {
+  width: 484px;
+  height: 48px;
+}
+
+.medium {
+  width: 208px;
+  height: 48px;
+}

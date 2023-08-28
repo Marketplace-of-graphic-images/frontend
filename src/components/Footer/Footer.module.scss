@@ -1,0 +1,66 @@
+@use '../../globalStyle/variables' as v;
+@use '../../globalStyle/mixins' as m;
+
+.footer {
+    background-color: v.$dark-green;
+    padding: 48px 80px;
+    color: v.$white-color;
+    margin: 0 auto;
+}
+.footer__container_content {
+    padding-bottom: 48px;
+    display: flex;
+    flex-direction: row;
+    gap: 132px;
+}
+.footer__menu {
+    display: flex;
+    gap: 32px;
+}
+.footer__links {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.footer__link {
+    @include m.Link_small;
+}
+.footer__link:hover {
+    opacity: 0.7;
+}
+.footer__container {
+    padding-top: 48px;
+    border-top: solid 0.5px rgba(255, 255, 255, .7)
+}
+.footer__title {
+    @include m.Body1;
+}
+.footer__newsletter {
+    width: 302px;
+}
+.footer__input {
+    width: 302px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid v.$white-color;
+    padding: 13px 229px 12px 24px;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 24px;
+    @include m.Body;
+}
+.footer__copyright {
+    @include m.Link_medium;
+    opacity: 0.7;
+}
+.footer__icon {
+    background-image: url(../../assets/images/icons/Arrows_down_white.svg);
+    width: 16px;
+    height: 17px;
+}
+.footer__container_link {
+    display: flex;
+    flex-direction: row;
+}

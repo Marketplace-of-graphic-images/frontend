@@ -2,10 +2,16 @@ import {
   openModalAuth,
   closeModal,
   openModalRegister,
-} from './systemSlice';
+  openModalPassRecovery,
+} from './modalSlice';
+
+import { setUser, clearUser } from './userSlice';
 
 export {
   openModalAuth,
   closeModal,
   openModalRegister,
+  openModalPassRecovery,
+  setUser,
+  clearUser,
 };
