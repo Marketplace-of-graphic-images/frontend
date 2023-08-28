@@ -2,6 +2,7 @@ import {
   aboutUsLinks, designLinks, photoLinks, videoLinks, 
 } from 'constants/headerLinks';
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // Redux
 import { openModalAuth, openModalRegister } from 'store';
@@ -55,7 +56,7 @@ const Header = () => {
 
           <nav>
             <ul className={styles.menu}>      
-              {menuLinks.map((link) => <ButtonWithDropDown {...link} />)}
+              {menuLinks.map((link) => <ButtonWithDropDown key={uuidv4()} {...link} />)}
             </ul>
           </nav>
         </div>
