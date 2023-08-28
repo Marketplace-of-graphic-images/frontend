@@ -31,6 +31,11 @@
   font-size: 28px;
   line-height: 140%;
 }
+@mixin Header2 {
+  font-family: Raleway-Bold, sans-serif;
+  font-size: 20px;
+  line-height: 145%;
+}
 @mixin Body {
   font-family: Raleway-Medium, sans-serif;
   font-size: 16px;
