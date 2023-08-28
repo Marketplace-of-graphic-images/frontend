@@ -1,8 +1,7 @@
 import React, { FC, useState } from 'react';
-import Card from '../Card/Card';
 import styles from './Slider.module.scss';
 import SliderButton from '../../ui-lib/Button/SliderButton/SliderButton';
-import CardList from '../CardList/CardList';
+import ImageCardRenderer from '../ImageCardRenderer/ImageCardRenderer';
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 
 interface SliderProps {
@@ -59,7 +58,7 @@ const Slider: FC<SliderProps> = ({ items }) => {
         <div
           className={styles.slider__container}
           style={{ transform: `translateX(-${slide * (302 + 24)}px)` }}>
-          <CardList items={items} />
+          <ImageCardRenderer items={items} />
         </div>
       </div>
 

@@ -1,0 +1,19 @@
+@use '../../globalStyle/mixins' as m;
+@use '../../globalStyle/variables' as v;
+
+.titleMainSection {
+  @include m.Header;
+  text-align: center;
+
+  &_accent {
+    color: v.$accent-color;
+  }
+
+  &__subtitle {
+    max-width: 630px;
+    margin: 24px 0 32px;
+    @include m.Body;
+    color: v.$text-green-color;
+    text-align: center;
+  }
+}
