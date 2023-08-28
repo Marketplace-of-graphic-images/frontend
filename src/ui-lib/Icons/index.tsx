@@ -2,7 +2,8 @@ import React from 'react';
 import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
-  refreshIcon, magniferIcon, arrowDownIcon,
+  arrowDownIcon, notificationsNo, notificationsYes,
+  refreshIcon, magniferIcon,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -20,6 +21,9 @@ export const GoogleIcon = (props) => (
 );
 export const ArrowUpIcon = (props) => (
   <TemplateIcon {...props} icon={arrowUpIcon} />
+);
+export const ArrowDownIcon = (props) => (
+  <TemplateIcon {...props} icon={arrowDownIcon} />
 );
 export const AuthorIcon = (props) => (
   <TemplateIcon {...props} icon={authorIcon} />
@@ -42,9 +46,12 @@ export const RefreshIcon = (props) => (
 export const VisionIcon = (props) => (
   <TemplateIcon {...props} icon={visionIcon} />
 );
+export const NotificationsNo = (props) => (
+  <TemplateIcon {...props} icon={notificationsNo} />
+);
+export const NotificationsYes = (props) => (
+  <TemplateIcon {...props} icon={notificationsYes} />
+);
 export const MagniferIcon = (props) => (
   <TemplateIcon {...props} icon={magniferIcon} />
-);
-export const ArrowDownIcon = (props) => (
-  <TemplateIcon {...props} icon={arrowDownIcon} />
 );
