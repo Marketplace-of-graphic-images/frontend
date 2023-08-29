@@ -1,0 +1,25 @@
+@use '../../../globalStyle/variables' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.AdSection {
+    height: 183px;
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    width: 990px;
+    height: 87px;
+    background-color: v.$light_green-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.08);
+}
+.title {
+    @include m.Header2;
+    color: v.$text-green-color;
+    margin-right: 48px;
+}

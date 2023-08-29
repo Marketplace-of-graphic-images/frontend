@@ -1,21 +1,33 @@
-/* eslint-disable */
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import styles from './UniversalButton.module.scss';
 
 interface IUniversalButton extends React.ComponentPropsWithoutRef<'button'> {
-  size?: 'large' | 'medium' | 'small_medium' |'small';
+  isFilled?: boolean;
+  width?: string | number;
+  height?: string | number;
+  className?: string;
 }
 
 const UniversalButton: React.FC<IUniversalButton> = ({
-  size = 'large',
+  width, height,
+  isFilled,
   type = 'submit',
+  className = '',
   ...rest
 }) => (
   <button
-    type= {type}
-    className={`${styles.button} ${size ? styles[size] : ''}`}
+    type={type}
+    style={{ width: `${String(width)}px`, height: `${String(height)}px` }}
+    className={`${isFilled ? styles.filledButton : styles.emptyButton} ${className}`}
     {...rest} />
 );
 
+UniversalButton.defaultProps = {
+  isFilled: true,
+  width: 484,
+  height: 48,
+  className: '',
+};
 
 export default UniversalButton;

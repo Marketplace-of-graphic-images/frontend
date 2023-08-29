@@ -1,0 +1,54 @@
+@use '../../../globalStyle/variables' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.section {
+    width: 1440px;
+    height: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dataContainer{
+    width: 1280px;
+    height: 335px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    margin-right: 48px;
+    margin-bottom: 32px;
+    margin-left: 48px;
+}
+.image{
+    width: 580px;
+    height: 271px;
+    background-color: v.$white-on-click-color;
+}
+.text{
+    max-width: 480px;
+    @include m.Body
+}
+.header{
+    @include m.Header;
+    margin-bottom: 24px;
+}
+.header_span{
+    @include m.Header;
+    color: v.$accent-color;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 24px;
+}
+.texttInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}

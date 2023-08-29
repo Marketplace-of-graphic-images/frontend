@@ -1,7 +1,7 @@
 @import '/src/globalStyle/variables.scss';
 @import '/src/globalStyle/mixins.scss';
 
-.button {
+.filledButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,20 +21,35 @@
 
   &:disabled {
     background: $disabled-color;
+    cursor:no-drop;
   }
 }
 
-.large {
-  width: 484px;
-  height: 48px;
-}
+.emptyButton {
+  @include Body;
+  @include noselect;
 
-.medium {
-  width: 174px;
-  height: 48px;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.small_medium {
-  width: 302px;
-  height: 47px;
+  outline: none;
+  cursor: pointer;
+  
+  border-radius: 8px;
+  border: 1px solid var(--accent, #029992);
+
+  color: $accent-color;
+  white-space: nowrap;
+
+  &:hover {
+    color: $accent_on_hover-color;
+    border: 1px solid var(--accent, #007873);
+  }
+
+  &:disabled {
+    color: $disabled-color;
+    border: 1px solid var(--accent, #afbfb5);
+    cursor:no-drop;
+  }
 }
