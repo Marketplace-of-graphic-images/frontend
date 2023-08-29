@@ -11,7 +11,6 @@ import { useDispatch } from 'services/hooks';
 // Компоненты и UI-kit 
 import Logo from 'components/Logo/Logo';
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
-import EmptyButton from 'ui-lib/Button/EmptyButton/EmptyButton';
 import ButtonWithDropDown, { IButtonWithDropDown } from 'ui-lib/Button/ButtonWithDropDown/ButtonWithDropDown';
 import { UniversalButton, LinkWordButton } from 'ui-lib/Button';
 
@@ -62,15 +61,15 @@ const Header = () => {
         </div>
         
         {isLoggedIn ? ( 
-          <div className={styles.rightBlock}>
-            <LinkWordButton buttonName='Войти' onClick={openRgisterModal} />
-            <UniversalButton onClick={openAuthModal} type='button' size='medium'>
+          <div className={styles.rightBlock}> 
+            <LinkWordButton buttonName='Войти' onClick={openAuthModal} />
+            <UniversalButton onClick={openRgisterModal} type='button' width='174' height='47'>
               Создать аккаунт
             </UniversalButton>
           </div>
         ) : (
           <div className={styles.rightBlockAuthor}>
-            <EmptyButton size='medium'>Загрузить публикацию</EmptyButton>
+            <UniversalButton isFilled={false} type='button' width='208' height='47'>Загрузить работу</UniversalButton>
             {notificationsState
               ? (<NotificationsYes width='40' height='40' />)
               : (<NotificationsNo width='40' height='40' />)}
