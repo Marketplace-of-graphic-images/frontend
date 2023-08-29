@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React, { FC } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './AllResurce.module.scss';
-
-interface IAllResurce {
-  optionSelected: string
-}
 
 const AllResurce = () => {
   const FakeData = [

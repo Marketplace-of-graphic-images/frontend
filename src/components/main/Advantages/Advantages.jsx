@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './Advantages.module.scss';
-import BricksGreenIcon from '../../ui-lib/Icons/Bricks/BricksGreenIcon';
-import LoupeGreenIcon from '../../ui-lib/Icons/Loupe/LoupeGreenIcon';
-import RefreshGreenIcon from '../../ui-lib/Icons/Refresh/RefreshGreenIcon';
-import AuthorGreenIcon from '../../ui-lib/Icons/Autor/AuthorGreenIcon';
+import BricksGreenIcon from '../../../ui-lib/Icons/Bricks/BricksGreenIcon';
+import LoupeGreenIcon from '../../../ui-lib/Icons/Loupe/LoupeGreenIcon';
+import RefreshGreenIcon from '../../../ui-lib/Icons/Refresh/RefreshGreenIcon';
+import AuthorGreenIcon from '../../../ui-lib/Icons/Autor/AuthorGreenIcon';
 
 const Advantages = () => (
   <section className={style.advantages}>

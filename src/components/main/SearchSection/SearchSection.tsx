@@ -2,10 +2,9 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './SearchSection.module.scss';
-import { PopularButton } from '../../ui-lib/Button';
-import SearchField from '../../ui-lib/SearchField/SearchField';
-import { MagniferIcon } from '../../ui-lib/Icons';
-import AllResurce from '../../ui-lib/Lists/AllResurce/AllResurce';
+import { PopularButton } from '../../../ui-lib/Button';
+import SearchField from '../../../ui-lib/SearchField/SearchField';
+import { MagniferIcon } from '../../../ui-lib/Icons';
 
 const SearchSection = () => {
   const testClick = () => {
@@ -24,7 +23,7 @@ const SearchSection = () => {
         <SearchField 
           data='шаурма' />
         <div className={styles.fastButtons}>
-          {fakeData.map((item, index) => (
+          {fakeData.map((item) => (
             <PopularButton
               key={uuidv4()}
               text={item}

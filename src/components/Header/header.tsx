@@ -9,10 +9,10 @@ import { openModalAuth, openModalRegister } from 'store';
 import { useDispatch } from 'services/hooks';
 
 // Компоненты и UI-kit 
-import Logo from 'components/Logo/Logo';
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
 import ButtonWithDropDown, { IButtonWithDropDown } from 'ui-lib/Button/ButtonWithDropDown/ButtonWithDropDown';
 import { UniversalButton, LinkWordButton } from 'ui-lib/Button';
+import Logo from './components/Logo/Logo';
 
 // Стили
 import styles from './header.module.scss';
