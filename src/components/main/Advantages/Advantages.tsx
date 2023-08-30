@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { FC } from 'react';
 import style from './Advantages.module.scss';
 import BricksGreenIcon from '../../../ui-lib/Icons/Bricks/BricksGreenIcon';
 import LoupeGreenIcon from '../../../ui-lib/Icons/Loupe/LoupeGreenIcon';
 import RefreshGreenIcon from '../../../ui-lib/Icons/Refresh/RefreshGreenIcon';
 import AuthorGreenIcon from '../../../ui-lib/Icons/Autor/AuthorGreenIcon';
-
-const Advantages = () => (
+import TitleMainSection from '../TitleMainSection/TitleMainSection';
+  
+const Advantages: FC = () => (
   <section className={style.advantages}>
     <div className={style.advantages__container_title}>
-      <h2 className={style.advantages__title}>
-        <span className={style.advantages__titleAccent}>Идеальный вариант </span> 
-        для развития творчества
-      </h2>
-      <p className={style.advantages__subtitle}>
-        Независимо от того, ищете ли вы готовые дизайны или захватывающие фотографии, 
-        здесь всегда найдете источник вдохновения
-      </p>
+      <TitleMainSection 
+        titleAccent='Идеальный вариант'
+        title='для развития творчества' 
+        subtitle='Независимо от того, ищете ли вы готовые дизайны или захватывающие фотографии, 
+        здесь всегда найдете источник вдохновения' />
     </div>
+    
     <ul className={style.advantages__container_card}>
       <li className={style.advantages__card}>
         <div className={style.advantages__icon_container}>
