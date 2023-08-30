@@ -13,6 +13,7 @@ import {
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 import MainAuthor from '../pages/MainAuthor/MainAuthor';
+import Footer from 'components/Footer/Footer';
 
 const App = () => {
   const dispatch = useDispatch();
