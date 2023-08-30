@@ -6,7 +6,6 @@ import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
-import Footer from '../components/Footer/Footer';
 import {
   PasswordRecoveryUnionForm,
   RegistrationForm,
