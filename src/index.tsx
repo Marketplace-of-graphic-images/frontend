@@ -12,9 +12,9 @@ const rootNode = createRoot(rootDiv as Element);
 rootNode.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 );
