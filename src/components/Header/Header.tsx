@@ -78,10 +78,11 @@ const Header = () => {
             )}
             
             {notificationsState
-              ? (<NotificationsYes width='40' height='40' />)
-              : (<NotificationsNo width='40' height='40' />)}
-
-            <ProfileIcon className={styles.icon} width='40' height='40' />
+              ? (<button type='button'><NotificationsYes width='40' height='40' /></button>)
+              : (<button type='button'><NotificationsNo width='40' height='40' /></button>)}
+            <button type='button'>
+              <ProfileIcon className={styles.icon} width='40' height='40' />
+            </button>
           </div>
         )}
 
