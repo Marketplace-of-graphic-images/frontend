@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Footer from 'components/Footer/Footer';
 import Main from '../pages/main/main';
 import YandexAuth from '../pages/yandexAuth/yandexAuth';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
-import Footer from '../components/Footer/Footer';
 import {
   PasswordRecoveryUnionForm,
   RegistrationForm,
