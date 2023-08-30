@@ -5,6 +5,12 @@ import {
   openModalPassRecovery,
 } from './modalSlice';
 
+import {
+  setGuestRole,
+  setUserRole,
+  setAuthorRole,
+} from './systemSlice';
+
 import { setUser, clearUser } from './userSlice';
 
 export {
@@ -14,4 +20,7 @@ export {
   openModalPassRecovery,
   setUser,
   clearUser,
+  setGuestRole,
+  setUserRole,
+  setAuthorRole,
 };

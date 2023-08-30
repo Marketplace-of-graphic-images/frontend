@@ -5,7 +5,7 @@ import { UniversalButton } from '../../ui-lib/Button';
 import MainUser from './components/MainUser/MainUser';
 import MainAuthor from './components/MainAuthor/MainAuthor';
 import { useDispatch, useSelector } from '../../services/hooks';
-import { setAuthorRole, setGuestRole, setUserRole } from '../../store/systemSlice';
+import { setAuthorRole, setGuestRole, setUserRole } from '../../store';
 
 const Main = () => {
   const dispatch = useDispatch();
