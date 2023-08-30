@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Redux
 import { openModalAuth, openModalRegister } from 'store';
-import { useDispatch } from 'services/hooks';
+import { useDispatch, useSelector } from 'services/hooks';
 
 // Компоненты и UI-kit 
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
@@ -15,18 +15,20 @@ import { UniversalButton, LinkWordButton } from 'ui-lib/Button';
 import Logo from './components/Logo/Logo';
 
 // Стили
-import styles from './header.module.scss';
+import styles from './Header.module.scss';
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const openRgisterModal = () => {
+  const { userRole } = useSelector((state) => state.system);
+
+  const openRegisterModal = () => {
     dispatch(openModalRegister());
   };
+
   const openAuthModal = () => {
     dispatch(openModalAuth());
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [notificationsState, setNotificationsState] = useState(false);
 
   const menuLinks: IButtonWithDropDown[] = [
@@ -60,19 +62,25 @@ const Header = () => {
           </nav>
         </div>
         
-        {isLoggedIn ? ( 
+        {userRole === 'guest' ? (
           <div className={styles.rightBlock}> 
             <LinkWordButton buttonName='Войти' onClick={openAuthModal} />
-            <UniversalButton onClick={openRgisterModal} type='button' width='174' height='47'>
+            <UniversalButton onClick={openRegisterModal} type='button' width='174' height='47'>
               Создать аккаунт
             </UniversalButton>
           </div>
         ) : (
           <div className={styles.rightBlockAuthor}>
-            <UniversalButton isFilled={false} type='button' width='208' height='47'>Загрузить работу</UniversalButton>
+            {userRole === 'author' && (
+              <UniversalButton isFilled={false} type='button' width='208' height='47'>
+                Загрузить работу
+              </UniversalButton>
+            )}
+            
             {notificationsState
               ? (<NotificationsYes width='40' height='40' />)
               : (<NotificationsNo width='40' height='40' />)}
+
             <ProfileIcon className={styles.icon} width='40' height='40' />
           </div>
         )}

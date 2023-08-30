@@ -5,3 +5,13 @@
   align-items: center;
   background-color: white;
 }
+
+.temporaryMenu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
