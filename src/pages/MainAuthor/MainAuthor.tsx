@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import CollapsibleSection from '../../components/CollapsibleSection/CollapsibleSection';
-import SearchSection from '../../components/SearchSection/SearchSection';
-import SectionWithSlider from '../../components/SectionWithSlider/SectionWithSlider';
-import TitleMainSection from '../../components/TitleMainSection/TitleMainSection';
+import CollapsibleSection from '../../components/main/CollapsibleSection/CollapsibleSection';
+import SearchSection from '../../components/main/SearchSection/SearchSection';
+import SectionWithSlider from '../../components/main/SectionWithSlider/SectionWithSlider';
+import TitleMainSection from '../../components/main/TitleMainSection/TitleMainSection';
 
 const MainAuthor = () => {
   const TEST_DATA = useMemo(() => ([

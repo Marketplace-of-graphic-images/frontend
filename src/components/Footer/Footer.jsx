@@ -85,7 +85,7 @@ const Footer = () => (
             Подписывайтесь на рассылку, чтобы быть в курсе последних новостей и обновлений!
           </h4>
           <input className={styles.footer__input} aria-label='Email' type='email' placeholder='Email' />
-          <UniversalButton size='small_medium'>Подписаться</UniversalButton>
+          <UniversalButton type='button' width='302' height='47'>Подписаться</UniversalButton>
         </div>
       </div>
       <div className={styles.footer__container_copyright}>

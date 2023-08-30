@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react';
-import JoinTheCommunity from 'components/JoinTheCommunity/JoinTheCommunity';
-import AdSection from 'components/AdSection/AdSection';
-import Advantages from 'components/Advantages/Advantages';
-import Footer from 'components/Footer/Footer';
+import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
+import AdSection from 'components/main/AdSection/AdSection';
+import Advantages from 'components/main/Advantages/Advantages';
 import styles from './main.module.scss';
-import SectionWithSlider from '../../components/SectionWithSlider/SectionWithSlider';
-import SearchSection from '../../components/SearchSection/SearchSection';
-import TitleMainSection from '../../components/TitleMainSection/TitleMainSection';
+import SectionWithSlider from '../../components/main/SectionWithSlider/SectionWithSlider';
+import SearchSection from '../../components/main/SearchSection/SearchSection';
+import TitleMainSection from '../../components/main/TitleMainSection/TitleMainSection';
 
 const Main = () => {
   const TEST_DATA = useMemo(() => ([

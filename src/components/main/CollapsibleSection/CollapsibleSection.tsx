@@ -2,9 +2,9 @@ import React, {
   FC, PropsWithChildren, useEffect, useState,
 } from 'react';
 import styles from './CollapsibleSection.module.scss';
-import ImageCardRenderer from '../ImageCardRenderer/ImageCardRenderer';
-import ButtonWithBorder from '../../ui-lib/Button/ButtonWithBorder/ButtonWithBorder';
-import ButtonWithArrow from '../../ui-lib/Button/ButtonWithArrow/ButtonWithArrow';
+import ImageCardRenderer from '../../ImageCardRenderer/ImageCardRenderer';
+import ButtonWithBorder from '../../../ui-lib/Button/ButtonWithBorder/ButtonWithBorder';
+import ButtonWithArrow from '../../../ui-lib/Button/ButtonWithArrow/ButtonWithArrow';
 
 interface CollapsibleSectionProps extends PropsWithChildren {
   items: Array<Record<string, any>>;
