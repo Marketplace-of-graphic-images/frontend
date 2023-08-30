@@ -10,4 +10,32 @@
   @include m.Body;
   color: v.$accent-color;
   text-decoration: underline;
+
+  &:hover {
+    color: v.$accent_on_hover-color;
+  }
+
+  &:hover &__arrow {
+    fill: v.$accent_on_hover-color;
+  }
+
+  &:disabled {
+    color: v.$disabled-color
+  }
+
+  &:disabled &__arrow {
+    fill: v.$disabled-color;
+  }
+
+  &_border {
+    border: 1px solid v.$accent-color;
+
+    &:hover {
+      border: 1px solid v.$accent_on_hover-color;
+    }
+
+    &:disabled {
+      border: 1px solid v.$disabled-color;
+    }
+  }
 }

@@ -6,12 +6,14 @@ import ArrowDown from '../../Icons/ArrowDown/ArrowDown';
 interface ButtonWithBorderProps extends ComponentPropsWithoutRef<'button'> {
   text: string;
   onClick: () => void;
+  isBorder?: boolean;
 }
 
 const ButtonWithArrow: FC<ButtonWithBorderProps> = (
   {
     text,
     onClick,
+    isBorder,
     ...rest
   },
 ) => {
@@ -25,13 +27,19 @@ const ButtonWithArrow: FC<ButtonWithBorderProps> = (
   return (
     <button
       type='button'
-      className={styles.buttonWithArrow}
+      className={`${styles.buttonWithArrow} ${isBorder ? styles.buttonWithArrow_border : ''}`}
       onClick={handleClick}
       {...rest}>
       {text}
-      {inOpen ? <ArrowUp /> : <ArrowDown />}
+      {inOpen
+        ? <ArrowUp className={styles.buttonWithArrow__arrow} />
+        : <ArrowDown className={styles.buttonWithArrow__arrow} />}
     </button>
   );
+};
+
+ButtonWithArrow.defaultProps = {
+  isBorder: false,
 };
 
 export default ButtonWithArrow;

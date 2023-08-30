@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import styles from './CollapsibleSection.module.scss';
 import ImageCardRenderer from '../../ImageCardRenderer/ImageCardRenderer';
-import ButtonWithBorder from '../../../ui-lib/Button/ButtonWithBorder/ButtonWithBorder';
 import ButtonWithArrow from '../../../ui-lib/Button/ButtonWithArrow/ButtonWithArrow';
+import { UniversalButton } from '../../../ui-lib/Button';
 
 interface CollapsibleSectionProps extends PropsWithChildren {
   items: Array<Record<string, any>>;
@@ -47,9 +47,10 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = (
 
       <div className={styles.collapsibleSection__btnContainer}>
         {isPublicationBtn && (
-          <ButtonWithBorder
-            text='Загрузить работу'
-            onClick={() => {}} />
+
+          <UniversalButton isFilled={false} width={207}>
+            Загрузить работу
+          </UniversalButton>
         )}
         {items.length >= 4 && (
           <ButtonWithArrow text={isOpen ? 'Скрыть' : 'Смотреть ещё'} onClick={() => setIsOpen(!isOpen)} />
