@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Footer from 'components/Footer/Footer';
 import Main from '../pages/main/main';
 import YandexAuth from '../pages/yandexAuth/yandexAuth';
 import Popup from '../components/Template/Popup/Popup';
@@ -13,7 +14,6 @@ import {
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 import MainAuthor from '../pages/MainAuthor/MainAuthor';
-import Footer from 'components/Footer/Footer';
 
 const App = () => {
   const dispatch = useDispatch();
