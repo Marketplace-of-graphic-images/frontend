@@ -1,40 +1,34 @@
-import React, { useMemo } from 'react';
-import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
-import AdSection from 'components/main/AdSection/AdSection';
-import Advantages from 'components/main/Advantages/Advantages';
+import React from 'react';
 import styles from './main.module.scss';
-import SectionWithSlider from '../../components/main/SectionWithSlider/SectionWithSlider';
-import SearchSection from '../../components/main/SearchSection/SearchSection';
-import TitleMainSection from '../../components/main/TitleMainSection/TitleMainSection';
+import MainGuest from './components/MainGuest/MainGuest';
+import { UniversalButton } from '../../ui-lib/Button';
+import MainUser from './components/MainUser/MainUser';
+import MainAuthor from './components/MainAuthor/MainAuthor';
+import { useDispatch, useSelector } from '../../services/hooks';
+import { setAuthorRole, setGuestRole, setUserRole } from '../../store/systemSlice';
 
 const Main = () => {
-  const TEST_DATA = useMemo(() => ([
-    { id: 0, title: 'Еда', image: '#' },
-    { id: 1, title: 'Животные', image: '#' },
-    { id: 2, title: 'Спорт', image: '#' },
-    { id: 3, title: 'Офис', image: '#' },
-    { id: 4, title: 'Котики', image: '#' },
-    { id: 5, title: 'Закат', image: '#' },
-    { id: 6, title: 'Природа', image: '#' },
-    { id: 7, title: 'Город', image: '#' },
-    { id: 9, title: 'Котики', image: '#' },
-    { id: 10, title: 'Закат', image: '#' },
-    { id: 11, title: 'Природа', image: '#' },
-    { id: 12, title: 'Город', image: '#' },
-  ]), []);
-
+  const dispatch = useDispatch();
+  const { userRole } = useSelector((state) => state.system);
+  
   return (
     <main className={styles.main}>
-      <SearchSection />
 
-      <TitleMainSection
-        titleAccent='Погрузитесь в мир'
-        title='популярных категорий'
-        subtitle='Познайте тенденции, которые завоевали сердца, и придайте своему проекту неповторимый шик!' />
-      <SectionWithSlider items={TEST_DATA} />
-      <AdSection />
-      <Advantages />
-      <JoinTheCommunity />
+      <div className={styles.temporaryMenu}>
+        <UniversalButton width={60} onClick={() => dispatch(setGuestRole())}>
+          Гость
+        </UniversalButton>
+        <UniversalButton width={60} onClick={() => dispatch(setUserRole())}>
+          Юзер
+        </UniversalButton>
+        <UniversalButton width={60} onClick={() => dispatch(setAuthorRole())}>
+          Автор
+        </UniversalButton>
+      </div>
+
+      {userRole === 'guest' && <MainGuest />}
+      {userRole === 'user' && <MainUser />}
+      {userRole === 'author' && <MainAuthor />}
     </main>
   );
 };

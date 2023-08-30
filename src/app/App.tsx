@@ -4,7 +4,7 @@ import Footer from 'components/Footer/Footer';
 import Main from '../pages/main/main';
 import YandexAuth from '../pages/yandexAuth/yandexAuth';
 import Popup from '../components/Template/Popup/Popup';
-import Header from '../components/Header/header';
+import Header from '../components/Header/Header';
 import { useDispatch, useSelector } from '../services/hooks';
 import { closeModal } from '../store';
 import {
@@ -13,7 +13,6 @@ import {
   AuthorizationForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
-import MainAuthor from '../pages/MainAuthor/MainAuthor';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,9 +33,6 @@ const App = () => {
           path='/'
           element={<Main />} />
         <Route
-          path='/main-author'
-          element={<MainAuthor />} />
-        <Route
           path='/test'
           element={(
             <PrivateRoute path='/'>
@@ -44,6 +40,7 @@ const App = () => {
             </PrivateRoute>
           )} />
       </Routes>
+
       <Footer />
 
       <Popup isOpen={authModal} onClose={closeModalState}>

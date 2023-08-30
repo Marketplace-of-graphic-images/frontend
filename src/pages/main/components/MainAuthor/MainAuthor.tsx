@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
-import CollapsibleSection from '../../components/main/CollapsibleSection/CollapsibleSection';
-import SearchSection from '../../components/main/SearchSection/SearchSection';
-import SectionWithSlider from '../../components/main/SectionWithSlider/SectionWithSlider';
-import TitleMainSection from '../../components/main/TitleMainSection/TitleMainSection';
+import CollapsibleSection from '../../../../components/main/CollapsibleSection/CollapsibleSection';
+import SearchSection from '../../../../components/main/SearchSection/SearchSection';
+import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
+import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
+import Advantages from '../../../../components/main/Advantages/Advantages';
 
 const MainAuthor = () => {
   const TEST_DATA = useMemo(() => ([
@@ -21,7 +22,7 @@ const MainAuthor = () => {
   ]), []);
 
   return (
-    <main>
+    <>
       <SearchSection />
 
       <SectionWithSlider items={TEST_DATA}>
@@ -45,7 +46,9 @@ const MainAuthor = () => {
           subtitle='Познайте тенденции, которые завоевали сердца, и придайте своему проекту неповторимый шик!' />
       </SectionWithSlider>
 
-    </main>
+      <Advantages />
+
+    </>
   );
 };
 
