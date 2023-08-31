@@ -6,6 +6,7 @@ import BackPopupButton from './BackPopupButton/BackPopupButton';
 import PopularButton from './PopularButton/PopularButton';
 import SearchButton from './SearchButton/SearchButton';
 import AdButton from './AdButton/AdButton.module.scss';
+import ClosePopupButton from './ClosePopupButton/ClosePopupButton';
 
 export {
   LinkWordButton,
@@ -16,4 +17,5 @@ export {
   PopularButton,
   SearchButton,
   AdButton,
+  ClosePopupButton,
 };
