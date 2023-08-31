@@ -1,0 +1,19 @@
+@use '../../../globalStyle/variables' as v;
+
+.notificationPopupOnRight {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  transform: translateX(100%);
+  width: 100%;
+  max-width: 515px;
+  height: 100%;
+  padding: 36px 48px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+  background: v.$white-color;
+  transition: transform 0.2s ease-in;
+
+  &_open {
+    transform: translateX(0);
+  }
+}
