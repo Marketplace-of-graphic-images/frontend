@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import styles from './AuthorizationForm.module.scss';
 import { LoginWithButton, UniversalButton } from '../../../ui-lib/Button';
 import { PasswordInput, UniversalInput } from '../../../ui-lib/Input';
@@ -10,6 +10,7 @@ import { useDispatch } from '../../../services/hooks';
 import { openModalPassRecovery, openModalRegister } from '../../../store';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../../constants/inputsId';
+import { autchUser } from '../../../api/api';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записать в process.env
 
@@ -29,9 +30,20 @@ const AuthorizationForm = () => {
   const openPassRecoveryModal = () => {
     dispatch(openModalPassRecovery());
   };
+  const authUserRequest = (e:SyntheticEvent) => {
+    e.preventDefault();
+    autchUser({ email: values.login, password: values.password })
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   /* eslint-disable spaced-comment */
   return (
-    <form className={styles.container}>
+    <form onSubmit={authUserRequest} className={styles.container}>
       <h1 className={styles.title}>Авторизация</h1>
       <YandexLogin clientID={clientID}>
         <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
@@ -67,7 +79,7 @@ const AuthorizationForm = () => {
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
       </div>
 
-      <UniversalButton disabled={!isValid}>Войти</UniversalButton>
+      <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>
       <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
     </form>
   );
