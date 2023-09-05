@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './LinkWordButton.module.scss';
 
-type TLinkWordButton = {
+interface LinkWordButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   title?: string;
   buttonName: string;
   onClick?: () => void;
-};
+}
 
-const LinkWordButton: React.FC<TLinkWordButton> = ({
+const LinkWordButton: React.FC<LinkWordButtonProps> = ({
   title,
   buttonName,
   onClick,

@@ -27,7 +27,7 @@ const UniversalInput: React.FC<IUniversalInput> = (
   },
 ) => (
   <div>
-    <label className={styles.label} htmlFor={id}>{label}</label>
+    {label !== '' && <label className={styles.label} htmlFor={id}>{label}</label>}
     <div className={`${styles.inputContainer} ${errorMessage || validError ? styles.warning : ''}`}>
       <input
         id={id}

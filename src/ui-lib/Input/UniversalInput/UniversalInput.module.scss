@@ -5,8 +5,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 484px;
-  height: 48px;
+  max-width: 484px;
   padding: 0 24px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -26,6 +25,8 @@
   border: none;
   outline: none;
   flex-grow: 1;
+  width: 434px;
+  height: 46px;
 }
 
 .error {
