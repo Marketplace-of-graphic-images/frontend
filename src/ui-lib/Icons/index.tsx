@@ -3,7 +3,7 @@ import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
   arrowDownIcon, notificationsNo, notificationsYes,
-  refreshIcon, magniferIcon,
+  refreshIcon, magniferIcon, calendarIcon,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -54,4 +54,7 @@ export const NotificationsYes = (props) => (
 );
 export const MagniferIcon = (props) => (
   <TemplateIcon {...props} icon={magniferIcon} />
+);
+export const CalendarIcon = (props) => (
+  <TemplateIcon {...props} icon={calendarIcon} />
 );

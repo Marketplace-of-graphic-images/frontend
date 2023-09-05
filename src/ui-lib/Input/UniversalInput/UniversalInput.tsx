@@ -1,5 +1,5 @@
 import React, { ReactComponentElement, FC } from 'react';
-import FieldErrorIcon from '../../other/FieldError/FieldErrorIcon';
+import FieldErrorIcon, { ErrorTypes } from '../../other/FieldError/FieldErrorIcon';
 import styles from './UniversalInput.module.scss';
 
 interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'> {
@@ -11,6 +11,7 @@ interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'> {
   icon?: ReactComponentElement<FC> | null;
   isErrorIconShow?: boolean;
   id: string;
+  errorType?: ErrorTypes;
 }
 
 const UniversalInput: React.FC<IUniversalInput> = (
@@ -23,11 +24,13 @@ const UniversalInput: React.FC<IUniversalInput> = (
     validError = false,
     icon = null,
     isErrorIconShow = true,
+    errorType = 'username',
     ...rest
   },
 ) => (
   <div>
-    <label className={styles.label} htmlFor={id}>{label}</label>
+    {label !== '' && <label className={styles.label} htmlFor={id}>{label}</label>}
+
     <div className={`${styles.inputContainer} ${errorMessage || validError ? styles.warning : ''}`}>
       <input
         id={id}
@@ -35,9 +38,14 @@ const UniversalInput: React.FC<IUniversalInput> = (
         placeholder={placeholder}
         type={type}
         {...rest} />
+
       { icon && icon }
-      {(errorMessage || validError) && isErrorIconShow && <FieldErrorIcon type={type} />}
+
+      {(errorMessage || validError) && isErrorIconShow && (
+        <FieldErrorIcon errorType={errorType} />
+      )}
     </div>
+
     {errorMessage && <p className={styles.error}>{errorMessage}</p>}
   </div>
 );
@@ -50,6 +58,7 @@ UniversalInput.defaultProps = {
   placeholder: '',
   icon: null,
   isErrorIconShow: true,
+  errorType: 'username',
 };
 
 export default UniversalInput;

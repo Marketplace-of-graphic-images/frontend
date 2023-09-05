@@ -10,7 +10,7 @@ import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton
 import useValidation from '../../../services/useValidation';
 import { useDispatch } from '../../../services/hooks';
 import { closeModal, openModalAuth } from '../../../store';
-import { PATTERN_EMAIL, PATTERN_NAME, PATTERN_PASSWORD } from '../../../constants/constants';
+import { PATTERN_EMAIL, PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
@@ -47,7 +47,7 @@ const RegistrationForm = () => {
       console.log(
         'submit data', (
           {
-            login: values.login,
+            username: values.username,
             email: values.email,
             password: values.password,
             code,
@@ -69,15 +69,14 @@ const RegistrationForm = () => {
 
           <UniversalInput
             id={REG_NAME_ID}
-            name='login'
+            name='username'
             type='text'
-            value={values.login || ''}
+            value={values.username || ''}
             onChange={handleChange}
-            pattern={PATTERN_NAME}
-            validError={errors.login}
+            pattern={PATTERN_USERNAME}
+            validError={errors.username}
+            errorType='username'
             label='Имя пользователя'
-            minLength={8}
-            maxLength={254}
             required
             placeholder='Введите имя...'
             autoFocus />
@@ -94,8 +93,6 @@ const RegistrationForm = () => {
           <PasswordInput
             id={REG_PASSWORD_ID}
             name='password'
-            minLength={8}
-            maxLength={254}
             value={values.password || ''}
             onChange={handleChange}
             pattern={PATTERN_PASSWORD}

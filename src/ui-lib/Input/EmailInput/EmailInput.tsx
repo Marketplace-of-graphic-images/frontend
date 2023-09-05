@@ -18,6 +18,7 @@ const EmailInput: React.FC<IEmailInput> = ({
     label={label}
     errorMessage={apiError}
     validError={validError}
+    errorType='email'
     {...rest} />
 );
 EmailInput.defaultProps = {

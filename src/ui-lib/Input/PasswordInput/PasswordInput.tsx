@@ -54,6 +54,7 @@ const PasswordInput: React.FC<IPasswordInput> = (
       errorMessage={apiError}
       validError={validError}
       isErrorIconShow={isErrorIconShow}
+      errorType='password'
       {...rest}
       icon={(
         <PasswordFieldButton

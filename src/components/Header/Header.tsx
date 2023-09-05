@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'services/hooks';
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
 import ButtonWithDropDown, { IButtonWithDropDown } from 'ui-lib/Button/ButtonWithDropDown/ButtonWithDropDown';
 import { UniversalButton, LinkWordButton } from 'ui-lib/Button';
+import { Link } from 'react-router-dom';
 import Logo from './components/Logo/Logo';
 import styles from './Header.module.scss';
 import NotificationPopupOnRight from '../Template/NotificationPopupOnRight/NotificationPopupOnRight';
@@ -95,7 +96,9 @@ const Header = () => {
               </button>
             
               <button type='button'>
-                <ProfileIcon className={styles.icon} width='40' height='40' />
+                <Link to='/profile'>
+                  <ProfileIcon className={styles.icon} width='40' height='40' />
+                </Link>
               </button>
             </div>
           )}

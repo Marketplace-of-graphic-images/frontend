@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import ValidationErrorTooltip, { IValidationErrorTooltipProps } from '../ValidationErrorTooltip/ValidationErrorTooltip';
 
-const NameErrorTooltip: FC<IValidationErrorTooltipProps> = (
+const UsernameErrorTooltip: FC<IValidationErrorTooltipProps> = (
   {
     opacity,
     position,
@@ -12,12 +12,17 @@ const NameErrorTooltip: FC<IValidationErrorTooltipProps> = (
     bottom,
   },
 ) => {
-  const paragraphs = ['Допустимые символы:'];
-  const listItems = [
-    'Латиница',
-    'Кириллица',
+  const paragraphs = [
+    'Минимальное количество символов: 3',
+    'Максимальное количество символов: 30',
+    'Допустимые символы:',
   ];
 
+  const listItems = [
+    'Латиница',
+    'Цифры',
+    'Специальные символы (“_”, “!”, “ . “ )',
+  ];
   return (
     <ValidationErrorTooltip
       paragraphElemArray={paragraphs}
@@ -32,4 +37,4 @@ const NameErrorTooltip: FC<IValidationErrorTooltipProps> = (
   );
 };
 
-export default NameErrorTooltip;
+export default UsernameErrorTooltip;

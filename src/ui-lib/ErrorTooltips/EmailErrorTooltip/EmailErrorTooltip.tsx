@@ -12,11 +12,8 @@ const EmailErrorTooltip: FC<IValidationErrorTooltipProps> = (
     bottom,
   },
 ) => {
-  const paragraphs = [
-    'Минимальное количество символов: 8',
-    'Максимальное количество символов: 254',
-    'Допустимые символы:',
-  ];
+  const paragraphs = ['Допустимые символы:'];
+
   const listItems = [
     'Латиница',
     'Цифры',

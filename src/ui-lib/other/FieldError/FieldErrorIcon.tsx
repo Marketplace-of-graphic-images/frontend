@@ -1,26 +1,29 @@
 import React, { useState, FC } from 'react';
 import { ErrorIcon } from '../../Icons';
 import styles from './FieldErrorIcon.module.scss';
-import TypeInput from '../../../constants/typeInput';
 import {
   EmailErrorTooltip,
-  PasswordErrorTooltip, 
-  NameErrorTooltip, 
+  PasswordErrorTooltip,
+  NameErrorTooltip,
+  UsernameErrorTooltip,
 }
   from '../../ErrorTooltips';
 
+export type ErrorTypes = 'username' | 'email' | 'password' | 'name';
+
 interface IFieldErrorIcon {
-  type?: string
+  errorType: ErrorTypes;
 }
 
-const FieldErrorIcon: FC<IFieldErrorIcon> = ({ type }) => {
+const FieldErrorIcon: FC<IFieldErrorIcon> = ({ errorType }) => {
   const [showMessage, setShowMessage] = useState(false);
 
   const checkTypeForm = () => {
-    switch (type) {
+    switch (errorType) {
       case 'email': return (<EmailErrorTooltip />);
       case 'password': return (<PasswordErrorTooltip />);
-      case 'text': return (<NameErrorTooltip />);
+      case 'username': return (<UsernameErrorTooltip />);
+      case 'name': return (<NameErrorTooltip />);
       default: return (<NameErrorTooltip />);
     }
   }; 
@@ -38,9 +41,6 @@ const FieldErrorIcon: FC<IFieldErrorIcon> = ({ type }) => {
       {showMessage && checkTypeForm()}
     </div>
   );
-};
-FieldErrorIcon.defaultProps = {
-  type: TypeInput.text,
 };
 
 export default FieldErrorIcon;
