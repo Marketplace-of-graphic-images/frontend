@@ -12,7 +12,12 @@ const PasswordErrorTooltip: FC<IValidationErrorTooltipProps> = (
     bottom,
   },
 ) => {
-  const paragraphs = ['Допустимые символы:'];
+  const paragraphs = [
+    'Минимальное количество символов: 8',
+    'Максимальное количество символов: 254',
+    'Допустимые символы:',
+  ];
+
   const listItems = [
     'Латиница',
     'Цифры',

@@ -47,7 +47,7 @@ const RegistrationForm = () => {
       console.log(
         'submit data', (
           {
-            login: values.login,
+            username: values.username,
             email: values.email,
             password: values.password,
             code,
@@ -69,12 +69,13 @@ const RegistrationForm = () => {
 
           <UniversalInput
             id={REG_NAME_ID}
-            name='login'
+            name='username'
             type='text'
-            value={values.login || ''}
+            value={values.username || ''}
             onChange={handleChange}
             pattern={PATTERN_USERNAME}
-            validError={errors.login}
+            validError={errors.username}
+            errorType='username'
             label='Имя пользователя'
             required
             placeholder='Введите имя...'

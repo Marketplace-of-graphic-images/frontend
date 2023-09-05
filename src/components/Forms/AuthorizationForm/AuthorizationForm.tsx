@@ -41,16 +41,17 @@ const AuthorizationForm = () => {
 
       <UniversalInput
         id={AUTH_LOGIN_ID}
-        name='login'
+        name='username'
         type='text'
         maxLength={254}
-        value={values.login || ''}
+        value={values.username || ''}
         onChange={handleChange}
-        validError={errors.login}
+        validError={errors.username}
         isErrorIconShow={false}
         required
         placeholder='Введите имя или Email...'
         label='Адрес электронной почты или имя пользователя'
+        errorType='username'
         autoFocus />
 
       <PasswordInput
