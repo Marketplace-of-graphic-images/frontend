@@ -3,6 +3,7 @@ import PasswordInput from '../../../ui-lib/Input/PasswordInput/PasswordInput';
 import styles from './PasswordChangeForm.module.scss';
 import { RECOVERY_PASSWORD_ID, RECOVERY_REPEAT_PASSWORD_ID } from '../../../constants/inputsId';
 import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
+import { PATTERN_PASSWORD } from '../../../constants/constants';
 
 interface PasswordChangeFormProps {
   values: Record<string, string>;
@@ -44,8 +45,7 @@ const PasswordChangeForm: FC<PasswordChangeFormProps> = (
         value={values.password || ''}
         validError={errors.password}
         onChange={onChange}
-        minLength={8}
-        maxLength={254}
+        pattern={PATTERN_PASSWORD}
         required
         customInputState={inputState}
         customToggleType={toggleInputType}
