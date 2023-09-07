@@ -6,11 +6,14 @@ import {
 } from './modalSlice';
 
 import {
+
   setGuestRole,
   setUserRole,
   setAuthorRole,
   isLoadingOn,
   isLoadingOff,
+  onLogin,
+  onLogout,
 } from './systemSlice';
 
 import { setUser, clearUser } from './userSlice';
@@ -27,4 +30,6 @@ export {
   setAuthorRole,
   isLoadingOn,
   isLoadingOff,
+  onLogin,
+  onLogout,
 };

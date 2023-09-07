@@ -1,24 +1,21 @@
 import { useEffect, useState } from 'react';
 /* eslint-disable */
-export default function useFetch(url, request) {
+export default function useFetch(request) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    (
-      async function () {
+        async function click () {
         try {
           setLoading(true);
-          const response = request();
+          const response =  await request
           setData(response.data);
         } catch (err) {
-          console.log(err)
+          setError(error)
         } finally {
           setLoading(false);
         }
-      }());
-  }, [url]);
+      }
 
-  return { data, error, loading };
+  return { data, error, loading, click };
 }
