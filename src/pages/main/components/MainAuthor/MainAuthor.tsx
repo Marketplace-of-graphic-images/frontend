@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import UserInfo from 'components/UserInfo/UserInfo';
+import { useSelector } from '../../../../services/hooks';
 import CollapsibleSection from '../../../../components/main/CollapsibleSection/CollapsibleSection';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
@@ -21,8 +23,11 @@ const MainAuthor = () => {
     { id: 12, title: 'Город', image: '#' },
   ]), []);
 
+  const { user } = useSelector((state) => state);
+  
   return (
     <>
+      <UserInfo user={user} />
       <SearchSection />
 
       <SectionWithSlider items={TEST_DATA}>

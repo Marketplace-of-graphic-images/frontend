@@ -10,7 +10,7 @@ import { setAuthorRole, setGuestRole, setUserRole } from '../../store';
 const Main = () => {
   const dispatch = useDispatch();
   const { userRole } = useSelector((state) => state.system);
-  
+
   return (
     <main className={styles.main}>
 
