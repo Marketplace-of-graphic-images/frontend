@@ -13,7 +13,8 @@ interface IUserData {
 const UserInfo: FC<IUserData> = ({ user }) => {
   const [userImg, setUserImg] = useState('');
   const [file, setFile] = useState<File>();
-
+  // Фэйковая роль, достаём из user.
+  const [userRole, setUseRole] = useState('author');
   // Получаем всех пользователей
   const { data } = useGetAllusersQuery('getUser');
   // это всё
@@ -43,20 +44,24 @@ const UserInfo: FC<IUserData> = ({ user }) => {
       <h3 className={styles.avatar_userNick}>
         {userData?.name}
       </h3>
-      <ul className={styles.avatar_datalist}>
-        <li id='public' className={styles.avatar_list}>
-          {userData?.id}
-          <span className={styles.avatar_span}>Публикаций</span>
-        </li>
-        <li className={styles.avatar_list}>
-          {userData?.id}
-          <span className={styles.avatar_span}>Подписчиков</span>
-        </li>
-        <li className={styles.avatar_list}>
-          {userData?.id}
-          <span className={styles.avatar_span}>Лайков</span>
-        </li>        
-      </ul>
+      {userRole === 'author' ? (
+        <ul className={styles.avatar_datalist}>
+          <li id='public' className={styles.avatar_list}>
+            {userData?.id}
+            <span className={styles.avatar_span}>Публикаций</span>
+          </li>
+          <li className={styles.avatar_list}>
+            {userData?.id}
+            <span className={styles.avatar_span}>Подписчиков</span>
+          </li>
+          <li className={styles.avatar_list}>
+            {userData?.id}
+            <span className={styles.avatar_span}>Лайков</span>
+          </li>
+        </ul>
+      )
+        : null}
+
       <input className={styles.avatar_set} type='file' accept='image/*' onChange={onFileUpload} />
       <UniversalButton 
         isFilled={false}

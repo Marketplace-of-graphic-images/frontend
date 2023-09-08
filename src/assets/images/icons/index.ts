@@ -16,10 +16,11 @@ import notificationsYes from './NotificationsYes.svg';
 import notificationsNo from './NotificationsNo.svg';
 import magniferIcon from './MagniferIcon.svg';
 import Loupe from './Loupe.svg';
+import pigIcon from './Savings.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
   notificationsYes, notificationsNo,
-  refreshIcon, magniferIcon, Loupe, arrowDownIcon,
+  refreshIcon, magniferIcon, Loupe, arrowDownIcon, pigIcon,
 };
