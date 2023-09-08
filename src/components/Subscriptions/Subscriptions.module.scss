@@ -13,6 +13,7 @@
       border: 1px solid v.$grey-color;
       border-radius: 8px;
       height: 597px;
+      overflow: scroll;
     }
     &__user {
         display: flex;
@@ -20,6 +21,7 @@
         gap: 16px;
         width: 287px;
         align-items: center;
+        margin-bottom: 16px;
       }
     &__icon {
         width: 50px;

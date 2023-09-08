@@ -12,7 +12,6 @@ import {
   AuthorizationForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
-// import Subscriptions from '../components/Subscriptions/Subscriptions';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,6 @@ const App = () => {
   return (
     <div className='App'>
       <Header />
-      {/* <Subscriptions /> */}
       <Routes>
         <Route
           path='yandexauth'
