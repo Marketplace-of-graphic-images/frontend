@@ -81,37 +81,27 @@ const Header = () => {
           </div>
         ) : (
           <div className={styles.rightBlockAuthor}>
+
             {userRole === 'author' && (
-        {userRole === 'guest' 
-          ? (
-            <div className={styles.rightBlock}> 
-              <LinkWordButton buttonName='Войти' onClick={openAuthModal} />
-              <UniversalButton onClick={openRegisterModal} type='button' width='174' height='47'>
-                Создать аккаунт
-              </UniversalButton>
-            </div>
-          ) 
-          : (
-            <div className={styles.rightBlockAuthor}>
-              {userRole === 'author' && (
               <UniversalButton isFilled={false} type='button' width='208' height='47'>
                 Загрузить работу
               </UniversalButton>
-              )}
+            )}
 
-              <button type='button' onClick={handleNotificationModal}>
-                {notificationsState
-                  ? <NotificationsYes width='40' height='40' />
-                  : <NotificationsNo width='40' height='40' />}
-              </button>
+            <button type='button' onClick={handleNotificationModal}>
+              {notificationsState
+                ? <NotificationsYes width='40' height='40' />
+                : <NotificationsNo width='40' height='40' />}
+            </button>
             
-              <button type='button'>
-                <Link to='/profile'>
-                  <ProfileIcon className={styles.icon} width='40' height='40' />
-                </Link>
-              </button>
-            </div>
-          )}
+            <button type='button'>
+              <Link to='/profile'>
+                <ProfileIcon className={styles.icon} width='40' height='40' />
+              </Link>
+            </button>
+              
+          </div>
+        )}
 
       </div>
       
