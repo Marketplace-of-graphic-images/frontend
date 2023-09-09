@@ -58,7 +58,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autoComplete='off'>
       {formStep === 1 && (
         <fieldset className={styles.container}>
           <h1 className={styles.title}>Создать аккаунт</h1>
