@@ -7,10 +7,21 @@ import {
 } from './modalSlice';
 
 import {
+
   setGuestRole,
   setUserRole,
   setAuthorRole,
+  isLoadingOn,
+  isLoadingOff,
+  onLogin,
+  onLogout,
 } from './systemSlice';
+
+import {
+  setEmailAuthErr,
+  setPasswordAuthErr,
+  clearAuthErr,
+} from './apiErrorSlice';
 
 import { setUser, clearUser } from './userSlice';
 
@@ -25,4 +36,11 @@ export {
   setGuestRole,
   setUserRole,
   setAuthorRole,
+  isLoadingOn,
+  isLoadingOff,
+  onLogin,
+  onLogout,
+  setEmailAuthErr,
+  setPasswordAuthErr,
+  clearAuthErr,
 };

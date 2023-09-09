@@ -17,10 +17,10 @@ import NotificationPopupOnRight from '../Template/NotificationPopupOnRight/Notif
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const { userRole } = useSelector((state) => state.system);
+  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+
   const { notificationModal } = useSelector((state) => state.modals);
   const [notificationsState, setNotificationsState] = useState(false);
-  
   const openRegisterModal = () => {
     dispatch(openModalRegister());
   };
@@ -72,6 +72,16 @@ const Header = () => {
           </nav>
         </div>
         
+        {!isLoggedIn ? (
+          <div className={styles.rightBlock}> 
+            <LinkWordButton buttonName='Войти' onClick={openAuthModal} />
+            <UniversalButton onClick={openRegisterModal} type='button' width='174' height='47'>
+              Создать аккаунт
+            </UniversalButton>
+          </div>
+        ) : (
+          <div className={styles.rightBlockAuthor}>
+            {userRole === 'author' && (
         {userRole === 'guest' 
           ? (
             <div className={styles.rightBlock}> 
