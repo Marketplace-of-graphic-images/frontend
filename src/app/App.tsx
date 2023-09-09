@@ -38,7 +38,7 @@ const App = () => {
           path='/test'
           element={(
             <PrivateRoute path='/'>
-              <Main />
+              <Profile />
             </PrivateRoute>
           )} />
       </Routes>
