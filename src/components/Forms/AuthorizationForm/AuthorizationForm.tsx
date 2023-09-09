@@ -6,13 +6,13 @@ import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import { YandexIcon } from '../../../ui-lib/Icons';
 import useValidation from '../../../services/useValidation';
-import { useDispatch } from '../../../services/hooks';
+import { useDispatch, useSelector } from '../../../services/hooks';
+import loginUserThunk from '../../../thunks/login-user-thunk';
 import {
-  openModalPassRecovery, openModalRegister, onLogin, closeModal,
+  openModalPassRecovery, openModalRegister,
 } from '../../../store';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../../constants/inputsId';
-import { authUser } from '../../../api/api';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записать в process.env
 
@@ -23,8 +23,8 @@ const AuthorizationForm = () => {
     errors,
     isValid,
   } = useValidation();
-  const [apiError, setApiError] = useState('');
   const dispatch = useDispatch();
+  const { emailAuthErr, passwordAuthErr, generalAuthErr } = useSelector((state) => state.apiError);
 
   const openRegisterModal = () => {
     dispatch(openModalRegister());
@@ -35,17 +35,7 @@ const AuthorizationForm = () => {
   };
   const authUserRequest = (e:SyntheticEvent) => {
     e.preventDefault();
-    authUser({ email: values.login, password: values.password })
-      .then((res) => {
-        dispatch(onLogin());
-        dispatch(closeModal());
-        setApiError('');
-        return null;
-      })
-      .catch((err) => {
-        // eslint-disable-next-line
-        setApiError(err.errors[0]);
-      });
+    dispatch(loginUserThunk({ email: values.login, password: values.password }));
   };
   /* eslint-disable spaced-comment */
   return (
@@ -66,7 +56,7 @@ const AuthorizationForm = () => {
         onChange={handleChange}
         validError={errors.login}
         isErrorIconShow={false}
-        errorMessage={apiError}
+        errorMessage={emailAuthErr}
         required
         placeholder='Введите имя или Email...'
         label='Адрес электронной почты или имя пользователя'
@@ -80,12 +70,13 @@ const AuthorizationForm = () => {
         onChange={handleChange}
         validError={errors.password}
         isErrorIconShow={false}
-        apiError={apiError}
+        apiError={passwordAuthErr}
         required />
-
+        
       <div className={styles.forgotPassword}>
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
       </div>
+      {generalAuthErr && <p className={styles.globalEror}>generalAuthErr</p>}
 
       <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>
       <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />

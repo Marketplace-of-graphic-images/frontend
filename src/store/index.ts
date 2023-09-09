@@ -16,6 +16,12 @@ import {
   onLogout,
 } from './systemSlice';
 
+import {
+  setEmailAuthErr,
+  setPasswordAuthErr,
+  clearAuthErr,
+} from './apiErrorSlice';
+
 import { setUser, clearUser } from './userSlice';
 
 export {
@@ -32,4 +38,7 @@ export {
   isLoadingOff,
   onLogin,
   onLogout,
+  setEmailAuthErr,
+  setPasswordAuthErr,
+  clearAuthErr,
 };
