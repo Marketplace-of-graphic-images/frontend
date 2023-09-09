@@ -1,9 +1,7 @@
-import React, {
-  FC, PropsWithChildren, useEffect, useState,
-} from 'react';
-import { createPortal } from 'react-dom';
+import React, { FC, PropsWithChildren } from 'react';
 import styles from './Popup.module.scss';
-import ClosePopupButton from '../../../ui-lib/Button/ClosePopupButton/ClosePopupButton';
+import PopupWrapper from '../PopupWrapper/PopupWrapper';
+import { ClosePopupButton } from '../../../ui-lib/Button';
 
 interface PopupProps extends PropsWithChildren {
   width?: string;
@@ -20,52 +18,17 @@ const Popup: FC<PopupProps> = (
     width,
     height,
   },
-) => {
-  const [overlay, setOverlay] = useState<Element | null>(null);
+) => (
+  <PopupWrapper isOpen={isOpen} onClose={onClose}>
+    <div className={styles.popup} style={{ maxWidth: width, height }}>
 
-  useEffect(() => {
-    setOverlay(document.querySelector(`.${styles.popup}`));
-  }, [isOpen]);
+      <ClosePopupButton onClick={onClose} aria-label='Закрыть' />
+        
+      {children}
 
-  useEffect(() => {
-    const onEscPress = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-
-    document.addEventListener('keydown', onEscPress);
-
-    return () => {
-      document.removeEventListener('keydown', onEscPress);
-    };
-  }, [onClose]);
-
-  const handleClickOverlay = (e: React.MouseEvent) => {
-    if (e.target === overlay) {
-      onClose();
-    }
-  };
-
-  return createPortal(
-    isOpen && (
-    // eslint-disable-next-line max-len
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-    <section
-      className={styles.popup} 
-      style={{ display: isOpen ? 'block' : 'none' }}
-      onClick={handleClickOverlay}>
-      <div
-        className={styles.popup__container} 
-        style={{ maxWidth: width, height }}>
-
-        <ClosePopupButton onClick={onClose} aria-label='Закрыть' />
-        {children}
-
-      </div>
-    </section>
-    ),
-    document.body,
-  );
-};
+    </div>
+  </PopupWrapper>
+);
 
 Popup.defaultProps = {
   width: '580px',

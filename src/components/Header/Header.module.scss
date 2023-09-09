@@ -1,7 +1,9 @@
 @import '../../globalStyle/mixins.scss';
+@import '../../globalStyle/variables.scss';
 
 .header {
     padding: 16px 0;
+    background: $white-color;
 }
 
 .headerContainer {

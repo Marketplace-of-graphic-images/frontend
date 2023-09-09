@@ -5,13 +5,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 484px;
-  height: 48px;
+  max-width: 484px;
   padding: 0 24px;
   flex-shrink: 0;
   border-radius: 8px;
-  border: 1px solid $black-color;
   @include noselect;
+
+  &_border_black {
+    border: 1px solid $black-color;
+  }
+
+  &_border_white {
+    border: 1px solid $white-color;
+  }
 }
 
 .label {
@@ -26,6 +32,8 @@
   border: none;
   outline: none;
   flex-grow: 1;
+  width: 434px;
+  height: 46px;
 }
 
 .error {

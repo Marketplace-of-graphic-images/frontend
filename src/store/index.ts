@@ -3,6 +3,7 @@ import {
   closeModal,
   openModalRegister,
   openModalPassRecovery,
+  openModalNotification,
 } from './modalSlice';
 
 import {
@@ -29,6 +30,7 @@ export {
   closeModal,
   openModalRegister,
   openModalPassRecovery,
+  openModalNotification,
   setUser,
   clearUser,
   setGuestRole,

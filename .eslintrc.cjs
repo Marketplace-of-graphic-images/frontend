@@ -83,6 +83,7 @@ module.exports = {
 		'no-trailing-spaces': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'no-plusplus': 'off',
-		'import/no-extraneous-dependencies': 'off'
+		'import/no-extraneous-dependencies': 'off',
+		'no-return-assign': 'off'
 	},
 };

@@ -1,15 +1,18 @@
 import React from 'react';
-import UniversalInput from '../UniversalInput/UniversalInput';
+import UniversalInput, { IUniversalInput } from '../UniversalInput/UniversalInput';
+import { PATTERN_EMAIL } from '../../../constants/constants';
 
-interface IEmailInput extends React.ComponentPropsWithoutRef<'input'> {
-  id: string;
+interface IEmailInput extends IUniversalInput {
   apiError?: string;
-  label?:string;
-  validError? : boolean;
 }
 
 const EmailInput: React.FC<IEmailInput> = ({
-  apiError, label, validError, id, ...rest
+  apiError,
+  label = 'Адрес электронной почты',
+  validError,
+  id,
+  borderColor = 'black',
+  ...rest
 }) => (
   <UniversalInput
     id={id}
@@ -18,12 +21,14 @@ const EmailInput: React.FC<IEmailInput> = ({
     label={label}
     errorMessage={apiError}
     validError={validError}
+    errorType='email'
+    pattern={PATTERN_EMAIL}
+    borderColor={borderColor}
     {...rest} />
 );
+
 EmailInput.defaultProps = {
   apiError: '',
-  label: 'Адрес электронной почты',
-  validError: false,
 };
 
 export default EmailInput;

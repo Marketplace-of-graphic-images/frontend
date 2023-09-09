@@ -1,0 +1,6 @@
+@import '../../../../globalStyle/mixins';
+
+.profileTitle {
+  @include Header2;
+  width: max-content;
+}

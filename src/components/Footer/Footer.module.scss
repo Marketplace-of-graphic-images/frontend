@@ -2,79 +2,51 @@
 @use '../../globalStyle/mixins' as m;
 
 .footer {
-    background-color: v.$dark-green;
-    padding: 48px 80px;
-    color: v.$white-color;
-    margin: 0 auto;
+  background-color: v.$dark-green;
+  padding: 48px 80px;
+  color: v.$white-color;
+  margin: 0 auto;
+  width: 100%;
+
+  &__container {
+    max-width: 1280px;
     width: 100%;
-}
-.footer__container {
-    width: 1280px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
-}
-.footer__container_content {
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
     padding-bottom: 48px;
+  }
+
+  &__nav {
     display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 132px;
-}
-.footer__menu {
-    display: grid;
-    grid-template-columns: 193px 217px 217px;
+    flex-wrap: wrap;
     gap: 32px;
-    width: 737px;
-}
-.footer__links {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 217px;
-}
-.footer__link {
-    @include m.Link_small;
-}
-.footer__link:hover {
-    opacity: 0.7;
-}
-.footer__container_copyright {
-    width: 1280px;
+    max-width: 737px;
+  }
+
+  &__newsletter {
+    max-width: 302px;
+  }
+
+  &__bottom {
+    max-width: 1280px;
+    width: 100%;
     padding-top: 48px;
     border-top: solid 0.5px rgba(255, 255, 255, .7);
-}
-.footer__title {
-    @include m.Body1;
-}
-.footer__newsletter {
-    width: 302px;
-}
-.footer__input {
-    width: 302px;
-    height: 48px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid v.$white-color;
-    padding: 13px 229px 12px 24px;
-    align-items: center;
-    margin-bottom: 16px;
-    margin-top: 24px;
-    @include m.Body;
-}
-.footer__copyright {
+  }
+
+  &__bottomText {
     @include m.Link_medium;
     opacity: 0.7;
-}
-.footer__icon {
-    background-image: url(../../assets/images/icons/Arrows_down_white.svg);
-    width: 16px;
-    height: 17px;
-}
-.footer__container_link {
-    display: flex;
-    flex-direction: row;
+  }
 }
