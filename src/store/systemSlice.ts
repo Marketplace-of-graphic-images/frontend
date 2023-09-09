@@ -10,7 +10,7 @@ type TSystemState = {
 
 const initialState: TSystemState = {
   isLoggedIn: false,
-  userRole: 'guest' as Role,
+  userRole: 'user' as Role,
   isLoading: false,
 };
 
