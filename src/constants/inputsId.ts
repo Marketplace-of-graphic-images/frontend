@@ -20,3 +20,6 @@ export const PROFILE_EMAIL_ID = 'profile-email-inp';
 export const PROFILE_WEBSITE1_ID = 'profile-website1-inp';
 export const PROFILE_WEBSITE2_ID = 'profile-website2-inp';
 export const PROFILE_WEBSITE3_ID = 'profile-website3-inp';
+
+// mailing form
+export const MAILING_EMAIL_ID = 'mailing-email-inp';

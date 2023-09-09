@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
-import UniversalInput from '../UniversalInput/UniversalInput';
+import UniversalInput, { IUniversalInput } from '../UniversalInput/UniversalInput';
 import PasswordFieldButton from '../../Button/PasswordFieldButton/PasswordFieldButton';
 /* eslint-disable ternary/no-unreachable */
 
-interface IPasswordInput extends React.ComponentPropsWithoutRef<'input'> {
-  id: string;
+interface IPasswordInput extends IUniversalInput {
   apiError?: string;
-  label?: string;
-  validError?: boolean;
-  placeholder?: string;
-  isErrorIconShow?: boolean;
   customToggleType?: () => void;
   customInputState?: { type: string, visionIcon: boolean };
 }
 
 const PasswordInput: React.FC<IPasswordInput> = (
   {
-    validError,
-    apiError,
-    label,
-    placeholder,
-    isErrorIconShow,
+    validError = false,
+    apiError = '',
+    label = 'Пароль',
+    placeholder = 'Введите пароль...',
+    isErrorIconShow = true,
     id,
     customToggleType,
     customInputState,
+    borderColor = 'black',
     ...rest
   },
 ) => {
@@ -55,6 +51,7 @@ const PasswordInput: React.FC<IPasswordInput> = (
       validError={validError}
       isErrorIconShow={isErrorIconShow}
       errorType='password'
+      borderColor={borderColor}
       {...rest}
       icon={(
         <PasswordFieldButton
@@ -69,10 +66,6 @@ const PasswordInput: React.FC<IPasswordInput> = (
 
 PasswordInput.defaultProps = {
   apiError: '',
-  label: 'Пароль',
-  validError: false,
-  placeholder: 'Введите пароль...',
-  isErrorIconShow: true,
   customToggleType: undefined,
   customInputState: undefined,
 };

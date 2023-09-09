@@ -1,0 +1,14 @@
+@import '../../../globalStyle/mixins';
+@import '../../../globalStyle/variables';
+
+.mailingForm {
+  width: 100%;
+
+  &__title {
+    @include Body1;
+  }
+
+  &__input {
+    margin: 24px 0 16px;
+  }
+}
