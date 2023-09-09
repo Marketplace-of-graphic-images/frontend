@@ -51,7 +51,7 @@ const PopupWrapper: FC<PopupProps> = (
       <section
         className={styles.popupWrapper}
         style={{ display: isOpen ? 'block' : 'none' }}
-        onClick={handleClickOverlay}>
+        onMouseDown={handleClickOverlay}>
         {children}
       </section>
     ),

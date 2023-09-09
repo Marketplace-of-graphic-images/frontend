@@ -1,0 +1,30 @@
+@import '../../../../globalStyle/variables';
+@import '../../../../globalStyle/mixins';
+
+.footerList {
+
+  &__list {
+    list-style: url('../../../../assets/images/icons/ArrowListMarker.svg');
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 15px;
+  }
+
+  &__title {
+    @include Body1;
+    margin-bottom: 16px;
+  }
+
+  &__item {
+    list-style: inherit;
+  }
+
+  &__link {
+    @include Link_small;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

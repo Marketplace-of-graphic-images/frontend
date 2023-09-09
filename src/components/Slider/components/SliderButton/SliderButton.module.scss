@@ -1,0 +1,40 @@
+.sliderButton {
+  width: 36px;
+  height: 36px;
+  z-index: 10;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:disabled:hover {
+    opacity: 1;
+  }
+
+  &__left {
+    background: url("../../../../assets/images/icons/ArrowLeftIcon.svg") center no-repeat;
+
+    &_disabled {
+      background: url("../../../../assets/images/icons/ArrowLeftIcon_disabled.svg") center no-repeat;
+      cursor: unset;
+    }
+  }
+
+  &__right {
+    background: url("../../../../assets/images/icons/ArrowRightIcon.svg") center no-repeat;
+
+    &_disabled {
+      background: url("../../../../assets/images/icons/ArrowRightIcon_disabled.svg") center no-repeat;
+      cursor: unset;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sliderButton {
+    width: 50px;
+    height: 50px;
+    background-size: 70px;
+  }
+}

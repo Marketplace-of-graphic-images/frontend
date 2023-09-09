@@ -2,7 +2,25 @@
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 1400px;
+  max-width: 1440px;
+
+  &__swiper {
+    max-width: 1280px;
+    width: calc(100vw - 160px);
+
+    @media screen and (min-width: 1080px) and (max-width: 1439px) {
+      max-width: 1024px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1079px) {
+      max-width: 754px;
+    }
+
+    @media screen and (max-width: 767px) {
+      //width: calc(100vw - 40px);
+      width: 100vw;
+    }
+  }
 
   &__list {
     display: flex;
@@ -13,17 +31,21 @@
     margin: 0 24px;
   }
 
-  &__container {
-    display: flex;
-    gap: 24px;
-    transition: transform 0.3s ease-in-out;
+  &__leftBtn {
+    margin: 0 24px 60px 0;
+    z-index: 10;
+
+    @media screen and (max-width: 767px) {
+      margin: 0 -50px 60px 0;
+    }
   }
 
-  &__btn {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #029992;
-    font-size: 25px;
-    background-color: aliceblue;
+  &__rightBtn {
+    margin: 0 0 60px 24px;
+    z-index: 10;
+
+    @media screen and (max-width: 767px) {
+      margin: 0 0 60px -50px;
+    }
   }
 }
