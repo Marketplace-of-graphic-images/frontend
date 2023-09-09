@@ -1,4 +1,5 @@
 @import '../../../globalStyle/mixins.scss';
+@import '../../../globalStyle//variables.scss';
 
 .container {
   position: relative;
@@ -16,6 +17,9 @@
 .forgotPassword {
   display: flex;
   align-self: flex-end;
+}
+.globalEror {
+  color: $error-color
 }
 
 .title {

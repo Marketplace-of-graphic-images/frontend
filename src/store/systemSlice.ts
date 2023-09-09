@@ -5,17 +5,21 @@ type Role = 'guest' | 'user' | 'author';
 type TSystemState = {
   isLoggedIn: boolean,
   userRole: Role,
+  isLoading: boolean
 };
 
 const initialState: TSystemState = {
   isLoggedIn: false,
-  userRole: 'guest' as Role,
+  userRole: 'user' as Role,
+  isLoading: false,
 };
 
 const systemSlice = createSlice({
   name: 'system',
   initialState,
   reducers: {
+    isLoadingOn: (state:TSystemState) => ({ ...state, isLoading: true }),
+    isLoadingOff: (state:TSystemState) => ({ ...state, isLoading: false }),
     onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),
     onLogout: (state: TSystemState) => ({ ...state, isLoggedIn: false }),
     // временная логика
@@ -28,6 +32,8 @@ const systemSlice = createSlice({
 const systemReducer = systemSlice.reducer;
 export const {
   onLogin,
+  isLoadingOn,
+  isLoadingOff,
   onLogout,
   setGuestRole,
   setUserRole,

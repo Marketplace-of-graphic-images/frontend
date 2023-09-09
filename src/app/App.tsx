@@ -1,8 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
-import Main from '../pages/main/main';
-import YandexAuth from '../pages/yandexAuth/yandexAuth';
+import { Main, Profile, YandexAuth } from '../pages';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
 import { useDispatch, useSelector } from '../services/hooks';
@@ -24,7 +23,6 @@ const App = () => {
   return (
     <div className='App'>
       <Header />
-
       <Routes>
         <Route
           path='yandexauth'
@@ -33,10 +31,14 @@ const App = () => {
           path='/'
           element={<Main />} />
         <Route
+          path='/profile'
+          element={<Profile />} />
+          
+        <Route
           path='/test'
           element={(
             <PrivateRoute path='/'>
-              <Main />
+              <Profile />
             </PrivateRoute>
           )} />
       </Routes>
