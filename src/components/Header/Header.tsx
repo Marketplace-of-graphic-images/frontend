@@ -19,7 +19,7 @@ import styles from './Header.module.scss';
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  const { userRole } = useSelector((state) => state.system);
 
   const openRegisterModal = () => {
     dispatch(openModalRegister());
@@ -62,7 +62,7 @@ const Header = () => {
           </nav>
         </div>
         
-        {!isLoggedIn ? (
+        {userRole === 'guest' ? (
           <div className={styles.rightBlock}> 
             <LinkWordButton buttonName='Войти' onClick={openAuthModal} />
             <UniversalButton onClick={openRegisterModal} type='button' width='174' height='47'>

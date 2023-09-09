@@ -9,12 +9,15 @@ import { setAuthorRole, setGuestRole, setUserRole } from '../../store';
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  const { userRole } = useSelector((state) => state.system);
   
   return (
     <main className={styles.main}>
 
       <div className={styles.temporaryMenu}>
+        <UniversalButton width={60} onClick={() => dispatch(setGuestRole())}>
+          Гость
+        </UniversalButton>
         <UniversalButton width={60} onClick={() => dispatch(setUserRole())}>
           Юзер
         </UniversalButton>
@@ -23,9 +26,9 @@ const Main = () => {
         </UniversalButton>
       </div>
 
-      {!isLoggedIn && <MainGuest />}
-      {(userRole === 'user' && isLoggedIn) && <MainUser />}
-      {(userRole === 'author' && isLoggedIn) && <MainAuthor />}
+      {userRole === 'guest' && <MainGuest />}
+      {userRole === 'user' && <MainUser />}
+      {userRole === 'author' && <MainAuthor />}
     </main>
   );
 };
