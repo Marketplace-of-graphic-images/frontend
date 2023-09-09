@@ -35,7 +35,7 @@ const AuthorizationForm = () => {
   };
   const authUserRequest = (e:SyntheticEvent) => {
     e.preventDefault();
-    dispatch(loginUserThunk({ email: values.login, password: values.password }));
+    dispatch(loginUserThunk({ email: values.email, password: values.password }));
   };
   /* eslint-disable spaced-comment */
   return (
@@ -49,18 +49,18 @@ const AuthorizationForm = () => {
 
       <UniversalInput
         id={AUTH_LOGIN_ID}
-        name='username'
+        name='email'
         type='text'
         maxLength={254}
-        value={values.username || ''}
+        value={values.email || ''}
         onChange={handleChange}
-        validError={errors.username}
+        validError={errors.email}
         isErrorIconShow={false}
         errorMessage={emailAuthErr}
         required
         placeholder='Введите имя или Email...'
         label='Адрес электронной почты или имя пользователя'
-        errorType='username'
+        errorType='email'
         autoFocus />
 
       <PasswordInput
