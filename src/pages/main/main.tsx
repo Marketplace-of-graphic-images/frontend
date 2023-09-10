@@ -14,6 +14,7 @@ const Main = () => {
   return (
     <main className={styles.main}>
 
+      {isLoggedIn && (
       <div className={styles.temporaryMenu}>
         <UniversalButton width={60} onClick={() => dispatch(setUserRole())}>
           Юзер
@@ -22,6 +23,7 @@ const Main = () => {
           Автор
         </UniversalButton>
       </div>
+      )}
 
       {!isLoggedIn && <MainGuest />}
       {(userRole === 'user' && isLoggedIn) && <MainUser />}
