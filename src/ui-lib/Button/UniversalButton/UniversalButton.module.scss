@@ -9,7 +9,7 @@
   cursor: pointer;
   border-radius: 8px;
   border: none;
-  background: #029992;
+  background: $accent-color;
   color: var(--white, #fff);
 
   @include Body;
@@ -20,8 +20,11 @@
   }
 
   &:disabled {
-    background: $disabled-color;
     cursor:no-drop;
+
+    &:hover {
+      background: $accent-color;
+    }
   }
 }
 
