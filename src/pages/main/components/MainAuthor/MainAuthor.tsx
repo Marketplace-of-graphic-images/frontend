@@ -25,11 +25,12 @@ const MainAuthor = () => {
   ]), []);
 
   const { user } = useSelector((state) => state);
-  console.log(user);
   
   return (
     <>
-      <UserInfo user={user} />
+      <UserInfo 
+        user={user} 
+        roleUser='author' />
       <Wallet />
       <SearchSection />
 

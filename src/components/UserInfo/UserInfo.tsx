@@ -7,10 +7,11 @@ import { UniversalButton } from 'ui-lib/Button';
 import styles from './UserInfo.module.scss';
 
 interface IUserData {
-  user: TUser
+  user: TUser,
+  roleUser: string
 }
 
-const UserInfo: FC<IUserData> = ({ user }) => {
+const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   const [userImg, setUserImg] = useState('');
   const [file, setFile] = useState<File>();
   // Фэйковая роль, достаём из user.
@@ -44,7 +45,7 @@ const UserInfo: FC<IUserData> = ({ user }) => {
       <h3 className={styles.avatar_userNick}>
         {userData?.name}
       </h3>
-      {userRole === 'author' ? (
+      {roleUser === 'author' ? (
         <ul className={styles.avatar_datalist}>
           <li id='public' className={styles.avatar_list}>
             {userData?.id}
