@@ -1,32 +1,29 @@
 import React, { ReactComponentElement, FC } from 'react';
-import FieldErrorIcon, { ErrorTypes } from '../../other/FieldError/FieldErrorIcon';
 import styles from './UniversalInput.module.scss';
 
 export interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'> {
-  errorMessage?: string | null;
+  errorMessage?: string;
+  errorDescription?: string;
+  apiErrorMessage?: string;
   label?: string;
   type?: string;
   validError?: boolean;
-  placeholder?: string;
   icon?: ReactComponentElement<FC> | null;
-  isErrorIconShow?: boolean;
   id: string;
-  errorType?: ErrorTypes;
   borderColor?: 'black' | 'white';
   className?: string;
 }
 
 const UniversalInput: React.FC<IUniversalInput> = (
   {
-    errorMessage,
+    errorMessage = '',
+    errorDescription = '',
+    apiErrorMessage = '',
     label,
     id,
     type = 'text',
-    placeholder,
     validError = false,
     icon = null,
-    isErrorIconShow = true,
-    errorType = 'username',
     borderColor = 'black',
     className = '',
     ...rest
@@ -35,49 +32,60 @@ const UniversalInput: React.FC<IUniversalInput> = (
   const borderColorClass = (color) => {
     switch (true) {
       case color === 'white':
-        return styles.inputContainer_border_white;
+        return styles.universalInput_border_white;
       
       default:
-        return styles.inputContainer_border_black;
+        return styles.universalInput_border_black;
     }
   };
   
   return (
-    <div>
-      {label !== '' && <label className={styles.label} htmlFor={id}>{label}</label>}
+    <div className={styles.universalInput__container}>
 
       <div
         className={`
-          ${styles.inputContainer} ${errorMessage || validError ? styles.warning : ''} 
+          ${styles.universalInput} ${apiErrorMessage || validError ? styles.universalInput__warning : ''} 
           ${borderColorClass(borderColor)} ${className}`}>
+
         <input
           id={id}
-          className={styles.input}
-          placeholder={placeholder}
+          className={styles.universalInput__input}
+          placeholder='input'
           type={type}
           {...rest} />
 
-        {icon && icon}
+        {label !== '' && <label className={styles.universalInput__label} htmlFor={id}>{label}</label>}
 
-        {(errorMessage || validError) && isErrorIconShow && (
-          <FieldErrorIcon errorType={errorType} />
-        )}
+        {icon && icon}
+        
       </div>
 
-      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+      {(validError || apiErrorMessage) && (
+        <div className={styles.universalInput__errorContainer}>
+
+          <p className={styles.universalInput__errorMessage}>
+            {apiErrorMessage !== '' ? apiErrorMessage : errorMessage}
+          </p>
+
+          {errorDescription && (
+            <p className={styles.universalInput__errorDescription}>{errorDescription}</p>
+          )}
+
+        </div>
+      )}
+
     </div>
   );
 };
 
 UniversalInput.defaultProps = {
   errorMessage: '',
+  errorDescription: '',
+  apiErrorMessage: '',
   label: '',
   type: 'text',
   validError: false,
-  placeholder: '',
   icon: null,
-  isErrorIconShow: true,
-  errorType: 'username',
   borderColor: 'black',
   className: '',
 };
