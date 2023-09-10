@@ -11,7 +11,13 @@ const PasswordRecoveryUnionForm = () => {
   const [code, setCode] = useState('');
 
   const {
-    values, handleChange, errors, isValid, resetForm,
+    values,
+    handleChange,
+    errors,
+    errorsText,
+    errorsDescription,
+    isValid,
+    resetForm,
   } = useValidation();
 
   const dispatch = useDispatch();
@@ -42,10 +48,12 @@ const PasswordRecoveryUnionForm = () => {
     <form onSubmit={handleSubmit}>
       {formStep === 1 && (
         <PasswordRecoveryForm
-          inputName='login'
-          value={values.login || ''}
-          inputError={errors.login || false}
+          inputName='email'
+          value={values.email || ''}
+          inputError={errors.email || false}
           isFormValid={isValid}
+          errorText={errorsText.email}
+          errorDescription={errorsDescription.email}
           onChange={handleChange}
           onSubmitBtnClick={moveToNextStep}
           onBackClick={moveToPrevStep} />
@@ -67,6 +75,8 @@ const PasswordRecoveryUnionForm = () => {
         <PasswordChangeForm
           values={values}
           errors={errors}
+          errorsText={errorsText}
+          errorsDescription={errorsDescription}
           isFormValid={isValid}
           onChange={handleChange}
           onBackClick={moveToPrevStep} />

@@ -109,7 +109,6 @@ const ProfileForm = () => {
             onChange={handleChange}
             validError={errors.username}
             pattern={PATTERN_USERNAME}
-            errorType='username'
             style={{ width: '220px', height: '38px' }}
             required />
 
@@ -122,7 +121,6 @@ const ProfileForm = () => {
             onChange={handleChange}
             validError={errors.name}
             pattern={PATTERN_NAME}
-            errorType='name'
             style={{ width: '220px', height: '38px' }} />
 
           <p className={styles.profileForm__label}>Фамилия</p>
@@ -134,7 +132,6 @@ const ProfileForm = () => {
             onChange={handleChange}
             validError={errors.surname}
             pattern={PATTERN_NAME}
-            errorType='name'
             style={{ width: '220px', height: '38px' }} />
 
           <p className={styles.profileForm__label}>Дата рождения</p>
@@ -164,7 +161,6 @@ const ProfileForm = () => {
                 value={values.web1 || ''}
                 onChange={handleChange}
                 validError={errors.web1}
-                isErrorIconShow={false}
                 style={{ width: '220px', height: '38px' }} />
             </>
           )}
@@ -179,7 +175,6 @@ const ProfileForm = () => {
                 value={values.web2 || ''}
                 onChange={handleChange}
                 validError={errors.web2}
-                isErrorIconShow={false}
                 style={{ width: '220px', height: '38px' }} />
             </>
           )}
@@ -194,7 +189,6 @@ const ProfileForm = () => {
                 value={values.web3 || ''}
                 onChange={handleChange}
                 validError={errors.web3}
-                isErrorIconShow={false}
                 style={{ width: '220px', height: '38px' }} />
             </>
           )}

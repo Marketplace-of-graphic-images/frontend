@@ -14,7 +14,7 @@ const LinkWordButton: React.FC<LinkWordButtonProps> = ({
   ...rest
 }) => (
   <div className={styles.wrapper}>
-    <p>{title}</p>
+    {!!title && <p>{title}</p>}
     <button className={styles.button} type='button' onClick={onClick} {...rest}>
       {buttonName}
     </button>
