@@ -65,8 +65,8 @@ const AuthorizationForm = () => {
         apiErrorMessage={emailAuthErr}
         errorMessage={errorsText.email || ''}
         errorDescription={errorsDescription.email || ''}
+        pattern={undefined}
         required
-        placeholder=''
         autoFocus />
         
       <div className={styles.password}>
@@ -81,7 +81,7 @@ const AuthorizationForm = () => {
           validError={errors.password}
           errorMessage={errorsText.password || ''}
           errorDescription={errorsDescription.password || ''}
-          placeholder=''
+          pattern={undefined}
           required />
 
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />

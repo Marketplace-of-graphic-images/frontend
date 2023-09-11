@@ -9,7 +9,7 @@ const EmailInput: React.FC<IUniversalInput> = ({
   ...rest
 }) => (
   <UniversalInput
-    type='email'
+    type='text'
     label={label}
     pattern={PATTERN_EMAIL}
     {...rest} />

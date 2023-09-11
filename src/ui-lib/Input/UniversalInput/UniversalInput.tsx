@@ -7,6 +7,7 @@ export interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'>
   apiErrorMessage?: string;
   label?: string;
   type?: string;
+  pattern?: string | undefined;
   validError?: boolean;
   icon?: ReactComponentElement<FC> | null;
   id: string;
@@ -22,6 +23,7 @@ const UniversalInput: React.FC<IUniversalInput> = (
     label,
     id,
     type = 'text',
+    pattern,
     validError = false,
     icon = null,
     borderColor = 'black',
@@ -38,7 +40,7 @@ const UniversalInput: React.FC<IUniversalInput> = (
         return styles.universalInput_border_black;
     }
   };
-  
+
   return (
     <div className={styles.universalInput__container}>
 
@@ -52,6 +54,7 @@ const UniversalInput: React.FC<IUniversalInput> = (
           className={styles.universalInput__input}
           placeholder='input'
           type={type}
+          pattern={pattern}
           {...rest} />
 
         {label !== '' && <label className={styles.universalInput__label} htmlFor={id}>{label}</label>}
@@ -88,6 +91,7 @@ UniversalInput.defaultProps = {
   icon: null,
   borderColor: 'black',
   className: '',
+  pattern: undefined,
 };
 
 export default UniversalInput;
