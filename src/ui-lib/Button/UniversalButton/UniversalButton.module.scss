@@ -1,58 +1,74 @@
 @import '/src/globalStyle/variables.scss';
 @import '/src/globalStyle/mixins.scss';
 
-.filledButton {
+.universalButton {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   outline: none;
   cursor: pointer;
+  width: 100%;
   border-radius: 8px;
-  border: none;
-  background: $accent-color;
-  color: var(--white, #fff);
-
+  padding: 13px 24px;
   @include Body;
   @include noselect;
-
-  &:hover {
-    background: $accent_on_hover-color;
-  }
+  transition: background 0.12s ease-in, border 0.12s ease-in, color 0.12s ease-in;
 
   &:disabled {
-    cursor:no-drop;
+    cursor: no-drop;
+  }
+
+  // styles
+  &_filled_green {
+    background: $accent-color;
+    border: none;
+    color: $white-color;
 
     &:hover {
+      background: $accent_on_hover-color;
+      color: $white-color;
+    }
+
+    &:disabled:hover {
       background: $accent-color;
+      color: $white-color;
     }
   }
-}
 
-.emptyButton {
-  @include Body;
-  @include noselect;
+  &_border_green {
+    background: $white-color;
+    border: 1px solid $accent-color;
+    color: $accent-color;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    &:hover {
+      background: $accent_on_hover-color;
+      border: 1px solid $accent_on_hover-color;
+      color: $white-color;
+    }
 
-  outline: none;
-  cursor: pointer;
-  
-  border-radius: 8px;
-  border: 1px solid var(--accent, #029992);
-
-  color: $accent-color;
-  white-space: nowrap;
-
-  &:hover {
-    color: $accent_on_hover-color;
-    border: 1px solid var(--accent, #007873);
+    &:disabled:hover {
+      background: $white-color;
+      border: 1px solid $accent-color;
+      color: $accent-color;
+    }
   }
 
-  &:disabled {
-    color: $disabled-color;
-    border: 1px solid var(--accent, #afbfb5);
-    cursor:no-drop;
+  &_border_black {
+    background: $white-color;
+    border: 1px solid $dark-green-color;
+    color: $dark-green-color;
+
+    &:hover {
+      background: $accent_on_hover-color;
+      border: 1px solid $accent_on_hover-color;
+      color: $white-color;
+    }
+
+    &:disabled:hover {
+      background: $white-color;
+      border: 1px solid $dark-green-color;
+      color: $dark-green-color;
+    }
   }
 }

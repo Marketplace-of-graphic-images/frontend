@@ -204,7 +204,7 @@ const ProfileForm = () => {
 
         <UniversalButton
           width={447}
-          isFilled={false}
+          buttonStyle='borderGreen'
           className={styles.profileForm__submitBtn}
           disabled={!isButtonDisable}>
           Сохранить изменения

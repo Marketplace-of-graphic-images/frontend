@@ -48,7 +48,7 @@ const CollapsibleSection: FC<CollapsibleSectionProps> = (
       <div className={styles.collapsibleSection__btnContainer}>
         {isPublicationBtn && (
 
-          <UniversalButton isFilled={false} width={207}>
+          <UniversalButton buttonStyle='borderGreen' width={207}>
             Загрузить работу
           </UniversalButton>
         )}
