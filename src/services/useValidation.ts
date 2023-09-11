@@ -7,9 +7,12 @@ type Errors = Record<string, boolean>;
 const useValidation = () => {
   const [values, setValues] = useState<Values>({});
   const [checkboxValues, setCheckboxValues] = useState<CheckboxValues>({});
-  const [errors, setErrors] = useState<Errors>({});
   const [isValid, setIsValid] = useState(false);
   const [form, setForm] = useState<HTMLFormElement | null>(null);
+
+  const [errors, setErrors] = useState<Errors>({});
+  const [errorsText, setErrorsText] = useState<Values>({});
+  const [errorsDescription, setErrorsDescription] = useState<Values>({});
 
   useEffect(() => {
     if (form !== null) {
@@ -29,15 +32,39 @@ const useValidation = () => {
     const { target } = event;
     const { name, value, type } = target;
 
+    if (type === 'checkbox') {
+      setCheckboxValues({ ...checkboxValues, [name]: target.checked });
+    } else {
+      setValues({ ...values, [name]: value });
+    }
+
+    let errorText = 'Использованы недопустимые символы';
+    let errorDescription = '';
+
     switch (true) {
-      case type === 'checkbox':
-        setCheckboxValues({ ...checkboxValues, [name]: target.checked });
+      case value === '':
+        errorText = 'Это обязательное поле';
         break;
-      default:
-        setValues({ ...values, [name]: value });
+
+      case name === 'username':
+        errorDescription = 'Минимальная длина: 3 символа. Допускаются только буквы латинского алфавита, цифры и символы:  - _ !  .';
+        break;
+
+      case name === 'email':
+        errorText = 'Некорректный email';
+        errorDescription = 'Допускаются только буквы латинского алфавита, цифры и символы:  @ _ -  .';
+        break;
+
+      case name === 'password':
+        errorDescription = 'Минимальная длина: 8 символов . Можно использовать только буквы латинского алфавита, цифры и символы: - _ ! .';
+        break;
+
+      default: errorText = '';
     }
 
     setErrors({ ...errors, [name]: !target.validity.valid });
+    setErrorsText({ ...errorsText, [name]: errorText });
+    setErrorsDescription({ ...errorsDescription, [name]: errorDescription });
 
     if (form === null) setForm(target.closest('form'));
   };
@@ -62,6 +89,8 @@ const useValidation = () => {
     checkboxValues,
     handleChange,
     errors,
+    errorsText,
+    errorsDescription,
     isValid,
     resetForm,
   };

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styles from './PasswordRecoveryForm.module.scss';
 import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
-import { UniversalInput } from '../../../ui-lib/Input';
+import { EmailInput } from '../../../ui-lib/Input';
 import { RECOVERY_LOGIN_ID } from '../../../constants/inputsId';
 
 interface PasswordRecoveryFormProps {
@@ -13,6 +13,8 @@ interface PasswordRecoveryFormProps {
   onSubmitBtnClick: () => void;
   onBackClick: () => void;
   apiError?: boolean;
+  errorText: string;
+  errorDescription: string;
 }
 
 const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
@@ -25,6 +27,8 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
     onBackClick,
     onSubmitBtnClick,
     apiError = false,
+    errorText,
+    errorDescription,
   },
 ) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -40,10 +44,11 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
       <h1 className={styles.passwordRecoveryForm__title}>Восстановление пароля</h1>
 
       <p className={styles.passwordRecoveryForm__description}>
-        Для восстановления пароля введите вашу электронную почту или имя пользователя.
+        Для восстановления пароля введите электронную почту,
+        на которую зарегистрирован аккаунт.
       </p>
 
-      <UniversalInput
+      <EmailInput
         id={RECOVERY_LOGIN_ID}
         value={value}
         name={inputName}
@@ -52,15 +57,14 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
         maxLength={254}
         required
         validError={inputError}
-        label='Адрес электронной почты или имя пользователя'
-        isErrorIconShow={false}
+        errorMessage={errorText}
+        errorDescription={errorDescription}
         autoFocus />
 
       {apiError
         && (
           <p className={styles.passwordRecoveryForm__error}>
-            Введённый электронный адрес или имя пользователя
-            не зарегистрированы
+            Электронный адрес не зарегистрирован
           </p>
         )}
 

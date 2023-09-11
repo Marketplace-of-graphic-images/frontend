@@ -1,5 +1,5 @@
 @import '../../../globalStyle/mixins.scss';
-@import '../../../globalStyle//variables.scss';
+@import '../../../globalStyle/variables.scss';
 
 .container {
   position: relative;
@@ -14,15 +14,27 @@
   border-radius: 16px;
 }
 
-.forgotPassword {
+.password {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
   align-self: flex-end;
 }
-.globalEror {
+
+.globalError {
   color: $error-color
 }
 
 .title {
   @include Header;
+  align-self: start;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}

@@ -1,33 +1,61 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { FC, ReactComponentElement, ReactNode } from 'react';
 import styles from './UniversalButton.module.scss';
 
 interface IUniversalButton extends React.ComponentPropsWithoutRef<'button'> {
-  isFilled?: boolean;
   width?: string | number;
   height?: string | number;
   className?: string;
+  buttonStyle?: 'filledGreen' | 'borderGreen' | 'borderBlack';
+  icon?: ReactComponentElement<FC> | null;
+  children: ReactNode;
 }
 
 const UniversalButton: React.FC<IUniversalButton> = ({
-  width, height,
-  isFilled,
+  width,
+  height,
   type = 'submit',
-  className = '',
+  className = '', 
+  buttonStyle = 'filledGreen',
+  icon = null,
+  children,
   ...rest
-}) => (
-  <button
-    type={type}
-    style={{ width: `${String(width)}px`, height: `${String(height)}px` }}
-    className={`${isFilled ? styles.filledButton : styles.emptyButton} ${className}`}
-    {...rest} />
-);
+}) => {
+  const buttonStyleClass = (style) => {
+    switch (true) {
+      case style === 'borderGreen':
+        return styles.universalButton_border_green;
+
+      case style === 'borderBlack':
+        return styles.universalButton_border_black;
+
+      default:
+        return styles.universalButton_filled_green;
+    }
+  };
+
+  const widthValue = (width === 'max-content' || width === 'min-content') ? width : `${String(width)}px`;
+  
+  return (
+    <button
+      type={type}
+      style={{ maxWidth: widthValue, height: `${String(height)}px` }}
+      className={`${styles.universalButton} ${buttonStyleClass(buttonStyle)} ${className}`}
+      {...rest}>
+
+      {children}
+      {icon}
+
+    </button>
+  );
+};
 
 UniversalButton.defaultProps = {
-  isFilled: true,
   width: 484,
   height: 48,
   className: '',
+  buttonStyle: 'filledGreen',
+  icon: null,
 };
 
 export default UniversalButton;

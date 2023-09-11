@@ -3,13 +3,13 @@ import styles from './ButtonWithArrow.module.scss';
 import ArrowUp from '../../Icons/ArrowUp/ArrowUp';
 import ArrowDown from '../../Icons/ArrowDown/ArrowDown';
 
-interface ButtonWithBorderProps extends ComponentPropsWithoutRef<'button'> {
+interface ButtonWithArrowProps extends ComponentPropsWithoutRef<'button'> {
   text: string;
   onClick: () => void;
   isBorder?: boolean;
 }
 
-const ButtonWithArrow: FC<ButtonWithBorderProps> = (
+const ButtonWithArrow: FC<ButtonWithArrowProps> = (
   {
     text,
     onClick,

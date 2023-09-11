@@ -25,6 +25,8 @@ const RegistrationForm = () => {
     checkboxValues,
     handleChange,
     errors,
+    errorsText,
+    errorsDescription,
     isValid,
   } = useValidation();
 
@@ -75,10 +77,11 @@ const RegistrationForm = () => {
             onChange={handleChange}
             pattern={PATTERN_USERNAME}
             validError={errors.username}
-            errorType='username'
+            errorMessage={errorsText.username || ''}
+            errorDescription={errorsDescription.username || ''}
             label='Имя пользователя'
-            required
             placeholder='Введите имя...'
+            required
             autoFocus />
 
           <EmailInput
@@ -88,6 +91,8 @@ const RegistrationForm = () => {
             onChange={handleChange}
             pattern={PATTERN_EMAIL}
             validError={errors.email}
+            errorMessage={errorsText.email || ''}
+            errorDescription={errorsDescription.email || ''}
             required />
 
           <PasswordInput
@@ -97,6 +102,9 @@ const RegistrationForm = () => {
             onChange={handleChange}
             pattern={PATTERN_PASSWORD}
             validError={errors.password}
+            errorMessage={errorsText.password || ''}
+            errorDescription={errorsDescription.password || ''}
+            autoComplete='new-password'
             required />
 
           <div className={styles.checkBox}>

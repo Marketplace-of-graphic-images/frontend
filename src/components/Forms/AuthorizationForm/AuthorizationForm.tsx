@@ -1,7 +1,7 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent } from 'react';
 import styles from './AuthorizationForm.module.scss';
 import { LoginWithButton, UniversalButton } from '../../../ui-lib/Button';
-import { PasswordInput, UniversalInput } from '../../../ui-lib/Input';
+import { EmailInput, PasswordInput } from '../../../ui-lib/Input';
 import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import { YandexIcon } from '../../../ui-lib/Icons';
@@ -9,6 +9,7 @@ import useValidation from '../../../services/useValidation';
 import { useDispatch, useSelector } from '../../../services/hooks';
 import loginUserThunk from '../../../thunks/login-user-thunk';
 import {
+  clearAuthErr,
   openModalPassRecovery, openModalRegister,
 } from '../../../store';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
@@ -21,6 +22,8 @@ const AuthorizationForm = () => {
     values,
     handleChange,
     errors,
+    errorsText,
+    errorsDescription,
     isValid,
   } = useValidation();
   const dispatch = useDispatch();
@@ -35,52 +38,62 @@ const AuthorizationForm = () => {
   };
   const authUserRequest = (e:SyntheticEvent) => {
     e.preventDefault();
-    dispatch(loginUserThunk({ email: values.login, password: values.password }));
+    dispatch(loginUserThunk({ email: values.email, password: values.password }));
   };
-  /* eslint-disable spaced-comment */
+
+  const resetApiErrors = () => {
+    dispatch(clearAuthErr());
+  };
+
   return (
     <form onSubmit={authUserRequest} className={styles.container}>
       <h1 className={styles.title}>Авторизация</h1>
       <YandexLogin clientID={clientID}>
-        <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
+        <LoginWithButton title='Войти с Яндекс ID' icon={<YandexIcon />} />
       </YandexLogin>
-      *
+
       <LineWithWord text='Или' />
 
-      <UniversalInput
+      <EmailInput
         id={AUTH_LOGIN_ID}
-        name='username'
-        type='text'
+        name='email'
         maxLength={254}
-        value={values.username || ''}
+        value={values.email || ''}
         onChange={handleChange}
-        validError={errors.username}
-        isErrorIconShow={false}
-        errorMessage={emailAuthErr}
+        onFocus={resetApiErrors}
+        validError={errors.email}
+        apiErrorMessage={emailAuthErr}
+        errorMessage={errorsText.email || ''}
+        errorDescription={errorsDescription.email || ''}
+        pattern={undefined}
         required
-        placeholder='Введите имя или Email...'
-        label='Адрес электронной почты или имя пользователя'
-        errorType='username'
         autoFocus />
-
-      <PasswordInput
-        id={AUTH_PASSWORD_ID}
-        name='password'
-        maxLength={254}
-        value={values.password || ''}
-        onChange={handleChange}
-        validError={errors.password}
-        isErrorIconShow={false}
-        apiError={passwordAuthErr}
-        required />
         
-      <div className={styles.forgotPassword}>
+      <div className={styles.password}>
+        <PasswordInput
+          id={AUTH_PASSWORD_ID}
+          name='password'
+          maxLength={254}
+          value={values.password || ''}
+          onChange={handleChange}
+          onFocus={resetApiErrors}
+          apiErrorMessage={passwordAuthErr}
+          validError={errors.password}
+          errorMessage={errorsText.password || ''}
+          errorDescription={errorsDescription.password || ''}
+          pattern={undefined}
+          required />
+
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
       </div>
-      {generalAuthErr && <p className={styles.globalEror}>generalAuthErr</p>}
 
-      <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>
-      <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
+      {generalAuthErr && <p className={styles.globalError}>{generalAuthErr}</p>}
+
+      <div className={styles.buttons}>
+        <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>
+        <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
+      </div>
+
     </form>
   );
 };
