@@ -104,6 +104,7 @@ const RegistrationForm = () => {
             validError={errors.password}
             errorMessage={errorsText.password || ''}
             errorDescription={errorsDescription.password || ''}
+            autoComplete='new-password'
             required />
 
           <div className={styles.checkBox}>

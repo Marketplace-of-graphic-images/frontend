@@ -64,6 +64,16 @@
     padding-top: 25px;
   }
 
+  &__input:valid ~ &__label {
+    @include Body3;
+    color: $grey-color;
+    transform: translate(-4px, -38px);
+  }
+
+  &:has(&__input:valid) {
+    padding-top: 25px;
+  }
+
   &__container:has(&__input:focus) &__errorDescription {
     display: inline;
   }
