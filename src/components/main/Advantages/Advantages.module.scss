@@ -2,6 +2,11 @@
 @use '../../../globalStyle/mixins' as m;
 
 .advantages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include m.SectionContainer;
+  max-width: 1280px;
   padding: 48px 0;
   margin: 0 auto;
   color: v.$text-green-color;
@@ -14,7 +19,7 @@
   }
 
   &__container_card {
-    width: 1110px;
+    max-width: 1110px;
     gap: 32px;
     display: flex;
     justify-content: center;
@@ -22,8 +27,8 @@
   }
 
   &__card {
-    width: 516px;
-    height: 143px;
+    max-width: 516px;
+    min-height: 143px;
     padding: 20px 24px;
     display: flex;
     gap: 16px;
