@@ -4,7 +4,7 @@
 .AdSection {
     min-height: 183px;
     max-width: 1440px;
-    width: 100%;
+    @include m.SectionContainer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,14 +15,18 @@
     min-height: 87px;
     background-color: v.$light_green-color;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 48px;
+    gap: 20px 48px;
     padding: 20px 50px;
     border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+
+    @media screen and (max-width: 700px) {
+        flex-wrap: wrap;
+    }
 }
 .title {
     @include m.Header2;
-    color: v.$text-green-color;
+    color: v.$dark-green-color;
 }
