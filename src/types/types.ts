@@ -1,6 +1,6 @@
 export type TUser = {
-  email: string;
-  username: string;
-  bio?: string;
   id: number | null,
+  username: string | null,
+  email: string | null,
+  bio?: string | null,
 };

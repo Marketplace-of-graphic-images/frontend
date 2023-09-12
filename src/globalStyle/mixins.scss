@@ -87,7 +87,13 @@
   line-height: 140%;
   font-style: normal;
 }
-
+@mixin Big_Numbers {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 140%;
+  font-style: normal;
+}
 @mixin container {
   width: 100%;
   max-width: calc(1280px + 16px * 2);

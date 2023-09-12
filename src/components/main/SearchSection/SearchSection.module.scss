@@ -23,6 +23,6 @@
 }
 .fastButtons {
     display: flex;
-    margin-top: 16px;
+    flex-wrap: wrap;
     max-width: 846px;
 }
