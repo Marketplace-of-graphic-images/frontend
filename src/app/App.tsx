@@ -7,6 +7,7 @@ import {
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
 import { useDispatch, useSelector } from '../services/hooks';
+import Loader from '../components/Loader/Loader';
 import { closeModal } from '../store';
 import {
   PasswordRecoveryUnionForm,
@@ -18,6 +19,7 @@ import PrivateRoute from '../services/PrivateRoute';
 const App = () => {
   const dispatch = useDispatch();
   const { authModal, registerModal, passRecoveryModal } = useSelector((state) => state.modals);
+  const { isLoading } = useSelector((state) => state.system);
   const closeModalState = () => {
     dispatch(closeModal());
   };
@@ -34,9 +36,6 @@ const App = () => {
           element={<Main />} />
         <Route
           path='/profile'
-          element={<Profile />} />
-        <Route
-          path='/test'
           element={(
             <PrivateRoute path='/'>
               <Profile />
@@ -47,6 +46,7 @@ const App = () => {
           element={<NotFound />} />
       </Routes>
       <Footer />
+      {isLoading && <Loader />}
 
       <Popup isOpen={authModal} onClose={closeModalState}>
         <AuthorizationForm />
