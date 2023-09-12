@@ -17,10 +17,11 @@ import notificationsNo from './NotificationsNo.svg';
 import magniferIcon from './MagniferIcon.svg';
 import Loupe from './Loupe.svg';
 import calendarIcon from './CalendarIcon.svg';
+import pigIcon from './Savings.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
   notificationsYes, notificationsNo, calendarIcon,
-  refreshIcon, magniferIcon, Loupe, arrowDownIcon,
+  refreshIcon, magniferIcon, Loupe, arrowDownIcon, pigIcon,
 };

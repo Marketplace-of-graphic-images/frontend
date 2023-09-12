@@ -1,7 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
-import { Main, Profile, YandexAuth } from '../pages';
+import { 
+  Main, Profile, YandexAuth, NotFound, 
+} from '../pages';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
 import { useDispatch, useSelector } from '../services/hooks';
@@ -33,7 +35,6 @@ const App = () => {
         <Route
           path='/profile'
           element={<Profile />} />
-          
         <Route
           path='/test'
           element={(
@@ -41,8 +42,10 @@ const App = () => {
               <Profile />
             </PrivateRoute>
           )} />
+        <Route 
+          path='*'
+          element={<NotFound />} />
       </Routes>
-
       <Footer />
 
       <Popup isOpen={authModal} onClose={closeModalState}>
