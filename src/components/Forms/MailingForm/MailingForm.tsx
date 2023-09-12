@@ -30,8 +30,6 @@ const MailingForm: FC = () => {
         value={values.email || ''}
         validError={errors.email}
         onChange={handleChange}
-        placeholder='Email'
-        label=''
         borderColor='white'
         className={styles.mailingForm__input}
         required />

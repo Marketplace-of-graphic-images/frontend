@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styles from './Footer.module.scss';
-import { UniversalButton } from '../../ui-lib/Button';
 import FooterList from './components/FooterList/FooterList';
 import MailingForm from '../Forms/MailingForm/MailingForm';
 import { FOOTER_LINKS_COLUMN_1, FOOTER_LINKS_COLUMN_2, FOOTER_LINKS_COLUMN_3 } from '../../constants/layout';

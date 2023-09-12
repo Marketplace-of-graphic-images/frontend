@@ -19,6 +19,11 @@
 
   &_border_white {
     border-bottom: 1px solid $white-color;
+    color: $white-color;
+  }
+
+  &_border_white > &__label {
+    color: $white-on-click-color !important;
   }
 
   &__container {
