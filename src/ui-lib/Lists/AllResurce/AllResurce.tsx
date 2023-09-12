@@ -3,7 +3,7 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './AllResurce.module.scss';
 
-const AllResurce = () => {
+const AllResource = () => {
   const FakeData = [
     'собаки',
     'коты',
@@ -22,4 +22,4 @@ const AllResurce = () => {
     </div>
   );
 };
-export default AllResurce;
+export default AllResource;

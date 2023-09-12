@@ -3,7 +3,7 @@ import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
   arrowDownIcon, notificationsNo, notificationsYes,
-  refreshIcon, magniferIcon, calendarIcon,
+  refreshIcon, calendarIcon, searchIconGreen, searchIconBlack,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -52,8 +52,11 @@ export const NotificationsNo = (props) => (
 export const NotificationsYes = (props) => (
   <TemplateIcon {...props} icon={notificationsYes} />
 );
-export const MagniferIcon = (props) => (
-  <TemplateIcon {...props} icon={magniferIcon} />
+export const SearchIconBlack = (props) => (
+  <TemplateIcon {...props} icon={searchIconBlack} />
+);
+export const SearchIconGreen = (props) => (
+  <TemplateIcon {...props} icon={searchIconGreen} />
 );
 export const CalendarIcon = (props) => (
   <TemplateIcon {...props} icon={calendarIcon} />

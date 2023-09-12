@@ -2,13 +2,13 @@ import React, { ChangeEventHandler, FC } from 'react';
 import styles from './SearchField.module.scss';
 import { SearchForm } from '../../components/Forms';
 import { SearchButton } from '../Button';
-import AllResurce from '../Lists/AllResurce/AllResurce';
+import AllResource from '../Lists/AllResurce/AllResurce';
 
-interface IsearchField extends React.ComponentPropsWithoutRef<'input'> {
-  data: string
+interface SearchFieldProps extends React.ComponentPropsWithoutRef<'input'> {
+  data: string;
 }
 
-const SearchField: FC<IsearchField> = ({ data }) => {
+const SearchField: FC<SearchFieldProps> = ({ data }) => {
   const [inputText, setInputText] = React.useState('');
 
   const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (event) => (
@@ -38,7 +38,7 @@ const SearchField: FC<IsearchField> = ({ data }) => {
         className={styles.SearchField} 
         onChange={onChangeHandler} />
       <SearchButton />
-      <AllResurce />
+      <AllResource />
     </SearchForm>
   );
 };

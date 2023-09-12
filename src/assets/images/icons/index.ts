@@ -14,7 +14,8 @@ import profileIcon from './ProfileIcon.svg';
 import refreshIcon from './RefreshIcon.svg';
 import notificationsYes from './NotificationsYes.svg';
 import notificationsNo from './NotificationsNo.svg';
-import magniferIcon from './MagniferIcon.svg';
+import searchIconBlack from './SearchIcon_black.svg';
+import searchIconGreen from './SearchIcon_green.svg';
 import Loupe from './Loupe.svg';
 import calendarIcon from './CalendarIcon.svg';
 
@@ -22,5 +23,5 @@ export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
   arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
   notificationsYes, notificationsNo, calendarIcon,
-  refreshIcon, magniferIcon, Loupe, arrowDownIcon,
+  refreshIcon, searchIconBlack, searchIconGreen, Loupe, arrowDownIcon,
 };

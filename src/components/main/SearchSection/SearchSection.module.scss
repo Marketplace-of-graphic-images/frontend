@@ -1,28 +1,33 @@
-@use '../../../globalStyle/mixins.scss' as m;
-@use '../../../globalStyle/variables' as v;
+@import '../../../globalStyle/mixins.scss';
+@import '../../../globalStyle/variables';
 
 .SearchSection {
     width: 100%;
-    height: 310px;
-    background-color: v.$grey-color;
+    min-height: 310px;
+    padding: 60px 0;
+    background-color: $grey-color;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .dataBlock {
-    width: 846px;
-    height: 183px;
+    @include SectionContainer;
+    max-width: 846px;
+    min-height: 183px;
     display: flex;
     flex-direction: column;
 }
 .title {
-    @include m.Header;
-    color: v.$white-color;
+    @include Header;
+    color: $white-color;
     margin-bottom: 48px;
     text-align: center;
 }
 .fastButtons {
     display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-top: 16px;
     max-width: 846px;
+    @include SectionContainer;
 }

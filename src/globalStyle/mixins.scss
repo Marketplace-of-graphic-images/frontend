@@ -1,3 +1,5 @@
+@import "variables";
+
 /*
     Универсальный миксин
     для подключения любого шрифта и начертания
@@ -88,11 +90,16 @@
   font-style: normal;
 }
 
-@mixin container {
-  width: 100%;
-  max-width: calc(1280px + 16px * 2);
-  margin: 0 auto;
-  padding: 0 16px;
+@mixin SectionContainer {
+  width: calc(100% - 2 * $margin-screen-desktop);
+
+  @media screen and (min-width: 768px) and (max-width: 1024px){
+    width: calc(100% - 2 * $margin-screen-tablet);
+  }
+
+  @media screen and (max-width: 767px){
+    width: calc(100% - 2 * $margin-screen-mobile);
+  }
 }
 
 @mixin noselect {
