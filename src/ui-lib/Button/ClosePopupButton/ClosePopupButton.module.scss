@@ -6,7 +6,12 @@
   height: 40px;
   border: none;
   padding: 0;
-  background: url("./ClosePopupButton.svg") center no-repeat;
+  background: url('../../../assets/images/icons/CloseIcon.svg') center no-repeat;
+
+  @media screen and (max-width: 425px) {
+    top: 10px;
+    right: 20px;
+  }
 }
 .close-button:hover {
   opacity: 0.9;

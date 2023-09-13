@@ -17,8 +17,6 @@ import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc';
 
-/* eslint-disable spaced-comment */
-
 const RegistrationForm = () => {
   const {
     values,
@@ -62,7 +60,7 @@ const RegistrationForm = () => {
   return (
     <form onSubmit={handleSubmit} autoComplete='off'>
       {formStep === 1 && (
-        <fieldset className={styles.container}>
+        <div className={styles.container}>
           <h1 className={styles.title}>Создать аккаунт</h1>
           <YandexLogin clientID={clientID}>
             <LoginWithButton title='Войти с помощью Яндекс ID' icon={<YandexIcon />} />
@@ -107,42 +105,51 @@ const RegistrationForm = () => {
             autoComplete='new-password'
             required />
 
-          <div className={styles.checkBox}>
-            <Checkbox
-              name='author'
-              checked={checkboxValues.author || false}
-              onChange={handleChange} />
-            <p>Я являюсь автором контента</p>
-          </div>
-
-          { checkboxValues.author && (
+          <div className={styles.checkBoxContainer}>
             <div className={styles.checkBox}>
               <Checkbox
-                name='authorAgreement'
-                checked={checkboxValues.authorAgreement || false}
+                name='author'
+                checked={checkboxValues.author || false}
+                onChange={handleChange} />
+              <p>Я являюсь автором контента</p>
+            </div>
+
+            { checkboxValues.author && (
+              <div className={styles.checkBox}>
+                <Checkbox
+                  name='authorAgreement'
+                  checked={checkboxValues.authorAgreement || false}
+                  onChange={handleChange}
+                  required />
+
+                <div>
+                  <LinkWordButton
+                    title='Я ознакомлен с законом об'
+                    buttonName='Авторском праве и Смежных правах'
+                    className={styles.linkWordButton} />
+                </div>
+              </div>
+            )}
+
+            <SolidLine />
+
+            <div className={styles.checkBox}>
+              <Checkbox
+                name='agreement'
+                checked={checkboxValues.agreement || false}
                 onChange={handleChange}
                 required />
 
               <div>
-                <LinkWordButton title='Я ознакомлен с законом об' buttonName='Авторском праве' />
-                <LinkWordButton title='и' buttonName='Смежных правах' />
+                Я принимаю условия
+                <LinkWordButton
+                  buttonName='Правил и соглашений об использовании сайта'
+                  className={styles.linkWordButton} />
+                <span> и ознакомлен с </span>
+                <LinkWordButton
+                  buttonName='Политикой Конфиденциальности'
+                  className={styles.linkWordButton} />
               </div>
-            </div>
-          )}
-
-          <SolidLine />
-
-          <div className={styles.checkBox}>
-            <Checkbox
-              name='agreement'
-              checked={checkboxValues.agreement || false}
-              onChange={handleChange}
-              required />
-
-            <div>
-              <LinkWordButton title='Я принимаю условия' buttonName='Правил и соглашения' />
-              об использовании сайта и ознакомлен
-              <LinkWordButton title='с' buttonName='Политикой Конфиденциальности' />
             </div>
           </div>
 
@@ -151,7 +158,7 @@ const RegistrationForm = () => {
           </UniversalButton>
 
           <LinkWordButton onClick={openAuthModal} title='Есть аккаунт?' buttonName='Войти' />
-        </fieldset>
+        </div>
       )}
 
       {formStep === 2 && (
@@ -160,9 +167,8 @@ const RegistrationForm = () => {
           onChange={(val) => setCode(val)}
           onBackClick={() => setFormStep(1)}
           buttonType='submit'
-          email='example@yandex.ru'
-          title='Подтвердите адрес электронной почты'
-          description='Для завершения регистрации введите код, отправленный на почту' />
+          title='Подтвердите электронную почту'
+          description='Введите код, отправленный по указанному при регистрации адресу электронной почты ' />
       )}
     </form>
   );

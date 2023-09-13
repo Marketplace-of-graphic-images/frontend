@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  //width: 484px;
   width: 100%;
   padding-right: 24px;
   flex-shrink: 0;
@@ -62,21 +61,33 @@
     @include Body3;
     color: $grey-color;
     transform: translate(-4px, -38px);
+
+    @media screen and (max-width: 1440px) {
+      transform: translate(-4px, -28px);
+    }
   }
 
   &:has(&__input:not(:placeholder-shown)),
   &:has(&__input:focus) {
     padding-top: 25px;
+
+    @media screen and (max-width: 1440px) {
+      padding-top: 10px;
+    }
   }
 
   &__input:valid ~ &__label {
     @include Body3;
     color: $grey-color;
-    transform: translate(-4px, -38px);
+    transform: translate(-4px, -28px);
   }
 
   &:has(&__input:valid) {
-    padding-top: 25px;
+    padding-top: 10px;
+
+    @media screen and (max-width: 1440px) {
+      padding-top: 15px;
+    }
   }
 
   &__container:has(&__input:focus) &__errorDescription {
@@ -88,20 +99,31 @@
     flex-direction: column;
     gap: 16px;
     margin-top: 4px;
+
+    @media screen and (max-width: 1440px) {
+      gap: 6px;
+    }
   }
 
   &__errorMessage {
     @include Body;
     display: inline-block;
     text-align: start;
-    margin-top: 8px;
     color: $error-color;
+
+    @media screen and (max-width: 1440px) {
+      @include Body3;
+    }
   }
 
   &__errorDescription {
     display: none;
     @include Body;
     color: $grey-color;
+
+    @media screen and (max-width: 1440px) {
+      @include Body3;
+    }
   }
 
   &__warning {

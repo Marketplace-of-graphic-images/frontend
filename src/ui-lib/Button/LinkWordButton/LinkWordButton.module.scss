@@ -3,18 +3,23 @@
 
 .wrapper {
   @include Body;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 8px;
+  display: inline;
+  overflow-wrap: break-word;
 }
 
 .button {
+  display: inline;
   color: $accent-color;
   text-decoration: underline;
   font-weight: 600;
   padding: 0;
+  text-align: left;
 }
+
 .button:hover {
   opacity: 0.8;
+}
+
+.text {
+  width: fit-content;
 }

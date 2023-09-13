@@ -17,11 +17,12 @@ import notificationsNo from './NotificationsNo.svg';
 import searchIconBlack from './SearchIcon_black.svg';
 import searchIconGreen from './SearchIcon_green.svg';
 import calendarIcon from './CalendarIcon.svg';
+import closeIcon from './CloseIcon.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
   arrowUpIcon, backIcon, bricksIconGreen, premiumIcon, profileIcon,
   notificationsYes, notificationsNo, calendarIcon,
   refreshIconGreen, searchIconBlack, searchIconGreen,
-  arrowDownIcon, authorContentIconGreen,
+  arrowDownIcon, authorContentIconGreen, closeIcon,
 };

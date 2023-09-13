@@ -11,7 +11,6 @@ interface PasswordRecoveryFormProps {
   isFormValid: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmitBtnClick: () => void;
-  onBackClick: () => void;
   apiError?: boolean;
   errorText: string;
   errorDescription: string;
@@ -24,7 +23,6 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
     inputError,
     isFormValid,
     onChange,
-    onBackClick,
     onSubmitBtnClick,
     apiError = false,
     errorText,
@@ -38,9 +36,8 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
   };
 
   return (
-    <fieldset className={styles.passwordRecoveryForm}>
+    <div className={styles.passwordRecoveryForm}>
 
-      <BackPopupButton onClick={onBackClick} />
       <h1 className={styles.passwordRecoveryForm__title}>Восстановление пароля</h1>
 
       <p className={styles.passwordRecoveryForm__description}>
@@ -71,7 +68,7 @@ const PasswordRecoveryForm: FC<PasswordRecoveryFormProps> = (
       <UniversalButton type='button' disabled={!isFormValid} onClick={onSubmitBtnClick}>
         Далее
       </UniversalButton>
-    </fieldset>
+    </div>
   );
 };
 

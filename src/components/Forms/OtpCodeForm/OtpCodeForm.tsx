@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styles from './OtpCodeForm.module.scss';
-import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
+import { BackPopupButton, LinkWordButton, UniversalButton } from '../../../ui-lib/Button';
 import Timer from '../../../ui-lib/Timer/Timer';
 import OtpCode from '../../../ui-lib/OptCode/OtpCode';
 
@@ -11,7 +11,6 @@ interface OtpCodeFormProps {
   onBackClick: () => void;
   title: string;
   description: string;
-  email: string;
   buttonType: 'button' | 'submit' | 'reset';
   apiError?: boolean;
 }
@@ -24,18 +23,16 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
     onBackClick,
     title,
     description,
-    email,
     buttonType,
     apiError = false,
   },
 ) => (
-  <fieldset className={styles.otpCodeForm}>
-    <BackPopupButton onClick={onBackClick} />
+  <div className={styles.otpCodeForm}>
 
     <h1 className={styles.otpCodeForm__title}>{title}</h1>
     <p className={styles.otpCodeForm__description}>
       {description}
-      <span className={styles.otpCodeForm__mailAccent}>{email}</span>
+      <LinkWordButton buttonName='Изменить' onClick={onBackClick} />
     </p>
 
     <OtpCode
@@ -53,7 +50,7 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
         )}
 
     <div className={styles.otpCodeForm__sendPassword}>
-      <Timer numberOfminutes={0} numberOfSeconds={59} />
+      <Timer numberOfMinutes={0} numberOfSeconds={59} />
     </div>
 
     <UniversalButton
@@ -62,7 +59,7 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
       onClick={onSubmitBtnClick}>
       Подтвердить
     </UniversalButton>
-  </fieldset>
+  </div>
 );
 
 OtpCodeForm.defaultProps = {

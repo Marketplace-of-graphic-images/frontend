@@ -10,6 +10,11 @@
   border-radius: 8px;
   @include m.Code;
   text-align: center;
+
+  @media screen and (max-width: 380px) {
+    width: 32px;
+    height: 40px;
+  }
 }
 .input-code:focus {
   appearance: none;

@@ -82,7 +82,7 @@ const YandexLogin: FC<IYandexLogin> = ({ clientID, children }) => {
   const cloned = React.cloneElement(children, { onClick: onLogin });
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       {cloned}
       {frameRedirectTo && <HiddenFrame redirectTo={frameRedirectTo} />}
     </div>
