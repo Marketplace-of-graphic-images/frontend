@@ -21,13 +21,18 @@
   &__container_card {
     max-width: 1110px;
     gap: 32px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    //display: flex;
+    //justify-content: center;
+    //flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__card {
-    max-width: 516px;
     min-height: 143px;
     padding: 20px 24px;
     display: flex;
