@@ -4,7 +4,7 @@ import {
   arrowUpIcon, backIcon, bricksIconGreen, premiumIcon, profileIcon,
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
   calendarIcon, searchIconGreen, searchIconBlack,
-  authorContentIconGreen,
+  authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -61,4 +61,10 @@ export const CalendarIcon = (props) => (
 );
 export const AuthorContentIconGreen = (props) => (
   <TemplateIcon {...props} icon={authorContentIconGreen} />
+);
+export const ArrowLeftIconGreen = (props) => (
+  <TemplateIcon {...props} icon={arrowLeftIconGreen} />
+);
+export const ArrowRightIconGreen = (props) => (
+  <TemplateIcon {...props} icon={arrowRightIconGreen} />
 );
