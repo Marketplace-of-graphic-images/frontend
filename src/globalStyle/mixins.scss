@@ -90,6 +90,14 @@
   font-style: normal;
 }
 
+@mixin Big_Numbers {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 140%;
+  font-style: normal;
+}
+
 @mixin SectionContainer {
   width: calc(100% - 2 * $margin-screen-desktop);
 

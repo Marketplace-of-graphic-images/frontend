@@ -20,6 +20,7 @@ import calendarIcon from './CalendarIcon.svg';
 import closeIcon from './CloseIcon.svg';
 import arrowLeftIconGreen from './ArrowLeftIcon.svg';
 import arrowRightIconGreen from './ArrowRightIcon.svg';
+import pigIcon from './Savings.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
@@ -27,5 +28,5 @@ export {
   notificationsYes, notificationsNo, calendarIcon,
   refreshIconGreen, searchIconBlack, searchIconGreen,
   arrowDownIcon, authorContentIconGreen, closeIcon, arrowRightIconGreen,
-  arrowLeftIconGreen,
+  arrowLeftIconGreen, pigIcon,
 };

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import Wallet from 'components/Wallet/Wallet';
 import CollapsibleSection from '../../../../components/main/CollapsibleSection/CollapsibleSection';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
@@ -23,6 +24,7 @@ const MainAuthor = () => {
 
   return (
     <>
+      <Wallet />
       <SearchSection />
 
       <SectionWithSlider items={TEST_DATA}>

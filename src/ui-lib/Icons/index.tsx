@@ -3,7 +3,7 @@ import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
   arrowUpIcon, backIcon, bricksIconGreen, premiumIcon, profileIcon,
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
-  calendarIcon, searchIconGreen, searchIconBlack,
+  calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
   authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
@@ -67,4 +67,7 @@ export const ArrowLeftIconGreen = (props) => (
 );
 export const ArrowRightIconGreen = (props) => (
   <TemplateIcon {...props} icon={arrowRightIconGreen} />
+);
+export const PigIcon = (props) => (
+  <TemplateIcon {...props} icon={pigIcon} />
 );

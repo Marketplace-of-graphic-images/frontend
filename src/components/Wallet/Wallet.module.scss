@@ -1,0 +1,31 @@
+@use '../../globalStyle/mixins.scss' as m;
+@use '../../globalStyle/variables' as v;
+.Wallet {
+    display: flex;
+    flex-direction: column;
+    max-width: 310px;
+    width: 100%;
+    &_data {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 32px;
+        margin-bottom: 24px;
+        border-top: 1px solid rgba(75, 75, 75, .25);
+    }
+    &_pig {
+        display: flex;
+        align-items: center;
+    }
+    &_description {
+        @include m.Header2;
+        color: v.$text-green-color;
+        margin-left: 16px;
+    }
+    &_money {
+        @include m.Header2;
+        color: v.$text-green-color;
+        display: flex;
+        align-items: center;
+    }
+}
