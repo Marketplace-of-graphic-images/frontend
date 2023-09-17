@@ -11,15 +11,27 @@
   border-radius: 8px;
   background: $white-color;
   border: 1px solid $black-color;
-  width: 484px;
-  height: 48px;
+  max-width: 484px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 24px;
+  text-align: left;
   @include Body;
   @include noselect;
+  line-height: 22px;
 
   &:hover {
-    border-color: $accent_on_hover-color;
+    background: $white-on-hover-color;
   }
 
+  &:active {
+    background: $white-on-click-color;
+  }
+
+  @media screen and (max-width: 1440px) {
+    @include Body3;
+    padding: 8px 18px;
+  }
 }
 
 

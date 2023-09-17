@@ -55,8 +55,7 @@ const PasswordRecoveryUnionForm = () => {
           errorText={errorsText.email}
           errorDescription={errorsDescription.email}
           onChange={handleChange}
-          onSubmitBtnClick={moveToNextStep}
-          onBackClick={moveToPrevStep} />
+          onSubmitBtnClick={moveToNextStep} />
       )}
 
       {formStep === 2 && (
@@ -66,9 +65,8 @@ const PasswordRecoveryUnionForm = () => {
           onSubmitBtnClick={moveToNextStep}
           onBackClick={moveToPrevStep}
           buttonType='button'
-          email='example@yandex.ru'
           title='Восстановление пароля'
-          description='Введите код, отправленный на почту' />
+          description='Введите код, отправленный по указанному адресу электронной почты. ' />
       )}
 
       {formStep === 3 && (
@@ -78,8 +76,7 @@ const PasswordRecoveryUnionForm = () => {
           errorsText={errorsText}
           errorsDescription={errorsDescription}
           isFormValid={isValid}
-          onChange={handleChange}
-          onBackClick={moveToPrevStep} />
+          onChange={handleChange} />
       )}
 
     </form>

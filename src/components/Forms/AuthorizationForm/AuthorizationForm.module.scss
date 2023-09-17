@@ -28,7 +28,7 @@
 
 .title {
   @include Header;
-  align-self: start;
+  align-self: flex-start;
 }
 
 .buttons {

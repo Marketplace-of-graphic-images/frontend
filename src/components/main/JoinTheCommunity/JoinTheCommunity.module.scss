@@ -2,9 +2,9 @@
 @use '../../../globalStyle/mixins' as m;
 
 .section {
+    @include m.SectionContainer;
     max-width: 1440px;
-    width: 100%;
-    height: 430px;
+    margin: 48px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,33 +12,48 @@
 .dataContainer{
     max-width: 1280px;
     width: 100%;
-    height: 335px;
+    padding: 48px 32px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
 }
 .wrapper {
+    width: 100%;
     display: flex;
     justify-content: center;
-    width: 100%;
-    margin-top: 32px;
-    margin-right: 48px;
-    margin-bottom: 32px;
-    margin-left: 48px;
+    gap: 24px;
+
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+    }
 }
 .image{
     max-width: 580px;
     width: 100%;
-    height: 271px;
+    min-height: 240px;
+    max-height: 420px;
+    border-radius: 8px;
     background-color: v.$white-on-click-color;
+    object-fit: cover;
+
+    @media screen and (max-width: 1024px) {
+        max-width: 100%;
+        max-height: 400px;
+    }
 }
 .text{
     max-width: 480px;
-    @include m.Body
+    @include m.Body1;
+
+    @media screen and (max-width: 1024px) {
+        max-width: 100%;
+    }
 }
 .header{
     @include m.Header;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 .header_span{
     @include m.Header;
@@ -48,11 +63,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 24px;
 }
-.texttInfo {
+.textInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 28px;
     height: 100%;
 }

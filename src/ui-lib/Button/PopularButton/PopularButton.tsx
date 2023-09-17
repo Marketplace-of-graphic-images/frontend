@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import styles from './PopularButton.module.scss';
 
-interface IpopularButton extends React.ComponentPropsWithoutRef<'button'> {
+interface IPopularButton extends React.ComponentPropsWithoutRef<'button'> {
   text: string
   onClick: () => void
   icon: any
 }
 
-const PopularButton: FC<IpopularButton> = ({
+const PopularButton: FC<IPopularButton> = ({
   text, 
   onClick, 
   icon, 
@@ -19,7 +19,11 @@ const PopularButton: FC<IpopularButton> = ({
     onClick={onClick}
     {...rest}>
     <p className={styles.text}>{text}</p>
-    {icon}
+
+    <div className={styles.icon}>
+      {icon}
+    </div>
+
   </button>
 );
 export default PopularButton;

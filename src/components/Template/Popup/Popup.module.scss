@@ -1,4 +1,5 @@
-@use '../../../globalStyle/variables' as v;
+@import '../../../globalStyle/variables';
+@import '../../../globalStyle/mixins';
 
 .popup {
   position: absolute;
@@ -6,10 +7,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  @include SectionContainer;
   min-height: 150px;
   padding: 32px 48px;
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
-  background: v.$white-color;
+  background: $white-color;
   z-index: 99;
+
+  @media screen and (max-width: 425px) {
+    padding: 50px 30px 30px;
+  }
 }

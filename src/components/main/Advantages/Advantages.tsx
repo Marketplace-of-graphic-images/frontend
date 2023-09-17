@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import style from './Advantages.module.scss';
-import BricksGreenIcon from '../../../ui-lib/Icons/Bricks/BricksGreenIcon';
-import LoupeGreenIcon from '../../../ui-lib/Icons/Loupe/LoupeGreenIcon';
-import RefreshGreenIcon from '../../../ui-lib/Icons/Refresh/RefreshGreenIcon';
-import AuthorGreenIcon from '../../../ui-lib/Icons/Autor/AuthorGreenIcon';
 import TitleMainSection from '../TitleMainSection/TitleMainSection';
+import {
+  AuthorContentIconGreen, BricksIconGreen, RefreshIconGreen, SearchIconGreen, 
+} from '../../../ui-lib/Icons';
   
 const Advantages: FC = () => (
   <section className={style.advantages}>
@@ -19,7 +18,7 @@ const Advantages: FC = () => (
     <ul className={style.advantages__container_card}>
       <li className={style.advantages__card}>
         <div className={style.advantages__icon_container}>
-          <AuthorGreenIcon />
+          <AuthorContentIconGreen width={48} height={48} />
         </div>
         <div className={style.advantages__text_container}>
           <h3 className={style.advantages__card_title}>Качественный авторский контент</h3>
@@ -31,7 +30,7 @@ const Advantages: FC = () => (
       </li>
       <li className={style.advantages__card}>
         <div className={style.advantages__icon_container}>
-          <BricksGreenIcon />
+          <BricksIconGreen width={48} height={48} />
         </div>
         <div className={style.advantages__text_container}>
           <h3 className={style.advantages__card_title}>Готовые ресурсы</h3>
@@ -43,7 +42,7 @@ const Advantages: FC = () => (
       </li>
       <li className={style.advantages__card}>
         <div className={style.advantages__icon_container}>
-          <LoupeGreenIcon />
+          <SearchIconGreen width={48} height={48} />
         </div>
         <div className={style.advantages__text_container}>
           <h3 className={style.advantages__card_title}>Детальный поиск</h3>
@@ -55,7 +54,7 @@ const Advantages: FC = () => (
       </li>
       <li className={style.advantages__card}>
         <div className={style.advantages__icon_container}>
-          <RefreshGreenIcon />
+          <RefreshIconGreen width={48} height={48} />
         </div>
         <div className={style.advantages__text_container}>
           <h3 className={style.advantages__card_title}>Постоянные обновления</h3>

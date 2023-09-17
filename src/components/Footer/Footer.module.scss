@@ -3,19 +3,19 @@
 
 .footer {
   background-color: v.$dark-green;
-  padding: 48px 80px;
+  padding: 48px 0;
   color: v.$white-color;
   margin: 0 auto;
   width: 100%;
 
   &__container {
+    @include m.SectionContainer;
     max-width: 1280px;
-    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   &__content {
@@ -32,6 +32,12 @@
     flex-wrap: wrap;
     gap: 32px;
     max-width: 737px;
+
+    @media screen and (max-width: 986px) {
+      max-width: 100%;
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 
   &__newsletter {

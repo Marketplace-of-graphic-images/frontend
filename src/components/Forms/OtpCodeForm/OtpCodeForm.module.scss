@@ -10,7 +10,7 @@
   &__title {
     max-width: 340px;
     @include m.Header;
-    text-align: center;
+    align-self: flex-start;
   }
 
   &__description {

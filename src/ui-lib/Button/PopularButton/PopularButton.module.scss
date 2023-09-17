@@ -8,29 +8,33 @@
     outline: none;
     cursor: pointer;
     border-radius: 8px;
-    background: $white-color;
-    min-width: 103px;
+    background: rgba(255, 255, 255, 0.80);
     height: 32px;
-    margin-top: 16px;
-    margin-right: 16px;
+    padding: 10px 16px;
+    box-shadow: 0 4px 24px 0 rgba(27, 27, 27, 0.08);
+  
     &:hover {
       background-color: $white-hower;
     }
+
+    &:hover .icon {
+      width: 16px;
+      margin-left: 12px;
+    }
+
     &:active {
       background-color: $white-click;
     }
-    &:last-of-type {
-      margin-right: 0;
-    }
   }
+
 .text {
-  margin-right: 12px;
-  margin-left: 16px;
   color: $black-color;
   @include Body3;
 }
-.magnifer{
-  margin-right: 16px;
-  width: 16px !important;
-  height: 16px !important;
+
+.icon {
+  width: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: width 0.2s ease-in, margin-left 0.2s ease-in;
 }

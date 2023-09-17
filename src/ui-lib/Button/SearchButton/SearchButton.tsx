@@ -1,10 +1,10 @@
-import React from 'react';
-import linse from '../../../assets/images/icons/Loupe.svg';
+import React, { FC } from 'react';
 import styles from './SearchButton.module.scss';
+import { SearchIconGreen } from '../../Icons';
 
-const SearchButton = () => (
+const SearchButton: FC = () => (
   <button type='submit' className={styles.SearchButton}>
-    <img src={linse} alt='Найти' />
+    <SearchIconGreen />
   </button>
 );
 export default SearchButton;

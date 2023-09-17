@@ -6,16 +6,16 @@ import { LinkWordButton } from '../Button';
 interface TimerProps {
   // eslint-disable-next-line react/require-default-props
   numberOfSeconds: number;
-  numberOfminutes:number;
+  numberOfMinutes: number;
 }
 
-const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfminutes }) => {
+const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfMinutes }) => {
   const [timerState, setTimerState] = useState<'timer' | 'codeNotCome' | 'timerEnd'>('timer');
   const [attempts, setAttempts] = useState(2);
 
   const time = new Date();
   time.setSeconds(time.getSeconds() + numberOfSeconds);
-  time.setMinutes(time.getMinutes() + numberOfminutes);
+  time.setMinutes(time.getMinutes() + numberOfMinutes);
   const { minutes, seconds, restart } = useTimer({ expiryTimestamp: time });
 
   useEffect(() => {
@@ -45,11 +45,13 @@ const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfminutes }) => {
         timerState === 'timer' && (
           <div className={styles.timer__container}>
             <p className={styles.timer__text}>Запросить новый код через:</p>
-            <p className={styles.timer__countdown}>
-              {minutes}
-              :
-            </p>
-            <p className={styles.timer__countdown}>{seconds}</p>
+            <div className={styles.timer__countdownContainer}>
+              <p className={styles.timer__countdown}>
+                {minutes}
+                :
+              </p>
+              <p className={styles.timer__countdown}>{seconds}</p>
+            </div>
           </div>
         )
       }
@@ -58,8 +60,7 @@ const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfminutes }) => {
         timerState === 'timerEnd' && (
           <div className={styles.timer__container}>
             <LinkWordButton
-              title='Запросить новый код:'
-              buttonName='Отправить'
+              buttonName='Отправить новый код'
               onClick={handleGetNewCode} />
           </div>
         )
@@ -68,9 +69,7 @@ const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfminutes }) => {
       {
         timerState === 'codeNotCome' && (
           <div className={styles.timer__container}>
-            <LinkWordButton
-              title='Код не пришёл?'
-              buttonName='Написать в поддержку' />
+            <LinkWordButton buttonName='Написать в поддержку' />
           </div>
         )
       }

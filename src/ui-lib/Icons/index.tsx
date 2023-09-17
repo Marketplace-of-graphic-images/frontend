@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon,
-  arrowUpIcon, authorIcon, backIcon, bricksIcon, premiumIcon, profileIcon,
-  arrowDownIcon, notificationsNo, notificationsYes,
-  refreshIcon, magniferIcon, calendarIcon, pigIcon,
+  arrowUpIcon, backIcon, bricksIconGreen, premiumIcon, profileIcon,
+  arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
+  calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
+  authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -25,14 +26,11 @@ export const ArrowUpIcon = (props) => (
 export const ArrowDownIcon = (props) => (
   <TemplateIcon {...props} icon={arrowDownIcon} />
 );
-export const AuthorIcon = (props) => (
-  <TemplateIcon {...props} icon={authorIcon} />
-);
 export const BackIcon = (props) => (
   <TemplateIcon {...props} icon={backIcon} />
 );
-export const BricksIcon = (props) => (
-  <TemplateIcon {...props} icon={bricksIcon} />
+export const BricksIconGreen = (props) => (
+  <TemplateIcon {...props} icon={bricksIconGreen} />
 );
 export const PremiumIcon = (props) => (
   <TemplateIcon {...props} icon={premiumIcon} />
@@ -40,8 +38,8 @@ export const PremiumIcon = (props) => (
 export const ProfileIcon = (props) => (
   <TemplateIcon {...props} icon={profileIcon} />
 );
-export const RefreshIcon = (props) => (
-  <TemplateIcon {...props} icon={refreshIcon} />
+export const RefreshIconGreen = (props) => (
+  <TemplateIcon {...props} icon={refreshIconGreen} />
 );
 export const VisionIcon = (props) => (
   <TemplateIcon {...props} icon={visionIcon} />
@@ -52,11 +50,23 @@ export const NotificationsNo = (props) => (
 export const NotificationsYes = (props) => (
   <TemplateIcon {...props} icon={notificationsYes} />
 );
-export const MagniferIcon = (props) => (
-  <TemplateIcon {...props} icon={magniferIcon} />
+export const SearchIconBlack = (props) => (
+  <TemplateIcon {...props} icon={searchIconBlack} />
+);
+export const SearchIconGreen = (props) => (
+  <TemplateIcon {...props} icon={searchIconGreen} />
 );
 export const CalendarIcon = (props) => (
   <TemplateIcon {...props} icon={calendarIcon} />
+);
+export const AuthorContentIconGreen = (props) => (
+  <TemplateIcon {...props} icon={authorContentIconGreen} />
+);
+export const ArrowLeftIconGreen = (props) => (
+  <TemplateIcon {...props} icon={arrowLeftIconGreen} />
+);
+export const ArrowRightIconGreen = (props) => (
+  <TemplateIcon {...props} icon={arrowRightIconGreen} />
 );
 export const PigIcon = (props) => (
   <TemplateIcon {...props} icon={pigIcon} />

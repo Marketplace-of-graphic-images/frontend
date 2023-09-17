@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import PasswordInput from '../../../ui-lib/Input/PasswordInput/PasswordInput';
 import styles from './PasswordChangeForm.module.scss';
 import { RECOVERY_PASSWORD_ID, RECOVERY_REPEAT_PASSWORD_ID } from '../../../constants/inputsId';
-import { BackPopupButton, UniversalButton } from '../../../ui-lib/Button';
+import { UniversalButton } from '../../../ui-lib/Button';
 import { PATTERN_PASSWORD } from '../../../constants/constants';
 
 interface PasswordChangeFormProps {
@@ -12,7 +12,6 @@ interface PasswordChangeFormProps {
   errorsDescription: Record<string, string>;
   isFormValid: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBackClick: () => void;
 }
 
 const PasswordChangeForm: FC<PasswordChangeFormProps> = (
@@ -23,7 +22,6 @@ const PasswordChangeForm: FC<PasswordChangeFormProps> = (
     errorsDescription,
     isFormValid,
     onChange,
-    onBackClick,
   },
 ) => {
   const [inputState, setInputState] = useState({
@@ -40,9 +38,8 @@ const PasswordChangeForm: FC<PasswordChangeFormProps> = (
   };
 
   return (
-    <fieldset className={styles.passwordChangeForm}>
+    <div className={styles.passwordChangeForm}>
       <h2 className={styles.passwordChangeForm__title}>Восстановление пароля</h2>
-      <BackPopupButton onClick={onBackClick} />
       <PasswordInput
         id={RECOVERY_PASSWORD_ID}
         name='password'
@@ -73,7 +70,7 @@ const PasswordChangeForm: FC<PasswordChangeFormProps> = (
       <UniversalButton type='submit' disabled={!isFormValid}>
         Подтвердить
       </UniversalButton>
-    </fieldset>
+    </div>
   );
 };
 
