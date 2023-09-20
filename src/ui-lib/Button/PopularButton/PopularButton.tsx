@@ -18,12 +18,12 @@ const PopularButton: FC<IPopularButton> = ({
     className={styles.button}
     onClick={onClick}
     {...rest}>
-    <p className={styles.text}>{text}</p>
 
     <div className={styles.icon}>
       {icon}
     </div>
-
+    
+    <p className={styles.text}>{text}</p>
   </button>
 );
 export default PopularButton;
