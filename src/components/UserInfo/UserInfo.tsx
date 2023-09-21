@@ -1,9 +1,11 @@
-import React, {
-  ChangeEvent, FC, useEffect, useState,
-} from 'react';
+import React, { FC, ReactComponentElement, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { TUser } from 'types/types';
 import { useGetAllusersQuery } from 'api/getUsers';
 import { UniversalButton } from 'ui-lib/Button';
+import { Link } from 'react-router-dom';
+import { PensilIcon } from 'ui-lib/Icons';
+import { pensil } from 'assets/images/icons';
 import styles from './UserInfo.module.scss';
 
 interface IUserData {
@@ -13,7 +15,7 @@ interface IUserData {
 
 const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   const [userImg, setUserImg] = useState('');
-  const [file, setFile] = useState<File>();
+  // const [file, setFile] = useState<File>();
   // Фэйковая роль, достаём из user.
   const [userRole, setUseRole] = useState('author');
   // Получаем всех пользователей
@@ -22,12 +24,21 @@ const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
 
   const userData = data?.find(() => true);
 
-  const onFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
+  const LINKS = [
+    'https://vk.com',
+    'https://github.com/udartapkom',
+    'https://shtukar-design.com',
+  ];
+
+  const onEditProfile = () => {
+    alert('Редактируем профиль!');
+  };
+  /*   const onFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setFile(event.target.files[0]);
     }
-  };
-  useEffect(() => {
+  }; */
+  /*   useEffect(() => {
     if (!file) {
       return;
     }
@@ -36,41 +47,47 @@ const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   }, [file]);
   const onDeletePhoto = () => {
     alert('Аватарка удалена!');
-  };
+  }; */
   return (
     <section className={styles.UserInfo}>
-      {userImg
-        ? <img className={styles.avatar} src={userImg} alt='avatar' />
-        : <div className={styles.avatar_plug} />}
-      <h3 className={styles.avatar_userNick}>
-        {userData?.name}
-      </h3>
-      {roleUser === 'author' ? (
-        <ul className={styles.avatar_datalist}>
-          <li id='public' className={styles.avatar_list}>
-            {userData?.id}
-            <span className={styles.avatar_span}>Публикаций</span>
-          </li>
-          <li className={styles.avatar_list}>
-            {userData?.id}
-            <span className={styles.avatar_span}>Подписчиков</span>
-          </li>
-          <li className={styles.avatar_list}>
-            {userData?.id}
-            <span className={styles.avatar_span}>Лайков</span>
-          </li>
-        </ul>
-      )
-        : null}
-
-      <input className={styles.avatar_set} type='file' accept='image/*' onChange={onFileUpload} />
-      <UniversalButton
-        buttonStyle='borderGreen'
-        width={302}
-        height={47}
-        onClick={onDeletePhoto}>
-        Удалить фото
-      </UniversalButton>
+      <div className={styles.avatar_block}>
+        {userImg
+          ? <img className={styles.avatar} src={userImg} alt='avatar' />
+          : <div className={styles.avatar_plug} />}
+        <h3 className={styles.avatar_userNick}>
+          {userData?.name}
+        </h3>
+        {roleUser === 'author' ? (
+          <ul className={styles.avatar_datalist}>
+            <li id='public' className={styles.avatar_list}>
+              <span className={styles.avatar_span}>Публикации</span>
+              {userData?.id}
+            </li>
+            <li className={styles.avatar_list}>
+              <span className={styles.avatar_span}>Подписки</span>
+              {userData?.id}
+            </li>
+          </ul>
+        )
+          : null}
+      </div>
+      <div className={styles.Links_block}>
+        <div className={styles.Links}>
+          {LINKS.length !== 0 ? <p className={styles.Links_description}>Ссылки:</p> : null}
+          {LINKS?.map((item) => (
+            <Link className={styles.Links_item} to={item} key={uuidv4()}>{item}</Link>
+          ))}
+        </div>
+        <UniversalButton 
+          buttonStyle='borderGreen'
+          width={232}
+          height={49}
+          onClick={onEditProfile}
+          className={styles.ProfilleButton}
+          icon={<PensilIcon />}>
+          Изменить профиль
+        </UniversalButton>
+      </div>
     </section>
   );
 };

@@ -4,16 +4,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 302px;
+    justify-content: space-between;
+    max-width: 410px;
     width: 100%;
-    min-height: 396px;
+    min-height: 677px;
+    height: 1px;
     margin-bottom: 32px;
 }
 .avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    
+
+    &_block {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     &_plug {
         width: 100px;
         height: 100px;
@@ -30,24 +38,29 @@
         padding: 0;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
-        margin-top: 32px;
+        margin-top: 80px;
     }
     &_list {
-        @include m.Big_Numbers;
+        @include m.Body2;
         color: v.$text-green-color;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        border-right: 1px solid rgba(75, 75, 75 , .25);
-        padding-right: 20px;
+        justify-content: space-between;
+        max-width: 347px;
+        width: 100%;
+        margin-bottom: 12px;
     }
     &_list:last-of-type {
-        border: none;
+        margin-bottom: 0;
+        padding-bottom: 68px;
+        border-bottom: 1px solid rgba(75, 75, 75 , .25);
     }
     &_span {
-        @include m.Link_small;
+        @include m.Body2;
         color: v.$text-green-color;
         margin-top: 6px;
     }
@@ -80,4 +93,38 @@
     &_set:hover::before {
         background: #007873;
     }
+}
+.Links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    align-items: flex-start;
+    max-width: 347px;
+    width: 100%;
+    
+    &_block {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        justify-content: space-between;
+    }
+    &_description {
+        @include m.Body2;
+        margin-bottom: 12px;
+    }
+    &_item {
+        @include m.Body2;
+        margin-bottom: 12px;
+    }
+    &_item:hover {
+        opacity: 0.7;
+      }
+    &_item:last-of-type {
+        margin-bottom: 0;
+    }
+}
+.ProfilleButton {
+    @include m.Body2;
 }
