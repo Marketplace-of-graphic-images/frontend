@@ -6,13 +6,19 @@ type TUserState = {
   username: string | null,
   email: string | null,
   bio?: string | null,
+  avatar?: string,
+  role: string,
+  links: string[]
 };
 
 const initialState: TUserState = {
   id: null,
-  username: null,
+  username: 'testUser',
   email: null,
   bio: null,
+  role: 'author', 
+  avatar: '', 
+  links: [], 
 };
 
 const userSlice = createSlice({

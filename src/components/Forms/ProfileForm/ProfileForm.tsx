@@ -14,7 +14,7 @@ import useValidation from '../../../services/useValidation';
 import DateInput from '../../../ui-lib/Input/DateInput/DateInput';
 import { LinkWordButton, UniversalButton } from '../../../ui-lib/Button';
 import { PATTERN_EMAIL, PATTERN_NAME, PATTERN_USERNAME } from '../../../constants/constants';
-import ProfileTitle from '../../Profile/components/ProfileTitle/ProfileTitle';
+import ProfileTitle from '../../Profile/ProfileTitle/ProfileTitle';
 import SolidLine from '../../../ui-lib/Line/SolidLine/SolidLine';
 
 const ProfileForm = () => {

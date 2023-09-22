@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import Wallet from 'components/Wallet/Wallet';
-import UserInfo from 'components/UserInfo/UserInfo';
+import UserInfo from 'components/Profile/UserInfo/UserInfo';
 import { useSelector } from '../../../../services/hooks';
 import CollapsibleSection from '../../../../components/main/CollapsibleSection/CollapsibleSection';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
