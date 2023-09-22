@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './profile.module.scss';
 import ProfileForm from '../../components/Forms/ProfileForm/ProfileForm';
-import UserInfo from '../../components/UserInfo/UserInfo';
+import UserInfo from '../../components/Profile/UserInfo/UserInfo';
 import { useSelector } from '../../services/hooks';
 
 const Profile = () => {
