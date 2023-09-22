@@ -5,6 +5,7 @@ import Advantages from 'components/main/Advantages/Advantages';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
+import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
 
 const MainGuest = () => {
   const TEST_DATA = useMemo(() => ([
@@ -25,6 +26,14 @@ const MainGuest = () => {
   return (
     <>
       <SearchSection />
+
+      <ImageCardsSection sectionTitle='Популярные фотографии' buttonCaption='Смотреть ещё' items={[
+//ТЕСТОВЫЕ ДАННЫЕ!!!        
+        {id: 1, title: 'Котик', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: false},
+        {id: 2, title: 'Собачка в наушниках', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: true},
+        {id: 3, title: 'Котик в офисе', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: false},
+        {id: 4, title: 'Кот на пляже', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: true}
+      ]}/>
 
       <SectionWithSlider items={TEST_DATA}>
         <TitleMainSection

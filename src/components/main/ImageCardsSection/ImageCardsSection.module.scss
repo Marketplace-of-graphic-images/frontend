@@ -1,0 +1,43 @@
+@use '../../../globalStyle/variables.scss' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.imageCardsSection {
+  width: 100%;
+  padding: 20px 0;
+
+  &__container {
+    width: 100%;
+    max-width: 1400px;
+    min-width: 768px; 
+    margin: 0 auto;
+    padding: 0 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__header {
+    width: 100%;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__headerTitle {
+    @include m.ImageCardsSection_Title;
+    color: v.$black1B-color;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+

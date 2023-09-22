@@ -1,5 +1,5 @@
-@import '/src/globalStyle/variables.scss';
-@import '/src/globalStyle/mixins.scss';
+@import '../../../globalStyle/variables.scss';
+@import '../../../globalStyle/mixins.scss';
 
 .universalButton {
   display: flex;
@@ -71,4 +71,24 @@
       color: $dark-green-color;
     }
   }
+
+  &_border_none {
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: $accent-color;
+    text-decoration: underline;
+
+    &:hover {
+      color: $accent_on_hover-color;
+    }
+
+    &:disabled:hover {
+      background: $white-color;
+      border: 1px solid $dark-green-color;
+      color: $accent-color;
+    }
+  }
+
+
 }

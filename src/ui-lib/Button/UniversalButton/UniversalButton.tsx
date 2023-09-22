@@ -6,7 +6,7 @@ interface IUniversalButton extends React.ComponentPropsWithoutRef<'button'> {
   width?: string | number;
   height?: string | number;
   className?: string;
-  buttonStyle?: 'filledGreen' | 'borderGreen' | 'borderBlack';
+  buttonStyle?: 'filledGreen' | 'borderGreen' | 'borderBlack' | 'borderNone';
   icon?: ReactComponentElement<FC> | null;
   children: ReactNode;
 }
@@ -28,6 +28,9 @@ const UniversalButton: React.FC<IUniversalButton> = ({
 
       case style === 'borderBlack':
         return styles.universalButton_border_black;
+
+      case style === 'borderNone':
+        return styles.universalButton_border_none;
 
       default:
         return styles.universalButton_filled_green;

@@ -5,6 +5,7 @@ import {
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
   calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
   authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen,
+  likeIconGreen, likeIconWhite
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -71,3 +72,10 @@ export const ArrowRightIconGreen = (props) => (
 export const PigIcon = (props) => (
   <TemplateIcon {...props} icon={pigIcon} />
 );
+export const LikeIconWhite = (props) => (
+  <TemplateIcon {...props} icon={likeIconWhite} />
+);
+export const LikeIconGreen = (props) => (
+  <TemplateIcon {...props} icon={likeIconGreen} />
+);
+
