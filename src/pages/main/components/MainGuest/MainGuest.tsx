@@ -5,6 +5,7 @@ import Advantages from 'components/main/Advantages/Advantages';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
+import Popular from '../../../../components/main/Popular/Popular';
 
 const MainGuest = () => {
   const TEST_DATA = useMemo(() => ([
@@ -35,6 +36,9 @@ const MainGuest = () => {
 
       <AdSection />
       <Advantages />
+
+      <Popular />
+
       <JoinTheCommunity />
     </>
   );
