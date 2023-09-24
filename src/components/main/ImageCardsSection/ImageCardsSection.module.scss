@@ -1,16 +1,17 @@
 @use '../../../globalStyle/variables.scss' as v;
 @use '../../../globalStyle/mixins' as m;
 
+
 .imageCardsSection {
   width: 100%;
   padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__container {
-    width: 100%;
-    max-width: 1400px;
-    min-width: 768px; 
-    margin: 0 auto;
-    padding: 0 60px;
+    @include m.SectionContainer;
+    max-width: 1280px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -18,7 +19,7 @@
     gap: 10px;
   }
 
-  &__header {
+  &__headerContainer {
     width: 100%;
     padding-right: 15px;
     display: flex;
@@ -34,10 +35,15 @@
 
   &__content {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 24px;
+  }
+
+  &__cardItem {
+    width: 100%;
+    position: relative;
+    min-width: 100px;
   }
 }
 

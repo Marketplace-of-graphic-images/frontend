@@ -27,13 +27,7 @@ const MainGuest = () => {
     <>
       <SearchSection />
 
-      <ImageCardsSection sectionTitle='Популярные фотографии' buttonCaption='Смотреть ещё' items={[
-//ТЕСТОВЫЕ ДАННЫЕ!!!        
-        {id: 1, title: 'Котик', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: false},
-        {id: 2, title: 'Собачка в наушниках', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: true},
-        {id: 3, title: 'Котик в офисе', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: false},
-        {id: 4, title: 'Кот на пляже', imageLink: '#', author: 'Author', isFree: false, price: '1500 ₽', isLiked: true}
-      ]}/>
+      <ImageCardsSection />
 
       <SectionWithSlider items={TEST_DATA}>
         <TitleMainSection
