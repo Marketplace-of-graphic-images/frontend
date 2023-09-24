@@ -1,8 +1,7 @@
 import React from 'react';
 import ImageCard from './components/ImageCard';
 import style from './ImageCardsSection.module.scss';
-
-import { UniversalButton } from '../../../ui-lib/Button';
+import { LinkWordButton } from '../../../ui-lib/Button';
 import { ArrowRightIconGreen } from '../../../ui-lib/Icons';
 
 const buttonPressTest = () => {
@@ -14,14 +13,10 @@ const ImageCardsSection = () => (
     <div className={style.imageCardsSection__container}>
       <div className={style.imageCardsSection__headerContainer}>
         <h2 className={style.imageCardsSection__headerTitle}>Популярные фотографии</h2>
-        <UniversalButton
-          width='max-content'
-          height='auto'
-          onClick={buttonPressTest}
-          buttonStyle='borderNone'
-          icon={<ArrowRightIconGreen />}>
-          Смотреть ещё 
-        </UniversalButton>
+        <LinkWordButton
+          buttonName='Смотреть ещё'
+          icon={<ArrowRightIconGreen />}
+          className='.normalFont' />
       </div>
       <ul className={style.imageCardsSection__content}>
         <li className={style.imageCardsSection__cardItem}>

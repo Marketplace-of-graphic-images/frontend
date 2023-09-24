@@ -5,7 +5,7 @@ import imageLink from '../../../../assets/images/pictures/404.png';
 
 const ImageCard = () => (
   <div className={styles.card}>
-    <span className={styles.card__priceTag}>15000</span>
+    <span className={styles.card__priceTag}>15000 ₽</span>
     <span className={styles.card__likeButtonSpan}>
       <LikeButton isLiked />
     </span>

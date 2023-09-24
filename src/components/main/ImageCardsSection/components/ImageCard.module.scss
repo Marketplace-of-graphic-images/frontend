@@ -12,7 +12,7 @@
     left: 16px;
     padding: 10px 0;
     box-sizing: border-box;
-    @include m.Body;
+    @include m.Body3;
     color: v.$black1B-color;
     font-variant-numeric: lining-nums proportional-nums;
     width: 88px;
