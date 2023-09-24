@@ -5,7 +5,7 @@ import {
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
   calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
   authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen,
-  likeIconGreen, likeIconWhite
+  likeIconGreen, likeIconWhite,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -78,4 +78,3 @@ export const LikeIconWhite = (props) => (
 export const LikeIconGreen = (props) => (
   <TemplateIcon {...props} icon={likeIconGreen} />
 );
-

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import ImageCard from './components/ImageCard';
 import style from './ImageCardsSection.module.scss';
 
@@ -7,7 +7,7 @@ import { ArrowRightIconGreen } from '../../../ui-lib/Icons';
 
 const buttonPressTest = () => {
   console.log('Button is pressed');
-}
+};
 
 const ImageCardsSection = () => (
   <section className={style.imageCardsSection}>
@@ -42,5 +42,3 @@ const ImageCardsSection = () => (
 );
 
 export default ImageCardsSection;
-
-

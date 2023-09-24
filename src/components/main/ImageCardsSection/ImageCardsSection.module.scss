@@ -29,7 +29,7 @@
   }
 
   &__headerTitle {
-    @include m.ImageCardsSection_Title;
+    @include m.Desktop_H2;
     color: v.$black1B-color;
   }
 

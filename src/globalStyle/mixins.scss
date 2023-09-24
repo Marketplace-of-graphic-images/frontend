@@ -98,14 +98,14 @@
   font-style: normal;
 }
 
-@mixin ImageCard_Title {
+@mixin Desktop_H3 {
   font-family: Raleway-Medium, sans-serif;
   font-size: 21px;
   line-height: 145%;
   font-weight: 500;
 }
 
-@mixin ImageCardsSection_Title {
+@mixin Desktop_H2 {
   font-family: Raleway-Bold, sans-serif;
   font-size: 24px;
   line-height: 140%;

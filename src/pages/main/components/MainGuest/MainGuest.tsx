@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
 import AdSection from 'components/main/AdSection/AdSection';
 import Advantages from 'components/main/Advantages/Advantages';
+import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
-import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
 
 const MainGuest = () => {
   const TEST_DATA = useMemo(() => ([

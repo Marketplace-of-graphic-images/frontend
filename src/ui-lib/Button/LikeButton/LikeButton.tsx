@@ -12,13 +12,12 @@ const LikeButton: React.FC<LikeButtonProps> = ({
   onClick,
   ...rest
 }) => (
-    <button className={styles.button} type='button' onClick={onClick} {...rest} >
-      {isLiked ? <LikeIconGreen /> : <LikeIconWhite />}
-    </button>
+  <button className={styles.button} type='button' onClick={onClick} {...rest}>
+    {isLiked ? <LikeIconGreen /> : <LikeIconWhite />}
+  </button>
 );
 
 LikeButton.defaultProps = {
-  isLiked: false,
   onClick: () => {},
 };
 

@@ -32,7 +32,7 @@
   }
 
   &__title {
-    @include m.ImageCard_Title;
+    @include m.Desktop_H3;
     margin: 8px 0 0 0;
     max-width: 80%;
     white-space: nowrap;
@@ -40,9 +40,12 @@
     text-overflow: ellipsis;
   }
 
-  &__authorLink {
+  &__authorButton {
     @include m.Link_medium;
     margin: 4px 0 0 0;
+    background-color: transparent;
+    border: none;
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
