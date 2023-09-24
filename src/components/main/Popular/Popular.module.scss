@@ -44,9 +44,11 @@
     }
   }
 
-  &__mainlImageItem {
+  &__mainlImageButton {
     width: 100%;
     position: relative;
+    background-color: transparent;
+    border: none;
   }
 
   &__mainImage {
@@ -68,8 +70,15 @@
   }  
 
   &__smallImageItem {
+    padding: 0;
+    width: 100%;
+  }
+
+  &__smallImageButton {
     width: 100%;
     position: relative;
+    background-color: transparent;
+    border: none;
   }
 
   &__smallImage {
@@ -87,8 +96,7 @@
     font-size: 21px;
     line-height: 145%;
     font-weight: 500;
-    color: white;
-/*    color: v.$black1B-color; */
+    color: v.$black1B-color;
     position: absolute;
     left: 32px;
     bottom: 24px;
@@ -103,8 +111,7 @@
     font-size: 21px;
     line-height: 145%;
     font-weight: 500;
-    color: white;
-/*    color: v.$black1B-color; */
+    color: v.$black1B-color;
     position: absolute;
     left: 16px;
     bottom: 10px;
