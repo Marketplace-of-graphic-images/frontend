@@ -4,7 +4,7 @@ import {
   arrowUpIcon, backIcon, bricksIconGreen, premiumIcon, profileIcon,
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
   calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
-  authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen, pensil,
+  authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen, pensil, cameraIconGreen,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -73,4 +73,7 @@ export const PigIcon = (props) => (
 );
 export const PensilIcon = (props) => (
   <TemplateIcon {...props} icon={pensil} />
+);
+export const CameraIconGreen = (props) => (
+  <TemplateIcon {...props} icon={cameraIconGreen} />
 );

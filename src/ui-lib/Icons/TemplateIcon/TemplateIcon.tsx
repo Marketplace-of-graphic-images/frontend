@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import styles from './TemplateIcon.module.scss';
 
 type TTemplateIcon = {
   icon: any;
@@ -14,7 +15,7 @@ const TemplateIcon: FC<TTemplateIcon> = ({
 
 }) => (
   <img
-    className={className}
+    className={`${styles.templateIcon} ${className}`}
     style={{ width: `${String(width)}px`, height: `${String(height)}px` }}
     src={icon}
     alt={alt} />

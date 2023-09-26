@@ -1,0 +1,16 @@
+@import '../../../globalStyle/variables';
+
+.fileLoadInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 100px;
+  background: $white-on-hover-color;
+
+  &__input {
+    width: 0;
+    height: 0;
+  }
+}

@@ -15,6 +15,7 @@ import {
   AuthorizationForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
+import ProfileEdit from '../pages/profile/ProfileEdit/ProfileEdit';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ const App = () => {
         <Route 
           path='*'
           element={<NotFound />} />
+        <Route
+          path='/profile/edit'
+          element={<ProfileEdit />} />
       </Routes>
       <Footer />
       {isLoading && <Loader />}

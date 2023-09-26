@@ -84,6 +84,7 @@ module.exports = {
 		'react/jsx-props-no-spreading': 'off',
 		'no-plusplus': 'off',
 		'import/no-extraneous-dependencies': 'off',
-		'no-return-assign': 'off'
+		'no-return-assign': 'off',
+		'jsx-a11y/label-has-associated-control': 'off'
 	},
 };
