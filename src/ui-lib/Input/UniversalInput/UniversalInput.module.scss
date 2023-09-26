@@ -12,13 +12,27 @@
   transition: padding 0.5s ease;
   position: relative;
 
+  &_border_bottom {
+    border-bottom: 1px solid;
+  }
+
+  &_border_full {
+    border: 1px solid;
+    border-radius: 8px;
+  }
+
   &_border_black {
-    border-bottom: 1px solid $black-color;
+    border-color: $black-color;
   }
 
   &_border_white {
-    border-bottom: 1px solid $white-color;
+    border-color: $white-color;
     color: $white-color;
+  }
+
+  &_border_grey {
+    border-color: $grey-200-color;
+    color: $grey-500-color;
   }
 
   &_border_white > &__label {
@@ -29,6 +43,21 @@
     position: relative;
     max-width: 484px;
     width: 100%;
+  }
+
+  &__container:has(&__staticLabel) {
+    padding-top: 28px;
+  }
+
+  &__staticLabel {
+    @include Body3;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    display: block;
+    margin-bottom: 16px;
+    text-align: start;
+    color: $grey-color;
   }
 
   &__label {
@@ -56,6 +85,10 @@
     }
   }
 
+  &__staticLabel ~ &__input {
+    padding: 10px 0 10px 14px;
+  }
+
   &__input:not(:placeholder-shown) ~ &__label,
   &__input:focus ~ &__label {
     @include Body3;
@@ -67,8 +100,8 @@
     }
   }
 
-  &:has(&__input:not(:placeholder-shown)),
-  &:has(&__input:focus) {
+  &:has(&__input:not(:placeholder-shown) and &__label),
+  &:has(&__input:focus and &__label) {
     padding-top: 25px;
 
     @media screen and (max-width: 1440px) {
@@ -82,7 +115,7 @@
     transform: translate(-4px, -28px);
   }
 
-  &:has(&__input:valid) {
+  &:has(&__input:valid and &__label) {
     padding-top: 10px;
 
     @media screen and (max-width: 1440px) {
