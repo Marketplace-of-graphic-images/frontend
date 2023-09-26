@@ -2,13 +2,15 @@
 @import '../../../globalStyle/variables';
 
 .datePicker {
+  width: 100%;
+
   & > div {
-    height: 40px;
-    width: 270px;
-    align-items: center;
-    border: 1px solid #1B1B1B;
+    height: auto;
+    width: 100%;
     border-radius: 8px;
-    padding: 8px 18px 8px 24px;
+    border: 1px solid $grey-200-color;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 10px 14px;
     @include Body;
 
     &:invalid {
@@ -20,6 +22,14 @@
     }
   }
 
+  &__container {
+    width: 100%;
+  }
+
+  &__inputContainer {
+    width: 100%;
+  }
+
   &__calendar {
     border: none;
     border-radius: 8px;
@@ -28,8 +38,12 @@
     @include Body;
   }
 
-  &__tile {
-  //  стили ячейки, но стилизовать состояние 'сегодня' и 'выбрано никак'
+  &__label {
+    @include Body3;
+    display: block;
+    margin-bottom: 8px;
+    text-align: start;
+    color: $grey-color;
   }
 }
 
