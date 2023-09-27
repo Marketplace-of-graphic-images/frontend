@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useMemo, useReducer, useState, 
+} from 'react';
 import styles from './ProfileForm.module.scss';
 import { EmailInput, UniversalInput } from '../../../ui-lib/Input';
 import {
@@ -11,6 +13,9 @@ import { UniversalButton } from '../../../ui-lib/Button';
 import { PATTERN_NAME, PATTERN_USERNAME } from '../../../constants/constants';
 import FileLoadInput from '../../../ui-lib/Input/FileLoadInput/FileLoadInput';
 import { CameraIconGreen } from '../../../ui-lib/Icons';
+import ConfirmPopup from '../../Template/ConfirmPopup/ConfirmPopup';
+import { useDispatch, useSelector } from '../../../services/hooks';
+import { closeModal, openModalConfirmChangeUserData } from '../../../store/modalSlice';
 
 const ProfileForm = () => {
   const {
@@ -26,44 +31,48 @@ const ProfileForm = () => {
   const [date, setDate] = useState<Date | undefined>();
   const [avatar, setAvatar] = useState<File | undefined>();
 
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setAvatar(e.target.files[0]);
+    }
+  };
+
+  const dispatch = useDispatch();
+  const { confirmChangeUserDataModal } = useSelector((state) => state.modals);
+
+  const closePopups = () => {
+    dispatch(closeModal());
+  };
+
+  // имитирует юзера с бекенда
+  const tempUserData = useMemo(() => ({
+    username: 'Username',
+    name: '',
+    surname: '',
+    email: 'user@mail.ru',
+    vk: '',
+    instagram: '',
+    website: '',
+  }), []);
+
   useEffect(() => {
-    // имитирует юзера с бэкенда
-    const tempUserData = {
-      username: 'Username',
-      name: '',
-      surname: '',
-      email: 'user@mail.ru',
-      vk: '',
-      instagram: '',
-      website: '',
-    };
-
-    const {
-      username, name, surname, email, vk, instagram, website,
-    } = tempUserData;
-
     // ключ должен совпадать с name у инпутов
-    const initialValues: Record<string, string> = {
-      username, name, surname, email, vk, instagram, website,
-    };
+    resetForm(tempUserData);
+  }, [resetForm, tempUserData]);
 
-    resetForm(initialValues);
-  }, [resetForm]);
-
-  // реализовать функцию проверки новых значений в форме
-  // если их нет return false
-  const isFormChanged = () => true;
+  const isFormChanged = () => (
+    !Object.entries(values).every(([key, value]) => tempUserData[key] === value)
+  );
 
   const isButtonDisable = isFormChanged() && isValid;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
+  // submit
+  const handleSubmit = () => {
     const {
       username, name, surname, email, vk, instagram, website,
     } = values;
 
-    const submitData = { 
+    const submitData = {
       username,
       name,
       surname,
@@ -76,18 +85,26 @@ const ProfileForm = () => {
     };
 
     console.log(submitData);
+
+    closePopups();
   };
 
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setAvatar(e.target.files[0]);
-    }
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    dispatch(openModalConfirmChangeUserData());
+  };
+
+  const onCancelClick = () => {
+    // ключ должен совпадать с name у инпутов
+    resetForm(tempUserData);
+    closePopups();
   };
 
   return (
     <section className={styles.profileForm}>
 
-      <form className={styles.profileForm__form} onSubmit={handleSubmit}>
+      <form className={styles.profileForm__form} onSubmit={onSubmit}>
         <div className={styles.profileForm__formContainer}>
 
           <div className={styles.profileForm__avatarContainer}>
@@ -227,6 +244,13 @@ const ProfileForm = () => {
         </div>
 
       </form>
+
+      <ConfirmPopup
+        onOkButtonClick={handleSubmit}
+        isOpen={confirmChangeUserDataModal}
+        onClose={closePopups}
+        onCancelButtonClick={onCancelClick}
+        title='Сохранить введенные данные?' />
 
     </section>
   );

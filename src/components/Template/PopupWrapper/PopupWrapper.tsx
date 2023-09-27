@@ -5,12 +5,12 @@ import { createPortal } from 'react-dom';
 import styles from './PopupWrapper.module.scss';
 /* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
 
-interface PopupProps extends PropsWithChildren {
+export interface PopupWrapperProps extends PropsWithChildren {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const PopupWrapper: FC<PopupProps> = (
+const PopupWrapper: FC<PopupWrapperProps> = (
   {
     children,
     isOpen,

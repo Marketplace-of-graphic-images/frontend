@@ -1,13 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
 import styles from './Popup.module.scss';
-import PopupWrapper from '../PopupWrapper/PopupWrapper';
+import PopupWrapper, { PopupWrapperProps } from '../PopupWrapper/PopupWrapper';
 import { ClosePopupButton } from '../../../ui-lib/Button';
 
-interface PopupProps extends PropsWithChildren {
+interface PopupProps extends PopupWrapperProps {
   width?: string;
   height?: string;
-  isOpen: boolean;
-  onClose: () => void;
 }
 
 const Popup: FC<PopupProps> = (
