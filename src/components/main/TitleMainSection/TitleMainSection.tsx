@@ -18,6 +18,8 @@ const TitleMainSection: FC<TitleMainSectionProps> = ({ titleAccent, title, subti
   </>
 );
 
-export default TitleMainSection;
+TitleMainSection.defaultProps = {
+  subtitle: '',
+};
 
-/* {subtitle.length > 0 && <p className={styles.titleMainSection__subtitle}>{subtitle}</p>} */
+export default TitleMainSection;

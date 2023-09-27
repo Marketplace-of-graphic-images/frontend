@@ -7,6 +7,12 @@ import TitleMainSection from '../../../../components/main/TitleMainSection/Title
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
 import Popular from '../../../../components/main/Popular/Popular';
 
+import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
+import sampleImg2 from '../../../../assets/images/pictures/testImage_office.jpg';
+import sampleImg3 from '../../../../assets/images/pictures/testImage_food.jpg';
+import sampleImg4 from '../../../../assets/images/pictures/testImage_dogs.jpg';
+import sampleImg5 from '../../../../assets/images/pictures/testImage_motivation.jpg';
+
 const MainGuest = () => {
   const TEST_DATA = useMemo(() => ([
     { id: 0, title: 'Еда', image: '#' },
@@ -23,6 +29,24 @@ const MainGuest = () => {
     { id: 12, title: 'Город', image: '#' },
   ]), []);
 
+  const TEST_POPULAR_ITEMS = useMemo(() => ([
+    {
+      id: 1, image: sampleImg1, tagName: 'Котики', onClick: () => {}, 
+    },
+    {
+      id: 2, image: sampleImg2, tagName: 'Офисные работники', onClick: () => {}, 
+    },
+    {
+      id: 3, image: sampleImg3, tagName: 'Еда', onClick: () => {}, 
+    },
+    {
+      id: 4, image: sampleImg4, tagName: 'Собачки', onClick: () => {}, 
+    },
+    {
+      id: 5, image: sampleImg5, tagName: 'Мотивация', onClick: () => {}, 
+    },
+  ]), []);
+
   return (
     <>
       <SearchSection />
@@ -37,7 +61,7 @@ const MainGuest = () => {
       <AdSection />
       <Advantages />
 
-      <Popular />
+      <Popular data={TEST_POPULAR_ITEMS} />
 
       <JoinTheCommunity />
     </>

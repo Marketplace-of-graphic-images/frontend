@@ -1,48 +1,40 @@
-import React from 'react';
-import style from './Popular.module.scss';
-import testImg from '../../../assets/images/pictures/404.png';
+import React, { FC } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import styles from './Popular.module.scss';
+import ImageTagButton, { ImageTagButtonProps } from './Components/ImageTagButton';
   
-const Popular = () => (
-  <section className={style.popular}>
-    <div className={style.popular__content}>
-      <h2 className={style.popular__title}>
+interface PopularProps {
+  data: Array<ImageTagButtonProps>;
+}
+
+const gridAreas = [
+  styles.popular__item1, 
+  styles.popular__item2, 
+  styles.popular__item3, 
+  styles.popular__item4, 
+  styles.popular__item5];
+
+const Popular: FC<PopularProps> = ({ data }) => (
+  <section className={styles.popular}>
+    <div className={styles.popular__content}>
+      <h2 className={styles.popular__title}>
         Рекомендации:
-        <span className={style.popular__title_span}> специально для вас!</span>
+        <span className={styles.popular__title_span}> специально для вас!</span>
       </h2>
 
-      <div className={style.popular__imageItems}>
-        <button type='button' onClick={() => {}} className={style.popular__mainlImageButton}>
-          <img src={testImg} className={style.popular__mainImage} alt='Котики' />
-          <span className={style.popular__mainImageCaption}>Котики</span>
-        </button>
-
-        <ul className={style.popular__fourImagesBlock}>
-          <li className={style.popular__smallImageItem}>
-            <button type='button' onClick={() => {}} className={style.popular__smallImageButton}>
-              <img src={testImg} className={style.popular__smallImage} alt='Офисные работники' />
-              <span className={style.popular__smallImageCaption}>Офисные работники</span>
-            </button>
+      <ul className={styles.popular__imageItems}>
+        { data.slice(0, 5).map((el, i) => (
+          <li className={gridAreas[i]} key={uuidv4()}>
+            <ImageTagButton 
+              key={el.id} 
+              id={el.id} 
+              image={el.image} 
+              tagName={el.tagName} 
+              isBigImage={!i} 
+              onClick={el.onClick} />
           </li>
-          <li className={style.popular__smallImageItem}>
-            <button type='button' onClick={() => {}} className={style.popular__smallImageButton}>
-              <img src={testImg} className={style.popular__smallImage} alt='Еда' />
-              <span className={style.popular__smallImageCaption}>Еда</span>
-            </button>
-          </li>
-          <li className={style.popular__smallImageItem}>
-            <button type='button' onClick={() => {}} className={style.popular__smallImageButton}>
-              <img src={testImg} className={style.popular__smallImage} alt='Собачки' />
-              <span className={style.popular__smallImageCaption}>Собачки</span>
-            </button>
-          </li>
-          <li className={style.popular__smallImageItem}>
-            <button type='button' onClick={() => {}} className={style.popular__smallImageButton}>
-              <img src={testImg} className={style.popular__smallImage} alt='Мотивация' />
-              <span className={style.popular__smallImageCaption}>Мотивация</span>
-            </button>
-          </li>
-        </ul>
-      </div>
+        ))}
+      </ul>
     </div>
   </section>
 );
