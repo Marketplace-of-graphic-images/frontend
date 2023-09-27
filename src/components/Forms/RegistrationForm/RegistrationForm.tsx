@@ -50,6 +50,8 @@ const RegistrationForm = () => {
             username: values.username,
             email: values.email,
             password: values.password,
+            // eslint-disable-next-line
+            is_author: checkboxValues.author,
             code,
           }),
       );
