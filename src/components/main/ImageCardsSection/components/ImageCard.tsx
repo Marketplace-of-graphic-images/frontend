@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { FC } from 'react';
 import LikeButton from 'ui-lib/Button/LikeButton/LikeButton';
 import styles from './ImageCard.module.scss';
-import imageLink from '../../../../assets/images/pictures/404.png';
 
-const ImageCard = () => (
+export interface ImageCardProps {
+  id: number;
+  name: string;
+  image: string;
+  license?: boolean;
+  isFavorited?: boolean;
+  price?: number;
+  authorUsername: string;
+  authorId: number;
+  onImageClick: () => void;
+  onAuthorClick: () => void;
+  onLikeClick: () => void;
+}
+
+const ImageCard : FC<ImageCardProps> = ({
+  id, name, image, license, isFavorited, 
+  price, authorUsername, authorId, 
+  onAuthorClick, onImageClick, onLikeClick,
+}) => (
   <div className={styles.card}>
-    <span className={styles.card__priceTag}>15000 ₽</span>
+    <button type='button' className={styles.card__imageButton} onClick={onImageClick}>
+      <img alt={name} src={image} className={styles.card__img} />
+    </button>
+    {!!license && (
+      <span className={styles.card__priceTag}>
+        {price} 
+        {' ₽'}
+      </span>
+    )}
     <span className={styles.card__likeButtonSpan}>
-      <LikeButton isLiked />
+      <LikeButton isLiked={isFavorited} onClick={onLikeClick} />
     </span>
-    <img alt='Название изображения' src={imageLink} className={styles.card__img} />
-    <h3 className={styles.card__title}>Собачка в наушниках</h3>
-    <button type='button' className={styles.card__authorButton} onClick={() => {}}>Автор</button>
+    <h3 className={styles.card__title}>{name}</h3>
+    <button type='button' className={styles.card__authorButton} onClick={onAuthorClick}>{authorUsername}</button>
   </div>
 );
+
+ImageCard.defaultProps = {
+  price: 0,
+  license: false,
+  isFavorited: false,
+};
 
 export default ImageCard;

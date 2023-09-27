@@ -3,7 +3,7 @@ import styles from './LikeButton.module.scss';
 import { LikeIconGreen, LikeIconWhite } from '../../Icons';
 
 interface LikeButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  isLiked: boolean;
+  isLiked?: boolean;
   onClick?: () => void;
 }
 
@@ -18,6 +18,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
 );
 
 LikeButton.defaultProps = {
+  isLiked: false,
   onClick: () => {},
 };
 

@@ -21,7 +21,7 @@
 
   &__headerContainer {
     width: 100%;
-    padding-right: 13px;
+    padding-right: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,6 +31,20 @@
   &__headerTitle {
     @include m.Desktop_H2;
     color: v.$black1B-color;
+  }
+
+  &__headerLink {
+    @include m.Link;
+    color: v.$accent-color;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+
+  &__headerLink:hover {
+    color: v.$accent_on_hover-color;
   }
 
   &__content {

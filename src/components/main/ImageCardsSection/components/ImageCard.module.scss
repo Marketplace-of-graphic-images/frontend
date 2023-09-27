@@ -6,6 +6,11 @@
   flex-direction: column;
   position: relative;
 
+  &__imageButton {
+    background-color: transparent;
+    border: none;
+  }
+
   &__priceTag {
     position: absolute;
     top: 12px;
@@ -34,7 +39,7 @@
   &__title {
     @include m.Desktop_H3;
     margin: 8px 0 0 0;
-    max-width: 80%;
+    max-width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
