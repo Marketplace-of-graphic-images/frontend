@@ -7,13 +7,6 @@ interface PopularProps {
   data: Array<ImageTagButtonProps>;
 }
 
-const gridAreas = [
-  styles.popular__item1, 
-  styles.popular__item2, 
-  styles.popular__item3, 
-  styles.popular__item4, 
-  styles.popular__item5];
-
 const Popular: FC<PopularProps> = ({ data }) => (
   <section className={styles.popular}>
     <div className={styles.popular__content}>
@@ -24,7 +17,7 @@ const Popular: FC<PopularProps> = ({ data }) => (
 
       <ul className={styles.popular__imageItems}>
         { data.slice(0, 5).map((el, i) => (
-          <li className={gridAreas[i]} key={uuidv4()}>
+          <li className={styles.popular__item} key={uuidv4()}>
             <ImageTagButton 
               key={el.id} 
               id={el.id} 
