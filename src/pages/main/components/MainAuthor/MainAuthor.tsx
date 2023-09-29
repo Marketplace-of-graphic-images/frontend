@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import Wallet from 'components/Wallet/Wallet';
+import UserInfo from 'components/Profile/UserInfo/UserInfo';
+import { useSelector } from '../../../../services/hooks';
 import CollapsibleSection from '../../../../components/main/CollapsibleSection/CollapsibleSection';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
@@ -22,8 +24,13 @@ const MainAuthor = () => {
     { id: 12, title: 'Город', image: '#' },
   ]), []);
 
+  const { user } = useSelector((state) => state);
+
   return (
     <>
+      <UserInfo 
+        user={user} 
+        roleUser='author' />
       <Wallet />
       <SearchSection />
 

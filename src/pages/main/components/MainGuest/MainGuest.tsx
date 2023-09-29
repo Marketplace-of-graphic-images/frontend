@@ -7,6 +7,13 @@ import { TRUE } from 'node-sass';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
+import Popular from '../../../../components/main/Popular/Popular';
+
+import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
+import sampleImg2 from '../../../../assets/images/pictures/testImage_office.jpg';
+import sampleImg3 from '../../../../assets/images/pictures/testImage_food.jpg';
+import sampleImg4 from '../../../../assets/images/pictures/testImage_dogs.jpg';
+import sampleImg5 from '../../../../assets/images/pictures/testImage_motivation.jpg';
 
 import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
 import sampleImg2 from '../../../../assets/images/pictures/testImage_dogs.jpg';
@@ -83,6 +90,23 @@ const MainGuest = () => {
       onLikeClick: () => { console.log('Лайк'); },
     },
   ], []);
+  const TEST_POPULAR_ITEMS = useMemo(() => ([
+    {
+      id: 1, image: sampleImg1, tagName: 'Котики', onClick: () => {}, 
+    },
+    {
+      id: 2, image: sampleImg2, tagName: 'Офисные работники', onClick: () => {}, 
+    },
+    {
+      id: 3, image: sampleImg3, tagName: 'Еда', onClick: () => {}, 
+    },
+    {
+      id: 4, image: sampleImg4, tagName: 'Собачки', onClick: () => {}, 
+    },
+    {
+      id: 5, image: sampleImg5, tagName: 'Мотивация', onClick: () => {}, 
+    },
+  ]), []);
 
   return (
     <>
@@ -99,6 +123,9 @@ const MainGuest = () => {
 
       <AdSection />
       <Advantages />
+
+      <Popular data={TEST_POPULAR_ITEMS} />
+
       <JoinTheCommunity />
     </>
   );
