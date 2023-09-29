@@ -26,7 +26,7 @@ const ImageCardsSection: FC<ImageCardsSectionProps> = ({ cards, title, link }) =
         </Link>
       </div>
       <ul className={styles.imageCardsSection__content}>
-        {cards.slice(0, 4).map((el) => (
+        {cards.slice(0, 4).map((el:ImageCardProps) => (
           <li className={styles.imageCardsSection__cardItem} key={uuidv4()}>
             <ImageCard 
               id={el.id} 
