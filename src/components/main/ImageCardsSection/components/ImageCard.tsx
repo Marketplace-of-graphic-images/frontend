@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import LikeButton from 'ui-lib/Button/LikeButton/LikeButton';
+import { ImageButton } from 'ui-lib/Button';
 import styles from './ImageCard.module.scss';
 
 export interface ImageCardProps {
@@ -22,9 +23,7 @@ const ImageCard : FC<ImageCardProps> = ({
   onAuthorClick, onImageClick, onLikeClick,
 }) => (
   <div className={styles.card}>
-    <button type='button' className={styles.card__imageButton} onClick={onImageClick}>
-      <img alt={name} src={image} className={styles.card__img} />
-    </button>
+    <ImageButton type='button' onClick={onImageClick} image={image} alt={name} />
     {!!license && (
       <span className={styles.card__priceTag}>
         {price} 

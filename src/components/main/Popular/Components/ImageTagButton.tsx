@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { ImageButton } from 'ui-lib/Button';
 import styles from './ImageTagButton.module.scss';
 
 export interface ImageTagButtonProps {
@@ -12,22 +13,17 @@ export interface ImageTagButtonProps {
 const ImageTagButton : FC<ImageTagButtonProps> = ({
   id, image, tagName, isBigImage, onClick, 
 }) => (
-  <button type='button' onClick={onClick} className={styles.imageTagButton}>
-    {isBigImage
-      ? (
-        <>
-          <img src={image} className={styles.imageTagButton__bigImage} alt={tagName} />
-          <span className={styles.imageTagButton__bigImageTagName}>{tagName}</span> 
-        </>
-      )
-      : (
-        <>
-          <img src={image} className={styles.imageTagButton__smallImage} alt={tagName} />
-          <span className={styles.imageTagButton__smallImageTagName}>{tagName}</span>
-        </>
-      )}
-  </button>
-);
+  isBigImage
+    ? (
+      <ImageButton type='button' onClick={onClick} image={image} height='424px' alt={tagName}>
+        <span className={styles.imageTagButton__bigImageTagName}>{tagName}</span>
+      </ImageButton>
+    )
+    : (
+      <ImageButton type='button' onClick={onClick} image={image} height='200px' alt={tagName}>
+        <span className={styles.imageTagButton__smallImageTagName}>{tagName}</span>
+      </ImageButton>
+    ));
 
 ImageTagButton.defaultProps = {
   isBigImage: false,
