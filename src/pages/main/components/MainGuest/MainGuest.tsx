@@ -10,15 +10,10 @@ import SectionWithSlider from '../../../../components/main/SectionWithSlider/Sec
 import Popular from '../../../../components/main/Popular/Popular';
 
 import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
-import sampleImg2 from '../../../../assets/images/pictures/testImage_office.jpg';
-import sampleImg3 from '../../../../assets/images/pictures/testImage_food.jpg';
-import sampleImg4 from '../../../../assets/images/pictures/testImage_dogs.jpg';
-import sampleImg5 from '../../../../assets/images/pictures/testImage_motivation.jpg';
-
-import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
 import sampleImg2 from '../../../../assets/images/pictures/testImage_dogs.jpg';
 import sampleImg3 from '../../../../assets/images/pictures/testImage_food.jpg';
 import sampleImg4 from '../../../../assets/images/pictures/testImage_motivation.jpg';
+import sampleImg5 from '../../../../assets/images/pictures/testImage_office.jpg';
 
 const MainGuest = () => {
   const TEST_DATA = useMemo(() => ([
