@@ -21,6 +21,8 @@ import closeIcon from './CloseIcon.svg';
 import arrowLeftIconGreen from './ArrowLeftIcon.svg';
 import arrowRightIconGreen from './ArrowRightIcon.svg';
 import pigIcon from './Savings.svg';
+import likeIconWhite from './LikeIconWhite.svg';
+import likeIconGreen from './LikeIconGreen.svg';
 import pensil from './Pensil.svg';
 
 export {
@@ -29,5 +31,6 @@ export {
   notificationsYes, notificationsNo, calendarIcon,
   refreshIconGreen, searchIconBlack, searchIconGreen,
   arrowDownIcon, authorContentIconGreen, closeIcon, arrowRightIconGreen,
+  likeIconWhite, likeIconGreen,
   arrowLeftIconGreen, pigIcon, pensil,
 };

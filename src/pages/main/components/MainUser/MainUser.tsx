@@ -24,7 +24,7 @@ const MainUser = () => {
   return (
     <>
       <SearchSection />
-
+      
       <SectionWithSlider items={TEST_DATA}>
         <TitleMainSection
           titleAccent='Погрузитесь в мир'
