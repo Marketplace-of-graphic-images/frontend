@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './profile.module.scss';
-import ProfileForm from '../../components/Forms/ProfileForm/ProfileForm';
 import UserInfo from '../../components/Profile/UserInfo/UserInfo';
 import { useSelector } from '../../services/hooks';
 
@@ -12,7 +11,6 @@ const Profile = () => {
       <UserInfo 
         user={user} 
         roleUser='author' />
-      <ProfileForm />
     </main>
   );
 };

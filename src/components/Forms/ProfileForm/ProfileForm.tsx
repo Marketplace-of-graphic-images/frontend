@@ -1,222 +1,258 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useMemo, useReducer, useState, 
+} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './ProfileForm.module.scss';
 import { EmailInput, UniversalInput } from '../../../ui-lib/Input';
 import {
-  PROFILE_EMAIL_ID,
-  PROFILE_LOGIN_ID,
-  PROFILE_NAME_ID,
-  PROFILE_SURNAME_ID,
-  PROFILE_WEBSITE1_ID,
-  PROFILE_WEBSITE2_ID,
-  PROFILE_WEBSITE3_ID,
+  PROFILE_EMAIL_ID, PROFILE_TELEGRAM_ID, PROFILE_NAME_ID, PROFILE_SURNAME_ID,
+  PROFILE_USERNAME_ID, PROFILE_VK_ID, PROFILE_WEBSITE_ID,
 } from '../../../constants/inputsId';
 import useValidation from '../../../services/useValidation';
 import DateInput from '../../../ui-lib/Input/DateInput/DateInput';
-import { LinkWordButton, UniversalButton } from '../../../ui-lib/Button';
-import { PATTERN_EMAIL, PATTERN_NAME, PATTERN_USERNAME } from '../../../constants/constants';
-import ProfileTitle from '../../Profile/ProfileTitle/ProfileTitle';
-import SolidLine from '../../../ui-lib/Line/SolidLine/SolidLine';
+import { UniversalButton, BackPageButton } from '../../../ui-lib/Button';
+import { PATTERN_NAME, PATTERN_USERNAME } from '../../../constants/constants';
+import FileLoadInput from '../../../ui-lib/Input/FileLoadInput/FileLoadInput';
+import { CameraIconGreen } from '../../../ui-lib/Icons';
+import ConfirmPopup from '../../Template/ConfirmPopup/ConfirmPopup';
+import { useDispatch, useSelector } from '../../../services/hooks';
+import { closeModal, openModalConfirmChangeUserData } from '../../../store/modalSlice';
 
 const ProfileForm = () => {
   const {
     values,
     handleChange,
     errors,
+    errorsText,
+    errorsDescription,
     isValid,
     resetForm,
   } = useValidation();
-  
-  const [numberOfWebsites, setNumberOfWebsites] = useState(1);
+
   const [date, setDate] = useState<Date | undefined>();
+  const [avatar, setAvatar] = useState<File | undefined>();
+  const navigate = useNavigate();
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setAvatar(e.target.files[0]);
+    }
+  };
+
+  const dispatch = useDispatch();
+  const { confirmChangeUserDataModal } = useSelector((state) => state.modals);
+
+  const closePopups = () => {
+    dispatch(closeModal());
+  };
+
+  // имитирует юзера с бекенда
+  const tempUserData = useMemo(() => ({
+    username: 'Username',
+    name: '',
+    surname: '',
+    email: 'user@mail.ru',
+    vk: '',
+    instagram: '',
+    website: '',
+  }), []);
 
   useEffect(() => {
-    // имитирует юзера с бэкенда
-    const tempUserData = {
-      username: 'Username',
-      name: '',
-      surname: '',
-      email: 'user@mail.ru',
-      sites: [],
-    };
-
-    const {
-      username, name, surname, email, sites,
-    } = tempUserData;
-
     // ключ должен совпадать с name у инпутов
-    const initialValues: Record<string, string> = {
-      username,
-      name,
-      surname,
-      email,
-    };
+    resetForm(tempUserData);
+  }, [resetForm, tempUserData]);
 
-    if (sites?.length) {
-      sites.forEach((site, i) => initialValues[`web${i + 1}`] = site);
-
-      setNumberOfWebsites(sites.length);
-    }
-
-    resetForm(initialValues);
-  }, [resetForm]);
-
-  // реализовать функцию проверки новых значений в форме
-  // если их нет return false
-  const isFormChanged = () => true;
+  const isFormChanged = () => (
+    !Object.entries(values).every(([key, value]) => tempUserData[key] === value)
+  );
 
   const isButtonDisable = isFormChanged() && isValid;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
+  // submit
+  const handleSubmit = () => {
     const {
-      username, name, surname, email, web1, web2, web3, 
+      username, name, surname, email, vk, instagram, website,
     } = values;
 
-    const submitData = { 
+    const submitData = {
       username,
       name,
       surname,
       email,
       birthday: date || '', // согласовать формат даты
-      sites: [] as Array<string>,
+      vk,
+      instagram,
+      website,
+      avatar,
     };
 
-    if (web1) submitData.sites.push(web1);
-    if (web2) submitData.sites.push(web2);
-    if (web3) submitData.sites.push(web3);
-
     console.log(submitData);
+
+    closePopups();
+  };
+  const handleBackPage = () => { 
+    navigate('/profile');
+  };
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    dispatch(openModalConfirmChangeUserData());
+  };
+
+  const onCancelClick = () => {
+    // ключ должен совпадать с name у инпутов
+    resetForm(tempUserData);
+    closePopups();
   };
 
   return (
     <section className={styles.profileForm}>
-      <div className={styles.profileForm__title}>
-        <ProfileTitle text='Персональные данные' />
-      </div>
 
-      <SolidLine />
+      <form className={styles.profileForm__form} onSubmit={onSubmit}>
+        <BackPageButton onClick={handleBackPage} />
+        <div className={styles.profileForm__formContainer}>
+          <div className={styles.profileForm__avatarContainer}>
+            <img src='#' alt='' className={styles.profileForm__avatarImage} />
+            <FileLoadInput
+              onChange={handleAvatarChange}
+              icon={<CameraIconGreen width={22} height={22} />}
+              className={styles.profileForm__avatarLoadInput} />
+          </div>
 
-      <form className={styles.profileForm__form} onSubmit={handleSubmit}>
-        <div className={styles.profileForm__inputsContainer}>
+          <div className={styles.profileForm__inputsContainer}>
+            <UniversalInput
+              id={PROFILE_USERNAME_ID}
+              name='username'
+              value={values.username || ''}
+              onChange={handleChange}
+              pattern={PATTERN_USERNAME}
+              validError={errors.username}
+              errorMessage={errorsText.username}
+              errorDescription={errorsDescription.username}
+              label='Имя пользователя'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46}
+              required />
 
-          <p className={styles.profileForm__label}>Имя пользователя</p>
+            <EmailInput
+              id={PROFILE_EMAIL_ID}
+              name='email'
+              value={values.email || ''}
+              onChange={handleChange}
+              validError={errors.email}
+              errorMessage={errorsText.email}
+              label='Email'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46}
+              required />
+          </div>
+        </div>
 
-          <UniversalInput
-            id={PROFILE_LOGIN_ID}
-            name='username'
-            value={values.username || ''}
-            onChange={handleChange}
-            validError={errors.username}
-            pattern={PATTERN_USERNAME}
-            style={{ width: '220px', height: '38px' }}
-            required />
+        <div className={styles.profileForm__formContainer}>
 
-          <p className={styles.profileForm__label}>Имя</p>
+          <div className={styles.profileForm__inputsContainer}>
+            <h2 className={styles.profileForm__inputsTitle}>Персональные данные</h2>
 
-          <UniversalInput
-            id={PROFILE_NAME_ID}
-            name='name'
-            value={values.name || ''}
-            onChange={handleChange}
-            validError={errors.name}
-            pattern={PATTERN_NAME}
-            style={{ width: '220px', height: '38px' }} />
+            <UniversalInput
+              id={PROFILE_NAME_ID}
+              name='name'
+              value={values.name || ''}
+              onChange={handleChange}
+              validError={errors.name}
+              pattern={PATTERN_NAME}
+              label='Имя'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46} />
 
-          <p className={styles.profileForm__label}>Фамилия</p>
+            <UniversalInput
+              id={PROFILE_SURNAME_ID}
+              name='surname'
+              value={values.surname || ''}
+              onChange={handleChange}
+              validError={errors.surname}
+              label='Фамилия'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46} />
 
-          <UniversalInput
-            id={PROFILE_SURNAME_ID}
-            name='surname'
-            value={values.surname || ''}
-            onChange={handleChange}
-            validError={errors.surname}
-            pattern={PATTERN_NAME}
-            style={{ width: '220px', height: '38px' }} />
+            <DateInput
+              value={date}
+              label='Дата рождения'
+              onChange={(val: Date | undefined) => setDate(val)}
+              width={320}
+              height={46} />
+          </div>
 
-          <p className={styles.profileForm__label}>Дата рождения</p>
+          <div className={styles.profileForm__inputsContainer}>
+            <h2 className={styles.profileForm__inputsTitle}>Добавить ссылку</h2>
 
-          <DateInput value={date} onChange={(val: Date | undefined) => setDate(val)} />
+            <UniversalInput
+              id={PROFILE_VK_ID}
+              name='vk'
+              value={values.vk || ''}
+              onChange={handleChange}
+              validError={errors.vk}
+              label='VK'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46} />
 
-          <p className={styles.profileForm__label}>E-mail</p>
+            <UniversalInput
+              id={PROFILE_TELEGRAM_ID}
+              name='telegram'
+              value={values.telegram || ''}
+              onChange={handleChange}
+              validError={errors.telegram}
+              label='Telegram'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46} />
 
-          <EmailInput
-            id={PROFILE_EMAIL_ID}
-            name='email'
-            value={values.email || ''}
-            onChange={handleChange}
-            validError={errors.email}
-            pattern={PATTERN_EMAIL}
-            label=''
-            style={{ width: '220px', height: '38px' }}
-            required />
+            <UniversalInput
+              id={PROFILE_WEBSITE_ID}
+              name='website'
+              value={values.website || ''}
+              onChange={handleChange}
+              validError={errors.website}
+              label='Website'
+              staticLabel
+              borderColor='grey'
+              borderStyle='full'
+              width={320}
+              height={46} />
+          </div>
 
-          {numberOfWebsites > 0 && (
-            <>
-              <p className={styles.profileForm__label}>Веб-сайт</p>
-
-              <UniversalInput
-                id={PROFILE_WEBSITE1_ID}
-                name='web1'
-                value={values.web1 || ''}
-                onChange={handleChange}
-                validError={errors.web1}
-                style={{ width: '220px', height: '38px' }} />
-            </>
-          )}
-
-          {numberOfWebsites > 1 && (
-            <>
-              <p className={styles.profileForm__label}>Веб-сайт</p>
-
-              <UniversalInput
-                id={PROFILE_WEBSITE2_ID}
-                name='web2'
-                value={values.web2 || ''}
-                onChange={handleChange}
-                validError={errors.web2}
-                style={{ width: '220px', height: '38px' }} />
-            </>
-          )}
-
-          {numberOfWebsites > 2 && (
-            <>
-              <p className={styles.profileForm__label}>Веб-сайт</p>
-
-              <UniversalInput
-                id={PROFILE_WEBSITE3_ID}
-                name='web3'
-                value={values.web3 || ''}
-                onChange={handleChange}
-                validError={errors.web3}
-                style={{ width: '220px', height: '38px' }} />
-            </>
-          )}
+          <UniversalButton
+            width={168}
+            className={styles.profileForm__submitBtn}
+            disabled={!isButtonDisable}>
+            Сохранить
+          </UniversalButton>
 
         </div>
 
-        {numberOfWebsites < 3 && (
-          <LinkWordButton
-            buttonName='Добавить веб-сайт'
-            style={{ marginTop: '16px' }}
-            onClick={() => setNumberOfWebsites(numberOfWebsites + 1)} />
-        )}
-
-        <UniversalButton
-          width={447}
-          buttonStyle='borderGreen'
-          className={styles.profileForm__submitBtn}
-          disabled={!isButtonDisable}>
-          Сохранить изменения
-        </UniversalButton>
-
-        <UniversalButton
-          type='button'
-          width={447}>
-          Изменить пароль
-        </UniversalButton>
-
       </form>
+
+      <ConfirmPopup
+        onOkButtonClick={handleSubmit}
+        isOpen={confirmChangeUserDataModal}
+        onClose={closePopups}
+        onCancelButtonClick={onCancelClick}
+        title='Сохранить введенные данные?' />
 
     </section>
   );

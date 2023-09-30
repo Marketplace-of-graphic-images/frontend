@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { TUser } from 'types/types';
 import { useGetAllusersQuery } from 'api/getUsers';
 import { UniversalButton } from 'ui-lib/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PensilIcon } from 'ui-lib/Icons';
 import { pensil } from 'assets/images/icons';
 import { useSelector } from '../../../services/hooks';
@@ -21,7 +21,7 @@ const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   // Получаем всех пользователей
   const { data } = useGetAllusersQuery('getUser');
   // это всё
-
+  const navigate = useNavigate();
   const userData = data?.find(() => true);
 
   const LINKS = [
@@ -31,7 +31,7 @@ const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   ];
 
   const onEditProfile = () => {
-    alert('Редактируем профиль!');
+    navigate('/profile/edit');
   };
   /*   const onFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
