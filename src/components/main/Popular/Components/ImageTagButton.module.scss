@@ -1,0 +1,58 @@
+@use '../../../../globalStyle/variables' as v;
+@use '../../../../globalStyle/mixins' as m;
+
+.imageTagButton {
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+  border: none;
+
+    &__bigImage {
+      width: 100%;
+      height: 424px;    
+      object-fit: cover;
+      border-radius: 8px;
+      background: v.$white-click;
+      box-shadow: 0px 8.56px 51.36px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    &__bigImageTagName {
+      max-width: 80%;
+      font-family: Raleway-Medium, sans-serif;
+      font-size: 21px;
+      line-height: 145%;
+      font-weight: 500;
+      color: v.$black1B-color;
+      position: absolute;
+      left: 32px;
+      bottom: 24px;
+      max-width: 80%;
+      max-height: 60%;
+      overflow: hidden;
+    }
+    
+    &__smallImage {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: v.$white-click;
+      box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+    }
+    
+    &__smallImageTagName {
+      max-width: 80%;
+      font-family: Raleway-Medium, sans-serif;
+      font-size: 21px;
+      line-height: 145%;
+      font-weight: 500;
+      color: v.$black1B-color;
+      position: absolute;
+      left: 16px;
+      bottom: 10px;
+      text-align: left;
+      max-width: 80%;
+      max-height: 60%;
+      overflow: hidden;
+    }
+  }

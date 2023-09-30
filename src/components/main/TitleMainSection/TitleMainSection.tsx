@@ -4,7 +4,7 @@ import styles from './TitleMainSection.module.scss';
 interface TitleMainSectionProps {
   titleAccent: string;
   title: string;
-  subtitle: string;
+  subtitle?: string | undefined;
 }
 
 const TitleMainSection: FC<TitleMainSectionProps> = ({ titleAccent, title, subtitle }) => (
@@ -14,10 +14,12 @@ const TitleMainSection: FC<TitleMainSectionProps> = ({ titleAccent, title, subti
       {title}
     </h2>
 
-    <p className={styles.titleMainSection__subtitle}>
-      {subtitle}
-    </p>
+    {subtitle !== undefined && <p className={styles.titleMainSection__subtitle}>{subtitle}</p>}
   </>
 );
+
+TitleMainSection.defaultProps = {
+  subtitle: '',
+};
 
 export default TitleMainSection;

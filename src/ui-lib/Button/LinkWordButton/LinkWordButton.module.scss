@@ -8,12 +8,21 @@
 }
 
 .button {
+
   display: inline;
   color: $accent-color;
   text-decoration: underline;
   font-weight: 600;
   padding: 0;
   text-align: left;
+  vertical-align: middle;
+}
+
+.withIcon {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  gap: 10px;
 }
 
 .button:hover {
@@ -23,3 +32,4 @@
 .text {
   width: fit-content;
 }
+ 
