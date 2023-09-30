@@ -27,7 +27,7 @@ export const designLinks = [
 ];
 
 export const videoLinks = [
-  { name: 'GIF-изображения', path: '/1' },
+  { name: 'Еда и напитки', path: '/1' },
   { name: 'Мультипликация', path: '/2' },
   { name: 'Реклама', path: '/3' },
   { name: 'Обучение', path: '/4' },
