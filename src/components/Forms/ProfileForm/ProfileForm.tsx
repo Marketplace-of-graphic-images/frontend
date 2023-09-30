@@ -1,6 +1,7 @@
 import React, {
   useEffect, useMemo, useReducer, useState, 
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './ProfileForm.module.scss';
 import { EmailInput, UniversalInput } from '../../../ui-lib/Input';
 import {
@@ -9,7 +10,7 @@ import {
 } from '../../../constants/inputsId';
 import useValidation from '../../../services/useValidation';
 import DateInput from '../../../ui-lib/Input/DateInput/DateInput';
-import { UniversalButton } from '../../../ui-lib/Button';
+import { UniversalButton, BackPageButton } from '../../../ui-lib/Button';
 import { PATTERN_NAME, PATTERN_USERNAME } from '../../../constants/constants';
 import FileLoadInput from '../../../ui-lib/Input/FileLoadInput/FileLoadInput';
 import { CameraIconGreen } from '../../../ui-lib/Icons';
@@ -30,7 +31,7 @@ const ProfileForm = () => {
 
   const [date, setDate] = useState<Date | undefined>();
   const [avatar, setAvatar] = useState<File | undefined>();
-
+  const navigate = useNavigate();
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setAvatar(e.target.files[0]);
@@ -88,7 +89,9 @@ const ProfileForm = () => {
 
     closePopups();
   };
-
+  const handleBackPage = () => { 
+    navigate('/profile');
+  };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -105,8 +108,8 @@ const ProfileForm = () => {
     <section className={styles.profileForm}>
 
       <form className={styles.profileForm__form} onSubmit={onSubmit}>
+        <BackPageButton onClick={handleBackPage} />
         <div className={styles.profileForm__formContainer}>
-
           <div className={styles.profileForm__avatarContainer}>
             <img src='#' alt='' className={styles.profileForm__avatarImage} />
             <FileLoadInput
@@ -140,7 +143,6 @@ const ProfileForm = () => {
               onChange={handleChange}
               validError={errors.email}
               errorMessage={errorsText.email}
-              errorDescription={errorsDescription.email}
               label='Email'
               staticLabel
               borderColor='grey'
