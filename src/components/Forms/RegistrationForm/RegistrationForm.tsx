@@ -14,6 +14,7 @@ import { PATTERN_EMAIL, PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../cons
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
+import registerUserThunk from '../../../thunks/register-user-thunk';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc';
 
@@ -36,26 +37,36 @@ const RegistrationForm = () => {
 
   const [formStep, setFormStep] = useState(1);
   const [code, setCode] = useState('');
+  const [userData, setUserData] = useState(null);
 
   const handleRegisterButtonClick = () => {
+    const data = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+      // eslint-disable-next-line
+      is_author: checkboxValues.author
+    };
+    console.log(data);
+    dispatch(registerUserThunk(data));
     setFormStep(2);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formStep === 2) {
+      const data = {
+        username: values.username,
+        email: values.email,
+        password: values.password,
+        // eslint-disable-next-line
+        is_author: checkboxValues.author
+      };
       console.log(
-        'submit data', (
-          {
-            username: values.username,
-            email: values.email,
-            password: values.password,
-            // eslint-disable-next-line
-            is_author: checkboxValues.author,
-            code,
-          }),
+        data,
       );
-      dispatch(closeModal());
+      dispatch(registerUserThunk(data));
+      setFormStep(2);
     }
   };
 

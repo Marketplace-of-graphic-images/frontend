@@ -34,6 +34,7 @@ const registerUserThunk : AppThunk = (data) => async (dispatch) => {
     const res = await registUser(data);
     batch(() => {
       // eslint-disable-next-line
+      console.log(res);
       dispatch(closeModal());
     });
   } catch (error:any) {
