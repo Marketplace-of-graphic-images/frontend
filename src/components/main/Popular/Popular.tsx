@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './Popular.module.scss';
 import ImageTagButton, { ImageTagButtonProps } from './Components/ImageTagButton';
   
-interface PopularProps {
+export interface PopularProps {
   data: Array<ImageTagButtonProps>;
 }
 

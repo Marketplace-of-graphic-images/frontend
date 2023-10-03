@@ -69,23 +69,6 @@ const MainGuest = () => {
       onLikeClick: () => { console.log('Лайк'); },
     },
   ], []);
-  const TEST_POPULAR_ITEMS = useMemo(() => ([
-    {
-      id: 1, image: sampleImg1, tagName: 'Котики', onClick: () => {}, 
-    },
-    {
-      id: 2, image: sampleImg2, tagName: 'Офисные работники', onClick: () => {}, 
-    },
-    {
-      id: 3, image: sampleImg3, tagName: 'Еда', onClick: () => {}, 
-    },
-    {
-      id: 4, image: sampleImg4, tagName: 'Собачки', onClick: () => {}, 
-    },
-    {
-      id: 5, image: sampleImg5, tagName: 'Мотивация', onClick: () => {}, 
-    },
-  ]), []);
 
   return (
     <>
@@ -96,7 +79,6 @@ const MainGuest = () => {
         title='популярных категорий!' />
       <ImageCardsSection cards={TEST_IMAGE_CARDS_SECTION} title='Популярные фотографии' link='/' />
       <Advantages />
-      <Popular data={TEST_POPULAR_ITEMS} />
       <JoinTheCommunity />
     </>
   );
