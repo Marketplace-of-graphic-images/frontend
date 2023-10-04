@@ -19,11 +19,12 @@ import sampleImg5 from '../../../../assets/images/pictures/testImage_office.jpg'
 
 const MainUser = () => {
 
-  /* const { data: items } = getPopular.useFetchPopularImagesQuery(5); */
+  const {data: items} = getPopular.useFetchPopularImagesQuery('');
+  console.log(items);
 
+/*
   useEffect(()=>{
-    
-  },[]);
+  },[]); */
 
   function fetchPopularData () : PopularProps | null {
     if (popularData.length < 5)

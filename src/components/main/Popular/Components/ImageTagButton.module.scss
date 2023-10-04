@@ -6,6 +6,18 @@
   position: relative;
   background-color: transparent;
   border: none;
+  position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+      border-radius: 8px;
+    }
 
     &__bigImage {
       width: 100%;
@@ -22,7 +34,7 @@
       font-size: 21px;
       line-height: 145%;
       font-weight: 500;
-      color: v.$black1B-color;
+      color: v.$white-color;
       position: absolute;
       left: 32px;
       bottom: 24px;
@@ -46,7 +58,7 @@
       font-size: 21px;
       line-height: 145%;
       font-weight: 500;
-      color: v.$black1B-color;
+      color: v.$white-color;
       position: absolute;
       left: 16px;
       bottom: 10px;

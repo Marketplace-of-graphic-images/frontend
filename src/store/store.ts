@@ -16,7 +16,7 @@ const store = configureStore({
     [getUser.reducerPath]: getUser.reducer,
     [getPopular.reducerPath]: getPopular.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getUser.middleware, getPopular.middleware, thunk),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getPopular.middleware, thunk),
   // eslint-disable-next-line no-undef
   devTools: process.env.NODE_ENV !== 'production',
 });
