@@ -25,7 +25,7 @@ const Main = () => {
       </div>
       )}
 
-      {!false && <MainGuest />}
+      {!isLoggedIn && <MainGuest />}
       {(userRole === 'user' && isLoggedIn) && <MainUser />}
       {(userRole === 'author' && isLoggedIn) && <MainAuthor />}
     </main>
