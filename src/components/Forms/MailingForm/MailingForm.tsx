@@ -10,6 +10,8 @@ const MailingForm: FC = () => {
     values,
     handleChange,
     errors,
+    errorsText,
+    errorsDescription,
     resetForm,
   } = useValidation();
 
@@ -29,14 +31,16 @@ const MailingForm: FC = () => {
         name='email'
         value={values.email || ''}
         validError={errors.email}
+        errorMessage={errorsText.email}
+        errorDescription={errorsDescription.email}
         onChange={handleChange}
         borderColor='white'
-        className={styles.mailingForm__input}
-        required />
+        className={styles.mailingForm__input} />
 
       <UniversalButton
         type='submit'
-        disabled={errors.email}
+        disabled={errors.email || !values.email}
+        className={styles.mailingForm__button}
         width='302'
         height='47'>
         Подписаться

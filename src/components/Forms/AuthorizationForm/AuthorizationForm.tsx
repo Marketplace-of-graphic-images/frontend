@@ -21,10 +21,6 @@ const AuthorizationForm = () => {
   const {
     values,
     handleChange,
-    errors,
-    errorsText,
-    errorsDescription,
-    isValid,
   } = useValidation();
   const dispatch = useDispatch();
   const { emailAuthErr, passwordAuthErr, generalAuthErr } = useSelector((state) => state.apiError);
@@ -61,11 +57,9 @@ const AuthorizationForm = () => {
         value={values.email || ''}
         onChange={handleChange}
         onFocus={resetApiErrors}
-        validError={errors.email}
+        validError={!values.email}
         apiErrorMessage={emailAuthErr}
-        errorMessage={errorsText.email || ''}
-        errorDescription={errorsDescription.email || ''}
-        pattern={undefined}
+        errorMessage='Это обязательное поле'
         required
         autoFocus />
         
@@ -78,10 +72,8 @@ const AuthorizationForm = () => {
           onChange={handleChange}
           onFocus={resetApiErrors}
           apiErrorMessage={passwordAuthErr}
-          validError={errors.password}
-          errorMessage={errorsText.password || ''}
-          errorDescription={errorsDescription.password || ''}
-          pattern={undefined}
+          validError={!values.password}
+          errorMessage='Это обязательное поле'
           required />
 
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
@@ -90,7 +82,7 @@ const AuthorizationForm = () => {
       {generalAuthErr && <p className={styles.globalError}>{generalAuthErr}</p>}
 
       <div className={styles.buttons}>
-        <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>
+        <UniversalButton type='submit' disabled={!values.password || !values.email}>Войти</UniversalButton>
         <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
       </div>
 
