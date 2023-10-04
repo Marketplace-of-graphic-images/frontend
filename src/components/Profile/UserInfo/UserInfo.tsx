@@ -5,7 +5,7 @@ import { useGetAllusersQuery } from 'api/getUsers';
 import { UniversalButton } from 'ui-lib/Button';
 import { Link } from 'react-router-dom';
 import { PensilIcon } from 'ui-lib/Icons';
-import { pensil } from 'assets/images/icons';
+// import { pensil } from 'assets/images/icons';
 import { useSelector } from '../../../services/hooks';
 import styles from './UserInfo.module.scss';
 

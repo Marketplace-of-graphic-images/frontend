@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
 import Advantages from 'components/main/Advantages/Advantages';
+import JoinToCommunity from 'components/Profile/JoinToCommunity/JoinToCommunity';
+import { useSelector } from '../../../../services/hooks';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import SectionWithSlider from '../../../../components/main/SectionWithSlider/SectionWithSlider';
@@ -21,8 +23,13 @@ const MainUser = () => {
     { id: 12, title: 'Город', image: '#' },
   ]), []);
 
+  const { user } = useSelector((state) => state);
+
   return (
     <>
+      <JoinToCommunity
+        user={user} 
+        roleUser='customer' />
       <SearchSection />
 
       <SectionWithSlider items={TEST_DATA}>

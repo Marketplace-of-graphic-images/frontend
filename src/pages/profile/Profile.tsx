@@ -1,4 +1,5 @@
 import React from 'react';
+import JoinToCommunity from 'components/Profile/JoinToCommunity/JoinToCommunity';
 import styles from './profile.module.scss';
 import ProfileForm from '../../components/Forms/ProfileForm/ProfileForm';
 import UserInfo from '../../components/Profile/UserInfo/UserInfo';
