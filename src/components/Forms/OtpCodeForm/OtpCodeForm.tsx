@@ -30,10 +30,10 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
   <div className={styles.otpCodeForm}>
 
     <h1 className={styles.otpCodeForm__title}>{title}</h1>
-    <p className={styles.otpCodeForm__description}>
+    <div className={styles.otpCodeForm__description}>
       {description}
       <LinkWordButton buttonName='Изменить' onClick={onBackClick} />
-    </p>
+    </div>
 
     <OtpCode
       value={code}

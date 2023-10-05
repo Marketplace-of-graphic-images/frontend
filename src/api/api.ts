@@ -26,6 +26,7 @@ export const registUser = (userData) => request('auth/signup/', {
   ]),
   body: JSON.stringify(userData),
 });
+
 export const registСonfirmationUser = (userData) => request('auth/signup-confirmation/', {
   method: 'POST',
   headers: new Headers([

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TUser } from '../types/types';
+import { TUser, TuserDataTemp } from '../types/types';
 
 type TUserState = {
   id: number | null,
@@ -8,7 +8,8 @@ type TUserState = {
   bio?: string | null,
   avatar?: string,
   role: string,
-  links: string[]
+  links: string[],
+  userDataTemp?: TuserDataTemp | null
 };
 
 const initialState: TUserState = {
@@ -18,7 +19,9 @@ const initialState: TUserState = {
   bio: null,
   role: 'author', 
   avatar: '', 
-  links: [], 
+  links: [],
+  userDataTemp: null,
+  
 };
 
 const userSlice = createSlice({
@@ -32,9 +35,22 @@ const userSlice = createSlice({
     clearUser: (state: TUserState) => ({
       ...state, ...initialState,
     }),
+    setUserDataTemp: (
+      state: TUserState,
+      action: PayloadAction<TuserDataTemp>,
+      // eslint-disable-next-line
+      
+    ) => ({ ...state, userDataTemp: action.payload }),
+
+    clearUserDataTemp: (state: TUserState) => ({
+      ...state, userDataTemp: null,
+    }),
   },
+
 });
 
 const userReducer = userSlice.reducer;
-export const { setUser, clearUser } = userSlice.actions;
+export const {
+  setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
+} = userSlice.actions;
 export default userReducer;

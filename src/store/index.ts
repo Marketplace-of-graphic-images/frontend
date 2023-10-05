@@ -23,7 +23,9 @@ import {
   clearAuthErr,
 } from './apiErrorSlice';
 
-import { setUser, clearUser } from './userSlice';
+import {
+  setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
+} from './userSlice';
 
 export {
   openModalAuth,
@@ -43,4 +45,6 @@ export {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setUserDataTemp,
+  clearUserDataTemp,
 };

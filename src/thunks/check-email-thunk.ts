@@ -1,5 +1,5 @@
 import { batch } from 'react-redux';
-import { registUser } from '../api/api';
+import { registСonfirmationUser } from '../api/api';
 import { TloginError } from '../types/apiEror';
 import { TuserDataTemp } from '../types/types';
 import {
@@ -10,11 +10,11 @@ import {
 import {
   onLogin, closeModal, isLoadingOn, isLoadingOff,
   clearAuthErr, setEmailAuthErr, setPasswordAuthErr,
-  setUserDataTemp,
+  setUserDataTemp, clearUserDataTemp, 
 } from '../store';
 import { AppThunk } from '../types/store.types';
 
-const registerUserThunk : AppThunk = (data, setForm) => async (dispatch) => {
+const chekEmailThunk : AppThunk = (data) => async (dispatch) => {
   const authErrors = (errors:TloginError) => {
     switch (errors.errors[0] || '') {
       case 'User with this email does not exist':
@@ -30,14 +30,15 @@ const registerUserThunk : AppThunk = (data, setForm) => async (dispatch) => {
   };
 
   try {
+    dispatch(clearAuthErr());
     dispatch(isLoadingOn());
-    const res:TuserDataTemp = await registUser(data);
+    const res = await registСonfirmationUser(data);
     batch(() => {
       // eslint-disable-next-line
       console.log(res);
-      dispatch(setUserDataTemp(res));
-      // eslint-disable-next-line
-      setForm(2);
+      dispatch(onLogin());
+      dispatch(closeModal());
+      dispatch(clearUserDataTemp());
     });
   } catch (error:any) {
     // eslint-disable-next-line
@@ -46,4 +47,4 @@ const registerUserThunk : AppThunk = (data, setForm) => async (dispatch) => {
     dispatch(isLoadingOff());
   }
 };
-export default registerUserThunk;
+export default chekEmailThunk;

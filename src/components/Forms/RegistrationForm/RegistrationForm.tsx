@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import styles from './RegistrationForm.module.scss';
 import { YandexIcon } from '../../../ui-lib/Icons';
 import { LoginWithButton, UniversalButton } from '../../../ui-lib/Button';
+import { useSelector, useDispatch } from '../../../services/hooks';
 import { EmailInput, PasswordInput, UniversalInput } from '../../../ui-lib/Input';
 import Checkbox from '../../../ui-lib/Checkbox/Checkbox';
 import SolidLine from '../../../ui-lib/Line/SolidLine/SolidLine';
 import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../../services/useValidation';
-import { useDispatch } from '../../../services/hooks';
 import { closeModal, openModalAuth } from '../../../store';
 import { PATTERN_EMAIL, PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
 import registerUserThunk from '../../../thunks/register-user-thunk';
+import chekEmailThunk from '../../../thunks/check-email-thunk';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc';
 
@@ -30,6 +31,7 @@ const RegistrationForm = () => {
   } = useValidation();
 
   const dispatch = useDispatch();
+  const { userDataTemp } = useSelector((state) => state.user);
 
   const openAuthModal = () => {
     dispatch(openModalAuth());
@@ -48,25 +50,16 @@ const RegistrationForm = () => {
       is_author: checkboxValues.author
     };
     console.log(data);
-    dispatch(registerUserThunk(data));
-    setFormStep(2);
+    dispatch(registerUserThunk(data, setFormStep));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formStep === 2) {
-      const data = {
-        username: values.username,
-        email: values.email,
-        password: values.password,
-        // eslint-disable-next-line
-        is_author: checkboxValues.author
-      };
       console.log(
-        data,
-      );
-      dispatch(registerUserThunk(data));
-      setFormStep(2);
+        userDataTemp,
+      ); 
+      dispatch(chekEmailThunk({ ...userDataTemp, confirmation_code: code }));
     }
   };
 
