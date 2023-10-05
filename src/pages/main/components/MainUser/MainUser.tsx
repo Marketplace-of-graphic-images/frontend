@@ -1,14 +1,10 @@
-import { popularData } from 'constants/popularTestData';
-import { baseImageUrl } from 'constants/baseUrl';
 import React, { useEffect, useMemo } from 'react';
 import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
 import Advantages from 'components/main/Advantages/Advantages';
 import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
-import { getPopular } from 'api/getPopular';
-import { TTagImage, TTag } from 'types/types';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
-import Popular, { PopularProps } from '../../../../components/main/Popular/Popular';
+import Popular from '../../../../components/main/Popular/Popular';
 
 import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
 import sampleImg2 from '../../../../assets/images/pictures/testImage_dogs.jpg';
