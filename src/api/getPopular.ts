@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseUrl } from 'constants/baseUrl';
-import { TTag, TTagImage } from 'types/types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { TTag } from 'types/types';
 
 export const getPopular = createApi({
   reducerPath: 'getPopular',
@@ -11,8 +11,7 @@ export const getPopular = createApi({
     fetchPopularImages: build.query <TTag[], number | string>({
       query: () => ({
         url: 'tags/',
-      })
-    })
-  })
-})
-
+      }),
+    }),
+  }),
+});

@@ -1,4 +1,4 @@
-import { baseUrl  as api } from "constants/baseUrl";
+import { baseUrl as api } from 'constants/baseUrl';
 
 const checkResponse = (res: Response) => (res.ok ? res.json() 
 // eslint-disable-next-line
@@ -15,7 +15,7 @@ export const request = (
 export const authUser = (userData) => request('auth/signin/', {
   method: 'POST',
   headers: new Headers([
-    ['Content-Type', 'application/json']
+    ['Content-Type', 'application/json'],
   ]),
   body: JSON.stringify(userData),
 });

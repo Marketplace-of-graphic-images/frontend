@@ -73,12 +73,16 @@ const MainGuest = () => {
   return (
     <>
       <SearchSection />
+
       <AdSection />
+
       <TitleMainSection
         titleAccent='Погрузитесь в мир'
         title='популярных категорий!' />
       <ImageCardsSection cards={TEST_IMAGE_CARDS_SECTION} title='Популярные фотографии' link='/' />
+
       <Advantages />
+      
       <JoinTheCommunity />
     </>
   );
