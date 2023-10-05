@@ -6,7 +6,6 @@ import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSecti
 import { TRUE } from 'node-sass';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
-import Popular from '../../../../components/main/Popular/Popular';
 
 import sampleImg1 from '../../../../assets/images/pictures/testImage_cats.jpg';
 import sampleImg2 from '../../../../assets/images/pictures/testImage_dogs.jpg';

@@ -1,13 +1,15 @@
 @use '../../../../globalStyle/variables' as v;
 @use '../../../../globalStyle/mixins' as m;
 
-.imageTagButton {
+.imageTagLink {
+  display: block;
   width: 100%;
   height: 100%;
   position: relative;
   background-color: transparent;
   border: none;
   position: relative;
+  text-decoration: none;
 
     &::before {
       content: "";

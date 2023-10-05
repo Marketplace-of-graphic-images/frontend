@@ -50,9 +50,10 @@ const AuthorizationForm = () => {
       <h1 className={styles.title}>Авторизация</h1>
       
       {false && (
-      <YandexLogin clientID={clientID}>
-        <LoginWithButton title='Войти с Яндекс ID' icon={<YandexIcon />} />
-      </YandexLogin>)}
+        <YandexLogin clientID={clientID}>
+          <LoginWithButton title='Войти с Яндекс ID' icon={<YandexIcon />} />
+        </YandexLogin>
+      )}
 
       <LineWithWord text='Или' />
 
