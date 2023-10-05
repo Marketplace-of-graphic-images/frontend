@@ -3,6 +3,7 @@ import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity'
 import Advantages from 'components/main/Advantages/Advantages';
 import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
 import JoinToCommunity from 'components/Profile/JoinToCommunity/JoinToCommunity';
+import ProductCard from 'components/ProductCard/ProductCard';
 import { useSelector } from '../../../../services/hooks';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
@@ -89,8 +90,33 @@ const MainUser = () => {
 
   const { user } = useSelector((state) => state);
 
+  // временные данные. Вообще всё это нужно получать по запросу к апи по ID картинки
+  const d: Date = new Date('2023-10-04T06:48:34.028019Z');
+  const image = {
+    id: 150,
+    created: d,
+    name: 'https://i.pinimg.com/originals/20/6f/d8/206fd83e78bf889729b476f4575cd3db.jpg',
+    image: 'https://pictura.acceleratorpracticum.ru/media/images/206fd83e78bf889729b476f4575cd3db.jpg',
+    license: 'free',
+    price: 0,
+    format: 'JPG',
+  };
+  // с бэка приходят параметры не в CamelCase, пришлось ниже выключить Eslint
+  const author = {
+    id: 2,
+    username: 'test_user1',
+    // eslint-disable-next-line camelcase
+    profile_photo: null,
+    role: 'Author',
+    // eslint-disable-next-line camelcase
+    num_of_author_images: 33,
+    // eslint-disable-next-line camelcase
+    is_subscribed: false,
+  };
+  
   return (
     <>
+      <ProductCard ProductImage={image} author={author} />
       <JoinToCommunity
         user={user} 
         roleUser='customer' />

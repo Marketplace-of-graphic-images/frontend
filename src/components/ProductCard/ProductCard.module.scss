@@ -1,0 +1,17 @@
+.ProductCard {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    width: 100%;
+
+    &_header{
+        display: flex;
+        width: 100%;
+        margin-bottom: 32px;
+    }
+    &_img {
+        max-width: 954px;
+        max-height: 573px;
+        object-fit: contain;
+    }
+}
