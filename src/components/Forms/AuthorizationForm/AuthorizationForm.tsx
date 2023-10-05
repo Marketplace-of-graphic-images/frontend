@@ -20,7 +20,10 @@ const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записа�
 const AuthorizationForm = () => {
   const {
     values,
+    errors,
+    errorsText,
     handleChange,
+    isValid,
   } = useValidation();
   const dispatch = useDispatch();
   const { emailAuthErr, passwordAuthErr, generalAuthErr } = useSelector((state) => state.apiError);
@@ -53,13 +56,13 @@ const AuthorizationForm = () => {
       <EmailInput
         id={AUTH_LOGIN_ID}
         name='email'
-        maxLength={254}
+        isEmailValidation={false}
         value={values.email || ''}
         onChange={handleChange}
         onFocus={resetApiErrors}
-        validError={!values.email}
+        validError={errors.email}
         apiErrorMessage={emailAuthErr}
-        errorMessage='Это обязательное поле'
+        errorMessage={errorsText.email}
         required
         autoFocus />
         
@@ -72,8 +75,9 @@ const AuthorizationForm = () => {
           onChange={handleChange}
           onFocus={resetApiErrors}
           apiErrorMessage={passwordAuthErr}
-          validError={!values.password}
-          errorMessage='Это обязательное поле'
+          validError={errors.password}
+          errorMessage={errorsText.password}
+          pattern={undefined}
           required />
 
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
@@ -82,7 +86,7 @@ const AuthorizationForm = () => {
       {generalAuthErr && <p className={styles.globalError}>{generalAuthErr}</p>}
 
       <div className={styles.buttons}>
-        <UniversalButton type='submit' disabled={!values.password || !values.email}>Войти</UniversalButton>
+        <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>
         <LinkWordButton title='Нет аккаунта?' buttonName='Создать аккаунт' onClick={openRegisterModal} />
       </div>
 
