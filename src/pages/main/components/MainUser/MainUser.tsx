@@ -95,7 +95,7 @@ const MainUser = () => {
   const image = {
     id: 150,
     created: d,
-    name: 'https://i.pinimg.com/originals/20/6f/d8/206fd83e78bf889729b476f4575cd3db.jpg',
+    name: 'Какое-то название',
     image: 'https://pictura.acceleratorpracticum.ru/media/images/206fd83e78bf889729b476f4575cd3db.jpg',
     license: 'free',
     price: 0,

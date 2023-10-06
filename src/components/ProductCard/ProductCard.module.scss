@@ -1,3 +1,6 @@
+@use '../../globalStyle/variables.scss' as v;
+@use '../../globalStyle/mixins' as m;
+
 .ProductCard {
     display: flex;
     flex-direction: column;
@@ -6,8 +9,42 @@
 
     &_header{
         display: flex;
+        align-items: center;
         width: 100%;
         margin-bottom: 32px;
+    }
+    &_back{
+        width: 52px;
+        height: 48px;
+    }
+    &_title{
+        @include m.Header;
+        color: m.$black-color;
+        margin-left: 24px;
+    }
+    &_report{
+        display: flex;
+        align-items: center;
+        margin-left: 24px;
+    }
+    &_report_text{
+        @include m.Link;
+        position: absolute;
+        padding-left: -150px;
+        visibility: hidden;
+        transition: .3s cubic-bezier(.1, .39, .27, 2.35) .2s;
+    }
+    &_report_flag{
+        opacity: .3;
+    }
+    &_report:hover &_report_hover {
+        fill: v.$error-color;
+        color: v.$error-color;
+        opacity: 1;
+    }
+    &_report:hover &_report_text{
+        padding-left: 40px;
+        visibility: visible;
     }
     &_img {
         max-width: 954px;
