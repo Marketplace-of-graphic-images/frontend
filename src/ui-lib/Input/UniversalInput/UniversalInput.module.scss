@@ -2,6 +2,8 @@
 @import '/src/globalStyle/mixins.scss';
 
 .universalInput {
+  $root: &;
+
   display: flex;
   align-items: center;
   gap: 12px;
@@ -28,15 +30,19 @@
   &_border_white {
     border-color: $white-color;
     color: $white-color;
+
+    & > #{$root}__label {
+      color: $white-on-click-color !important;
+    }
+
+    #{$root}__container:has(&) #{$root}__errorDescription {
+      color: $grey-200-color;
+    }
   }
 
   &_border_grey {
     border-color: $grey-200-color;
     color: $grey-500-color;
-  }
-
-  &_border_white > &__label {
-    color: $white-on-click-color !important;
   }
 
   &__container {
