@@ -1,0 +1,60 @@
+@use '../../../globalStyle/variables' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.JoinToCommunity{
+    max-width: 845px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    width: 100%;
+    overflow: hidden;
+    transition: .2s linear;
+
+    &_section-show{
+        display: flex;
+        height: 235px;
+    }
+    &_section-hidden{
+        height: 0;
+        border: none;
+    }
+    &_container{
+        display: flex;
+        margin-top: 32px;
+        margin-right: 33px;
+        margin-bottom: 32px;
+        margin-left: 37px;
+        width: 100%;
+    }
+    &_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-right: 33px;
+        max-width: 301px;
+    }
+    &_buttons{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &_header{
+        @include m.Header3;
+    }
+    &_header_span{
+        @include m.Header3;
+        color: v.$accent-color;
+    }
+    &_notNow{
+        @include m.Body;
+        cursor: pointer;
+    }
+    &_image{
+        background-color: v.$white-on-click-color;
+        object-fit: cover;
+        max-width: 441px;
+        max-height: 171px;
+        width: 100%;
+        border-radius: 8px;
+    }
+}
