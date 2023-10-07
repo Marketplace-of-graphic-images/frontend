@@ -19,20 +19,19 @@ const Popular: FC = () => {
   // элементов исходного массива в случайном порядке  
   function setPopularData(pd : TTag[], qty = 5) : PopularProps | null {
     // Вариант с выводом первых qty тегов
-    /*  const collection : TTag[] | null = pd.slice(0, qty); */
+    const collection : TTag[] | null = pd.slice(0, qty);
 
     // Вариант со случайным выбором qty тегов в shuffleArray
-    const collection : TTag[] | null = shuffleArray(pd, qty);
+    /* const collection : TTag[] | null = shuffleArray(pd, qty); */
 
     return collection
       ? ({
         data: collection.map(({ tag_images, name }) => {
-          const imageIndex : number = Math.floor(Math.random() * tag_images.length);
           return {
-            id: tag_images[imageIndex].id, 
-            image: `${baseImageUrl}${tag_images[imageIndex].image}`, 
+            id: tag_images[0].id, 
+            image: tag_images[0].image, 
             tagName: name, 
-            link: tag_images[imageIndex].name, 
+            link: tag_images[0].image, 
           }; 
         }),
       })
