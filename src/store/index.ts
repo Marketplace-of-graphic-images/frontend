@@ -21,6 +21,13 @@ import {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setEmailRegistErr,
+  setPasswordRegistErr,
+  setUsernameRegistErr,
+  clearRegistErr,
+  setGeneralRegistErr,
+  clearConfirmationCodeRegistErr,
+  setConfirmationCodeRegistErr,
 } from './apiErrorSlice';
 
 import {
@@ -45,6 +52,13 @@ export {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setEmailRegistErr,
+  setPasswordRegistErr,
+  setUsernameRegistErr,
+  clearRegistErr,
+  setGeneralRegistErr,
   setUserDataTemp,
   clearUserDataTemp,
+  clearConfirmationCodeRegistErr,
+  setConfirmationCodeRegistErr,
 };

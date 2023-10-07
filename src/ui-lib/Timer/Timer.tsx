@@ -7,9 +7,10 @@ interface TimerProps {
   // eslint-disable-next-line react/require-default-props
   numberOfSeconds: number;
   numberOfMinutes: number;
+  getNewCode: () => void;
 }
 
-const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfMinutes }) => {
+const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfMinutes, getNewCode }) => {
   const [timerState, setTimerState] = useState<'timer' | 'codeNotCome' | 'timerEnd'>('timer');
   const [attempts, setAttempts] = useState(2);
 
@@ -32,7 +33,7 @@ const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfMinutes }) => {
     if (attempts > 0) {
       setTimerState('timer');
       setAttempts(attempts - 1);
-
+      getNewCode();
       const newTime = new Date();
       newTime.setSeconds(newTime.getSeconds() + numberOfSeconds);
       restart(newTime);
@@ -76,5 +77,4 @@ const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfMinutes }) => {
     </div>
   );
 };
-
 export default Timer;

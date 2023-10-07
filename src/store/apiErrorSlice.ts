@@ -4,12 +4,23 @@ type TErrorApiState = {
   emailAuthErr: string;
   passwordAuthErr: string;
   generalAuthErr:string;
+  usernameRegistErr:string;
+  emailRegistErr: string;
+  passwordRegistErr: string;
+  generalRegistErr: string;
+  confirmationCodeRegistErr:string;
+  
 };
 
 const initialState: TErrorApiState = {
   emailAuthErr: '',
   passwordAuthErr: '',
   generalAuthErr: '',
+  emailRegistErr: '',
+  passwordRegistErr: '',
+  generalRegistErr: '',
+  usernameRegistErr: '',
+  confirmationCodeRegistErr: '',
 };
 
 const modalSlice = createSlice({
@@ -35,6 +46,43 @@ const modalSlice = createSlice({
       ...state, passwordAuthErr: '', emailAuthErr: '', generalAuthErr: '',
     }),
 
+    setEmailRegistErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, emailRegistErr: action.payload }),
+
+    setPasswordRegistErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, passwordRegistErr: action.payload }),
+
+    setGeneralRegistErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, generalRegistErr: action.payload }),
+
+    setUsernameRegistErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, usernameRegistErr: action.payload }),
+    
+    clearRegistErr: (state: TErrorApiState) => ({
+      ...state,
+      emailRegistErr: '',
+      passwordRegistErr: '', 
+      generalRegistErr: '', 
+      usernameRegistErr: '',
+      confirmationCodeRegistErr: '',
+    }),
+    setConfirmationCodeRegistErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, confirmationCodeRegistErr: action.payload }),
+
+    clearConfirmationCodeRegistErr: (state: TErrorApiState) => ({
+      ...state,
+      confirmationCodeRegistErr: '',
+    }),
   },
 });
 
@@ -43,5 +91,12 @@ export const {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setEmailRegistErr,
+  setPasswordRegistErr,
+  setUsernameRegistErr,
+  clearRegistErr,
+  setGeneralRegistErr,
+  clearConfirmationCodeRegistErr, 
+  setConfirmationCodeRegistErr,
 } = modalSlice.actions;
 export default apiErrorReducer;

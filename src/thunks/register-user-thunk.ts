@@ -1,31 +1,28 @@
 import { batch } from 'react-redux';
 import { registUser } from '../api/api';
-import { TloginError } from '../types/apiEror';
 import { TuserDataTemp } from '../types/types';
 import {
-  NOT_EMAIL_LOGIN,
-  NOT_PASSWORD_LOGIN,
-  NOT_EMAIL_AND_PASSOWORD_AUTH, 
-} from '../constants/apiError';
-import {
-  onLogin, closeModal, isLoadingOn, isLoadingOff,
-  clearAuthErr, setEmailAuthErr, setPasswordAuthErr,
+  isLoadingOn, isLoadingOff,
+  setEmailRegistErr,
+  setPasswordRegistErr,
+  setUsernameRegistErr,
+  clearRegistErr,
+  setGeneralRegistErr,
   setUserDataTemp,
 } from '../store';
 import { AppThunk } from '../types/store.types';
-
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,
+ @typescript-eslint/no-unsafe-argument */
 const registerUserThunk : AppThunk = (data, setForm) => async (dispatch) => {
-  const authErrors = (errors:TloginError) => {
-    switch (errors.errors[0] || '') {
-      case 'User with this email does not exist':
-        dispatch(setEmailAuthErr(NOT_EMAIL_LOGIN));
-        break;
-      case 'Wrong password': 
-        dispatch(setPasswordAuthErr(NOT_PASSWORD_LOGIN));
-        break;
-      default:
-        dispatch(setEmailAuthErr(NOT_EMAIL_AND_PASSOWORD_AUTH));
-        break;
+  const registErrors = (errors) => {
+    if ('password' in errors) {
+      dispatch(setPasswordRegistErr(errors.password[0]));
+    } else if ('username' in errors) {
+      dispatch(setUsernameRegistErr(errors.username[0]));
+    } else if ('email' in errors) {
+      dispatch(setEmailRegistErr(errors.email[0]));
+    } else {
+      dispatch(setGeneralRegistErr('Ошибка регистрации'));
     }
   };
 
@@ -34,14 +31,15 @@ const registerUserThunk : AppThunk = (data, setForm) => async (dispatch) => {
     const res:TuserDataTemp = await registUser(data);
     batch(() => {
       // eslint-disable-next-line
-      console.log(res);
       dispatch(setUserDataTemp(res));
+      dispatch(clearRegistErr());
       // eslint-disable-next-line
       setForm(2);
     });
   } catch (error:any) {
     // eslint-disable-next-line
-  console.log(error)
+    dispatch(clearRegistErr());
+    registErrors(error);
   } finally {
     dispatch(isLoadingOff());
   }
