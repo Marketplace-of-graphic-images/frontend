@@ -5,7 +5,7 @@ const checkResponse = (res: Response) => (res.ok ? res.json()
 
 export const request = (
   url: string, 
-  config: RequestInit,
+  config?: RequestInit,
 ): Promise<any> => fetch(
   `${process.env.API || api}${url}`,
   { ...config, credentials: 'include' },
@@ -18,3 +18,5 @@ export const authUser = (userData) => request('auth/signin/', {
   ]),
   body: JSON.stringify(userData),
 });
+
+export const checkUserAuth = () => request('users/short_me');
