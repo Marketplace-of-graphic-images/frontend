@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
 import Advantages from 'components/main/Advantages/Advantages';
 import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
-import JoinToCommunity from 'components/Profile/JoinToCommunity/JoinToCommunity';
 import { useSelector } from '../../../../services/hooks';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
@@ -87,13 +86,8 @@ const MainUser = () => {
     },
   ]), []);
 
-  const { user } = useSelector((state) => state);
-
   return (
     <>
-      <JoinToCommunity
-        user={user} 
-        roleUser='customer' />
       <SearchSection />
       <TitleMainSection
         titleAccent='Погрузитесь в мир'
