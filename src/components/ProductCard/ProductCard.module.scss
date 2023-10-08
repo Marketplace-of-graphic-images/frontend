@@ -49,6 +49,114 @@
     &_img {
         max-width: 954px;
         max-height: 573px;
+        width: 100%;
         object-fit: contain;
+    }
+
+}
+.wrapper{
+    display: flex;
+    
+    &_InfoBlock{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 302px;
+        margin-left: 24px;
+    }
+    &_price{
+        display: flex;
+        justify-content: space-between;
+    }
+    &_text{
+        @include m.Body1;
+        color: v.$dark-green-color;
+    }
+    &_price{
+        @include m.Numbers;
+        color: v.$dark-green-color;  
+    }
+    &_buttons{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid rgba(75, 75, 75, 0.5);
+    }
+    &_like{
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+
+    }
+    &_share{
+        width: 48px;
+        height: 48px;
+        border: 1px solid v.$accent-color;
+        border-radius: 8px;
+        transition: background 0.12s ease-in, border 0.12s ease-in, color 0.12s ease-in;
+        &:hover{
+        border: 1px solid v.$accent_on_hover-color;
+        color: v.$white-color;
+        }
+    }
+    &_download{
+        @include m.Body2;
+    }
+    &_info{
+        margin-top: 32px;
+    }
+    &_type{
+        display: flex;
+        align-items: center;
+        margin-bottom: 22px;
+    }
+    &_aboutFormat{
+        @include m.Body2;
+        color: v.$dark-green-color;
+        margin-left: 8px;
+    }
+    &_aboutType{
+        @include m.Body2;
+        color: v.$black-color;
+    }
+}
+.aboutUser{
+    display: flex;
+    margin-top: 32px;
+    height: 72px;
+    align-items: center;
+    
+    &_avatar{
+       max-width: 72px;
+       max-height: 72px;
+       width: 100%;
+       height: 100%;
+       border-radius: 50%;
+       background-color: v.$grey-500-color; 
+    }
+    &_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 12px;
+        margin-right: 22px;
+        height: 100%
+    }
+    &_name{
+        @include m.Header2;
+        color: v.$black1B-color;
+    }
+    &_jobs{
+        @include m.Body2;
+        color: v.$black1B-color;
+    }
+    &_add{
+        flex-shrink: 0;
+        fill: v.$accent-color;
+    }
+    .universalButton_border_green:hover &_add_hover{
+        fill: v.$white-color;
     }
 }

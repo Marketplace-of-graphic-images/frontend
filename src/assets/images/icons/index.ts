@@ -27,6 +27,12 @@ import pensil from './Pensil.svg';
 import cameraIconGreen from './CameraIcon_green.svg';
 import back from './Back.svg';
 import report from './Report.svg';
+import downloads from './Download.svg';
+import share from './share.svg';
+import file from './File.svg';
+import license from './License.svg';
+import buy from './Buy.svg';
+import add from './Add.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
@@ -35,5 +41,5 @@ export {
   refreshIconGreen, searchIconBlack, searchIconGreen,
   arrowDownIcon, authorContentIconGreen, closeIcon, arrowRightIconGreen,
   arrowLeftIconGreen, pigIcon, pensil, cameraIconGreen,
-  likeIconWhite, likeIconGreen, back, report,
+  likeIconWhite, likeIconGreen, back, report, downloads, share, file, license, buy, add,
 };
