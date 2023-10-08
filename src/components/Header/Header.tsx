@@ -1,5 +1,6 @@
 import {
   aboutUsLinks, designLinks, photoLinks, videoLinks, 
+  ProfileLinks,
 } from 'constants/headerLinks';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -94,11 +95,7 @@ const Header = () => {
                 : <NotificationsNo width='40' height='40' />}
             </button>
             
-            <button type='button'>
-              <Link to='/profile'>
-                <ProfileIcon className={styles.icon} width='40' height='40' />
-              </Link>
-            </button>
+            <ButtonWithDropDown isProfile menuItem={ProfileLinks} />
               
           </div>
         )}

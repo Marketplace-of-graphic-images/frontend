@@ -47,3 +47,9 @@ export const aboutUsLinks = [
   { name: 'Подписка', path: '/7' },
   { name: 'Специальные предложения', path: '/8' },
 ];
+
+export const ProfileLinks = [
+  { name: 'Профиль', path: '/profile' },
+  { name: 'Изменить профиль', path: '/profile/edit' },
+  { name: 'Поддержка', path: '/3' },
+];
