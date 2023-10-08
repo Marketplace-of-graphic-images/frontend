@@ -27,7 +27,6 @@ const chekEmailThunk : AppThunk = (data, setCode) => async (dispatch) => {
     dispatch(isLoadingOn());
     const res = await registСonfirmationUser(data);
     batch(() => {
-      console.log(res);
       dispatch(onLogin());
       dispatch(closeModal());
       // eslint-disable-next-line
@@ -38,7 +37,6 @@ const chekEmailThunk : AppThunk = (data, setCode) => async (dispatch) => {
     // eslint-disable-next-line
     setCode('')
     confirmationCodeErrors(error);
-    console.log(error);
   } finally {
     dispatch(isLoadingOff());
   }

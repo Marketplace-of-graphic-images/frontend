@@ -12,7 +12,7 @@ interface TimerProps {
 
 const Timer: FC<TimerProps> = ({ numberOfSeconds, numberOfMinutes, getNewCode }) => {
   const [timerState, setTimerState] = useState<'timer' | 'codeNotCome' | 'timerEnd'>('timer');
-  const [attempts, setAttempts] = useState(2);
+  const [attempts, setAttempts] = useState(3);
 
   const time = new Date();
   time.setSeconds(time.getSeconds() + numberOfSeconds);
