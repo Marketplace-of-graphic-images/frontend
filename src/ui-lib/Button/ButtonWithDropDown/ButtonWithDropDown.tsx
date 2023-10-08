@@ -8,7 +8,8 @@ import React, {
 } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ProfileIcon } from 'ui-lib/Icons';
-
+import { useDispatch, useSelector } from '../../../services/hooks';
+import signoutThunk from '../../../thunks/signout-thunk';
 // styles
 import styles from './ButtonWithDropDown.module.scss';
 import { ArrowDownIcon, ArrowUpIcon } from '../../Icons';
@@ -28,6 +29,7 @@ export interface IButtonWithDropDown {
 const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
   title, menuItem, isProfile,
 }) => {
+  const dispatch = useDispatch();
   const [dropDownState, setDropDownState] = useState(false);
 
   function useOutsideComponent(ref) {
@@ -62,6 +64,9 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
       return <ArrowDownIcon />;
     } return <ProfileIcon className={styles.icon} width='40' height='40' />;
   };
+  const signoutUser = () => {
+    dispatch(signoutThunk());
+  };
  
   return (
     <div ref={wrapperRef} className={styles.dropdown}>
@@ -79,10 +84,12 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
               </li>         
             ))}
           </ul>
+          {isProfile && (
           <div> 
             <hr className={styles.profile_line} /> 
-            <button className={styles.link} type='button'> Выйти из аккаунта </button>
+            <button onClick={signoutUser} className={styles.link} type='button'> Выйти из аккаунта </button>
           </div>
+          )}
         </div>
       )}
     </div> 

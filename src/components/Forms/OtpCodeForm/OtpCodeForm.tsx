@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styles from './OtpCodeForm.module.scss';
-import { BackPopupButton, LinkWordButton, UniversalButton } from '../../../ui-lib/Button';
+import { LinkWordButton } from '../../../ui-lib/Button';
 import Timer from '../../../ui-lib/Timer/Timer';
 import OtpCode from '../../../ui-lib/OptCode/OtpCode';
 
