@@ -20,10 +20,9 @@ const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записа�
 const AuthorizationForm = () => {
   const {
     values,
-    handleChange,
     errors,
     errorsText,
-    errorsDescription,
+    handleChange,
     isValid,
   } = useValidation();
   const dispatch = useDispatch();
@@ -57,15 +56,13 @@ const AuthorizationForm = () => {
       <EmailInput
         id={AUTH_LOGIN_ID}
         name='email'
-        maxLength={254}
+        isEmailValidation={false}
         value={values.email || ''}
         onChange={handleChange}
         onFocus={resetApiErrors}
         validError={errors.email}
         apiErrorMessage={emailAuthErr}
-        errorMessage={errorsText.email || ''}
-        errorDescription={errorsDescription.email || ''}
-        pattern={undefined}
+        errorMessage={errorsText.email}
         required
         autoFocus />
         
@@ -79,8 +76,7 @@ const AuthorizationForm = () => {
           onFocus={resetApiErrors}
           apiErrorMessage={passwordAuthErr}
           validError={errors.password}
-          errorMessage={errorsText.password || ''}
-          errorDescription={errorsDescription.password || ''}
+          errorMessage={errorsText.password}
           pattern={undefined}
           required />
 

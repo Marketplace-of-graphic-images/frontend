@@ -11,8 +11,12 @@ export interface IUniversalInput extends React.ComponentPropsWithoutRef<'input'>
   validError?: boolean;
   icon?: ReactComponentElement<FC> | null;
   id: string;
-  borderColor?: 'black' | 'white';
+  borderColor?: 'black' | 'white' | 'grey';
+  borderStyle?: 'bottom' | 'full';
+  staticLabel?: boolean;
   className?: string;
+  width?: number;
+  height?: number;
 }
 
 const UniversalInput: React.FC<IUniversalInput> = (
@@ -27,27 +31,42 @@ const UniversalInput: React.FC<IUniversalInput> = (
     validError = false,
     icon = null,
     borderColor = 'black',
+    borderStyle = 'bottom',
+    staticLabel = false,
     className = '',
+    width = 484,
+    height = 46,
     ...rest
   },
 ) => {
-  const borderColorClass = (color) => {
-    switch (true) {
-      case color === 'white':
-        return styles.universalInput_border_white;
-      
-      default:
-        return styles.universalInput_border_black;
-    }
+  const borderClass = (color: string, style: string) => {
+    const colorClass: Record<string, string> = {
+      white: styles.universalInput_border_white,
+      grey: styles.universalInput_border_grey,
+      black: styles.universalInput_border_black,
+    };
+
+    const styleClass: Record<string, string> = {
+      full: styles.universalInput_border_full,
+      bottom: styles.universalInput_border_bottom,
+    };
+
+    return `${colorClass[color]} ${styleClass[style]}`;
   };
 
   return (
-    <div className={styles.universalInput__container}>
+    <div className={styles.universalInput__container} style={{ maxWidth: width }}>
 
       <div
         className={`
           ${styles.universalInput} ${apiErrorMessage || validError ? styles.universalInput__warning : ''} 
-          ${borderColorClass(borderColor)} ${className}`}>
+          ${borderClass(borderColor, borderStyle)} ${className}`}>
+
+        {staticLabel && label !== '' && (
+          <label className={styles.universalInput__staticLabel} htmlFor={id}>
+            {label}
+          </label>
+        )}
 
         <input
           id={id}
@@ -55,9 +74,14 @@ const UniversalInput: React.FC<IUniversalInput> = (
           placeholder='input'
           type={type}
           pattern={pattern}
+          style={{ height }}
           {...rest} />
 
-        {label !== '' && <label className={styles.universalInput__label} htmlFor={id}>{label}</label>}
+        {!staticLabel && label !== '' && (
+          <label className={styles.universalInput__label} htmlFor={id}>
+            {label}
+          </label>
+        )}
 
         {icon && icon}
         
@@ -90,8 +114,12 @@ UniversalInput.defaultProps = {
   validError: false,
   icon: null,
   borderColor: 'black',
+  borderStyle: 'bottom',
+  staticLabel: false,
   className: '',
   pattern: undefined,
+  width: 484,
+  height: 46,
 };
 
 export default UniversalInput;

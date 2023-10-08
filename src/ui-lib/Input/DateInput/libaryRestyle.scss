@@ -1,0 +1,49 @@
+@import '../../../globalStyle/variables';
+@import '../../../globalStyle/mixins';
+
+.react-calendar__tile--now {
+  background: inherit;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px $accent-color inset;
+  -webkit-box-shadow: 0 0 0 1px $accent-color inset;
+  -moz-box-shadow: 0 0 0 1px $accent-color inset;
+}
+
+.react-calendar__tile--now:enabled:hover {
+  background: #e6e6e6;
+}
+
+.react-calendar__tile--active {
+  background: $accent-color;
+  border: none !important;
+}
+
+.react-calendar__tile--active:enabled:hover {
+  background: $accent_on_hover-color;
+}
+
+.react-date-picker__inputGroup__input:invalid {
+  background: none;
+}
+
+.react-date-picker__inputGroup__input{
+  @include Body;
+  color: $grey-500-color;
+}
+
+.react-date-picker__inputGroup__input::placeholder {
+  color: $grey-500-color;
+}
+
+.react-date-picker__inputGroup__leadingZero {
+  @include Body;
+  color: $grey-500-color;
+}
+
+.react-date-picker__inputGroup__divider {
+  color: $grey-500-color;
+}
+
+.react-date-picker__button {
+  padding: 0 0 0 8px;
+}

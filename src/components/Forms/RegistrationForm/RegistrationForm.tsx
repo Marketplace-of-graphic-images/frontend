@@ -10,7 +10,7 @@ import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../../services/useValidation';
 import { openModalAuth, clearRegistErr } from '../../../store';
-import { PATTERN_EMAIL, PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
+import { PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
@@ -103,7 +103,6 @@ const RegistrationForm = () => {
             name='email'
             value={values.email || ''}
             onChange={handleChange}
-            pattern={PATTERN_EMAIL}
             onFocus={resetApiErrors}
             validError={errors.email}
             apiErrorMessage={emailRegistErr}

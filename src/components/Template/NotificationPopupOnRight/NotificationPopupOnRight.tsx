@@ -2,15 +2,10 @@ import React, {
   FC, PropsWithChildren, useEffect, useState, 
 } from 'react';
 import styles from './NotificationPopupOnRight.module.scss';
-import PopupWrapper from '../PopupWrapper/PopupWrapper';
+import PopupWrapper, { PopupWrapperProps } from '../PopupWrapper/PopupWrapper';
 import { ClosePopupButton } from '../../../ui-lib/Button';
 
-interface NotificationModalOnRightProps extends PropsWithChildren {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const NotificationPopupOnRight: FC<NotificationModalOnRightProps> = (
+const NotificationPopupOnRight: FC<PopupWrapperProps> = (
   {
     isOpen,
     onClose,

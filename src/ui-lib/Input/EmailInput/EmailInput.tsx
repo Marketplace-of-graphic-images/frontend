@@ -1,18 +1,24 @@
 import React from 'react';
 import UniversalInput, { IUniversalInput } from '../UniversalInput/UniversalInput';
-import { PATTERN_EMAIL } from '../../../constants/constants';
 
-// interface IEmailInput extends IUniversalInput {}
+interface IEmailInput extends IUniversalInput {
+  isEmailValidation?: boolean;
+}
 
-const EmailInput: React.FC<IUniversalInput> = ({
+const EmailInput: React.FC<IEmailInput> = ({
   label = 'Адрес электронной почты',
+  isEmailValidation,
   ...rest
 }) => (
   <UniversalInput
-    type='text'
+    type={isEmailValidation ? 'email' : 'text'}
     label={label}
-    pattern={PATTERN_EMAIL}
+    maxLength={256}
     {...rest} />
 );
+
+EmailInput.defaultProps = {
+  isEmailValidation: true,
+};
 
 export default EmailInput;

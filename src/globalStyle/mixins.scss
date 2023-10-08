@@ -37,6 +37,12 @@
   font-family: Raleway-Bold, sans-serif;
   font-size: 20px;
   line-height: 140%;
+}
+@mixin Header3 {
+  font-family: Raleway-Medium, sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 142%;
 } 
 @mixin Body {
   font-family: Raleway-Medium, sans-serif;
@@ -96,6 +102,20 @@
   font-weight: 700;
   line-height: 140%;
   font-style: normal;
+}
+
+@mixin Desktop_H3 {
+  font-family: Raleway-Medium, sans-serif;
+  font-size: 21px;
+  line-height: 145%;
+  font-weight: 500;
+}
+
+@mixin Desktop_H2 {
+  font-family: Raleway-Bold, sans-serif;
+  font-size: 24px;
+  line-height: 140%;
+  font-weight: 600;
 }
 
 @mixin SectionContainer {

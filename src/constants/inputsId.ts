@@ -13,13 +13,13 @@ export const RECOVERY_PASSWORD_ID = 'recovery-password-inp';
 export const RECOVERY_REPEAT_PASSWORD_ID = 'recovery-repeat-password-inp';
 
 // profile form
-export const PROFILE_LOGIN_ID = 'profile-login-inp';
+export const PROFILE_USERNAME_ID = 'profile-login-inp';
 export const PROFILE_NAME_ID = 'profile-name-inp';
 export const PROFILE_SURNAME_ID = 'profile-surname-inp';
 export const PROFILE_EMAIL_ID = 'profile-email-inp';
-export const PROFILE_WEBSITE1_ID = 'profile-website1-inp';
-export const PROFILE_WEBSITE2_ID = 'profile-website2-inp';
-export const PROFILE_WEBSITE3_ID = 'profile-website3-inp';
+export const PROFILE_VK_ID = 'profile-vk-inp';
+export const PROFILE_TELEGRAM_ID = 'profile-telegram-inp';
+export const PROFILE_WEBSITE_ID = 'profile-website-inp';
 
 // mailing form
 export const MAILING_EMAIL_ID = 'mailing-email-inp';

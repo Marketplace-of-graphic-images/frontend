@@ -1,0 +1,9 @@
+@import '../../../globalStyle/mixins';
+
+.profileEdit {
+  @include SectionContainer;
+  max-width: 768px;
+  margin: 48px auto 52px;
+  padding: 32px;
+  box-shadow: 0 4px 24px 0 rgba(27, 27, 27, 0.08);
+}

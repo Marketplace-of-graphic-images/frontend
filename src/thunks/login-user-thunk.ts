@@ -10,6 +10,13 @@ import { AppThunk } from '../types/store.types';
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,
  @typescript-eslint/no-unsafe-argument */
 
+type TUserSignIn = {
+  id: number;
+  username: string;
+  profile_photo: string;
+  role: string;
+};
+
 const loginUserThunk : AppThunk = (data) => async (dispatch) => {
   const authErrors = (errors) => {
     if ('password' in errors) {
@@ -24,12 +31,15 @@ const loginUserThunk : AppThunk = (data) => async (dispatch) => {
   try {
     dispatch(clearAuthErr());
     dispatch(isLoadingOn());
-    const res = await authUser(data);
+
+    const res: TUserSignIn = await authUser(data);
+
     batch(() => {
-      // eslint-disable-next-line
       dispatch(onLogin());
       dispatch(closeModal());
     });
+
+    localStorage.setItem('userId', res.id.toString());
   } catch (error:any) {
     // eslint-disable-next-line
    authErrors(error)

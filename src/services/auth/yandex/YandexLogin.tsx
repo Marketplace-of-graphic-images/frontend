@@ -54,7 +54,7 @@ const YandexLogin: FC<IYandexLogin> = ({ clientID, children }) => {
     window.open(`${requestUrl}${clientID}`, 'popup', `width=${w},height=${h},top=${y},left=${x}`);
     window.addEventListener('message', handleMessageFromPopup, { once: true });
   };
-  let frameRedirectTo: null | string = null;
+  //  let frameRedirectTo: null | string = null;
 
   const accessKey = getToken();
   const receiver: Window = window.parent !== window
@@ -69,22 +69,22 @@ const YandexLogin: FC<IYandexLogin> = ({ clientID, children }) => {
       }, window.location.origin);
       window.close();
     }
-  });
+  }, [accessKey, receiver]);
 
-  if (!accessKey && !receiver) {
+  /*   if (!accessKey && !receiver) {
     const autoLoginDIsabled = sessionStorage.getItem('yandexAutoLoginDisabled');
     frameRedirectTo = autoLoginDIsabled !== 'true' 
       ? requestUrl
       : null;
     window.addEventListener('message', handleMessageFromPopup, { once: false });
-  }
+  } */
 
   const cloned = React.cloneElement(children, { onClick: onLogin });
 
   return (
     <div style={{ width: '100%' }}>
       {cloned}
-      {frameRedirectTo && <HiddenFrame redirectTo={frameRedirectTo} />}
+      {/*  {frameRedirectTo && <HiddenFrame redirectTo={frameRedirectTo} />} */}
     </div>
   );
 };

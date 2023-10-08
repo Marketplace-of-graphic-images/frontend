@@ -1,5 +1,5 @@
-@import '/src/globalStyle/variables.scss';
-@import '/src/globalStyle/mixins.scss';
+@import '../../../globalStyle/variables.scss';
+@import '../../../globalStyle/mixins.scss';
 
 .universalButton {
   display: flex;
@@ -16,7 +16,7 @@
   transition: background 0.12s ease-in, border 0.12s ease-in, color 0.12s ease-in;
 
   &:disabled {
-    cursor: no-drop;
+    pointer-events: none;
   }
 
   // styles

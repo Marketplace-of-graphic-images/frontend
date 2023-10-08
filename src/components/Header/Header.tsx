@@ -51,7 +51,7 @@ const Header = () => {
       menuItem: designLinks,
     },
     {
-      title: 'Видео',
+      title: 'GIF',
       menuItem: videoLinks,
     },
     {

@@ -85,6 +85,8 @@ module.exports = {
 		'no-plusplus': 'off',
 		'import/no-extraneous-dependencies': 'off',
 		'no-return-assign': 'off',
+		'jsx-a11y/label-has-associated-control': 'off',
 		'camelcase': 'off',
+		'@typescript-eslint/naming-convention': 'off'
 	},
 };

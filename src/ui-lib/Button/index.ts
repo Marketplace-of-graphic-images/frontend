@@ -6,6 +6,8 @@ import BackPopupButton from './BackPopupButton/BackPopupButton';
 import PopularButton from './PopularButton/PopularButton';
 import SearchButton from './SearchButton/SearchButton';
 import ClosePopupButton from './ClosePopupButton/ClosePopupButton';
+import BackPageButton from './BackPageButton/BackPageButton';
+import LikeButton from './LikeButton/LikeButton';
 
 export {
   LinkWordButton,
@@ -16,4 +18,6 @@ export {
   PopularButton,
   SearchButton,
   ClosePopupButton,
+  BackPageButton,
+  LikeButton,
 };
