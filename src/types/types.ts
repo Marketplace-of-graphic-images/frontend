@@ -13,6 +13,7 @@ export type TUser = {
   count_my_images: number,
   my_subscribers: number,
   my_subscriptions: number,
+  userDataTemp?: TuserDataTemp | null
 };
 export type TuserDataTemp = {
   username:string,
