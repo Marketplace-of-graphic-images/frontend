@@ -9,7 +9,7 @@ import SolidLine from '../../../ui-lib/Line/SolidLine/SolidLine';
 import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../../services/useValidation';
-import { openModalAuth } from '../../../store';
+import { openModalAuth, clearRegistErr } from '../../../store';
 import { PATTERN_EMAIL, PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
@@ -55,6 +55,10 @@ const RegistrationForm = () => {
     }
     // eslint-disable-next-line
   }, [code]);
+  
+  const resetApiErrors = () => {
+    dispatch(clearRegistErr());
+  };
 
   const handleRegisterButtonClick = () => {
     const data = {
@@ -84,6 +88,7 @@ const RegistrationForm = () => {
             value={values.username || ''}
             onChange={handleChange}
             pattern={PATTERN_USERNAME}
+            onFocus={resetApiErrors}
             validError={errors.username}
             errorMessage={errorsText.username || ''}
             errorDescription={errorsDescription.username || ''}
@@ -99,6 +104,7 @@ const RegistrationForm = () => {
             value={values.email || ''}
             onChange={handleChange}
             pattern={PATTERN_EMAIL}
+            onFocus={resetApiErrors}
             validError={errors.email}
             apiErrorMessage={emailRegistErr}
             errorMessage={errorsText.email || ''}
@@ -111,6 +117,7 @@ const RegistrationForm = () => {
             value={values.password || ''}
             onChange={handleChange}
             pattern={PATTERN_PASSWORD}
+            onFocus={resetApiErrors}
             validError={errors.password}
             apiErrorMessage={passwordRegistErr}
             errorMessage={errorsText.password || ''}

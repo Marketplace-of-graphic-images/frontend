@@ -91,6 +91,7 @@ export const {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setGeneralAuthErr,
   setEmailRegistErr,
   setPasswordRegistErr,
   setUsernameRegistErr,
