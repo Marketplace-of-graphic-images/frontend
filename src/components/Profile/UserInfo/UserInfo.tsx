@@ -16,8 +16,9 @@ interface IUserData {
 
 const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   const {
-    role, avatar, links, username, 
+    role, username,
   } = useSelector((state) => state.user);
+  const avatar = 'temp';
   // Получаем всех пользователей
   const { data } = useGetAllusersQuery('getUser');
   // это всё

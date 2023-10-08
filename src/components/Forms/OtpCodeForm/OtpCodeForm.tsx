@@ -11,8 +11,8 @@ interface OtpCodeFormProps {
   onBackClick: () => void;
   title: string;
   description: string;
-  buttonType: 'button' | 'submit' | 'reset';
-  apiError?: boolean;
+  apiError?: string;
+  getNewCode: () => void;
 }
 
 const OtpCodeForm: FC<OtpCodeFormProps> = (
@@ -23,17 +23,17 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
     onBackClick,
     title,
     description,
-    buttonType,
-    apiError = false,
+    apiError = '',
+    getNewCode,
   },
 ) => (
   <div className={styles.otpCodeForm}>
 
     <h1 className={styles.otpCodeForm__title}>{title}</h1>
-    <p className={styles.otpCodeForm__description}>
+    <div className={styles.otpCodeForm__description}>
       {description}
       <LinkWordButton buttonName='Изменить' onClick={onBackClick} />
-    </p>
+    </div>
 
     <OtpCode
       value={code}
@@ -45,25 +45,18 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
     {apiError
         && (
           <p className={styles.otpCodeForm__error}>
-            Введенный код не совпадает с отправленным!
+            {apiError}
           </p>
         )}
 
     <div className={styles.otpCodeForm__sendPassword}>
-      <Timer numberOfMinutes={0} numberOfSeconds={59} />
+      <Timer numberOfMinutes={0} numberOfSeconds={59} getNewCode={getNewCode} />
     </div>
-
-    <UniversalButton
-      type={buttonType}
-      disabled={code.trim().length !== 6}
-      onClick={onSubmitBtnClick}>
-      Подтвердить
-    </UniversalButton>
   </div>
 );
 
 OtpCodeForm.defaultProps = {
-  apiError: false,
+  apiError: '',
   onSubmitBtnClick: undefined,
 };
 
