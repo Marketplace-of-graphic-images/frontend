@@ -16,7 +16,7 @@ import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../../constants/inputsId';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc'; // Нужно записать в process.env
-
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 const AuthorizationForm = () => {
   const {
     values,

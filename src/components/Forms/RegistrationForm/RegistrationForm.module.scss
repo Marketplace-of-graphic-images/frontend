@@ -17,6 +17,10 @@
   }
 }
 
+.globalError {
+  color: $error-color
+}
+
 .title {
   @include Header;
   align-self: flex-start;
