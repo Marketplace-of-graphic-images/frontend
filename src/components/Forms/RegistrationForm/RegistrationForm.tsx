@@ -65,8 +65,7 @@ const RegistrationForm = () => {
       username: values.username,
       email: values.email,
       password: values.password,
-      // eslint-disable-next-line
-      is_author: checkboxValues.author
+      is_author: checkboxValues.author || false,
     };
     dispatch(registerUserThunk(data, setFormStep));
   };
