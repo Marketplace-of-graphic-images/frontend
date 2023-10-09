@@ -19,6 +19,21 @@ export const authUser = (userData) => request('auth/signin/', {
   body: JSON.stringify(userData),
 });
 
+export const registUser = (userData) => request('auth/signup/', {
+  method: 'POST',
+  headers: new Headers([
+    ['Content-Type', 'application/json'],
+  ]),
+  body: JSON.stringify(userData),
+});
+
+export const registСonfirmationUser = (userData) => request('auth/signup-confirmation/', {
+  method: 'POST',
+  headers: new Headers([
+    ['Content-Type', 'application/json'],
+  ]),
+  body: JSON.stringify(userData),
+});
 export const checkUserAuth = () => request('users/short_me');
 
 export const getUsersMe = () => request('users/me/');

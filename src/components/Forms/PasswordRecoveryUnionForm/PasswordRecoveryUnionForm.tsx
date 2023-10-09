@@ -60,11 +60,11 @@ const PasswordRecoveryUnionForm = () => {
 
       {formStep === 2 && (
         <OtpCodeForm
+          getNewCode={() => { alert('новый код'); }}
           code={code}
           onChange={(val) => setCode(val)}
           onSubmitBtnClick={moveToNextStep}
           onBackClick={moveToPrevStep}
-          buttonType='button'
           title='Восстановление пароля'
           description='Введите код, отправленный по указанному адресу электронной почты. ' />
       )}

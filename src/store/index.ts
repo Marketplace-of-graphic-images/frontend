@@ -21,9 +21,19 @@ import {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setGeneralAuthErr,
+  setEmailRegistErr,
+  setPasswordRegistErr,
+  setUsernameRegistErr,
+  clearRegistErr,
+  setGeneralRegistErr,
+  clearConfirmationCodeRegistErr,
+  setConfirmationCodeRegistErr,
 } from './apiErrorSlice';
 
-import { setUser, clearUser } from './userSlice';
+import {
+  setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
+} from './userSlice';
 
 export {
   openModalAuth,
@@ -43,4 +53,14 @@ export {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setGeneralAuthErr,
+  setEmailRegistErr,
+  setPasswordRegistErr,
+  setUsernameRegistErr,
+  clearRegistErr,
+  setGeneralRegistErr,
+  setUserDataTemp,
+  clearUserDataTemp,
+  clearConfirmationCodeRegistErr,
+  setConfirmationCodeRegistErr,
 };

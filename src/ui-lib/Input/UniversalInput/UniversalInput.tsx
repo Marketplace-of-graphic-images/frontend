@@ -87,7 +87,7 @@ const UniversalInput: React.FC<IUniversalInput> = (
         
       </div>
 
-      {(validError || apiErrorMessage) && (
+      {(apiErrorMessage || validError) && (
         <div className={styles.universalInput__errorContainer}>
 
           <p className={styles.universalInput__errorMessage}>

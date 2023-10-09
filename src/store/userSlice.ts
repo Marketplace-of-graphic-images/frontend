@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TUser } from '../types/types';
+import { TUser, TuserDataTemp } from '../types/types';
 
 const initialState: TUser = {
   id: NaN,
@@ -16,6 +16,7 @@ const initialState: TUser = {
   count_my_images: 0,
   my_subscribers: 0,
   my_subscriptions: 0,
+  
 };
 
 const userSlice = createSlice({
@@ -29,9 +30,22 @@ const userSlice = createSlice({
     clearUser: (state: TUser) => ({
       ...state, ...initialState,
     }),
+    setUserDataTemp: (
+      state: TUser,
+      action: PayloadAction<TuserDataTemp>,
+      // eslint-disable-next-line
+      
+    ) => ({ ...state, userDataTemp: action.payload }),
+
+    clearUserDataTemp: (state: TUser) => ({
+      ...state, userDataTemp: null,
+    }),
   },
+
 });
 
 const userReducer = userSlice.reducer;
-export const { setUser, clearUser } = userSlice.actions;
+export const {
+  setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
+} = userSlice.actions;
 export default userReducer;
