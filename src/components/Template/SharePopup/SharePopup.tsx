@@ -1,23 +1,38 @@
-import React, { FC } from 'react';
-import PopupWrapper, { PopupWrapperProps } from '../PopupWrapper/PopupWrapper';
+import React from 'react';
+import { useSelector } from 'services/hooks';
+import { Paste } from 'ui-lib/Icons';
+import toast, { Toaster } from 'react-hot-toast';
+import styles from './SharePopup.module.scss';
 
-interface SharePopupProps extends PopupWrapperProps {
-  width?: string;
-  height?: string;
-  title?: string;
-  onButtonClick: () => void,
-}
-
-const SharePopup: FC<SharePopupProps> = ({
-  isOpen, onClose, title, width, height, onButtonClick,
-}) => (
-  <PopupWrapper isOpen={isOpen} onClose={onClose}>
-    <h2>{title}</h2>
-  </PopupWrapper>
-);
-SharePopup.defaultProps = {
-  width: '625px', 
-  height: '285px',
-  title: 'Поделиться',
+const SharePopup = () => {
+  const { image } = useSelector((state) => state.image);
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(image)
+      .then(() => toast('Ссылка скопирова в буфер обмена', {
+        duration: 3000,
+        position: 'bottom-center',
+        style: { fontSize: '18px' },
+      }))
+      .catch((err) => toast('ошибка копирования в буфер!', {
+        duration: 3000,
+        position: 'bottom-center',
+        style: { fontSize: '18px' },
+      }));
+  };
+  return (
+    <>
+      <Toaster />
+      <div className={styles.SharePopup}>
+        <h2 className={styles.SharePopup_title}>Поделиться</h2>
+        <div className={styles.SharePopup_container}>
+          <input className={styles.SharePopup_link} value={image} readOnly />
+          <button type='button' className={styles.SharePopup_pasteButton} onClick={copyToClipboard}>
+            <Paste />
+          </button>
+        </div>
+      </div>
+    </>
+  );
 };
+
 export default SharePopup;

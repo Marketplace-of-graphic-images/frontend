@@ -10,8 +10,7 @@ import Add from 'ui-lib/Icons/Add/Add';
 import { UniversalButton, LikeButton } from 'ui-lib/Button';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { openModalShare } from 'store';
-import Popup from 'components/Template/Popup/Popup';
+import { openModalShare, openModalComplain, setImage } from 'store';
 import styles from './ProductCard.module.scss';
 
 interface IProductCard {
@@ -22,7 +21,6 @@ interface IProductCard {
 const ProductCard: FC<IProductCard> = (props) => {
   const { ProductImage, author } = props;
   const { 
-    created,
     name,
     image,
     license,
@@ -45,11 +43,10 @@ const ProductCard: FC<IProductCard> = (props) => {
 
   const Clipboard = () => {
     dispatch(openModalShare());
-  /*     navigator.clipboard.writeText(image)
-      .then(() => console.log('crjgbhjdfyj'))
-      .catch((err) => {
-        alert('ошибка копирования в буфер!');
-      });  */
+    dispatch(setImage(ProductImage));
+  };
+  const Complain = () => {
+    dispatch(openModalComplain());
   };
   const Download = () => {
     window.open(image);
@@ -64,7 +61,7 @@ const ProductCard: FC<IProductCard> = (props) => {
             height={48} />  
         </button> 
         <h2 className={styles.ProductCard_title}>{name}</h2>
-        <button type='button' className={styles.ProductCard_report}>
+        <button type='button' className={styles.ProductCard_report} onClick={Complain}>
           <Report 
             width={24} 
             height={24}

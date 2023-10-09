@@ -5,6 +5,7 @@ import systemReducer from './systemSlice';
 import userReducer from './userSlice';
 import modalReducer from './modalSlice';
 import apiErrorReducer from './apiErrorSlice';
+import imageReducer from './imageSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     user: userReducer,
     modals: modalReducer,
     apiError: apiErrorReducer,
+    image: imageReducer,
     [getUser.reducerPath]: getUser.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getUser.middleware, thunk),

@@ -5,6 +5,7 @@ import {
   openModalPassRecovery,
   openModalNotification,
   openModalShare,
+  openModalComplain,
 } from './modalSlice';
 
 import {
@@ -36,6 +37,10 @@ import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
 } from './userSlice';
 
+import {
+  setImage, clearImage,
+} from './imageSlice';
+
 export {
   openModalAuth,
   closeModal,
@@ -65,4 +70,7 @@ export {
   clearConfirmationCodeRegistErr,
   setConfirmationCodeRegistErr,
   openModalShare,
+  openModalComplain,
+  setImage,
+  clearImage,
 };

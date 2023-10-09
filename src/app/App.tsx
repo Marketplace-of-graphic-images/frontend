@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
+import SharePopup from 'components/Template/SharePopup/SharePopup';
+import ComplainPopup from 'components/Template/ComplainPopup/ComplainPopup';
 import { 
   Main, Profile, YandexAuth, NotFound, 
 } from '../pages';
@@ -22,7 +24,9 @@ import checkAuth from '../thunks/chech-auth-thunk';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { authModal, registerModal, passRecoveryModal } = useSelector((state) => state.modals);
+  const {
+    authModal, registerModal, passRecoveryModal, shareModal, complainModal,
+  } = useSelector((state) => state.modals);
   const { isLoading } = useSelector((state) => state.system);
 
   useEffect(() => {
@@ -79,6 +83,14 @@ const App = () => {
 
       <Popup isOpen={passRecoveryModal} onClose={closeModalState}>
         <PasswordRecoveryUnionForm />
+      </Popup>
+
+      <Popup isOpen={shareModal} onClose={closeModalState} width='625px' height='285px'>
+        <SharePopup />
+      </Popup>
+
+      <Popup isOpen={complainModal} onClose={closeModalState} width='555px'>
+        <ComplainPopup />
       </Popup>
     </div>
   );

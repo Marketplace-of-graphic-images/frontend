@@ -7,6 +7,7 @@ type TSystemState = {
   notificationModal: boolean,
   confirmChangeUserDataModal: boolean,
   shareModal: boolean,
+  complainModal: boolean,
 };
 
 const initialState: TSystemState = {
@@ -15,7 +16,8 @@ const initialState: TSystemState = {
   passRecoveryModal: false,
   notificationModal: false,
   confirmChangeUserDataModal: false,
-  shareModal: true,
+  shareModal: false,
+  complainModal: false,
 };
 
 const modalSlice = createSlice({
@@ -38,6 +40,9 @@ const modalSlice = createSlice({
 
     openModalShare: (state: TSystemState) => (
       { ...state, shareModal: true }),
+      
+    openModalComplain: (state: TSystemState) => (
+      { ...state, complainModal: true }),
 
     openModalConfirmChangeUserData: (state: TSystemState) => (
       { ...state, confirmChangeUserDataModal: true }),
@@ -59,5 +64,6 @@ export const {
   openModalNotification,
   openModalConfirmChangeUserData,
   openModalShare,
+  openModalComplain,
 } = modalSlice.actions;
 export default modalReducer;

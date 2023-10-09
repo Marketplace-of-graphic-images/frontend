@@ -25,13 +25,12 @@ export type TuserDataTemp = {
 };
 
 export type TImage = {
-  id: number,
-  created: Date,
-  name: string,
+  id?: number,
+  name?: string,
   image:string,
-  license: string,
-  price: number,
-  format: string,
+  license?: string,
+  price?: number,
+  format?: string,
 };
 
 export type TAuthor = {

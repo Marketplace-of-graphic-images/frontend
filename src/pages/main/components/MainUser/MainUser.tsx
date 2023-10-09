@@ -91,10 +91,8 @@ const MainUser = () => {
   const { user } = useSelector((state) => state);
 
   // временные данные. Вообще всё это нужно получать по запросу к апи по ID картинки
-  const d: Date = new Date('2023-10-04T06:48:34.028019Z');
   const image = {
     id: 150,
-    created: d,
     name: 'Какое-то название',
     image: 'https://pictura.acceleratorpracticum.ru/media/images/206fd83e78bf889729b476f4575cd3db.jpg',
     license: 'free',

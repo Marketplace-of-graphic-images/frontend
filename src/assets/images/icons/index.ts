@@ -33,6 +33,7 @@ import file from './File.svg';
 import license from './License.svg';
 import buy from './Buy.svg';
 import add from './Add.svg';
+import paste from './paste.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
@@ -41,5 +42,5 @@ export {
   refreshIconGreen, searchIconBlack, searchIconGreen,
   arrowDownIcon, authorContentIconGreen, closeIcon, arrowRightIconGreen,
   arrowLeftIconGreen, pigIcon, pensil, cameraIconGreen,
-  likeIconWhite, likeIconGreen, back, report, downloads, share, file, license, buy, add,
+  likeIconWhite, likeIconGreen, back, report, downloads, share, file, license, buy, add, paste,
 };
