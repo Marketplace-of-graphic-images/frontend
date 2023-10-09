@@ -9,13 +9,13 @@ import SolidLine from '../../../ui-lib/Line/SolidLine/SolidLine';
 import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../../services/useValidation';
-import { openModalAuth, clearRegistErr } from '../../../store';
+import { openModalAuth, clearApiErr } from '../../../store';
 import { PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
 import registerUserThunk from '../../../thunks/register-user-thunk';
-import chekEmailThunk from '../../../thunks/check-email-thunk';
+import checkEmailThunk from '../../../thunks/check-email-thunk';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc';
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -33,11 +33,11 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
   const { userDataTemp } = useSelector((state) => state.user);
   const {
-    emailRegistErr,
-    passwordRegistErr, 
-    generalRegistErr,
-    usernameRegistErr, 
-    confirmationCodeRegistErr,
+    emailApiErr,
+    passwordApiErr, 
+    generalApiErr,
+    usernameApiErr, 
+    confirmCodeApiErr,
   } = useSelector((state) => state.apiError);
   const openAuthModal = () => {
     dispatch(openModalAuth());
@@ -46,18 +46,18 @@ const RegistrationForm = () => {
   const [formStep, setFormStep] = useState(1);
   const [code, setCode] = useState('');
 
-  const newRegistCode = () => {
+  const newRegisterCode = () => {
     dispatch(registerUserThunk(userDataTemp, setFormStep));
   };
   useEffect(() => {
     if (code.length > 5 && formStep === 2) {
-      dispatch(chekEmailThunk({ ...userDataTemp, confirmation_code: code }, setCode));
+      dispatch(checkEmailThunk({ ...userDataTemp, confirmation_code: code }, setCode));
     }
     // eslint-disable-next-line
   }, [code]);
   
   const resetApiErrors = () => {
-    dispatch(clearRegistErr());
+    dispatch(clearApiErr());
   };
 
   const handleRegisterButtonClick = () => {
@@ -92,7 +92,7 @@ const RegistrationForm = () => {
             validError={errors.username}
             errorMessage={errorsText.username || ''}
             errorDescription={errorsDescription.username || ''}
-            apiErrorMessage={usernameRegistErr}
+            apiErrorMessage={usernameApiErr}
             label='Имя пользователя'
             placeholder='Введите имя...'
             required
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
             onChange={handleChange}
             onFocus={resetApiErrors}
             validError={errors.email}
-            apiErrorMessage={emailRegistErr}
+            apiErrorMessage={emailApiErr}
             errorMessage={errorsText.email || ''}
             errorDescription={errorsDescription.email || ''}
             required />
@@ -118,7 +118,7 @@ const RegistrationForm = () => {
             pattern={PATTERN_PASSWORD}
             onFocus={resetApiErrors}
             validError={errors.password}
-            apiErrorMessage={passwordRegistErr}
+            apiErrorMessage={passwordApiErr}
             errorMessage={errorsText.password || ''}
             errorDescription={errorsDescription.password || ''}
             autoComplete='new-password'
@@ -171,7 +171,7 @@ const RegistrationForm = () => {
               </div>
             </div>
           </div>
-          {generalRegistErr && <p className={styles.globalError}>{generalRegistErr}</p>}
+          {generalApiErr && <p className={styles.globalError}>{generalApiErr}</p>}
 
           <UniversalButton disabled={!isValid} type='button' onClick={handleRegisterButtonClick}>
             Создать аккаунт
@@ -184,11 +184,11 @@ const RegistrationForm = () => {
       {formStep === 2 && (
         <OtpCodeForm
           code={code}
-          getNewCode={newRegistCode}
+          getNewCode={newRegisterCode}
           onChange={(val) => setCode(val)}
           onBackClick={() => setFormStep(1)}
           title='Подтвердите электронную почту'
-          apiError={confirmationCodeRegistErr}
+          apiError={confirmCodeApiErr}
           description='Введите код, отправленный по указанному при регистрации адресу электронной почты ' />
       )}
     </form>

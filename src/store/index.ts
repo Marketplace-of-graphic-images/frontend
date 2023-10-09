@@ -18,17 +18,12 @@ import {
 } from './systemSlice';
 
 import {
-  setEmailAuthErr,
-  setPasswordAuthErr,
-  clearAuthErr,
-  setGeneralAuthErr,
-  setEmailRegistErr,
-  setPasswordRegistErr,
-  setUsernameRegistErr,
-  clearRegistErr,
-  setGeneralRegistErr,
-  clearConfirmationCodeRegistErr,
-  setConfirmationCodeRegistErr,
+  setEmailApiErr,
+  setPasswordApiErr,
+  setGeneralApiErr,
+  setUsernameApiErr,
+  setConfirmCodeApiErr,
+  clearApiErr,
 } from './apiErrorSlice';
 
 import {
@@ -50,17 +45,12 @@ export {
   isLoadingOff,
   onLogin,
   onLogout,
-  setEmailAuthErr,
-  setPasswordAuthErr,
-  clearAuthErr,
-  setGeneralAuthErr,
-  setEmailRegistErr,
-  setPasswordRegistErr,
-  setUsernameRegistErr,
-  clearRegistErr,
-  setGeneralRegistErr,
+  setEmailApiErr,
+  setPasswordApiErr,
+  setGeneralApiErr,
+  setUsernameApiErr,
+  setConfirmCodeApiErr,
+  clearApiErr,
   setUserDataTemp,
   clearUserDataTemp,
-  clearConfirmationCodeRegistErr,
-  setConfirmationCodeRegistErr,
 };

@@ -1,44 +1,43 @@
 import { batch } from 'react-redux';
-import { registСonfirmationUser } from '../api/api';
+import { registerConfirmUser } from '../api/api';
 import {
   onLogin,
   closeModal, 
   isLoadingOn,
   isLoadingOff,
-  clearAuthErr,
+  clearApiErr,
   clearUserDataTemp, 
-  setConfirmationCodeRegistErr,
-  clearConfirmationCodeRegistErr,
+  setConfirmCodeApiErr,
 
 } from '../store';
 import { AppThunk } from '../types/store.types';
+import { TApiErrors } from '../types/types';
 
-const chekEmailThunk : AppThunk = (data, setCode) => async (dispatch) => {
+const checkEmailThunk : AppThunk = (data, setCode: (code: string) => void) => async (dispatch) => {
   const confirmationCodeErrors = (errors) => {
     if ('confirmation_code' in errors) {
-      dispatch(setConfirmationCodeRegistErr('Введенный код не совпадает с отправленным!'));
+      dispatch(setConfirmCodeApiErr('Введенный код не совпадает с отправленным!'));
     } else {
-      dispatch(setConfirmationCodeRegistErr('Ошибка регистрации'));
+      dispatch(setConfirmCodeApiErr('Ошибка регистрации'));
     }
   };
 
   try {
-    dispatch(clearAuthErr());
+    dispatch(clearApiErr());
     dispatch(isLoadingOn());
-    const res = await registСonfirmationUser(data);
+    const res = await registerConfirmUser(data);
+
     batch(() => {
       dispatch(onLogin());
       dispatch(closeModal());
-      // eslint-disable-next-line
       dispatch(clearUserDataTemp());
-      dispatch(clearConfirmationCodeRegistErr());
+      dispatch(clearApiErr());
     });
   } catch (error:any) {
-    // eslint-disable-next-line
-    setCode('')
-    confirmationCodeErrors(error);
+    setCode('');
+    confirmationCodeErrors(error as TApiErrors);
   } finally {
     dispatch(isLoadingOff());
   }
 };
-export default chekEmailThunk;
+export default checkEmailThunk;
