@@ -17,8 +17,9 @@ export type TUser = {
 };
 export type TuserDataTemp = {
   username:string,
-  email: string
+  email: string,
   password:string,
-  // eslint-disable-next-line
-  is_author:boolean
+  is_author:boolean,
 };
+
+export type TApiErrors = Record<string, string>;

@@ -17,7 +17,7 @@ import getUsersMeData from '../../../api/getUsersMe';
 import patchUsersMeThunk from '../../../thunks/patch-users-me-thunk';
 import Avatar from './Avatar/Avatar';
 import formatDate from '../../../utils/formatDate';
-import { clearAuthErr } from '../../../store';
+import { clearApiErr } from '../../../store';
 
 const ProfileForm = () => {
   const {
@@ -136,8 +136,10 @@ const ProfileForm = () => {
   };
 
   // api error logic
+  const { usernameApiErr, emailApiErr } = useSelector((state) => state.apiError);
+
   const resetApiErrors = () => {
-    dispatch(clearAuthErr());
+    dispatch(clearApiErr());
   };
 
   return (
@@ -159,7 +161,7 @@ const ProfileForm = () => {
               pattern={PATTERN_USERNAME}
               validError={errors.username}
               errorDescription={errorsDescription.username}
-              // apiErrorMessage={}
+              apiErrorMessage={usernameApiErr}
               label='Имя пользователя'
               staticLabel
               borderColor='grey'
@@ -176,7 +178,7 @@ const ProfileForm = () => {
               onFocus={resetApiErrors}
               validError={errors.email}
               errorDescription={errorsDescription.email}
-              // apiErrorMessage={}
+              apiErrorMessage={emailApiErr}
               label='Email'
               staticLabel
               borderColor='grey'

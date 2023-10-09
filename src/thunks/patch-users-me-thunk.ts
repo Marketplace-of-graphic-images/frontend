@@ -1,19 +1,32 @@
 import { pathUsersMe } from '../api/api';
-import { isLoadingOn, isLoadingOff, setUser } from '../store';
+import {
+  isLoadingOn, isLoadingOff, setUser, setEmailApiErr, clearApiErr,
+} from '../store';
 import { AppThunk } from '../types/store.types';
-import { TUser } from '../types/types';
+import { TApiErrors, TUser } from '../types/types';
 
-// eslint-disable-next-line consistent-return
 const patchUsersMeThunk : AppThunk = (userData) => async (dispatch) => {
+  const profileErrors = (errors: TApiErrors) => {
+    switch (true) {
+      case 'email' in errors:
+        return dispatch(setEmailApiErr(errors.email));
+
+      case 'username' in errors:
+        return dispatch(setEmailApiErr(errors.username));
+
+      default: return 'Что-то пошло не так';
+    }
+  };
+
   try {
     dispatch(isLoadingOn());
     const res: TUser = await pathUsersMe(userData);
 
     dispatch(setUser(res));
-    return res;
+    // return res;
   } catch (error: any) {
-    // ошибки аналогично авторизации
-    console.log(error);
+    dispatch(clearApiErr());
+    profileErrors(error as TApiErrors);
   } finally {
     dispatch(isLoadingOff());
   }

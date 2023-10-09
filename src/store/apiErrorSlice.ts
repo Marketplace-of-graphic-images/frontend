@@ -1,103 +1,70 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TErrorApiState = {
-  emailAuthErr: string;
-  passwordAuthErr: string;
-  generalAuthErr:string;
-  usernameRegistErr:string;
-  emailRegistErr: string;
-  passwordRegistErr: string;
-  generalRegistErr: string;
-  confirmationCodeRegistErr:string;
-  
+  emailApiErr: string;
+  passwordApiErr: string;
+  usernameApiErr: string;
+  generalApiErr: string;
+  confirmCodeApiErr: string;
 };
 
 const initialState: TErrorApiState = {
-  emailAuthErr: '',
-  passwordAuthErr: '',
-  generalAuthErr: '',
-  emailRegistErr: '',
-  passwordRegistErr: '',
-  generalRegistErr: '',
-  usernameRegistErr: '',
-  confirmationCodeRegistErr: '',
+  emailApiErr: '',
+  passwordApiErr: '',
+  usernameApiErr: '',
+  generalApiErr: '',
+  confirmCodeApiErr: '',
 };
 
 const modalSlice = createSlice({
   name: 'errorApi',
   initialState,
   reducers: {
-    setEmailAuthErr: (
+    setEmailApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, emailAuthErr: action.payload }),
+    ) => ({ ...state, emailApiErr: action.payload }),
 
-    setPasswordAuthErr: (
+    setPasswordApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, passwordAuthErr: action.payload }),
+    ) => ({ ...state, passwordApiErr: action.payload }),
 
-    setGeneralAuthErr: (
+    setGeneralApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, generalAuthErr: action.payload }),
+    ) => ({ ...state, generalApiErr: action.payload }),
     
-    clearAuthErr: (state: TErrorApiState) => ({
-      ...state, passwordAuthErr: '', emailAuthErr: '', generalAuthErr: '',
-    }),
-
-    setEmailRegistErr: (
+    setUsernameApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, emailRegistErr: action.payload }),
+    ) => ({ ...state, usernameApiErr: action.payload }),
 
-    setPasswordRegistErr: (
+    setConfirmCodeApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, passwordRegistErr: action.payload }),
+    ) => ({ ...state, confirmCodeApiErr: action.payload }),
 
-    setGeneralRegistErr: (
-      state: TErrorApiState,
-      action: PayloadAction<string>,
-    ) => ({ ...state, generalRegistErr: action.payload }),
-
-    setUsernameRegistErr: (
-      state: TErrorApiState,
-      action: PayloadAction<string>,
-    ) => ({ ...state, usernameRegistErr: action.payload }),
-    
-    clearRegistErr: (state: TErrorApiState) => ({
+    clearApiErr: (state: TErrorApiState) => ({
       ...state,
-      emailRegistErr: '',
-      passwordRegistErr: '', 
-      generalRegistErr: '', 
-      usernameRegistErr: '',
-      confirmationCodeRegistErr: '',
-    }),
-    setConfirmationCodeRegistErr: (
-      state: TErrorApiState,
-      action: PayloadAction<string>,
-    ) => ({ ...state, confirmationCodeRegistErr: action.payload }),
-
-    clearConfirmationCodeRegistErr: (state: TErrorApiState) => ({
-      ...state,
-      confirmationCodeRegistErr: '',
+      passwordApiErr: '',
+      emailApiErr: '',
+      generalApiErr: '',
+      usernameApiErr: '',
+      confirmCodeApiErr: '',
     }),
   },
 });
 
 const apiErrorReducer = modalSlice.reducer;
+
 export const {
-  setEmailAuthErr,
-  setPasswordAuthErr,
-  clearAuthErr,
-  setGeneralAuthErr,
-  setEmailRegistErr,
-  setPasswordRegistErr,
-  setUsernameRegistErr,
-  clearRegistErr,
-  setGeneralRegistErr,
-  clearConfirmationCodeRegistErr, 
-  setConfirmationCodeRegistErr,
+  setEmailApiErr,
+  setPasswordApiErr,
+  setGeneralApiErr,
+  setUsernameApiErr,
+  setConfirmCodeApiErr,
+  clearApiErr,
 } = modalSlice.actions;
+
 export default apiErrorReducer;
