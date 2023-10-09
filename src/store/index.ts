@@ -4,6 +4,7 @@ import {
   openModalRegister,
   openModalPassRecovery,
   openModalNotification,
+  openModalShare,
 } from './modalSlice';
 
 import {
@@ -63,4 +64,5 @@ export {
   clearUserDataTemp,
   clearConfirmationCodeRegistErr,
   setConfirmationCodeRegistErr,
+  openModalShare,
 };

@@ -9,6 +9,9 @@ import Report from 'ui-lib/Icons/Report/Report';
 import Add from 'ui-lib/Icons/Add/Add';
 import { UniversalButton, LikeButton } from 'ui-lib/Button';
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { openModalShare } from 'store';
+import Popup from 'components/Template/Popup/Popup';
 import styles from './ProductCard.module.scss';
 
 interface IProductCard {
@@ -35,17 +38,18 @@ const ProductCard: FC<IProductCard> = (props) => {
   } = author;
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const goBack = () => { // На шаг назад, дурацкая и не нужная кнопка 
     navigate(-1);
   };
 
   const Clipboard = () => {
-    navigator.clipboard.writeText(image)
-      .then(() => alert('Ссылка скопирована в буфер обмена!'))
+    dispatch(openModalShare());
+  /*     navigator.clipboard.writeText(image)
+      .then(() => console.log('crjgbhjdfyj'))
       .catch((err) => {
         alert('ошибка копирования в буфер!');
-      }); 
+      });  */
   };
   const Download = () => {
     window.open(image);
