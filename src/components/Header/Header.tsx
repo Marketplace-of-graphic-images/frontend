@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
   closeModal, openModalAuth, openModalNotification, openModalRegister, 
+  openAuthorModal,
 } from 'store';
 import { useDispatch, useSelector } from 'services/hooks';
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
@@ -36,6 +37,10 @@ const Header = () => {
     } else {
       dispatch(openModalNotification());
     }
+  };
+
+  const openFormAuthorModal = () => {
+    dispatch(openAuthorModal());
   };
 
   const closeModalState = () => {
@@ -82,6 +87,11 @@ const Header = () => {
           </div>
         ) : (
           <div className={styles.rightBlockAuthor}>
+            {userRole === 'user' && (
+              <UniversalButton buttonStyle='borderGreen' onClick={openFormAuthorModal} type='button' width='208' height='47'>
+                Стать автором
+              </UniversalButton>
+            )}
 
             {userRole === 'author' && (
               <UniversalButton buttonStyle='borderGreen' type='button' width='208' height='47'>

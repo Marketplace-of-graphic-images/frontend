@@ -15,6 +15,7 @@ import {
   PasswordRecoveryUnionForm,
   RegistrationForm,
   AuthorizationForm,
+  AuthorForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 import ProfileEdit from '../pages/profile/ProfileEdit/ProfileEdit';
@@ -22,7 +23,9 @@ import checkAuth from '../thunks/chech-auth-thunk';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { authModal, registerModal, passRecoveryModal } = useSelector((state) => state.modals);
+  const {
+    authModal, registerModal, passRecoveryModal, authorModal, 
+  } = useSelector((state) => state.modals);
   const { isLoading } = useSelector((state) => state.system);
 
   useEffect(() => {
@@ -68,6 +71,10 @@ const App = () => {
             <Footer />
           </>
         )}
+
+      <Popup isOpen={authorModal} onClose={closeModalState}>
+        <AuthorForm />
+      </Popup>
 
       <Popup isOpen={authModal} onClose={closeModalState}>
         <AuthorizationForm />

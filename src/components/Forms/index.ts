@@ -4,6 +4,7 @@ import PasswordRecoveryForm from './PasswordRecoveryForm/PasswordRecoveryForm';
 import PasswordRecoveryUnionForm from './PasswordRecoveryUnionForm/PasswordRecoveryUnionForm';
 import RegistrationForm from './RegistrationForm/RegistrationForm';
 import SearchForm from './SearchForm/SearchForm';
+import AuthorForm from './AuthorForm/AuthorForm';
 
 export {
   AuthorizationForm,
@@ -12,4 +13,5 @@ export {
   PasswordRecoveryUnionForm,
   RegistrationForm,
   SearchForm,
+  AuthorForm,
 };
