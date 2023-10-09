@@ -8,7 +8,7 @@ const initialState: TUser = {
   first_name: '',
   last_name: '',
   vk: '',
-  instagram: '',
+  telegram: '',
   website: '',
   profile_photo: null,
   birthday: null,

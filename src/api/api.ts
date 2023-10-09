@@ -20,3 +20,10 @@ export const authUser = (userData) => request('auth/signin/', {
 });
 
 export const checkUserAuth = () => request('users/short_me');
+
+export const getUsersMe = () => request('users/me/');
+
+export const pathUsersMe = (userData) => request('users/me/', {
+  method: 'PATCH',
+  body: userData,
+});

@@ -1,0 +1,21 @@
+@import '../../../../globalStyle/variables';
+
+.avatar {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+
+  &__image {
+    width: 173px;
+    height: 173px;
+    border-radius: 50%;
+    background: $white-on-click-color;
+    object-fit: cover;
+  }
+
+  &__loadInput {
+    position: absolute;
+    bottom: 4px;
+    right: 15px;
+  }
+}
