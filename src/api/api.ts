@@ -34,7 +34,7 @@ export const registerConfirmUser = (userData) => request('auth/signup-confirmati
   ]),
   body: JSON.stringify(userData),
 });
-export const checkUserAuth = () => request('users/short_me');
+export const checkUserAuth = () => request('users/short_me/');
 
 export const getUsersMe = () => request('users/me/');
 
