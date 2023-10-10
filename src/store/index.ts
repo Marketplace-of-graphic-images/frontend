@@ -4,6 +4,7 @@ import {
   openModalRegister,
   openModalPassRecovery,
   openModalNotification,
+  openAuthorModal,
 } from './modalSlice';
 
 import {
@@ -17,15 +18,21 @@ import {
 } from './systemSlice';
 
 import {
-  setEmailAuthErr,
-  setPasswordAuthErr,
-  clearAuthErr,
+  setEmailApiErr,
+  setPasswordApiErr,
+  setGeneralApiErr,
+  setUsernameApiErr,
+  setConfirmCodeApiErr,
+  clearApiErr,
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,
+  
 } from './apiErrorSlice';
 
-import { setUser, clearUser } from './userSlice';
+import {
+  setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
+} from './userSlice';
 
 import {
   isMainPageImagesLoadingOn,
@@ -53,9 +60,15 @@ export {
   isLoadingOff,
   onLogin,
   onLogout,
-  setEmailAuthErr,
-  setPasswordAuthErr,
-  clearAuthErr,
+  setEmailApiErr,
+  setPasswordApiErr,
+  setGeneralApiErr,
+  setUsernameApiErr,
+  setConfirmCodeApiErr,
+  clearApiErr,
+  setUserDataTemp,
+  clearUserDataTemp,
+  openAuthorModal,
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,

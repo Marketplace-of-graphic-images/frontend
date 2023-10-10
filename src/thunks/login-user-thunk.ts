@@ -1,45 +1,38 @@
 import { batch } from 'react-redux';
 import { authUser } from '../api/api';
-import { TloginError } from '../types/apiEror';
 import {
-  NOT_EMAIL_LOGIN,
-  NOT_PASSWORD_LOGIN,
-  NOT_EMAIL_AND_PASSOWORD_AUTH, 
-} from '../constants/apiError';
-import {
-  onLogin, closeModal, isLoadingOn, isLoadingOff,
-  clearAuthErr, setEmailAuthErr, setPasswordAuthErr,
-
+  onLogin, closeModal, isLoadingOn, isLoadingOff, clearApiErr,
+  setEmailApiErr, setPasswordApiErr, setGeneralApiErr, setUser,
 } from '../store';
 import { AppThunk } from '../types/store.types';
+import { TApiErrors, TUser } from '../types/types';
 
 const loginUserThunk : AppThunk = (data) => async (dispatch) => {
-  const authErrors = (errors:TloginError) => {
-    switch (errors.errors[0] || '') {
-      case 'User with this email does not exist':
-        dispatch(setEmailAuthErr(NOT_EMAIL_LOGIN));
-        break;
-      case 'Wrong password': 
-        dispatch(setPasswordAuthErr(NOT_PASSWORD_LOGIN));
-        break;
-      default:
-        dispatch(setEmailAuthErr(NOT_EMAIL_AND_PASSOWORD_AUTH));
-        break;
+  const authErrors = (errors: TApiErrors) => {
+    if ('password' in errors) {
+      dispatch(setPasswordApiErr(errors.password[0]));
+    } else if ('email' in errors) {
+      dispatch(setEmailApiErr(errors.email));
+    } else {
+      dispatch(setGeneralApiErr('Ошибка авторизации'));
     }
   };
 
   try {
-    dispatch(clearAuthErr());
+    dispatch(clearApiErr());
     dispatch(isLoadingOn());
-    const res = await authUser(data);
+
+    const res: TUser = await authUser(data);
+
     batch(() => {
-      // eslint-disable-next-line
       dispatch(onLogin());
+      dispatch(setUser(res));
       dispatch(closeModal());
     });
+
+    localStorage.setItem('userId', res.id.toString());
   } catch (error:any) {
-    // eslint-disable-next-line
-   authErrors(error)
+    authErrors(error as TApiErrors);
   } finally {
     dispatch(isLoadingOff());
   }

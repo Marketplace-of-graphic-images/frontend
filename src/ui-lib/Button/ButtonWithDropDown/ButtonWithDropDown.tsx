@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable ternary/no-unreachable */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState, useEffect, useRef,
+} from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { ProfileIcon } from 'ui-lib/Icons';
+import { useDispatch, useSelector } from '../../../services/hooks';
+import signoutThunk from '../../../thunks/signout-thunk';
 // styles
 import styles from './ButtonWithDropDown.module.scss';
 import { ArrowDownIcon, ArrowUpIcon } from '../../Icons';
@@ -15,13 +20,16 @@ interface Imenuitem {
 }
 
 export interface IButtonWithDropDown {
-  title: string;
   menuItem: Imenuitem[];
+  isProfile?: boolean;
+  // eslint-disable-next-line
+  title?: string;
 }
 
 const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
-  title, menuItem,
+  title, menuItem, isProfile,
 }) => {
+  const dispatch = useDispatch();
   const [dropDownState, setDropDownState] = useState(false);
 
   function useOutsideComponent(ref) {
@@ -48,30 +56,47 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
       setDropDownState(false);
     }
   };
-
+  const checkProfile = () => {
+    if (!isProfile) {
+      if (dropDownState) {
+        return <ArrowUpIcon />;
+      }
+      return <ArrowDownIcon />;
+    } return <ProfileIcon className={styles.icon} width='40' height='40' />;
+  };
+  const signoutUser = () => {
+    dispatch(signoutThunk());
+  };
+ 
   return (
     <div ref={wrapperRef} className={styles.dropdown}>
-      <button onClick={toggleDropDown} type='button' className={styles.button}>
-        {title} 
-
-        {dropDownState ? (<ArrowUpIcon />
-        ) : (
-          <ArrowDownIcon />
-        )}
+      <button onClick={toggleDropDown} type='button' className={`${styles.button}  ${isProfile ? styles.not_panding : ''}`}>
+        {title && title }
+        {checkProfile()}
       </button>
 
       {dropDownState && (
-      <ul onMouseLeave={() => { setDropDownState(false); }} className={styles.dropdown_content}>
-        {menuItem.map((link) => (
-          <li className={styles.link} key={link.name}>
-            <NavLink to={link.path}>{link.name}</NavLink>
-          </li>         
-        ))}
-      </ul>
+        <div onMouseLeave={() => { setDropDownState(false); }} className={styles.dropdown_content}>
+          <ul>
+            {menuItem.map((link) => (
+              <li className={`${styles.link} ${isProfile ? styles.link_profile : ''}`} key={link.name}>
+                <NavLink to={link.path}>{link.name}</NavLink>
+              </li>         
+            ))}
+          </ul>
+          {isProfile && (
+          <div> 
+            <hr className={styles.profile_line} /> 
+            <button onClick={signoutUser} className={styles.link} type='button'> Выйти из аккаунта </button>
+          </div>
+          )}
+        </div>
       )}
     </div> 
 
   );
 };
-
+ButtonWithDropDown.defaultProps = {
+  isProfile: false, 
+};
 export default ButtonWithDropDown;

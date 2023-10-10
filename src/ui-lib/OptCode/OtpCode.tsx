@@ -10,7 +10,7 @@ interface OtpCodeProps {
   valueLength: number;
   onChange: (value: string) => void;
   onEnterPress: () => void;
-  isError: boolean;
+  isError: string;
 }
 
 const OtpCode: FC<OtpCodeProps> = ({

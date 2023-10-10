@@ -25,6 +25,7 @@ import likeIconWhite from './LikeIconWhite.svg';
 import likeIconGreen from './LikeIconGreen.svg';
 import pensil from './Pensil.svg';
 import cameraIconGreen from './CameraIcon_green.svg';
+import linkIcon from './LinkIcon.svg';
 
 export {
   errorIcon, noVisionIcon, yandexIcon, googleIcon, visionIcon, addIcon,
@@ -33,5 +34,5 @@ export {
   refreshIconGreen, searchIconBlack, searchIconGreen,
   arrowDownIcon, authorContentIconGreen, closeIcon, arrowRightIconGreen,
   arrowLeftIconGreen, pigIcon, pensil, cameraIconGreen,
-  likeIconWhite, likeIconGreen,
+  likeIconWhite, likeIconGreen, linkIcon,
 };

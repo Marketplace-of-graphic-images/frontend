@@ -1,14 +1,17 @@
 import React from 'react';
 import { UniversalButton } from 'ui-lib/Button';
 import styles from './JoinTheCommunity.module.scss';
-import { useDispatch } from '../../../services/hooks';
-import { openModalRegister } from '../../../store';
+import { useDispatch, useSelector } from '../../../services/hooks';
+import { openModalRegister, openAuthorModal } from '../../../store';
 import { ArrowRightIconGreen } from '../../../ui-lib/Icons';
 
 const JoinTheCommunity = () => {
+  const { isLoggedIn } = useSelector((state) => state.system);
   const dispatch = useDispatch();
   const openRegisterModal = () => {
-    dispatch(openModalRegister());
+    if (isLoggedIn) {
+      dispatch(openAuthorModal());
+    } else dispatch(openModalRegister());
   };
 
   return (

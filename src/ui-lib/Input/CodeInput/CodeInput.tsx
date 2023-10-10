@@ -4,7 +4,7 @@ import styles from './CodeInput.module.scss';
 interface CodeInputProps extends React.ComponentPropsWithoutRef<'input'> {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  isError?: boolean;
+  isError?: string;
 }
 
 const CodeInput: FC<CodeInputProps> = ({
@@ -24,7 +24,7 @@ const CodeInput: FC<CodeInputProps> = ({
 };
 
 CodeInput.defaultProps = {
-  isError: false,
+  isError: '',
 };
 
 export default CodeInput;

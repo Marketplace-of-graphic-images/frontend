@@ -1,17 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TErrorApiState = {
-  emailAuthErr: string;
-  passwordAuthErr: string;
-  generalAuthErr: string;
+  emailApiErr: string;
+  passwordApiErr: string;
+  usernameApiErr: string;
+  generalApiErr: string;
+  confirmCodeApiErr: string;
   mainImagesDownloadErr: string;
   mainTagsDownloadErr: string;
 };
 
 const initialState: TErrorApiState = {
-  emailAuthErr: '',
-  passwordAuthErr: '',
-  generalAuthErr: '',
+  emailApiErr: '',
+  passwordApiErr: '',
+  usernameApiErr: '',
+  generalApiErr: '',
+  confirmCodeApiErr: '',
   mainImagesDownloadErr: '',
   mainTagsDownloadErr: '',
 };
@@ -20,17 +24,17 @@ const modalSlice = createSlice({
   name: 'errorApi',
   initialState,
   reducers: {
-    setEmailAuthErr: (
+    setEmailApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, emailAuthErr: action.payload }),
+    ) => ({ ...state, emailApiErr: action.payload }),
 
-    setPasswordAuthErr: (
+    setPasswordApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, passwordAuthErr: action.payload }),
+    ) => ({ ...state, passwordApiErr: action.payload }),
 
-    setGeneralAuthErr: (
+    setGeneralApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
     ) => ({ ...state, generalAuthErr: action.payload }),
@@ -45,24 +49,43 @@ const modalSlice = createSlice({
       action: PayloadAction<string>,
     ) => ({ ...state, mainTagsDownloadErr: action.payload }),
     
-    clearAuthErr: (state: TErrorApiState) => ({
-      ...state, passwordAuthErr: '', emailAuthErr: '', generalAuthErr: '',
-    }),
+    setUsernameApiErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, usernameApiErr: action.payload }),
 
     clearMainDownloadErr: (state: TErrorApiState) => ({
       ...state, mainImagesDownloadErr: '', mainTagsDownloadErr: '',
     }),
 
+    setConfirmCodeApiErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, confirmCodeApiErr: action.payload }),
+
+    clearApiErr: (state: TErrorApiState) => ({
+      ...state,
+      passwordApiErr: '',
+      emailApiErr: '',
+      generalApiErr: '',
+      usernameApiErr: '',
+      confirmCodeApiErr: '',
+    }),
   },
 });
 
 const apiErrorReducer = modalSlice.reducer;
+
 export const {
-  setEmailAuthErr,
-  setPasswordAuthErr,
-  clearAuthErr,
+  setEmailApiErr,
+  setPasswordApiErr,
+  setGeneralApiErr,
+  setUsernameApiErr,
+  setConfirmCodeApiErr,
+  clearApiErr,
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,
 } = modalSlice.actions;
+
 export default apiErrorReducer;

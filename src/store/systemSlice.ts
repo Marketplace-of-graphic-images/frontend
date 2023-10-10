@@ -9,8 +9,8 @@ type TSystemState = {
 
 const initialState: TSystemState = {
   isLoggedIn: false,
-  userRole: 'User' as Role,
-  isLoading: false,
+  userRole: 'user' as Role,
+  isLoading: true,
 };
 
 const systemSlice = createSlice({

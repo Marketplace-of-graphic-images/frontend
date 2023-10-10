@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './RegistrationForm.module.scss';
 import { YandexIcon } from '../../../ui-lib/Icons';
 import { LoginWithButton, UniversalButton } from '../../../ui-lib/Button';
+import { useSelector, useDispatch } from '../../../services/hooks';
 import { EmailInput, PasswordInput, UniversalInput } from '../../../ui-lib/Input';
 import Checkbox from '../../../ui-lib/Checkbox/Checkbox';
 import SolidLine from '../../../ui-lib/Line/SolidLine/SolidLine';
 import LineWithWord from '../../../ui-lib/Line/LineWithWord/LineWithWord';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../../services/useValidation';
-import { useDispatch } from '../../../services/hooks';
-import { closeModal, openModalAuth } from '../../../store';
-import { PATTERN_EMAIL, PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
+import { openModalAuth, clearApiErr } from '../../../store';
+import { PATTERN_USERNAME, PATTERN_PASSWORD } from '../../../constants/constants';
 import { REG_EMAIL_ID, REG_NAME_ID, REG_PASSWORD_ID } from '../../../constants/inputsId';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import OtpCodeForm from '../OtpCodeForm/OtpCodeForm';
+import registerUserThunk from '../../../thunks/register-user-thunk';
+import checkEmailThunk from '../../../thunks/check-email-thunk';
 
 const clientID = '049e6b67f251461b8eec67c35cf998bc';
-
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 const RegistrationForm = () => {
   const {
     values,
@@ -29,7 +31,14 @@ const RegistrationForm = () => {
   } = useValidation();
 
   const dispatch = useDispatch();
-
+  const { userDataTemp } = useSelector((state) => state.user);
+  const {
+    emailApiErr,
+    passwordApiErr, 
+    generalApiErr,
+    usernameApiErr, 
+    confirmCodeApiErr,
+  } = useSelector((state) => state.apiError);
   const openAuthModal = () => {
     dispatch(openModalAuth());
   };
@@ -37,28 +46,32 @@ const RegistrationForm = () => {
   const [formStep, setFormStep] = useState(1);
   const [code, setCode] = useState('');
 
-  const handleRegisterButtonClick = () => {
-    setFormStep(2);
+  const newRegisterCode = () => {
+    dispatch(registerUserThunk(userDataTemp, setFormStep));
+  };
+  useEffect(() => {
+    if (code.length > 5 && formStep === 2) {
+      dispatch(checkEmailThunk({ ...userDataTemp, confirmation_code: code }, setCode));
+    }
+    // eslint-disable-next-line
+  }, [code]);
+  
+  const resetApiErrors = () => {
+    dispatch(clearApiErr());
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (formStep === 2) {
-      console.log(
-        'submit data', (
-          {
-            username: values.username,
-            email: values.email,
-            password: values.password,
-            code,
-          }),
-      );
-      dispatch(closeModal());
-    }
+  const handleRegisterButtonClick = () => {
+    const data = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+      is_author: checkboxValues.author || false,
+    };
+    dispatch(registerUserThunk(data, setFormStep));
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete='off'>
+    <form autoComplete='off'>
       {formStep === 1 && (
         <div className={styles.container}>
           <h1 className={styles.title}>Создать аккаунт</h1>
@@ -74,9 +87,11 @@ const RegistrationForm = () => {
             value={values.username || ''}
             onChange={handleChange}
             pattern={PATTERN_USERNAME}
+            onFocus={resetApiErrors}
             validError={errors.username}
             errorMessage={errorsText.username || ''}
             errorDescription={errorsDescription.username || ''}
+            apiErrorMessage={usernameApiErr}
             label='Имя пользователя'
             placeholder='Введите имя...'
             required
@@ -87,8 +102,9 @@ const RegistrationForm = () => {
             name='email'
             value={values.email || ''}
             onChange={handleChange}
-            pattern={PATTERN_EMAIL}
+            onFocus={resetApiErrors}
             validError={errors.email}
+            apiErrorMessage={emailApiErr}
             errorMessage={errorsText.email || ''}
             errorDescription={errorsDescription.email || ''}
             required />
@@ -99,7 +115,9 @@ const RegistrationForm = () => {
             value={values.password || ''}
             onChange={handleChange}
             pattern={PATTERN_PASSWORD}
+            onFocus={resetApiErrors}
             validError={errors.password}
+            apiErrorMessage={passwordApiErr}
             errorMessage={errorsText.password || ''}
             errorDescription={errorsDescription.password || ''}
             autoComplete='new-password'
@@ -152,6 +170,7 @@ const RegistrationForm = () => {
               </div>
             </div>
           </div>
+          {generalApiErr && <p className={styles.globalError}>{generalApiErr}</p>}
 
           <UniversalButton disabled={!isValid} type='button' onClick={handleRegisterButtonClick}>
             Создать аккаунт
@@ -164,10 +183,11 @@ const RegistrationForm = () => {
       {formStep === 2 && (
         <OtpCodeForm
           code={code}
+          getNewCode={newRegisterCode}
           onChange={(val) => setCode(val)}
           onBackClick={() => setFormStep(1)}
-          buttonType='submit'
           title='Подтвердите электронную почту'
+          apiError={confirmCodeApiErr}
           description='Введите код, отправленный по указанному при регистрации адресу электронной почты ' />
       )}
     </form>

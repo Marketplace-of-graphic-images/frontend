@@ -17,6 +17,17 @@
   }
 }
 
+.globalError {
+  @include Body;
+  display: inline-block;
+  text-align: start;
+  color: $error-color;
+
+  @media screen and (max-width: 1440px) {
+    @include Body3;
+  }
+}
+
 .title {
   @include Header;
   align-self: flex-start;

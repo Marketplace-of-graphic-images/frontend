@@ -1,10 +1,12 @@
 import {
   aboutUsLinks, designLinks, photoLinks, videoLinks, 
+  ProfileLinks,
 } from 'constants/headerLinks';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
   closeModal, openModalAuth, openModalNotification, openModalRegister, 
+  openAuthorModal,
 } from 'store';
 import { useDispatch, useSelector } from 'services/hooks';
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
@@ -17,7 +19,8 @@ import NotificationPopupOnRight from '../Template/NotificationPopupOnRight/Notif
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  const { isLoggedIn } = useSelector((state) => state.system);
+  const { role } = useSelector((state) => state.user);
 
   const { notificationModal } = useSelector((state) => state.modals);
   const [notificationsState, setNotificationsState] = useState(false);
@@ -35,6 +38,10 @@ const Header = () => {
     } else {
       dispatch(openModalNotification());
     }
+  };
+
+  const openFormAuthorModal = () => {
+    dispatch(openAuthorModal());
   };
 
   const closeModalState = () => {
@@ -81,8 +88,13 @@ const Header = () => {
           </div>
         ) : (
           <div className={styles.rightBlockAuthor}>
+            {role === 'User' && (
+              <UniversalButton buttonStyle='borderGreen' onClick={openFormAuthorModal} type='button' width='208' height='47'>
+                Стать автором
+              </UniversalButton>
+            )}
 
-            {userRole === 'Author' && (
+            {role === 'Author' && (
               <UniversalButton buttonStyle='borderGreen' type='button' width='208' height='47'>
                 Загрузить работу
               </UniversalButton>
@@ -94,11 +106,7 @@ const Header = () => {
                 : <NotificationsNo width='40' height='40' />}
             </button>
             
-            <button type='button'>
-              <Link to='/profile'>
-                <ProfileIcon className={styles.icon} width='40' height='40' />
-              </Link>
-            </button>
+            <ButtonWithDropDown isProfile menuItem={ProfileLinks} />
               
           </div>
         )}

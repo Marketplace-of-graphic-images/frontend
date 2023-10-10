@@ -4,6 +4,7 @@ import mainPageImagesDownloadThunk from 'thunks/main-page-thunk';
 import JoinTheCommunity from 'components/main/JoinTheCommunity/JoinTheCommunity';
 import Advantages from 'components/main/Advantages/Advantages';
 import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
+import { useSelector } from '../../../../services/hooks';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import Popular from '../../../../components/main/Popular/Popular';

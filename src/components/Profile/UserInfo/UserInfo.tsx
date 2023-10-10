@@ -1,83 +1,80 @@
-import React, { FC, ReactComponentElement, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { TUser } from 'types/types';
-import { useGetAllusersQuery } from 'api/getUsers';
+import React, { FC, useEffect } from 'react';
 import { UniversalButton } from 'ui-lib/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PensilIcon } from 'ui-lib/Icons';
-import { pensil } from 'assets/images/icons';
-import { useSelector } from '../../../services/hooks';
+import { useDispatch, useSelector } from '../../../services/hooks';
 import styles from './UserInfo.module.scss';
+import SocialLink from './SocialLink/SocialLink';
+import { greyPlug } from '../../../assets/images/pictures';
+import getUsersMeData from '../../../api/getUsersMe';
 
-interface IUserData {
-  user: TUser,
-  roleUser: string
-}
+const UserInfo: FC = () => {
+  const dispatch = useDispatch();
 
-const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
   const {
-    role, avatar, links, username, 
+    role, profile_photo, vk, telegram, website, username,
+    my_subscriptions, my_subscribers, count_my_images,
   } = useSelector((state) => state.user);
-  // Получаем всех пользователей
-  const { data } = useGetAllusersQuery('getUser');
-  // это всё
-  const navigate = useNavigate();
-  const userData = data?.find(() => true);
 
-  const LINKS = [
-    'https://vk.com',
-    'https://github.com/udartapkom',
-    'https://shtukar-design.com',
-  ];
+  useEffect(() => {
+    getUsersMeData(dispatch);
+  }, [dispatch]);
+
+  const navigate = useNavigate();
 
   const onEditProfile = () => {
     navigate('/profile/edit');
   };
-  /*   const onFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setFile(event.target.files[0]);
-    }
-  }; */
-  /*   useEffect(() => {
-    if (!file) {
-      return;
-    }
-    alert(`Загружен файл: ${file.name}`);
-    setFile(undefined);
-  }, [file]);
-  const onDeletePhoto = () => {
-    alert('Аватарка удалена!');
-  }; */
+
   return (
     <section className={styles.UserInfo}>
+
       <div className={styles.avatar_block}>
-        {avatar
-          ? <img className={styles.avatar} src={avatar} alt='avatar' />
-          : <div className={styles.avatar_plug} />}
+
+        <img
+          className={styles.avatar}
+          src={profile_photo || greyPlug}
+          alt='Фото профиля' />
+
         <h3 className={styles.avatar_userNick}>
           {username}
         </h3>
-        {roleUser === 'author' ? (
-          <ul className={styles.avatar_datalist}>
-            <li id='public' className={styles.avatar_list}>
-              <span className={styles.avatar_span}>Публикации</span>
-              {userData?.id}
-            </li>
-            <li className={styles.avatar_list}>
-              <span className={styles.avatar_span}>Подписки</span>
-              {userData?.id}
-            </li>
-          </ul>
-        )
-          : null}
+
+        <ul className={styles.avatar_datalist}>
+
+          {role === 'Author' && (
+            <>
+              <li className={styles.avatar_list}>
+                <span className={styles.avatar_span}>Публикации</span>
+                {count_my_images}
+              </li>
+
+              <li className={styles.avatar_list}>
+                <span className={styles.avatar_span}>Подписчики</span>
+                {my_subscribers}
+              </li>
+            </>
+          )}
+
+          <li className={styles.avatar_list}>
+            <span className={styles.avatar_span}>Подписки</span>
+            {my_subscriptions}
+          </li>
+
+        </ul>
+
       </div>
+
       <div className={styles.Links_block}>
+
         <div className={styles.Links}>
-          {LINKS.length !== 0 ? <p className={styles.Links_description}>Ссылки:</p> : null}
-          {LINKS?.map((item) => (
-            <Link className={styles.Links_item} to={item} key={uuidv4()}>{item}</Link>
-          ))}
+          {vk || telegram || website ? <p className={styles.Links_description}>Ссылки:</p> : null}
+
+          {vk && <SocialLink link={vk}>VK</SocialLink>}
+          {telegram && <SocialLink link={telegram}>Telegram</SocialLink>}
+          {website && <SocialLink link={website}>Website</SocialLink>}
         </div>
+
         <UniversalButton 
           buttonStyle='borderGreen'
           width={232}
@@ -87,6 +84,7 @@ const UserInfo: FC<IUserData> = ({ user, roleUser }) => {
           icon={<PensilIcon />}>
           Изменить профиль
         </UniversalButton>
+
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ const checkResponse = (res: Response) => (res.ok ? res.json()
 
 export const request = (
   url: string, 
-  config: RequestInit,
+  config?: RequestInit,
 ): Promise<any> => fetch(
   `${process.env.API || api}${url}`,
   { ...config, credentials: 'include' }, 
@@ -29,3 +29,35 @@ export const putLike = (id: number) => request(`image/${id}/favorite/`, {
 });
 
 export const removeLike = (id: number) => request(`image/${id}/favorite/`, { method: 'DELETE' });
+export const registUser = (userData) => request('auth/signup/', {
+  method: 'POST',
+  headers: new Headers([
+    ['Content-Type', 'application/json'],
+  ]),
+  body: JSON.stringify(userData),
+});
+
+export const registerConfirmUser = (userData) => request('auth/signup-confirmation/', {
+  method: 'POST',
+  headers: new Headers([
+    ['Content-Type', 'application/json'],
+  ]),
+  body: JSON.stringify(userData),
+});
+
+export const signoutUser = () => request('auth/signout/', {
+  method: 'POST',
+  headers: new Headers([
+    ['Content-Type', 'application/json'],
+  ]),
+  body: JSON.stringify({}),
+});
+
+export const checkUserAuth = () => request('users/short_me/');
+
+export const getUsersMe = () => request('users/me/');
+
+export const pathUsersMe = (userData) => request('users/me/', {
+  method: 'PATCH',
+  body: userData,
+});
