@@ -41,9 +41,9 @@ const MainGuest = () => {
           <TitleMainSection
             titleAccent='Погрузитесь в мир'
             title='популярных категорий!' />
-          <ImageCardsSection cards={popularPhotos} title='Популярные фотографии' link='/' isLoggedIn={isLoggedIn}/>
-          <ImageCardsSection cards={popularGifs} title='Популярные Gif' link='/' isLoggedIn={isLoggedIn}/>
-          <ImageCardsSection cards={popularVectors} title='Популярные векторы' link='/' isLoggedIn={isLoggedIn}/>
+          <ImageCardsSection cards={popularPhotos} title='Популярные фотографии' link='/' isLoggedIn={isLoggedIn} />
+          <ImageCardsSection cards={popularGifs} title='Популярные Gif' link='/' isLoggedIn={isLoggedIn} />
+          <ImageCardsSection cards={popularVectors} title='Популярные векторы' link='/' isLoggedIn={isLoggedIn} />
         </>
       )}
 

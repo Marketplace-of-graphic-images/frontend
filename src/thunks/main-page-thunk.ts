@@ -21,7 +21,6 @@ import {
 } from '../store';
 import { AppThunk } from '../types/store.types';
 
-
 const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (dispatch) => {
   try {
     dispatch(clearStoreData());
@@ -29,12 +28,17 @@ const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (
     dispatch(isMainPageImagesLoadingOn());
   
     if (!isLoggedIn) {
-      const res = await Promise.all([getPopularPics('raster_image'), getPopularPics('gif_image'), getPopularPics('vector_image')]);
+      const res = await Promise.all([
+        getPopularPics('raster_image'), 
+        getPopularPics('gif_image'), 
+        getPopularPics('vector_image')]);
 
       batch(() => {
         // eslint-disable-next-line
         
-          if((res[0].results.length >= 4) && (res[1].results.length >= 4) && (res[2].results.length >= 4)) {
+        if ((res[0].results.length >= 4) 
+          && (res[1].results.length >= 4) 
+          && (res[2].results.length >= 4)) {
           dispatch(setPopularPhotos(res[0].results.slice(0, 4)));
           dispatch(setPopularGifs(res[1].results.slice(0, 4)));
           dispatch(setPopularVectors(res[2].results.slice(0, 4)));
@@ -42,13 +46,19 @@ const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (
         }
       });
     } else {
-      const res = await Promise.all([getPopularPics('raster_image'), getPopularPics('gif_image'), getPopularPics('vector_image'), getPopularTags()]);
+      const res = await Promise.all([
+        getPopularPics('raster_image'), 
+        getPopularPics('gif_image'), 
+        getPopularPics('vector_image'), 
+        getPopularTags()]);
 
       console.log(res);
 
       batch(() => {
         // eslint-disable-next-line
-          if((res[0].results.length >= 4) && (res[1].results.length >= 4) && (res[2].results.length >= 4)) {
+          if((res[0].results.length >= 4) 
+            && (res[1].results.length >= 4) 
+            && (res[2].results.length >= 4)) {
           dispatch(setPopularPhotos(res[0].results.slice(0, 4)));
           dispatch(setPopularGifs(res[1].results.slice(0, 4)));
           dispatch(setPopularVectors(res[2].results.slice(0, 4)));

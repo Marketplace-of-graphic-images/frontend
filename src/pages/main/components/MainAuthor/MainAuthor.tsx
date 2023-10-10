@@ -1,14 +1,13 @@
 import React, { useMemo, useEffect } from 'react';
-import { useSelector, useDispatch } from '../../../../services/hooks';
 import mainPageImagesDownloadThunk from 'thunks/main-page-thunk';
 import ImageCardsSection from 'components/main/ImageCardsSection/ImageCardsSection';
+import { useSelector, useDispatch } from '../../../../services/hooks';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 import Advantages from '../../../../components/main/Advantages/Advantages';
 import Popular from '../../../../components/main/Popular/Popular';
 
 const MainAuthor = () => {
-
   const dispatch = useDispatch();
   const { 
     isMainPageImagesLoading,
@@ -36,9 +35,9 @@ const MainAuthor = () => {
           <TitleMainSection
             titleAccent='Погрузитесь в мир'
             title='популярных категорий!' />
-          <ImageCardsSection cards={popularPhotos} title='Популярные фотографии' link='/' isLoggedIn={isLoggedIn}/>
-          <ImageCardsSection cards={popularGifs} title='Популярные Gif' link='/' isLoggedIn={isLoggedIn}/>
-          <ImageCardsSection cards={popularVectors} title='Популярные векторы' link='/' isLoggedIn={isLoggedIn}/>
+          <ImageCardsSection cards={popularPhotos} title='Популярные фотографии' link='/' isLoggedIn={isLoggedIn} />
+          <ImageCardsSection cards={popularGifs} title='Популярные Gif' link='/' isLoggedIn={isLoggedIn} />
+          <ImageCardsSection cards={popularVectors} title='Популярные векторы' link='/' isLoggedIn={isLoggedIn} />
         </>
       )}
 

@@ -13,7 +13,9 @@ interface ImageCardsSectionProps {
   isLoggedIn: boolean;
 }
 
-const ImageCardsSection: FC<ImageCardsSectionProps> = ({ cards, title, link, isLoggedIn }) => (
+const ImageCardsSection: FC<ImageCardsSectionProps> = ({
+  cards, title, link, isLoggedIn, 
+}) => (
   <section className={styles.imageCardsSection}>
     <div className={styles.imageCardsSection__container}>
       <div className={styles.imageCardsSection__headerContainer}>
@@ -35,7 +37,7 @@ const ImageCardsSection: FC<ImageCardsSectionProps> = ({ cards, title, link, isL
               authorUsername={el.author.username}
               license={el.license}
               isFavorited={el.is_favorited} 
-              isLoggedIn = {isLoggedIn}/>
+              isLoggedIn={isLoggedIn} />
           </li>
         ))}
       </ul>

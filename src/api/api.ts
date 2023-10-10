@@ -24,12 +24,8 @@ export const getPopularTags = () => request('tags/', { method: 'GET' });
 
 export const getPopularPics = (category : string) => request(`image/?category=${category}`, { method: 'GET' });
 
-export const putLike = (id) => request(`image/${id}/favorite/`, {
+export const putLike = (id: number) => request(`image/${id}/favorite/`, {
   method: 'POST',
-  headers: new Headers([
-    ['Content-Type', 'application/json'],
-  ]),
-  body: JSON.stringify(id),
 });
 
-export const removeLike = (id) => request(`image/${id}/favorite/`, { method: 'DELETE' });
+export const removeLike = (id: number) => request(`image/${id}/favorite/`, { method: 'DELETE' });

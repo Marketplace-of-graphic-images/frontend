@@ -22,8 +22,8 @@ const systemSlice = createSlice({
     onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),
     onLogout: (state: TSystemState) => ({ ...state, isLoggedIn: false }),
     // временная логика
-    setUserRole: (state: TSystemState) => ({ ...state, userRole: 'user' as Role }),
-    setAuthorRole: (state: TSystemState) => ({ ...state, userRole: 'author' as Role }),
+    setUserRole: (state: TSystemState) => ({ ...state, userRole: 'User' as Role }),
+    setAuthorRole: (state: TSystemState) => ({ ...state, userRole: 'Author' as Role }),
   },
 });
 
