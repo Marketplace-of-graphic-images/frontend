@@ -16,7 +16,7 @@ const initialState: TUserState = {
   username: 'testUser',
   email: null,
   bio: null,
-  role: 'author', 
+  role: 'user', 
   avatar: '', 
   links: [], 
 };

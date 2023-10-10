@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-type Role = 'guest' | 'user' | 'author';
+import { Role } from 'types/types';
 
 type TSystemState = {
   isLoggedIn: boolean,
@@ -10,7 +9,7 @@ type TSystemState = {
 
 const initialState: TSystemState = {
   isLoggedIn: false,
-  userRole: 'user' as Role,
+  userRole: 'User' as Role,
   isLoading: false,
 };
 
@@ -23,7 +22,6 @@ const systemSlice = createSlice({
     onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),
     onLogout: (state: TSystemState) => ({ ...state, isLoggedIn: false }),
     // временная логика
-    setGuestRole: (state: TSystemState) => ({ ...state, userRole: 'guest' as Role }),
     setUserRole: (state: TSystemState) => ({ ...state, userRole: 'user' as Role }),
     setAuthorRole: (state: TSystemState) => ({ ...state, userRole: 'author' as Role }),
   },
@@ -35,7 +33,6 @@ export const {
   isLoadingOn,
   isLoadingOff,
   onLogout,
-  setGuestRole,
   setUserRole,
   setAuthorRole,
 } = systemSlice.actions;

@@ -6,6 +6,7 @@ import systemReducer from './systemSlice';
 import userReducer from './userSlice';
 import modalReducer from './modalSlice';
 import apiErrorReducer from './apiErrorSlice';
+import mainPageImagesReducer from './mainPageImagesSlice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     user: userReducer,
     modals: modalReducer,
     apiError: apiErrorReducer,
+    mainPageImages: mainPageImagesReducer,
     [getUser.reducerPath]: getUser.reducer,
     [getPopular.reducerPath]: getPopular.reducer,
   },

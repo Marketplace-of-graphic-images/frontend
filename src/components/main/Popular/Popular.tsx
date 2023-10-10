@@ -8,62 +8,32 @@ import ImageTagLink, { ImageTagLinkProps } from './Components/ImageTagLink';
 import styles from './Popular.module.scss';
   
 export interface PopularProps {
-  data: Array<ImageTagLinkProps>;
+  data: Array<TTag>;
 }
 
-const Popular: FC = () => {
-// получение тегов с помощью rtkQuery
-  const { data: popularTags, error, isLoading } = getPopular.useFetchPopularImagesQuery('');
+const Popular: FC<PopularProps> = ({ data }) => (
+  <section className={styles.popular}>
+    <div className={styles.popular__content}>
+      <h2 className={styles.popular__title}>
+        Рекомендации:
+        <span className={styles.popular__title_span}> специально для вас!</span>
+      </h2>
 
-  // Функция формирования массива заданной длины из неповторяющихся 
-  // элементов исходного массива в случайном порядке  
-  function setPopularData(pd : TTag[], qty = 5) : PopularProps | null {
-    // Вариант с выводом первых qty тегов
-    const collection : TTag[] | null = pd.slice(0, qty);
-
-    // Вариант со случайным выбором qty тегов в shuffleArray
-    /* const collection : TTag[] | null = shuffleArray(pd, qty); */
-
-    return collection
-      ? ({
-        data: collection.map(({ tag_images, name }) => {
-          return {
-            id: tag_images[0].id, 
-            image: tag_images[0].image, 
-            tagName: name, 
-            link: tag_images[0].image, 
-          }; 
-        }),
-      })
-      : null;
-  }
-
-  // Если в popularTags null или количество картинок меньше нужного 
-  // или ошибка загрузки или загрузка в процессе то ничего не рисуем
-  return !error && !isLoading && popularTags && popularTags.length >= 5 && (
-    <section className={styles.popular}>
-      <div className={styles.popular__content}>
-        <h2 className={styles.popular__title}>
-          Рекомендации:
-          <span className={styles.popular__title_span}> специально для вас!</span>
-        </h2>
-
-        <ul className={styles.popular__imageItems}>
-          { setPopularData(popularTags)?.data.map((el, i) => (
-            <li className={styles.popular__item} key={uuidv4()}>
-              <ImageTagLink 
-                key={el.id} 
-                id={el.id} 
-                image={el.image} 
-                tagName={el.tagName} 
-                isBigImage={!i} 
-                link={el.link} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-};
+      <ul className={styles.popular__imageItems}>
+        { data.map((el, i) => (
+          <li className={styles.popular__item} key={uuidv4()}>
+            <ImageTagLink 
+              key={el.id} 
+              id={el.id} 
+              image={el.tag_images ? el.tag_images[0].image : ''} 
+              tagName={el.name} 
+              isBigImage={!i} 
+              link={el.tag_images ? el.tag_images[0].image : ''} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
 
 export default Popular;

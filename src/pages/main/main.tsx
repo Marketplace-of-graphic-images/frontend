@@ -5,7 +5,7 @@ import { UniversalButton } from '../../ui-lib/Button';
 import MainUser from './components/MainUser/MainUser';
 import MainAuthor from './components/MainAuthor/MainAuthor';
 import { useDispatch, useSelector } from '../../services/hooks';
-import { setAuthorRole, setGuestRole, setUserRole } from '../../store';
+import { setAuthorRole, setUserRole } from '../../store';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -26,8 +26,8 @@ const Main = () => {
       )}
 
       {!isLoggedIn && <MainGuest />}
-      {(userRole === 'user' && isLoggedIn) && <MainUser />}
-      {(userRole === 'author' && isLoggedIn) && <MainAuthor />}
+      {(userRole === 'User' && isLoggedIn) && <MainUser />}
+      {(userRole === 'Author' && isLoggedIn) && <MainAuthor />}
     </main>
   );
 };

@@ -82,7 +82,7 @@ const Header = () => {
         ) : (
           <div className={styles.rightBlockAuthor}>
 
-            {userRole === 'author' && (
+            {userRole === 'Author' && (
               <UniversalButton buttonStyle='borderGreen' type='button' width='208' height='47'>
                 Загрузить работу
               </UniversalButton>

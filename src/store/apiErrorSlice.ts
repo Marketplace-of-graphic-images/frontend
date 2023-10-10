@@ -3,13 +3,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type TErrorApiState = {
   emailAuthErr: string;
   passwordAuthErr: string;
-  generalAuthErr:string;
+  generalAuthErr: string;
+  mainImagesDownloadErr: string;
+  mainTagsDownloadErr: string;
 };
 
 const initialState: TErrorApiState = {
   emailAuthErr: '',
   passwordAuthErr: '',
   generalAuthErr: '',
+  mainImagesDownloadErr: '',
+  mainTagsDownloadErr: '',
 };
 
 const modalSlice = createSlice({
@@ -30,9 +34,23 @@ const modalSlice = createSlice({
       state: TErrorApiState,
       action: PayloadAction<string>,
     ) => ({ ...state, generalAuthErr: action.payload }),
+
+    setMainImagesDownloadErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, mainImagesDownloadErr: action.payload }),
+
+    setMainTagsDownloadErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, mainTagsDownloadErr: action.payload }),
     
     clearAuthErr: (state: TErrorApiState) => ({
       ...state, passwordAuthErr: '', emailAuthErr: '', generalAuthErr: '',
+    }),
+
+    clearMainDownloadErr: (state: TErrorApiState) => ({
+      ...state, mainImagesDownloadErr: '', mainTagsDownloadErr: '',
     }),
 
   },
@@ -43,5 +61,8 @@ export const {
   setEmailAuthErr,
   setPasswordAuthErr,
   clearAuthErr,
+  setMainImagesDownloadErr,
+  setMainTagsDownloadErr,
+  clearMainDownloadErr,
 } = modalSlice.actions;
 export default apiErrorReducer;
