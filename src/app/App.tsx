@@ -18,6 +18,7 @@ import {
   PasswordRecoveryUnionForm,
   RegistrationForm,
   AuthorizationForm,
+  AuthorForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 import ProfileEdit from '../pages/profile/ProfileEdit/ProfileEdit';
@@ -26,7 +27,7 @@ import checkAuth from '../thunks/chech-auth-thunk';
 const App = () => {
   const dispatch = useDispatch();
   const {
-    authModal, registerModal, passRecoveryModal, shareModal, complainModal, 
+    authModal, registerModal, passRecoveryModal, authorModal, shareModal, complainModal,
   } = useSelector((state) => state.modals);
   const { isLoading } = useSelector((state) => state.system);
 
@@ -84,6 +85,10 @@ const App = () => {
 
       <Popup isOpen={complainModal} onClose={closeModalState} width='555px'>
         <ComplainPopup />
+      </Popup>
+
+      <Popup isOpen={authorModal} onClose={closeModalState}>
+        <AuthorForm />
       </Popup>
 
       <Popup isOpen={authModal} onClose={closeModalState}>

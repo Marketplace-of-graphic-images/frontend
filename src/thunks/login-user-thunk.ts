@@ -2,17 +2,10 @@ import { batch } from 'react-redux';
 import { authUser } from '../api/api';
 import {
   onLogin, closeModal, isLoadingOn, isLoadingOff, clearApiErr,
-  setEmailApiErr, setPasswordApiErr, setGeneralApiErr,
+  setEmailApiErr, setPasswordApiErr, setGeneralApiErr, setUser,
 } from '../store';
 import { AppThunk } from '../types/store.types';
-import { TApiErrors } from '../types/types';
-
-type TUserSignIn = {
-  id: number;
-  username: string;
-  profile_photo: string;
-  role: string;
-};
+import { TApiErrors, TUser } from '../types/types';
 
 const loginUserThunk : AppThunk = (data) => async (dispatch) => {
   const authErrors = (errors: TApiErrors) => {
@@ -29,10 +22,11 @@ const loginUserThunk : AppThunk = (data) => async (dispatch) => {
     dispatch(clearApiErr());
     dispatch(isLoadingOn());
 
-    const res: TUserSignIn = await authUser(data);
+    const res: TUser = await authUser(data);
 
     batch(() => {
       dispatch(onLogin());
+      dispatch(setUser(res));
       dispatch(closeModal());
     });
 

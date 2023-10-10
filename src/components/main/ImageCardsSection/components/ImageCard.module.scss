@@ -6,7 +6,7 @@
   flex-direction: column;
   position: relative;
 
-  &__imageButton {
+  &__imageLink {
     background-color: transparent;
     border: none;
   }
@@ -45,7 +45,7 @@
     text-overflow: ellipsis;
   }
 
-  &__authorButton {
+  &__authorLink {
     @include m.Link_medium;
     margin: 4px 0 0 0;
     background-color: transparent;

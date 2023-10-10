@@ -1,21 +1,21 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { TImage } from 'types/types';
 import ImageCard, { ImageCardProps } from './components/ImageCard';
 import styles from './ImageCardsSection.module.scss';
 import { ArrowRightIconGreen } from '../../../ui-lib/Icons';
 
 interface ImageCardsSectionProps {
-  cards: Array<ImageCardProps>;
+  cards: Array<TImage>;
   title: string;
   link: string;
+  isLoggedIn: boolean;
 }
 
-const buttonPressTest = () => {
-  console.log('Button is pressed');
-};
-
-const ImageCardsSection: FC<ImageCardsSectionProps> = ({ cards, title, link }) => (
+const ImageCardsSection: FC<ImageCardsSectionProps> = ({
+  cards, title, link, isLoggedIn, 
+}) => (
   <section className={styles.imageCardsSection}>
     <div className={styles.imageCardsSection__container}>
       <div className={styles.imageCardsSection__headerContainer}>
@@ -26,20 +26,18 @@ const ImageCardsSection: FC<ImageCardsSectionProps> = ({ cards, title, link }) =
         </Link>
       </div>
       <ul className={styles.imageCardsSection__content}>
-        {cards.slice(0, 4).map((el:ImageCardProps) => (
+        {cards.slice(0, 4).map((el:TImage) => (
           <li className={styles.imageCardsSection__cardItem} key={uuidv4()}>
             <ImageCard 
               id={el.id} 
               name={el.name}
               image={el.image}
               price={el.price}
-              authorId={el.authorId}
-              authorUsername={el.authorUsername}
+              authorId={el.author.id}
+              authorUsername={el.author.username}
               license={el.license}
-              isFavorited={el.isFavorited}
-              onImageClick={el.onImageClick}
-              onAuthorClick={el.onAuthorClick} 
-              onLikeClick={el.onLikeClick} />
+              isFavorited={el.is_favorited} 
+              isLoggedIn={isLoggedIn} />
           </li>
         ))}
       </ul>
