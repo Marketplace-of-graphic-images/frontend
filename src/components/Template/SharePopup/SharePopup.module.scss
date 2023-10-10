@@ -1,0 +1,35 @@
+@use '../../../globalStyle/variables.scss' as v;
+@use '../../../globalStyle/mixins' as m;
+.SharePopup{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 52px;
+
+    &_title{
+        @include m.Desktop_H2;
+        color: v.$black-color;
+    }
+    &_container{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 36px;
+    }
+    &_link{
+        max-width: 385px;
+        height: 46px;
+        width: 100%;
+        box-shadow: 0px 4px 24px 0px #1B1B1B14;
+        border: 1px solid #929292;
+        border-radius: 8px;
+        padding-right: 46px;
+        padding-left: 14px;
+        @include m.Body2;
+    }
+    &_pasteButton{
+        margin-left: -38px;
+    }
+}

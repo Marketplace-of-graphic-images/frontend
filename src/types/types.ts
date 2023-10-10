@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export type Role = 'User' | 'Author';
 
 export type TLicense = 'free' | 'type1' | 'type2';
@@ -58,4 +59,21 @@ export type TuserDataTemp = {
   is_author:boolean,
 };
 
+export type TImage1 = {
+  id?: number,
+  name?: string,
+  image:string,
+  license?: string,
+  price?: number,
+  format?: string,
+};
+
+export type TAuthor1 = {
+  id: number,
+  username: string,
+  profile_photo: any,
+  role: string,
+  num_of_author_images: number,
+  is_subscribed: boolean
+};
 export type TApiErrors = Record<string, string>;

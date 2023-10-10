@@ -4,6 +4,8 @@ import {
   openModalRegister,
   openModalPassRecovery,
   openModalNotification,
+  openModalShare,
+  openModalComplain,
   openAuthorModal,
 } from './modalSlice';
 
@@ -33,6 +35,10 @@ import {
 import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
 } from './userSlice';
+
+import {
+  setImage, clearImage,
+} from './imageSlice';
 
 import {
   isMainPageImagesLoadingOn,
@@ -68,6 +74,10 @@ export {
   clearApiErr,
   setUserDataTemp,
   clearUserDataTemp,
+  openModalShare,
+  openModalComplain,
+  setImage,
+  clearImage,
   openAuthorModal,
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,

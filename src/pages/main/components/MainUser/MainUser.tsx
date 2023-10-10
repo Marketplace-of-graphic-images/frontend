@@ -26,6 +26,8 @@ const MainUser = () => {
     dispatch(mainPageImagesDownloadThunk(isLoggedIn));
   }, [dispatch, isLoggedIn]);
 
+  // временные данные. Вообще всё это нужно получать по запросу к апи по ID картинки
+  
   return (
     <>
       <SearchSection />
