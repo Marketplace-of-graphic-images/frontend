@@ -25,9 +25,12 @@ const mainPageImagesSlice = createSlice({
   name: 'mainPageImages',
   initialState,
   reducers: {
-    isMainPageImagesLoadingOn: (state: TMainPageImagesData) => ({ ...state, isMainPageImagesLoading: true }),
-    isMainPageImagesLoadingoff: (state: TMainPageImagesData) => ({ ...state, isMainPageImagesLoading: false }),
-    onPopularImagesDownload: (state: TMainPageImagesData) => ({ ...state, popularImagesLoaded: true }),
+    isMainPageImagesLoadingOn: (state: TMainPageImagesData) => (
+      { ...state, isMainPageImagesLoading: true }),
+    isMainPageImagesLoadingoff: (state: TMainPageImagesData) => (
+      { ...state, isMainPageImagesLoading: false }),
+    onPopularImagesDownload: (state: TMainPageImagesData) => (
+      { ...state, popularImagesLoaded: true }),
     onPopularTagsDownload: (state: TMainPageImagesData) => ({ ...state, popularTagsLoaded: true }),
     setPopularPhotos: (
       state: TMainPageImagesData,

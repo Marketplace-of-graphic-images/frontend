@@ -19,12 +19,11 @@ const MainAuthor = () => {
     popularTags,
   } = useSelector((state) => state.mainPageImages);
   
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  const { isLoggedIn } = useSelector((state) => state.system);
 
   useEffect(() => {
     dispatch(mainPageImagesDownloadThunk(isLoggedIn));
-    console.log(userRole);
-  }, []);
+  }, [dispatch, isLoggedIn]);
 
   return (
     <>

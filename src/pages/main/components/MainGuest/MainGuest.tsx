@@ -9,8 +9,6 @@ import mainPageImagesDownloadThunk from 'thunks/main-page-thunk';
 import SearchSection from '../../../../components/main/SearchSection/SearchSection';
 import TitleMainSection from '../../../../components/main/TitleMainSection/TitleMainSection';
 
-import Popular from '../../../../components/main/Popular/Popular';
-
 const MainGuest = () => {
   const dispatch = useDispatch();
   const { 
@@ -23,12 +21,11 @@ const MainGuest = () => {
     popularTags,
   } = useSelector((state) => state.mainPageImages);
   
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  const { isLoggedIn } = useSelector((state) => state.system);
 
   useEffect(() => {
     dispatch(mainPageImagesDownloadThunk(isLoggedIn));
-    console.log(userRole);
-  }, []);
+  }, [dispatch, isLoggedIn]);
 
   return (
     <>

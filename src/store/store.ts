@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
-import { getUser } from 'api/getUsers';
 import systemReducer from './systemSlice';
 import userReducer from './userSlice';
 import modalReducer from './modalSlice';
@@ -13,9 +12,9 @@ const store = configureStore({
     user: userReducer,
     modals: modalReducer,
     apiError: apiErrorReducer,
-    [getUser.reducerPath]: getUser.reducer,
+    mainPageImages: mainPageImagesReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getUser.middleware, thunk),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
   // eslint-disable-next-line no-undef
   devTools: process.env.NODE_ENV !== 'production',
 });
