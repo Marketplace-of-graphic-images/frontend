@@ -19,7 +19,8 @@ import NotificationPopupOnRight from '../Template/NotificationPopupOnRight/Notif
 
 const Header = () => { 
   const dispatch = useDispatch();
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  const { isLoggedIn } = useSelector((state) => state.system);
+  const { role } = useSelector((state) => state.user);
 
   const { notificationModal } = useSelector((state) => state.modals);
   const [notificationsState, setNotificationsState] = useState(false);
@@ -87,13 +88,13 @@ const Header = () => {
           </div>
         ) : (
           <div className={styles.rightBlockAuthor}>
-            {userRole === 'user' && (
+            {role === 'User' && (
               <UniversalButton buttonStyle='borderGreen' onClick={openFormAuthorModal} type='button' width='208' height='47'>
                 Стать автором
               </UniversalButton>
             )}
 
-            {userRole === 'author' && (
+            {role === 'Author' && (
               <UniversalButton buttonStyle='borderGreen' type='button' width='208' height='47'>
                 Загрузить работу
               </UniversalButton>

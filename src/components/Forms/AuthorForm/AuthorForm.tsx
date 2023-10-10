@@ -5,6 +5,8 @@ import { UniversalButton } from '../../../ui-lib/Button';
 import LinkWordButton from '../../../ui-lib/Button/LinkWordButton/LinkWordButton';
 import useValidation from '../../../services/useValidation';
 import { useDispatch } from '../../../services/hooks';
+import formDataAuthor from '../../../utils/formatData';
+import becomeAthorThunk from '../../../thunks/become-author-thunk';
 
 const AuthorForm:FC = () => {
   const {
@@ -14,6 +16,7 @@ const AuthorForm:FC = () => {
   const dispatch = useDispatch();
   const authorRequest = (e:SyntheticEvent) => {
     e.preventDefault();
+    dispatch(becomeAthorThunk(formDataAuthor()));
   };
   return (
     <div className={styles.authorForm}>
