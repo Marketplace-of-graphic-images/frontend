@@ -34,6 +34,15 @@ export const registerConfirmUser = (userData) => request('auth/signup-confirmati
   ]),
   body: JSON.stringify(userData),
 });
+
+export const signoutUser = () => request('auth/signout/', {
+  method: 'POST',
+  headers: new Headers([
+    ['Content-Type', 'application/json'],
+  ]),
+  body: JSON.stringify({}),
+});
+
 export const checkUserAuth = () => request('users/short_me/');
 
 export const getUsersMe = () => request('users/me/');
