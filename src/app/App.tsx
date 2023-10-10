@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
-import SharePopup from 'components/Template/SharePopup/SharePopup';
-import ComplainPopup from 'components/Template/ComplainPopup/ComplainPopup';
 import { 
-  Main, Profile, YandexAuth, NotFound, 
+  Main, Profile, YandexAuth, NotFound, ImageCardPage,
 } from '../pages';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
@@ -25,7 +23,7 @@ import checkAuth from '../thunks/chech-auth-thunk';
 const App = () => {
   const dispatch = useDispatch();
   const {
-    authModal, registerModal, passRecoveryModal, shareModal, complainModal,
+    authModal, registerModal, passRecoveryModal, 
   } = useSelector((state) => state.modals);
   const { isLoading } = useSelector((state) => state.system);
 
@@ -52,9 +50,14 @@ const App = () => {
               <Route
                 path='yandexauth'
                 element={<YandexAuth />} />
+
               <Route
                 path='/'
                 element={<Main />} />
+
+              <Route
+                path='/card/:id'
+                element={<ImageCardPage />} />
               <Route
                 path='/profile'
                 element={(
@@ -83,14 +86,6 @@ const App = () => {
 
       <Popup isOpen={passRecoveryModal} onClose={closeModalState}>
         <PasswordRecoveryUnionForm />
-      </Popup>
-
-      <Popup isOpen={shareModal} onClose={closeModalState} width='625px' height='285px'>
-        <SharePopup />
-      </Popup>
-
-      <Popup isOpen={complainModal} onClose={closeModalState} width='555px'>
-        <ComplainPopup />
       </Popup>
     </div>
   );

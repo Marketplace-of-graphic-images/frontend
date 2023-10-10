@@ -91,30 +91,9 @@ const MainUser = () => {
   const { user } = useSelector((state) => state);
 
   // временные данные. Вообще всё это нужно получать по запросу к апи по ID картинки
-  const image = {
-    id: 150,
-    name: 'Какое-то название',
-    image: 'https://pictura.acceleratorpracticum.ru/media/images/206fd83e78bf889729b476f4575cd3db.jpg',
-    license: 'free',
-    price: 0,
-    format: 'JPG',
-  };
-  // с бэка приходят параметры не в CamelCase, пришлось ниже выключить Eslint
-  const author = {
-    id: 2,
-    username: 'test_user1',
-    // eslint-disable-next-line camelcase
-    profile_photo: null,
-    role: 'Author',
-    // eslint-disable-next-line camelcase
-    num_of_author_images: 33,
-    // eslint-disable-next-line camelcase
-    is_subscribed: false,
-  };
   
   return (
     <>
-      <ProductCard ProductImage={image} author={author} />
       <JoinToCommunity
         user={user} 
         roleUser='customer' />
