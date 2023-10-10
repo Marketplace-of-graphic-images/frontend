@@ -9,7 +9,6 @@ import {
 
 import {
 
-  setGuestRole,
   setUserRole,
   setAuthorRole,
   isLoadingOn,
@@ -25,11 +24,27 @@ import {
   setUsernameApiErr,
   setConfirmCodeApiErr,
   clearApiErr,
+  setMainImagesDownloadErr,
+  setMainTagsDownloadErr,
+  clearMainDownloadErr,
+  
 } from './apiErrorSlice';
 
 import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
 } from './userSlice';
+
+import {
+  isMainPageImagesLoadingOn,
+  isMainPageImagesLoadingoff,
+  onPopularImagesDownload,
+  onPopularTagsDownload,
+  setPopularPhotos,
+  setPopularVectors,
+  setPopularGifs,
+  setPopularTags,
+  clearStoreData,
+} from './mainPageImagesSlice';
 
 export {
   openModalAuth,
@@ -39,7 +54,6 @@ export {
   openModalNotification,
   setUser,
   clearUser,
-  setGuestRole,
   setUserRole,
   setAuthorRole,
   isLoadingOn,
@@ -55,4 +69,16 @@ export {
   setUserDataTemp,
   clearUserDataTemp,
   openAuthorModal,
+  setMainImagesDownloadErr,
+  setMainTagsDownloadErr,
+  clearMainDownloadErr,
+  isMainPageImagesLoadingOn,
+  isMainPageImagesLoadingoff,
+  onPopularImagesDownload,
+  onPopularTagsDownload,
+  setPopularPhotos,
+  setPopularVectors,
+  setPopularGifs,
+  setPopularTags,
+  clearStoreData,
 };

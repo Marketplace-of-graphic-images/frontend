@@ -1,4 +1,5 @@
-const api = 'https://pictura.acceleratorpracticum.ru/api/v1/';
+import { baseUrl as api } from 'constants/baseUrl';
+
 const checkResponse = (res: Response) => (res.ok ? res.json() 
 // eslint-disable-next-line
   : res.json().then((err: any) => Promise.reject(err)));
@@ -8,7 +9,7 @@ export const request = (
   config?: RequestInit,
 ): Promise<any> => fetch(
   `${process.env.API || api}${url}`,
-  { ...config, credentials: 'include' },
+  { ...config, credentials: 'include' }, 
 ).then(checkResponse);
 
 export const authUser = (userData) => request('auth/signin/', {
@@ -19,6 +20,15 @@ export const authUser = (userData) => request('auth/signin/', {
   body: JSON.stringify(userData),
 });
 
+export const getPopularTags = () => request('tags/', { method: 'GET' });
+
+export const getPopularPics = (category : string) => request(`image/?category=${category}`, { method: 'GET' });
+
+export const putLike = (id: number) => request(`image/${id}/favorite/`, {
+  method: 'POST',
+});
+
+export const removeLike = (id: number) => request(`image/${id}/favorite/`, { method: 'DELETE' });
 export const registUser = (userData) => request('auth/signup/', {
   method: 'POST',
   headers: new Headers([
