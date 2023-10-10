@@ -6,13 +6,16 @@ import { useSelector } from '../../services/hooks';
 
 const Profile = () => {
   const { user } = useSelector((state) => state);
+  const { role } = useSelector((state) => state.user);
 
   return (
     <main className={styles.main}>
       <UserInfo />
+      { role === 'User' && (
       <JoinToCommunity
         user={user} 
-        roleUser='customer' />
+        roleUser={role} />
+      )}
     </main>
   );
 };
