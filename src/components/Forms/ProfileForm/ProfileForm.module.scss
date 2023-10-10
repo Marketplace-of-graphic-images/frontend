@@ -35,6 +35,7 @@
     height: 173px;
     border-radius: 50%;
     background: $white-on-click-color;
+    object-fit: cover;
   }
 
   &__avatarLoadInput {

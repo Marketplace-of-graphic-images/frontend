@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useMemo, useReducer, useState, 
-} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ProfileForm.module.scss';
 import { EmailInput, UniversalInput } from '../../../ui-lib/Input';
@@ -11,112 +9,147 @@ import {
 import useValidation from '../../../services/useValidation';
 import DateInput from '../../../ui-lib/Input/DateInput/DateInput';
 import { UniversalButton, BackPageButton } from '../../../ui-lib/Button';
-import { PATTERN_NAME, PATTERN_USERNAME } from '../../../constants/constants';
-import FileLoadInput from '../../../ui-lib/Input/FileLoadInput/FileLoadInput';
-import { CameraIconGreen } from '../../../ui-lib/Icons';
+import { PATTERN_USERNAME } from '../../../constants/constants';
 import ConfirmPopup from '../../Template/ConfirmPopup/ConfirmPopup';
 import { useDispatch, useSelector } from '../../../services/hooks';
 import { closeModal, openModalConfirmChangeUserData } from '../../../store/modalSlice';
+import getUsersMeData from '../../../api/getUsersMe';
+import patchUsersMeThunk from '../../../thunks/patch-users-me-thunk';
+import Avatar from './Avatar/Avatar';
+import formatDate from '../../../utils/formatDate';
+import { clearApiErr } from '../../../store';
 
 const ProfileForm = () => {
   const {
     values,
     handleChange,
     errors,
-    errorsText,
     errorsDescription,
     isValid,
     resetForm,
   } = useValidation();
 
-  const [date, setDate] = useState<Date | undefined>();
-  const [avatar, setAvatar] = useState<File | undefined>();
-  const navigate = useNavigate();
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setAvatar(e.target.files[0]);
-    }
-  };
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [date, setDate] = useState<Date | undefined>();
+
+  const {
+    id, profile_photo, vk, telegram, website, username,
+    first_name, last_name, email, birthday,
+  } = useSelector((state) => state.user);
+
+  const textUserData = useMemo(() => ({
+    username, email, first_name, last_name, vk, telegram, website,
+  }), [username, email, first_name, last_name, vk, telegram, website]);
+
+  useEffect(() => {
+    if (Number.isNaN(id)) {
+      getUsersMeData(dispatch);
+    }
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    if (birthday !== null) setDate(new Date(birthday));
+  }, [birthday]);
+
+  useEffect(() => {
+    resetForm(textUserData);
+  }, [resetForm, textUserData]);
+
+  // popup logic
   const { confirmChangeUserDataModal } = useSelector((state) => state.modals);
 
   const closePopups = () => {
     dispatch(closeModal());
   };
 
-  // имитирует юзера с бекенда
-  const tempUserData = useMemo(() => ({
-    username: 'Username',
-    name: '',
-    surname: '',
-    email: 'user@mail.ru',
-    vk: '',
-    instagram: '',
-    website: '',
-  }), []);
+  // profile photo logic
+  const [loadPhotoFile, setLoadPhotoFile] = useState<File | undefined>();
+  const [loadPhoto, setLoadPhoto] = useState<string>('');
 
-  useEffect(() => {
-    // ключ должен совпадать с name у инпутов
-    resetForm(tempUserData);
-  }, [resetForm, tempUserData]);
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0].type.match('image')) {
+      setLoadPhotoFile(e.target.files[0]);
 
-  const isFormChanged = () => (
-    !Object.entries(values).every(([key, value]) => tempUserData[key] === value)
-  );
+      const fileReader = new FileReader();
 
-  const isButtonDisable = isFormChanged() && isValid;
+      fileReader.onload = () => {
+        if (typeof fileReader.result === 'string') {
+          setLoadPhoto(fileReader.result);
+        }
+      };
 
-  // submit
+      fileReader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  // submit logic
   const handleSubmit = () => {
-    const {
-      username, name, surname, email, vk, instagram, website,
-    } = values;
+    const formData = new FormData();
 
-    const submitData = {
-      username,
-      name,
-      surname,
-      email,
-      birthday: date || '', // согласовать формат даты
-      vk,
-      instagram,
-      website,
-      avatar,
-    };
+    Object.entries(values).forEach(([key, value]) => {
+      if (textUserData[key] !== value) formData.append(key, value);
+    });
 
-    console.log(submitData);
+    if (date) {
+      const dateString = formatDate(date);
+
+      if (dateString !== birthday) formData.append('birthday', dateString);
+    }
+
+    if (loadPhotoFile) formData.append('profile_photo', loadPhotoFile, loadPhotoFile.name);
+
+    dispatch(patchUsersMeThunk(formData));
 
     closePopups();
   };
-  const handleBackPage = () => { 
-    navigate('/profile');
-  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     dispatch(openModalConfirmChangeUserData());
   };
 
-  const onCancelClick = () => {
-    // ключ должен совпадать с name у инпутов
-    resetForm(tempUserData);
-    closePopups();
+  // submit button logic
+  const isFormChanged = () => {
+    const isTextValuesChanged = !Object.entries(values)
+      .every(([key, value]) => textUserData[key] === value);
+
+    let isDateChanged = false;
+
+    if (date) {
+      isDateChanged = formatDate(date) !== birthday;
+    }
+
+    const isPhotoChanged = !!loadPhotoFile;
+
+    return isTextValuesChanged || isDateChanged || isPhotoChanged;
+  };
+  
+  const isSubmitBtnDisabled = () => {
+    if (!isFormChanged()) {
+      return true;
+    }
+
+    return !isValid && (date ? formatDate(date) === birthday : true) && !loadPhotoFile;
+  };
+
+  // api error logic
+  const { usernameApiErr, emailApiErr } = useSelector((state) => state.apiError);
+
+  const resetApiErrors = () => {
+    dispatch(clearApiErr());
   };
 
   return (
     <section className={styles.profileForm}>
 
       <form className={styles.profileForm__form} onSubmit={onSubmit}>
-        <BackPageButton onClick={handleBackPage} />
+        <BackPageButton onClick={() => navigate('/profile')} />
         <div className={styles.profileForm__formContainer}>
-          <div className={styles.profileForm__avatarContainer}>
-            <img src='#' alt='' className={styles.profileForm__avatarImage} />
-            <FileLoadInput
-              onChange={handleAvatarChange}
-              icon={<CameraIconGreen width={22} height={22} />}
-              className={styles.profileForm__avatarLoadInput} />
-          </div>
+
+          <Avatar image={loadPhoto || profile_photo} onChange={handleAvatarChange} />
 
           <div className={styles.profileForm__inputsContainer}>
             <UniversalInput
@@ -124,10 +157,11 @@ const ProfileForm = () => {
               name='username'
               value={values.username || ''}
               onChange={handleChange}
+              onFocus={resetApiErrors}
               pattern={PATTERN_USERNAME}
               validError={errors.username}
-              errorMessage={errorsText.username}
               errorDescription={errorsDescription.username}
+              apiErrorMessage={usernameApiErr}
               label='Имя пользователя'
               staticLabel
               borderColor='grey'
@@ -141,8 +175,10 @@ const ProfileForm = () => {
               name='email'
               value={values.email || ''}
               onChange={handleChange}
+              onFocus={resetApiErrors}
               validError={errors.email}
-              errorMessage={errorsText.email}
+              errorDescription={errorsDescription.email}
+              apiErrorMessage={emailApiErr}
               label='Email'
               staticLabel
               borderColor='grey'
@@ -160,11 +196,10 @@ const ProfileForm = () => {
 
             <UniversalInput
               id={PROFILE_NAME_ID}
-              name='name'
-              value={values.name || ''}
+              name='first_name'
+              value={values.first_name || ''}
               onChange={handleChange}
-              validError={errors.name}
-              pattern={PATTERN_NAME}
+              validError={errors.first_name}
               label='Имя'
               staticLabel
               borderColor='grey'
@@ -174,10 +209,10 @@ const ProfileForm = () => {
 
             <UniversalInput
               id={PROFILE_SURNAME_ID}
-              name='surname'
-              value={values.surname || ''}
+              name='last_name'
+              value={values.last_name || ''}
               onChange={handleChange}
-              validError={errors.surname}
+              validError={errors.last_name}
               label='Фамилия'
               staticLabel
               borderColor='grey'
@@ -239,7 +274,7 @@ const ProfileForm = () => {
           <UniversalButton
             width={168}
             className={styles.profileForm__submitBtn}
-            disabled={!isButtonDisable}>
+            disabled={isSubmitBtnDisabled()}>
             Сохранить
           </UniversalButton>
 
@@ -251,7 +286,7 @@ const ProfileForm = () => {
         onOkButtonClick={handleSubmit}
         isOpen={confirmChangeUserDataModal}
         onClose={closePopups}
-        onCancelButtonClick={onCancelClick}
+        onCancelButtonClick={() => closePopups()}
         title='Сохранить введенные данные?' />
 
     </section>

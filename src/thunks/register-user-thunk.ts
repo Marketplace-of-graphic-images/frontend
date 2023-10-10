@@ -1,47 +1,40 @@
 import { batch } from 'react-redux';
 import { registUser } from '../api/api';
-import { TuserDataTemp } from '../types/types';
+import { TApiErrors, TuserDataTemp } from '../types/types';
 import {
-  isLoadingOn, isLoadingOff,
-  setEmailRegistErr,
-  setPasswordRegistErr,
-  setUsernameRegistErr,
-  clearRegistErr,
-  setGeneralRegistErr,
-  setUserDataTemp,
+  isLoadingOn, isLoadingOff, setEmailApiErr, setUsernameApiErr,
+  setPasswordApiErr, setGeneralApiErr, clearApiErr, setUserDataTemp,
 } from '../store';
 import { AppThunk } from '../types/store.types';
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,
- @typescript-eslint/no-unsafe-argument */
-const registerUserThunk : AppThunk = (data, setForm) => async (dispatch) => {
-  const registErrors = (errors) => {
-    if ('password' in errors) {
-      dispatch(setPasswordRegistErr(errors.password[0]));
-    } else if ('username' in errors) {
-      dispatch(setUsernameRegistErr(errors.username[0]));
-    } else if ('email' in errors) {
-      dispatch(setEmailRegistErr(errors.email[0]));
-    } else {
-      dispatch(setGeneralRegistErr('Ошибка регистрации'));
-    }
-  };
 
-  try {
-    dispatch(isLoadingOn());
-    const res:TuserDataTemp = await registUser(data);
-    batch(() => {
-      // eslint-disable-next-line
-      dispatch(setUserDataTemp(res));
-      dispatch(clearRegistErr());
-      // eslint-disable-next-line
-      setForm(2);
-    });
-  } catch (error:any) {
-    // eslint-disable-next-line
-    dispatch(clearRegistErr());
-    registErrors(error);
-  } finally {
-    dispatch(isLoadingOff());
+const registerUserThunk : AppThunk = (data, setForm: (step: number) => void) => (
+  async (dispatch) => {
+    const registerErrors = (errors: TApiErrors) => {
+      if ('password' in errors) {
+        dispatch(setPasswordApiErr(errors.password[0]));
+      } else if ('username' in errors) {
+        dispatch(setUsernameApiErr(errors.username[0]));
+      } else if ('email' in errors) {
+        dispatch(setEmailApiErr(errors.email[0]));
+      } else {
+        dispatch(setGeneralApiErr('Ошибка регистрации'));
+      }
+    };
+
+    try {
+      dispatch(isLoadingOn());
+      const res: TuserDataTemp = await registUser(data);
+      batch(() => {
+        dispatch(setUserDataTemp(res));
+        dispatch(clearApiErr());
+        setForm(2);
+      });
+    } catch (error: any) {
+      dispatch(clearApiErr());
+      registerErrors(error as TApiErrors);
+    } finally {
+      dispatch(isLoadingOff());
+    }
   }
-};
+);
 export default registerUserThunk;

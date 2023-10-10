@@ -35,19 +35,21 @@ const OtpCodeForm: FC<OtpCodeFormProps> = (
       <LinkWordButton buttonName='Изменить' onClick={onBackClick} />
     </div>
 
-    <OtpCode
-      value={code}
-      valueLength={6}
-      isError={apiError}
-      onChange={onChange}
-      onEnterPress={onSubmitBtnClick || (() => {})} />
+    <div>
+      <OtpCode
+        value={code}
+        valueLength={6}
+        isError={apiError}
+        onChange={onChange}
+        onEnterPress={onSubmitBtnClick || (() => {})} />
 
-    {apiError
+      {apiError
         && (
           <p className={styles.otpCodeForm__error}>
             {apiError}
           </p>
         )}
+    </div>
 
     <div className={styles.otpCodeForm__sendPassword}>
       <Timer numberOfMinutes={0} numberOfSeconds={59} getNewCode={getNewCode} />
