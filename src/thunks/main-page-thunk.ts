@@ -51,9 +51,6 @@ const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (
         getPopularPics('gif_image'), 
         getPopularPics('vector_image'), 
         getPopularTags()]);
-
-      console.log(res);
-
       batch(() => {
         // eslint-disable-next-line
           if((res[0].results.length >= 4) 
