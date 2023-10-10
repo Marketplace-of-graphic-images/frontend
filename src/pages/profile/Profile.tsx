@@ -8,9 +8,7 @@ const Profile = () => {
 
   return (
     <main className={styles.main}>
-      <UserInfo 
-        user={user} 
-        roleUser='author' />
+      <UserInfo />
     </main>
   );
 };

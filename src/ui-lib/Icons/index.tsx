@@ -5,7 +5,8 @@ import {
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
   calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
   authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen, pensil, cameraIconGreen,
-  likeIconGreen, likeIconWhite, back, report, downloads, share, file, license, buy, add, paste,
+  likeIconGreen, likeIconWhite, back, report, downloads, share, file, license, buy, add, paste, 
+  linkIcon,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -110,4 +111,7 @@ export const Add = (props) => (
 );
 export const Paste = (props) => (
   <TemplateIcon {...props} icon={paste} />
+);
+export const LinkIcon = (props) => (
+  <TemplateIcon {...props} icon={linkIcon} />
 );

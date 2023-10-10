@@ -8,10 +8,7 @@ import { YandexIcon } from '../../../ui-lib/Icons';
 import useValidation from '../../../services/useValidation';
 import { useDispatch, useSelector } from '../../../services/hooks';
 import loginUserThunk from '../../../thunks/login-user-thunk';
-import {
-  clearAuthErr,
-  openModalPassRecovery, openModalRegister,
-} from '../../../store';
+import { clearApiErr, openModalPassRecovery, openModalRegister } from '../../../store';
 import YandexLogin from '../../../services/auth/yandex/YandexLogin';
 import { AUTH_LOGIN_ID, AUTH_PASSWORD_ID } from '../../../constants/inputsId';
 
@@ -26,7 +23,7 @@ const AuthorizationForm = () => {
     isValid,
   } = useValidation();
   const dispatch = useDispatch();
-  const { emailAuthErr, passwordAuthErr, generalAuthErr } = useSelector((state) => state.apiError);
+  const { emailApiErr, passwordApiErr, generalApiErr } = useSelector((state) => state.apiError);
 
   const openRegisterModal = () => {
     dispatch(openModalRegister());
@@ -41,7 +38,7 @@ const AuthorizationForm = () => {
   };
 
   const resetApiErrors = () => {
-    dispatch(clearAuthErr());
+    dispatch(clearApiErr());
   };
 
   return (
@@ -61,7 +58,7 @@ const AuthorizationForm = () => {
         onChange={handleChange}
         onFocus={resetApiErrors}
         validError={errors.email}
-        apiErrorMessage={emailAuthErr}
+        apiErrorMessage={emailApiErr}
         errorMessage={errorsText.email}
         required
         autoFocus />
@@ -74,7 +71,7 @@ const AuthorizationForm = () => {
           value={values.password || ''}
           onChange={handleChange}
           onFocus={resetApiErrors}
-          apiErrorMessage={passwordAuthErr}
+          apiErrorMessage={passwordApiErr}
           validError={errors.password}
           errorMessage={errorsText.password}
           pattern={undefined}
@@ -83,7 +80,7 @@ const AuthorizationForm = () => {
         <LinkWordButton buttonName='Забыли пароль?' onClick={openPassRecoveryModal} />
       </div>
 
-      {generalAuthErr && <p className={styles.globalError}>{generalAuthErr}</p>}
+      {generalApiErr && <p className={styles.globalError}>{generalApiErr}</p>}
 
       <div className={styles.buttons}>
         <UniversalButton type='submit' disabled={!isValid}>Войти</UniversalButton>

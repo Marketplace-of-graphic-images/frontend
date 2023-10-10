@@ -18,7 +18,14 @@
 }
 
 .globalError {
-  color: $error-color
+  @include Body;
+  display: inline-block;
+  text-align: start;
+  color: $error-color;
+
+  @media screen and (max-width: 1440px) {
+    @include Body3;
+  }
 }
 
 .title {

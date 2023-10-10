@@ -7,10 +7,10 @@ export type TUser = {
   first_name: string,
   last_name: string,
   vk: string,
-  instagram: string,
+  telegram: string,
   website: string,
   profile_photo: string | null,
-  birthday: Date | null,
+  birthday: string | null,
   count_my_images: number,
   my_subscribers: number,
   my_subscriptions: number,
@@ -18,10 +18,9 @@ export type TUser = {
 };
 export type TuserDataTemp = {
   username:string,
-  email: string
+  email: string,
   password:string,
-  // eslint-disable-next-line
-  is_author:boolean
+  is_author:boolean,
 };
 
 export type TImage = {
@@ -41,3 +40,4 @@ export type TAuthor = {
   num_of_author_images: number,
   is_subscribed: boolean
 };
+export type TApiErrors = Record<string, string>;

@@ -25,9 +25,10 @@
   }
 
   &__error {
+    margin-top: 4px;
     @include m.Body;
     color: v.$error-color;
-    opacity: 0.84;
+    opacity: .84;
   }
 
   &__sendPassword {

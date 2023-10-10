@@ -27,7 +27,7 @@ export const registUser = (userData) => request('auth/signup/', {
   body: JSON.stringify(userData),
 });
 
-export const registСonfirmationUser = (userData) => request('auth/signup-confirmation/', {
+export const registerConfirmUser = (userData) => request('auth/signup-confirmation/', {
   method: 'POST',
   headers: new Headers([
     ['Content-Type', 'application/json'],
@@ -35,3 +35,10 @@ export const registСonfirmationUser = (userData) => request('auth/signup-confir
   body: JSON.stringify(userData),
 });
 export const checkUserAuth = () => request('users/short_me');
+
+export const getUsersMe = () => request('users/me/');
+
+export const pathUsersMe = (userData) => request('users/me/', {
+  method: 'PATCH',
+  body: userData,
+});
