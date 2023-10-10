@@ -54,10 +54,5 @@ export {
   clearApiErr,
   setUserDataTemp,
   clearUserDataTemp,
-<<<<<<< HEAD
-  clearConfirmationCodeRegistErr,
-  setConfirmationCodeRegistErr,
   openAuthorModal,
-=======
->>>>>>> origin/develop
 };
