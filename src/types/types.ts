@@ -59,7 +59,7 @@ export type TuserDataTemp = {
   is_author:boolean,
 };
 
-export type TImage = {
+export type TImage1 = {
   id?: number,
   name?: string,
   image:string,
@@ -68,7 +68,7 @@ export type TImage = {
   format?: string,
 };
 
-export type TAuthor = {
+export type TAuthor1 = {
   id: number,
   username: string,
   profile_photo: any,

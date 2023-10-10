@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC } from 'react';
-import { TImage, TAuthor } from 'types/types';
+import { TImage1, TAuthor1 } from 'types/types';
 import { 
   Back, Downloads, Share, File, License, Buy,
 } from 'ui-lib/Icons';
@@ -14,8 +14,8 @@ import { openModalShare, openModalComplain, setImage } from 'store';
 import styles from './ProductCard.module.scss';
 
 interface IProductCard {
-  ProductImage: TImage,
-  author: TAuthor,
+  ProductImage: TImage1,
+  author: TAuthor1,
 }
 
 const ProductCard: FC<IProductCard> = (props) => {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TImage } from 'types/types';
+import { TImage1 } from 'types/types';
 
-const initialState: TImage = {
+const initialState: TImage1 = {
   image: '',
 };
 
@@ -10,10 +10,10 @@ const imageSlice = createSlice({
   initialState,
   reducers: {
     setImage: (
-      state: TImage,
-      action: PayloadAction<TImage>,
+      state: TImage1,
+      action: PayloadAction<TImage1>,
     ) => ({ ...state, ...action.payload }),
-    clearImage: (state: TImage) => ({
+    clearImage: (state: TImage1) => ({
       ...state, ...initialState,
     }),
   },
