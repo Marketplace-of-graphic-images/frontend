@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import styles from './ImageCardPage.module.scss';
 import { useDispatch, useSelector } from '../../services/hooks';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import SimilarWorksTags from './components/SimilarWorksTags/SimilarWorksTags';
+import SimilarImage from './components/SimilarImage/SimilarImage';
 
 const image = {
   id: 150,
@@ -24,6 +26,14 @@ const author = {
   // eslint-disable-next-line camelcase
   is_subscribed: false,
 };
+const tags = [ // шесть тегов, больше не нужно.
+  'Свистулькин',
+  'Караулькин',
+  'Патрулькин',
+  'Сапожкин',
+  'Каскин',
+  'Палочкин',
+];
 
 const ImageCardPage = () => {
   const dispatch = useDispatch();
@@ -33,6 +43,8 @@ const ImageCardPage = () => {
   return (
     <section className={styles.main}>
       <ProductCard ProductImage={image} author={author} />
+      <SimilarWorksTags tags={tags} />
+      <SimilarImage author={author} />
     </section>
   );
 };
