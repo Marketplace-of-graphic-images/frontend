@@ -1,4 +1,5 @@
 import { batch } from 'react-redux';
+import { TPopularImagesResponseData, TTag } from 'types/types';
 import { getPopularTags, getPopularPics } from '../api/api';
 import { TTagsFetchError } from '../types/apiEror';
 import { 
@@ -28,42 +29,59 @@ const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (
     dispatch(isMainPageImagesLoadingOn());
   
     if (!isLoggedIn) {
-      const res = await Promise.all([
+      const res : TPopularImagesResponseData[] = await Promise.all([
         getPopularPics('raster_image'), 
         getPopularPics('gif_image'), 
         getPopularPics('vector_image')]);
 
       batch(() => {
         // eslint-disable-next-line
-        
-        if ((res[0].results.length >= 4) 
+        if ((res[0].results.length >= 4)
+        // eslint-disable-next-line
           && (res[1].results.length >= 4) 
+        // eslint-disable-next-line
           && (res[2].results.length >= 4)) {
+          // eslint-disable-next-line
           dispatch(setPopularPhotos(res[0].results.slice(0, 4)));
+          // eslint-disable-next-line
           dispatch(setPopularGifs(res[1].results.slice(0, 4)));
+          // eslint-disable-next-line
           dispatch(setPopularVectors(res[2].results.slice(0, 4)));
+          // eslint-disable-next-line
           dispatch(onPopularImagesDownload());
         }
       });
     } else {
-      const res = await Promise.all([
-        getPopularPics('raster_image'), 
+      const res : [
+        TPopularImagesResponseData, 
+        TPopularImagesResponseData, 
+        TPopularImagesResponseData, 
+        TTag[]] = await Promise.all([
+        getPopularPics('raster_image'),
         getPopularPics('gif_image'), 
         getPopularPics('vector_image'), 
         getPopularTags()]);
       batch(() => {
         // eslint-disable-next-line
           if((res[0].results.length >= 4) 
+        // eslint-disable-next-line
             && (res[1].results.length >= 4) 
+        // eslint-disable-next-line            
             && (res[2].results.length >= 4)) {
+          // eslint-disable-next-line              
           dispatch(setPopularPhotos(res[0].results.slice(0, 4)));
+          // eslint-disable-next-line          
           dispatch(setPopularGifs(res[1].results.slice(0, 4)));
+          // eslint-disable-next-line          
           dispatch(setPopularVectors(res[2].results.slice(0, 4)));
+          // eslint-disable-next-line          
           dispatch(onPopularImagesDownload());
-        }
-        if (res[3].length >= 5) {
+          // eslint-disable-next-line        
+          if (res[3].length >= 5) {
+            // eslint-disable-next-line          
           dispatch(setPopularTags(res[3].slice(0, 5)));
-          dispatch(onPopularTagsDownload());
+            dispatch(onPopularTagsDownload());
+          } 
         }
       });
     }
