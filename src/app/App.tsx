@@ -4,7 +4,7 @@ import Footer from 'components/Footer/Footer';
 import SharePopup from 'components/Template/SharePopup/SharePopup';
 import ComplainPopup from 'components/Template/ComplainPopup/ComplainPopup';
 import { 
-  Main, Profile, YandexAuth, NotFound, ImageCardPage,
+  Main, Profile, YandexAuth, NotFound, ImageCardPage, Search,
 } from '../pages';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
@@ -58,6 +58,10 @@ const App = () => {
               <Route
                 path='/'
                 element={<Main />} />
+
+              <Route
+                path='/search'
+                element={<Search />} />
 
               <Route
                 path='/card/:id'
