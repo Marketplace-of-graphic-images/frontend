@@ -1,10 +1,7 @@
-import { baseImageUrl } from 'constants/baseUrl';
 import React, { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { getPopular } from 'api/getPopular';
-import { TTag } from 'types/types';
-import { shuffleArray } from 'utils/funcs';
-import ImageTagLink, { ImageTagLinkProps } from './Components/ImageTagLink';
+import { TTag, TImage } from 'types/types';
+import ImageTagLink from './Components/ImageTagLink';
 import styles from './Popular.module.scss';
   
 export interface PopularProps {
@@ -24,11 +21,13 @@ const Popular: FC<PopularProps> = ({ data }) => (
           <li className={styles.popular__item} key={uuidv4()}>
             <ImageTagLink 
               key={el.id} 
-              id={el.id} 
-              image={el.tag_images ? el.tag_images[0].image : ''} 
+              id={el.id}
+// eslint-disable-next-line
+              image={el.tag_images[0].image} 
               tagName={el.name} 
-              isBigImage={!i} 
-              link={el.tag_images ? el.tag_images[0].image : ''} />
+              isBigImage={!i}
+// eslint-disable-next-line 
+              link={el.tag_images[0].image} />
           </li>
         ))}
       </ul>

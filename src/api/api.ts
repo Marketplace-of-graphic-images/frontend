@@ -24,11 +24,10 @@ export const getPopularTags = () => request('tags/', { method: 'GET' });
 
 export const getPopularPics = (category : string) => request(`image/?category=${category}`, { method: 'GET' });
 
-export const putLike = (id: number) => request(`image/${id}/favorite/`, {
-  method: 'POST',
-});
+export const putLike = (id: number) => request(`image/${id}/favorite/`, { method: 'POST' });
 
 export const removeLike = (id: number) => request(`image/${id}/favorite/`, { method: 'DELETE' });
+
 export const registUser = (userData) => request('auth/signup/', {
   method: 'POST',
   headers: new Headers([
