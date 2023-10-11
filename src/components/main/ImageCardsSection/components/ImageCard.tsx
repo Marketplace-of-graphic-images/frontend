@@ -40,22 +40,20 @@ const ImageCard : FC<ImageCardProps> = ({
   const [isLiked, setIsLiked] = useState<boolean>(isFavorited);
 
   function toggleLike(cardId: number): void {
-    if (isLiked) {
-      removeLike(cardId)
+    const res : Promise<void> = isLiked
+      ? removeLike(cardId)
         .then(() => setIsLiked(false))
         .catch((err: string) => console.log(`Не удалось удалить из избранных, ошибка ${err}`))
-        .finally(() => setIsLiked(false));
-    } else {
-      putLike(cardId)
+        .finally(() => setIsLiked(false))
+      : putLike(cardId)
         .then(() => setIsLiked(true))
         .catch((err: string) => console.log(`Не удалось добавить в избранные, ошибка ${err}`))
         .finally(() => setIsLiked(true));
-    }
   }
 
   return (
     <div className={styles.card}>
-      <Link to='#' className={styles.card__imageLink}>
+      <Link to='/' className={styles.card__imageLink}>
         <img alt={name} src={image} className={styles.card__img} />
       </Link>
       {license !== 'free' && (
@@ -68,7 +66,7 @@ const ImageCard : FC<ImageCardProps> = ({
         {isLoggedIn && <LikeButton isLiked={isLiked} onClick={() => toggleLike(id)} />}
       </span>
       <h3 className={styles.card__title}>{name}</h3>
-      <Link to='#' className={styles.card__authorLink}>{authorUsername}</Link>
+      <Link to='/' className={styles.card__authorLink}>{authorUsername}</Link>
     </div>
   );  
 };
