@@ -60,3 +60,5 @@ export const pathUsersMe = (userData) => request('users/me/', {
   method: 'PATCH',
   body: userData,
 });
+
+export const getImageData = (id: number) => request(`image/${id}/`);

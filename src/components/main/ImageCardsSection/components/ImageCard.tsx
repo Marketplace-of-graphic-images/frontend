@@ -53,7 +53,7 @@ const ImageCard : FC<ImageCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <Link to='/' className={styles.card__imageLink}>
+      <Link to={`/card/${id}`} className={styles.card__imageLink}>
         <img alt={name} src={image} className={styles.card__img} />
       </Link>
       {license !== 'free' && (

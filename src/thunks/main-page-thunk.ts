@@ -19,11 +19,14 @@ import {
   setMainTagsDownloadErr,
   clearMainDownloadErr,
   clearStoreData,
+  isLoadingOn,
+  isLoadingOff,
 } from '../store';
 import { AppThunk } from '../types/store.types';
 
 const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (dispatch) => {
   try {
+    /*  dispatch(isLoadingOn()); */
     dispatch(clearStoreData());
     dispatch(clearMainDownloadErr());
     dispatch(isMainPageImagesLoadingOn());
@@ -92,6 +95,7 @@ const mainPageImagesDownloadThunk : AppThunk = (isLoggedIn : boolean) => async (
     /*    authErrors(error) */
   } finally {
     dispatch(isMainPageImagesLoadingoff());
+    /*  dispatch(isLoadingOff()); */
   }
 };
 

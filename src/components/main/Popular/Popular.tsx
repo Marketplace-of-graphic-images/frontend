@@ -23,11 +23,11 @@ const Popular: FC<PopularProps> = ({ data }) => (
               key={el.id} 
               id={el.id}
 // eslint-disable-next-line
-              image={el.tag_images[0].image} 
+              image={el.tag_images ? el.tag_images[0].image : ''} 
               tagName={el.name} 
               isBigImage={!i}
 // eslint-disable-next-line 
-              link={el.tag_images[0].image} />
+              link={`/card/${el.id}`} />
           </li>
         ))}
       </ul>

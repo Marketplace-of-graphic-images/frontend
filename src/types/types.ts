@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 export type Role = 'User' | 'Author';
 
+export type TExtension = 'JPG' | 'GIF' | 'PNG' | 'SVG';
+
 export type TLicense = 'free' | 'type1' | 'type2';
 
 export type TUser = {
@@ -29,7 +31,7 @@ export type TTagImage = {
 
 export type TTag = {
   id: number,
-  tag_images: TImage,
+  tag_images?: TImage,
   name: string,
   slug: string,
 };
@@ -37,8 +39,10 @@ export type TTag = {
 export type TAuthor = {
   id: number,
   username: string,
-  profile_photo: string | null,
+  profile_photo: string,
   role: Role,
+  is_subscribed?: boolean,
+  num_of_author_images?: number,
 };
 
 export type TImage = {
@@ -53,6 +57,22 @@ export type TImage = {
   price: number | null,
 };
 
+export type TImageFull = {
+  id: number,
+  created: string,
+  author: TAuthor,
+  name: string,
+  image: string,
+  is_favorited: boolean,
+  license: TLicense,
+  price: number | null,
+  in_favorites?: number,
+  tags: TTag[],
+  slug: string,
+  extension: TExtension,
+  recommended: TImage[],
+};
+
 export type TuserDataTemp = {
   username:string,
   email: string,
@@ -60,10 +80,10 @@ export type TuserDataTemp = {
   is_author:boolean,
 };
 
-export type TImage1 = {
+/*export type TImage1 = {
   id?: number,
   name?: string,
-  image:string,
+  image: string,
   license?: string,
   price?: number,
   format?: string,
@@ -73,10 +93,11 @@ export type TAuthor1 = {
   id: number,
   username: string,
   profile_photo: any,
-  role: string,
+  role: Role,
   num_of_author_images: number,
   is_subscribed: boolean
-};
+};*/
+
 export type TApiErrors = Record<string, string>;
 
 export type TPopularImagesResponseData = {

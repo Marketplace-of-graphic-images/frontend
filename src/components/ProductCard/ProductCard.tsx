@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/naming-convention */
 import React, { FC } from 'react';
-import { TImage1, TAuthor1 } from 'types/types';
+import { TImageFull, TAuthor } from 'types/types';
 import { 
   Back, Downloads, Share, File, License, Buy,
 } from 'ui-lib/Icons';
@@ -14,8 +14,8 @@ import { openModalShare, openModalComplain, setImage } from 'store';
 import styles from './ProductCard.module.scss';
 
 interface IProductCard {
-  ProductImage: TImage1,
-  author: TAuthor1,
+  ProductImage: TImageFull,
+  author: TAuthor,
 }
 
 const ProductCard: FC<IProductCard> = (props) => {
@@ -25,7 +25,7 @@ const ProductCard: FC<IProductCard> = (props) => {
     image,
     license,
     price,
-    format, 
+    extension, 
   } = ProductImage;
   const {
     is_subscribed,
@@ -113,7 +113,7 @@ const ProductCard: FC<IProductCard> = (props) => {
               <File />
               <p className={styles.wrapper_aboutFormat}>
                 Тип файла:&nbsp; 
-                <span className={styles.wrapper_aboutType}>{format}</span>
+                <span className={styles.wrapper_aboutType}>{extension}</span>
               </p>
               
             </div>

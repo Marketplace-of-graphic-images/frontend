@@ -1,8 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TImage1 } from 'types/types';
+import { TImageFull, TAuthor } from 'types/types';
 
-const initialState: TImage1 = {
+const initialAuthor : TAuthor = {
+  id: -1, 
+  username: '', 
+  profile_photo: '', 
+  role: 'Author',
+};
+
+const initialState : TImageFull = {
+  id: -1,
+  created: '',
+  author: initialAuthor,
+  name: '',
   image: '',
+  is_favorited: false,
+  license: 'free',
+  price: null,
+  tags: [],
+  slug: '',
+  extension: 'GIF',
+  recommended: [],
 };
 
 const imageSlice = createSlice({
@@ -10,10 +28,10 @@ const imageSlice = createSlice({
   initialState,
   reducers: {
     setImage: (
-      state: TImage1,
-      action: PayloadAction<TImage1>,
+      state: TImageFull,
+      action: PayloadAction<TImageFull>,
     ) => ({ ...state, ...action.payload }),
-    clearImage: (state: TImage1) => ({
+    clearImage: (state: TImageFull) => ({
       ...state, ...initialState,
     }),
   },
