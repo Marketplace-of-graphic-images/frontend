@@ -5,6 +5,7 @@ import userReducer from './userSlice';
 import modalReducer from './modalSlice';
 import apiErrorReducer from './apiErrorSlice';
 import imageReducer from './imageSlice';
+import authorReducer from './authorSlice';
 import mainPageImagesReducer from './mainPageImagesSlice';
 
 const store = configureStore({
@@ -14,6 +15,7 @@ const store = configureStore({
     modals: modalReducer,
     apiError: apiErrorReducer,
     image: imageReducer,
+    author: authorReducer,
     mainPageImages: mainPageImagesReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),

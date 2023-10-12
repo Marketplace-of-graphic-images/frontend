@@ -60,7 +60,7 @@ const App = () => {
                 element={<Main />} />
 
               <Route
-                path='/card/:id'
+                path='/card/:cardId'
                 element={<ImageCardPage />} />
               <Route
                 path='/profile'

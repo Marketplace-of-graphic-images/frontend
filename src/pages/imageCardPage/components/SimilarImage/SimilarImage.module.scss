@@ -66,4 +66,14 @@
         width: 48px;
         height: 48px;
     }
+    &_more{
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        margin-top: 60px;
+        margin-right: 36px;
+        margin-bottom: 60px;
+        @include m.Link;
+        color: v.$accent-color;
+    }
 }

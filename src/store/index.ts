@@ -41,6 +41,10 @@ import {
 } from './imageSlice';
 
 import {
+  setAuthor, clearAuthor,
+} from './authorSlice';
+
+import {
   isMainPageImagesLoadingOn,
   isMainPageImagesLoadingoff,
   onPopularImagesDownload,
@@ -78,6 +82,8 @@ export {
   openModalComplain,
   setImage,
   clearImage,
+  setAuthor,
+  clearAuthor,
   openAuthorModal,
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
