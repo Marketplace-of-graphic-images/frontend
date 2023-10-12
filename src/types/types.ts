@@ -23,6 +23,24 @@ export type TUser = {
   userDataTemp?: TuserDataTemp | null
 };
 
+export type TUserShort = {
+  id: number,
+  username: string,
+  role: 'User' | 'Author',
+  profile_photo: string | null,
+};
+
+export type TImageShort = {
+  id: number;
+  created: Date;
+  author: TUserShort;
+  name: string
+  image: string;
+  is_favorited: boolean;
+  license: 'free' | 'paid';
+  price: number;
+};
+
 export type TTagImage = {
   id: number,
   name: string,
@@ -80,13 +98,17 @@ export type TuserDataTemp = {
   is_author:boolean,
 };
 
-/*export type TImage1 = {
-  id?: number,
+export type TImage1 = {
+  id: number,
   name?: string,
   image: string,
   license?: string,
   price?: number,
-  format?: string,
+  extension?: string,
+  is_favorited?: boolean,
+  recommended: any,
+  author: TAuthor1,
+  tags: TTags[],
 };
 
 export type TAuthor1 = {
@@ -96,7 +118,11 @@ export type TAuthor1 = {
   role: Role,
   num_of_author_images: number,
   is_subscribed: boolean
-};*/
+};
+
+export type TTags = {
+  name: string,
+};
 
 export type TApiErrors = Record<string, string>;
 

@@ -3,7 +3,7 @@
     opacity: 0.5;
     width: 100%;
     height: 100%;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     z-index: 999;
@@ -14,6 +14,10 @@
         width: 60px;
         height: 60px;
         animation: rotation 1s linear infinite;
+    }
+
+    &_notBackground {
+        background-color: unset;
     }
 }
 @keyframes rotation {

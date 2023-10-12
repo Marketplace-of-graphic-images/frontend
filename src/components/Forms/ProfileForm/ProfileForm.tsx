@@ -17,7 +17,8 @@ import getUsersMeData from '../../../api/getUsersMe';
 import patchUsersMeThunk from '../../../thunks/patch-users-me-thunk';
 import Avatar from './Avatar/Avatar';
 import formatDate from '../../../utils/formatDate';
-import { clearApiErr } from '../../../store';
+import { clearConcreteApiErr } from '../../../store';
+import { TErrorsNames } from '../../../store/apiErrorSlice';
 
 const ProfileForm = () => {
   const {
@@ -35,7 +36,7 @@ const ProfileForm = () => {
   const [date, setDate] = useState<Date | undefined>();
 
   const {
-    id, profile_photo, vk, telegram, website, username,
+    profile_photo, vk, telegram, website, username,
     first_name, last_name, email, birthday,
   } = useSelector((state) => state.user);
 
@@ -44,10 +45,8 @@ const ProfileForm = () => {
   }), [username, email, first_name, last_name, vk, telegram, website]);
 
   useEffect(() => {
-    if (Number.isNaN(id)) {
-      getUsersMeData(dispatch);
-    }
-  }, [dispatch, id]);
+    getUsersMeData(dispatch);
+  }, [dispatch]);
 
   useEffect(() => {
     if (birthday !== null) setDate(new Date(birthday));
@@ -136,10 +135,12 @@ const ProfileForm = () => {
   };
 
   // api error logic
-  const { usernameApiErr, emailApiErr } = useSelector((state) => state.apiError);
+  const {
+    usernameApiErr, emailApiErr, vkApiErr, telegramApiErr, websiteApiErr,
+  } = useSelector((state) => state.apiError);
 
-  const resetApiErrors = () => {
-    dispatch(clearApiErr());
+  const resetApiErrors = (errorName: TErrorsNames) => {
+    dispatch(clearConcreteApiErr(errorName));
   };
 
   return (
@@ -157,7 +158,7 @@ const ProfileForm = () => {
               name='username'
               value={values.username || ''}
               onChange={handleChange}
-              onFocus={resetApiErrors}
+              onFocus={() => resetApiErrors('usernameApiErr')}
               pattern={PATTERN_USERNAME}
               validError={errors.username}
               errorDescription={errorsDescription.username}
@@ -175,7 +176,7 @@ const ProfileForm = () => {
               name='email'
               value={values.email || ''}
               onChange={handleChange}
-              onFocus={resetApiErrors}
+              onFocus={() => resetApiErrors('emailApiErr')}
               validError={errors.email}
               errorDescription={errorsDescription.email}
               apiErrorMessage={emailApiErr}
@@ -236,7 +237,9 @@ const ProfileForm = () => {
               name='vk'
               value={values.vk || ''}
               onChange={handleChange}
+              onFocus={() => resetApiErrors('vkApiErr')}
               validError={errors.vk}
+              apiErrorMessage={vkApiErr}
               label='VK'
               staticLabel
               borderColor='grey'
@@ -249,7 +252,9 @@ const ProfileForm = () => {
               name='telegram'
               value={values.telegram || ''}
               onChange={handleChange}
+              onFocus={() => resetApiErrors('telegramApiErr')}
               validError={errors.telegram}
+              apiErrorMessage={telegramApiErr}
               label='Telegram'
               staticLabel
               borderColor='grey'
@@ -262,7 +267,9 @@ const ProfileForm = () => {
               name='website'
               value={values.website || ''}
               onChange={handleChange}
+              onFocus={() => resetApiErrors('websiteApiErr')}
               validError={errors.website}
+              apiErrorMessage={websiteApiErr}
               label='Website'
               staticLabel
               borderColor='grey'
