@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { TUser } from 'types/types';
 import { useDispatch } from 'services/hooks';
 import { UniversalButton } from 'ui-lib/Button';
-import { openModalRegister } from 'store';
+import { openModalRegister, openAuthorModal } from 'store';
 import styles from './JoinToCommunity.module.scss';
 
 interface IJoinToCommunity {
@@ -14,7 +14,7 @@ const JoinToCommunity: FC<IJoinToCommunity> = ({ user, roleUser }) => {
 
   const dispatch = useDispatch();
   const openRegisterModal = () => {
-    dispatch(openModalRegister());
+    dispatch(openAuthorModal());
   };
   const hideSection = () => {
     setHiddeSection(true);

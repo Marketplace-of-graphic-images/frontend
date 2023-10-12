@@ -4,11 +4,13 @@ import {
   openModalRegister,
   openModalPassRecovery,
   openModalNotification,
+  openModalShare,
+  openModalComplain,
+  openAuthorModal,
 } from './modalSlice';
 
 import {
 
-  setGuestRole,
   setUserRole,
   setAuthorRole,
   isLoadingOn,
@@ -26,6 +28,10 @@ import {
   setUsernameApiErr,
   setConfirmCodeApiErr,
   clearApiErr,
+  setMainImagesDownloadErr,
+  setMainTagsDownloadErr,
+  clearMainDownloadErr,
+  
 } from './apiErrorSlice';
 
 import {
@@ -45,6 +51,22 @@ import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
 } from './userSlice';
 
+import {
+  setImage, clearImage,
+} from './imageSlice';
+
+import {
+  isMainPageImagesLoadingOn,
+  isMainPageImagesLoadingoff,
+  onPopularImagesDownload,
+  onPopularTagsDownload,
+  setPopularPhotos,
+  setPopularVectors,
+  setPopularGifs,
+  setPopularTags,
+  clearStoreData,
+} from './mainPageImagesSlice';
+
 export {
   openModalAuth,
   closeModal,
@@ -53,7 +75,6 @@ export {
   openModalNotification,
   setUser,
   clearUser,
-  setGuestRole,
   setUserRole,
   setAuthorRole,
   isLoadingOn,
@@ -80,4 +101,21 @@ export {
   clearAllCardLists,
   isLocalLoadingOn,
   isLocalLoadingOff,
+  openModalShare,
+  openModalComplain,
+  setImage,
+  clearImage,
+  openAuthorModal,
+  setMainImagesDownloadErr,
+  setMainTagsDownloadErr,
+  clearMainDownloadErr,
+  isMainPageImagesLoadingOn,
+  isMainPageImagesLoadingoff,
+  onPopularImagesDownload,
+  onPopularTagsDownload,
+  setPopularPhotos,
+  setPopularVectors,
+  setPopularGifs,
+  setPopularTags,
+  clearStoreData,
 };

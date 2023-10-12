@@ -44,6 +44,7 @@ const AuthorizationForm = () => {
   return (
     <form onSubmit={authUserRequest} className={styles.container}>
       <h1 className={styles.title}>Авторизация</h1>
+      
       <YandexLogin clientID={clientID}>
         <LoginWithButton title='Войти с Яндекс ID' icon={<YandexIcon />} />
       </YandexLogin>

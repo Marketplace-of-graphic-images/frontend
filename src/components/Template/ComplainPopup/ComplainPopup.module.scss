@@ -1,0 +1,46 @@
+@use '../../../globalStyle/variables.scss' as v;
+@use '../../../globalStyle/mixins' as m;
+
+.ComplainPopup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 52px;
+
+    &_title{
+        @include m.Desktop_H2;
+        color: v.$black-color;
+    }
+    &_subtitle{
+        @include m.Body2;
+        color: v.$black1B-color;
+        margin-top: 30px;
+    }
+    &_checkBlock{
+        display: flex;
+        flex-direction: column;
+        margin-top: 12px;
+        border: 1px solid #029992;
+        border-radius: 8px;
+        padding: 24px;
+    }
+    &_cheskWidthSpan{
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+    &_span{
+        @include m.Body2;
+        color: v.$text-green-color;
+        margin-left: 12px;
+    }
+    &_button{
+        margin-top: 36px;
+        margin-bottom: 52px;
+    }
+}

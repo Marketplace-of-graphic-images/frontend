@@ -1,8 +1,13 @@
+/* eslint-disable camelcase */
+export type Role = 'User' | 'Author';
+
+export type TLicense = 'free' | 'type1' | 'type2';
+
 export type TUser = {
   id: number,
   username: string,
   email: string,
-  role: 'User' | 'Author',
+  role: Role,
   first_name: string,
   last_name: string,
   vk: string,
@@ -32,6 +37,38 @@ export type TImageShort = {
   is_favorited: boolean;
   license: 'free' | 'paid';
   price: number;
+}
+
+export type TTagImage = {
+  id: number,
+  name: string,
+  image: string,
+};
+
+export type TTag = {
+  id: number,
+  tag_images: TImage,
+  name: string,
+  slug: string,
+};
+
+export type TAuthor = {
+  id: number,
+  username: string,
+  profile_photo: string | null,
+  role: Role,
+};
+
+export type TImage = {
+  id: number,
+  created: string,
+  author: TAuthor,
+  slug: string,
+  name: string,
+  image: string,
+  is_favorited: boolean,
+  license: TLicense,
+  price: number | null,
 };
 
 export type TuserDataTemp = {
@@ -41,4 +78,28 @@ export type TuserDataTemp = {
   is_author:boolean,
 };
 
+export type TImage1 = {
+  id?: number,
+  name?: string,
+  image:string,
+  license?: string,
+  price?: number,
+  format?: string,
+};
+
+export type TAuthor1 = {
+  id: number,
+  username: string,
+  profile_photo: any,
+  role: string,
+  num_of_author_images: number,
+  is_subscribed: boolean
+};
 export type TApiErrors = Record<string, string>;
+
+export type TPopularImagesResponseData = {
+  count: number,
+  next: string,
+  previous: string | null,
+  results: TImage[],
+};

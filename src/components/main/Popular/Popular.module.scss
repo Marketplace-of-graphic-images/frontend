@@ -40,6 +40,7 @@
     "popular__item1 popular__item1 popular__item2 popular__item3"
     "popular__item1 popular__item1 popular__item4 popular__item5";
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 200px);
     gap: 24px;
 
     @media (max-width: 1000px) {

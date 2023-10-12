@@ -5,6 +5,8 @@ import userReducer from './userSlice';
 import modalReducer from './modalSlice';
 import apiErrorReducer from './apiErrorSlice';
 import profileCardsReducer from './profileCardsSlice';
+import imageReducer from './imageSlice';
+import mainPageImagesReducer from './mainPageImagesSlice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ const store = configureStore({
     modals: modalReducer,
     apiError: apiErrorReducer,
     profileCards: profileCardsReducer,
+    image: imageReducer,
+    mainPageImages: mainPageImagesReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
   // eslint-disable-next-line no-undef

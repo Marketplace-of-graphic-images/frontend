@@ -5,7 +5,8 @@ import {
   arrowDownIcon, notificationsNo, notificationsYes, refreshIconGreen,
   calendarIcon, searchIconGreen, searchIconBlack, pigIcon,
   authorContentIconGreen, arrowLeftIconGreen, arrowRightIconGreen, pensil, cameraIconGreen,
-  likeIconGreen, likeIconWhite, linkIcon,
+  likeIconGreen, likeIconWhite, back, report, downloads, share, file, license, buy, add, paste, 
+  linkIcon,
 } from '../../assets/images/icons';
 import TemplateIcon from './TemplateIcon/TemplateIcon';
 
@@ -83,6 +84,33 @@ export const PensilIcon = (props) => (
 );
 export const CameraIconGreen = (props) => (
   <TemplateIcon {...props} icon={cameraIconGreen} />
+);
+export const Back = (props) => (
+  <TemplateIcon {...props} icon={back} />
+);
+export const Report = (props) => (
+  <TemplateIcon {...props} icon={report} />
+);
+export const Downloads = (props) => (
+  <TemplateIcon {...props} icon={downloads} />
+);
+export const Share = (props) => (
+  <TemplateIcon {...props} icon={share} />
+);
+export const File = (props) => (
+  <TemplateIcon {...props} icon={file} />
+);
+export const License = (props) => (
+  <TemplateIcon {...props} icon={license} />
+);
+export const Buy = (props) => (
+  <TemplateIcon {...props} icon={buy} />
+);
+export const Add = (props) => (
+  <TemplateIcon {...props} icon={add} />
+);
+export const Paste = (props) => (
+  <TemplateIcon {...props} icon={paste} />
 );
 export const LinkIcon = (props) => (
   <TemplateIcon {...props} icon={linkIcon} />

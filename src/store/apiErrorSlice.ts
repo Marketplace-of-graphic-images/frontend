@@ -6,6 +6,8 @@ type TErrorApiState = {
   usernameApiErr: string;
   generalApiErr: string;
   confirmCodeApiErr: string;
+  mainImagesDownloadErr: string;
+  mainTagsDownloadErr: string;
 };
 
 const initialState: TErrorApiState = {
@@ -14,6 +16,8 @@ const initialState: TErrorApiState = {
   usernameApiErr: '',
   generalApiErr: '',
   confirmCodeApiErr: '',
+  mainImagesDownloadErr: '',
+  mainTagsDownloadErr: '',
 };
 
 const modalSlice = createSlice({
@@ -33,12 +37,26 @@ const modalSlice = createSlice({
     setGeneralApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
-    ) => ({ ...state, generalApiErr: action.payload }),
+    ) => ({ ...state, generalAuthErr: action.payload }),
+
+    setMainImagesDownloadErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, mainImagesDownloadErr: action.payload }),
+
+    setMainTagsDownloadErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, mainTagsDownloadErr: action.payload }),
     
     setUsernameApiErr: (
       state: TErrorApiState,
       action: PayloadAction<string>,
     ) => ({ ...state, usernameApiErr: action.payload }),
+
+    clearMainDownloadErr: (state: TErrorApiState) => ({
+      ...state, mainImagesDownloadErr: '', mainTagsDownloadErr: '',
+    }),
 
     setConfirmCodeApiErr: (
       state: TErrorApiState,
@@ -65,6 +83,9 @@ export const {
   setUsernameApiErr,
   setConfirmCodeApiErr,
   clearApiErr,
+  setMainImagesDownloadErr,
+  setMainTagsDownloadErr,
+  clearMainDownloadErr,
 } = modalSlice.actions;
 
 export default apiErrorReducer;

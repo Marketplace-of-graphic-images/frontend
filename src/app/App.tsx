@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
+import SharePopup from 'components/Template/SharePopup/SharePopup';
+import ComplainPopup from 'components/Template/ComplainPopup/ComplainPopup';
 import { 
-  Main, Profile, YandexAuth, NotFound, 
+  Main, Profile, YandexAuth, NotFound, ImageCardPage,
 } from '../pages';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
 import { useDispatch, useSelector } from '../services/hooks';
 import Loader from '../components/Loader/Loader';
+
 import {
   closeModal, isLoadingOff,
 } from '../store';
@@ -15,6 +18,7 @@ import {
   PasswordRecoveryUnionForm,
   RegistrationForm,
   AuthorizationForm,
+  AuthorForm,
 } from '../components/Forms';
 import PrivateRoute from '../services/PrivateRoute';
 import ProfileEdit from '../pages/profile/ProfileEdit/ProfileEdit';
@@ -23,7 +27,9 @@ import checkAuth from '../thunks/chech-auth-thunk';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { authModal, registerModal, passRecoveryModal } = useSelector((state) => state.modals);
+  const {
+    authModal, registerModal, passRecoveryModal, authorModal, shareModal, complainModal,
+  } = useSelector((state) => state.modals);
   const { isLoading } = useSelector((state) => state.system);
 
   useEffect(() => {
@@ -55,6 +61,10 @@ const App = () => {
                 element={<Main />} />
 
               <Route
+                path='/card/:id'
+                element={<ImageCardPage />} />
+
+              <Route
                 path='/profile'
                 element={(
                   <PrivateRoute path='/'>
@@ -79,6 +89,17 @@ const App = () => {
             <Footer />
           </>
         )}
+      <Popup isOpen={shareModal} onClose={closeModalState} width='625px' height='285px'>
+        <SharePopup />
+      </Popup>
+
+      <Popup isOpen={complainModal} onClose={closeModalState} width='555px'>
+        <ComplainPopup />
+      </Popup>
+
+      <Popup isOpen={authorModal} onClose={closeModalState}>
+        <AuthorForm />
+      </Popup>
 
       <Popup isOpen={authModal} onClose={closeModalState}>
         <AuthorizationForm />

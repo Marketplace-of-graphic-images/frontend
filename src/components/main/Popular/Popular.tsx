@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { TTag, TImage } from 'types/types';
+import ImageTagLink from './Components/ImageTagLink';
 import styles from './Popular.module.scss';
-import ImageTagButton, { ImageTagButtonProps } from './Components/ImageTagButton';
   
-interface PopularProps {
-  data: Array<ImageTagButtonProps>;
+export interface PopularProps {
+  data: Array<TTag>;
 }
 
 const Popular: FC<PopularProps> = ({ data }) => (
@@ -16,15 +17,17 @@ const Popular: FC<PopularProps> = ({ data }) => (
       </h2>
 
       <ul className={styles.popular__imageItems}>
-        { data.slice(0, 5).map((el, i) => (
+        { data.map((el, i) => (
           <li className={styles.popular__item} key={uuidv4()}>
-            <ImageTagButton 
+            <ImageTagLink 
               key={el.id} 
-              id={el.id} 
-              image={el.image} 
-              tagName={el.tagName} 
-              isBigImage={!i} 
-              onClick={el.onClick} />
+              id={el.id}
+// eslint-disable-next-line
+              image={el.tag_images[0].image} 
+              tagName={el.name} 
+              isBigImage={!i}
+// eslint-disable-next-line 
+              link={el.tag_images[0].image} />
           </li>
         ))}
       </ul>
