@@ -3,10 +3,10 @@ import styles from './Search.module.scss';
 import { useSelector } from '../../services/hooks';
 import SearchInput from '../../components/Search/SearchInput/SearchInput';
 import ListSearch from '../../components/Search/listSearch/listSearch';
+import ImageCardBig from '../../components/Template/ImageCardBig/ImageCardBig';
 
 const Search = () => {
-  const { user } = useSelector((state) => state);
-  const { role } = useSelector((state) => state.user);
+  const { serchImages } = useSelector((state) => state.system);
 
   const listPrice = [
     'Бесплатные',
@@ -34,9 +34,12 @@ const Search = () => {
         <ListSearch name='Тип ресурса' list={typeResurce} />
       </div>
       <div className={styles.list}>
+        {serchImages.length > 0 && serchImages.map((card) => (<ImageCardBig card={card} />))}
+        {serchImages.length < 0 && (
         <p className={styles.search_not}>
           Ничего не найдено. Попробуйте ввести другой поисковой запрос!
         </p>
+        )}
 
       </div>
     </main>

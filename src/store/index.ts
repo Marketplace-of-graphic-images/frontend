@@ -21,6 +21,8 @@ import {
   clearSearchField,
   isLocalLoadingOn,
   isLocalLoadingOff,
+  setSerchImages,
+  clearSerchImages,
 } from './systemSlice';
 
 import {
@@ -135,4 +137,6 @@ export {
   setVkApiErr,
   setTelegramApiErr,
   setWebsiteApiErr,
+  setSerchImages,
+  clearSerchImages,
 };

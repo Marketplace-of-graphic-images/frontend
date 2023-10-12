@@ -37,7 +37,7 @@ export type TImageShort = {
   is_favorited: boolean;
   license: 'free' | 'paid';
   price: number;
-}
+};
 
 export type TTagImage = {
   id: number,
