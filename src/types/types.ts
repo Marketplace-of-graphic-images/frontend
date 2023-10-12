@@ -21,6 +21,24 @@ export type TUser = {
   userDataTemp?: TuserDataTemp | null
 };
 
+export type TUserShort = {
+  id: number,
+  username: string,
+  role: 'User' | 'Author',
+  profile_photo: string | null,
+};
+
+export type TImageShort = {
+  id: number;
+  created: Date;
+  author: TUserShort;
+  name: string
+  image: string;
+  is_favorited: boolean;
+  license: 'free' | 'paid';
+  price: number;
+}
+
 export type TTagImage = {
   id: number,
   name: string,

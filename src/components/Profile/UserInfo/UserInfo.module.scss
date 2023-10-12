@@ -7,9 +7,13 @@
     justify-content: space-between;
     max-width: 410px;
     width: 100%;
-    min-height: 677px;
+    height: 677px;
     padding: 32px;
     box-shadow: 0 4px 24px 0 rgba(27, 27, 27, 0.08);
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        width: 300px;
+    }
 }
 .avatar {
     width: 100px;

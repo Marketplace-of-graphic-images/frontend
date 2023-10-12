@@ -17,6 +17,8 @@ import {
   isLoadingOff,
   onLogin,
   onLogout,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
 } from './systemSlice';
 
 import {
@@ -29,8 +31,24 @@ import {
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,
-  
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 } from './apiErrorSlice';
+
+import {
+  setMyWorksList,
+  setHistoryList,
+  setFavouritesList,
+  setMyWorksPage,
+  setHistoryPage,
+  setFavouritesPage,
+  setIsMyWorksNext,
+  setHistoryNext,
+  setFavouritesNext,
+  clearAllCardLists,
+} from './profileCardsSlice';
 
 import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
@@ -74,6 +92,18 @@ export {
   clearApiErr,
   setUserDataTemp,
   clearUserDataTemp,
+  setMyWorksList,
+  setHistoryList,
+  setFavouritesList,
+  setMyWorksPage,
+  setHistoryPage,
+  setFavouritesPage,
+  setIsMyWorksNext,
+  setHistoryNext,
+  setFavouritesNext,
+  clearAllCardLists,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
   openModalShare,
   openModalComplain,
   setImage,
@@ -91,4 +121,8 @@ export {
   setPopularGifs,
   setPopularTags,
   clearStoreData,
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 };

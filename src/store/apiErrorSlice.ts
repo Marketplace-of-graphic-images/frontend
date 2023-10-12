@@ -4,16 +4,26 @@ type TErrorApiState = {
   emailApiErr: string;
   passwordApiErr: string;
   usernameApiErr: string;
+  vkApiErr: string;
+  telegramApiErr: string;
+  websiteApiErr: string;
   generalApiErr: string;
   confirmCodeApiErr: string;
   mainImagesDownloadErr: string;
   mainTagsDownloadErr: string;
 };
 
+export type TErrorsNames = 'emailApiErr' | 'passwordApiErr' | 'usernameApiErr'
+| 'vkApiErr' | 'telegramApiErr' | 'websiteApiErr' | 'generalApiErr' | 'confirmCodeApiErr' 
+| 'mainImagesDownloadErr' | 'mainTagsDownloadErr';
+
 const initialState: TErrorApiState = {
   emailApiErr: '',
   passwordApiErr: '',
   usernameApiErr: '',
+  vkApiErr: '',
+  telegramApiErr: '',
+  websiteApiErr: '',
   generalApiErr: '',
   confirmCodeApiErr: '',
   mainImagesDownloadErr: '',
@@ -54,6 +64,21 @@ const modalSlice = createSlice({
       action: PayloadAction<string>,
     ) => ({ ...state, usernameApiErr: action.payload }),
 
+    setVkApiErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, vkApiErr: action.payload }),
+
+    setTelegramApiErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, telegramApiErr: action.payload }),
+
+    setWebsiteApiErr: (
+      state: TErrorApiState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, websiteApiErr: action.payload }),
+
     clearMainDownloadErr: (state: TErrorApiState) => ({
       ...state, mainImagesDownloadErr: '', mainTagsDownloadErr: '',
     }),
@@ -64,12 +89,14 @@ const modalSlice = createSlice({
     ) => ({ ...state, confirmCodeApiErr: action.payload }),
 
     clearApiErr: (state: TErrorApiState) => ({
-      ...state,
-      passwordApiErr: '',
-      emailApiErr: '',
-      generalApiErr: '',
-      usernameApiErr: '',
-      confirmCodeApiErr: '',
+      ...state, ...initialState,
+    }),
+
+    clearConcreteApiErr: (
+      state: TErrorApiState,
+      action: PayloadAction<TErrorsNames>,
+    ) => ({
+      ...state, [action.payload]: false,
     }),
   },
 });
@@ -86,6 +113,10 @@ export const {
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 } = modalSlice.actions;
 
 export default apiErrorReducer;
