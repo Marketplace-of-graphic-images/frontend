@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ImageCardList from './components/ImageCardList/ImageCardList';
 import styles from './Content.module.scss';
 import { useDispatch, useSelector } from '../../../services/hooks';
@@ -14,6 +14,7 @@ import JoinToAuthorsBanner from './components/JoinToAuthorsBanner/JoinToAuthorsB
 const Content = () => {
   const dispatch = useDispatch();
   const { content } = useParams();
+  const navigate = useNavigate();
 
   const {
     myWorksList, myWorksPage, isMyWorksNext,
@@ -50,6 +51,16 @@ const Content = () => {
     // eslint-disable-next-line
   }, [content, dispatch, favouritesPage, historyPage, myWorksPage]);
 
+  useEffect(() => {
+    console.log(role);
+    if (role === 'Author') {
+      navigate('/profile/myworks');
+    } else {
+      navigate('/profile/history');
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const navLinkClass = ({ isActive }) => {
     if (isActive) {
       return `${styles.content__navLink} ${styles.content__navLink_active}`;
@@ -75,7 +86,7 @@ const Content = () => {
   
   return (
     <section className={styles.content}>
-      {role === 'Author' && <JoinToAuthorsBanner />}
+      {role !== 'Author' && <JoinToAuthorsBanner />}
 
       {role === 'Author' && (
         <div className={styles.content__searchContainer}>

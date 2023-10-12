@@ -15,7 +15,7 @@ const ImageCardBig: FC<ImageCardBigProps> = ({
   image, name, id, isLiked, 
 }) => (
   <li className={styles.imageCardBig}>
-    <Link to='путь/к/странице/карточки/id'>
+    <Link to={`/card/${id}`}>
       <LikeButton isLiked={isLiked} className={styles.imageCardBig__like} />
       <img src={image || greyPlug} alt={name} className={styles.imageCardBig__img} />
     </Link>
