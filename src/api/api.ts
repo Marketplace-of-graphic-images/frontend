@@ -20,6 +20,8 @@ export const authUser = (userData) => request('auth/signin/', {
   body: JSON.stringify(userData),
 });
 
+export const getImageByTag = (id: number) => request(`image/${id}`, { method: 'GET' });
+
 export const getPopularTags = () => request('tags/', { method: 'GET' });
 
 export const getPopularPics = (category : string) => request(`image/?category=${category}`, { method: 'GET' });

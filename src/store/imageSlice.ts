@@ -3,6 +3,19 @@ import { TImage1 } from 'types/types';
 
 const initialState: TImage1 = {
   image: '',
+  is_favorited: false,
+  id: 0,
+  extension: '',
+  recommended: [],
+  author: {
+    id: 0,
+    username: '',
+    profile_photo: undefined,
+    role: '',
+    num_of_author_images: 0,
+    is_subscribed: false,
+  },
+  tags: [],
 };
 
 const imageSlice = createSlice({
@@ -21,6 +34,6 @@ const imageSlice = createSlice({
   
 const userReducer = imageSlice.reducer;
 export const {
-  setImage, clearImage, 
+  setImage, clearImage,
 } = imageSlice.actions;
 export default userReducer;

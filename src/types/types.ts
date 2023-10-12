@@ -79,12 +79,16 @@ export type TuserDataTemp = {
 };
 
 export type TImage1 = {
-  id?: number,
+  id: number,
   name?: string,
   image:string,
   license?: string,
   price?: number,
-  format?: string,
+  extension?: string,
+  is_favorited?: boolean,
+  recommended: any,
+  author: TAuthor1,
+  tags: TTags[],
 };
 
 export type TAuthor1 = {
@@ -95,6 +99,11 @@ export type TAuthor1 = {
   num_of_author_images: number,
   is_subscribed: boolean
 };
+
+export type TTags = {
+  name: string,
+};
+
 export type TApiErrors = Record<string, string>;
 
 export type TPopularImagesResponseData = {

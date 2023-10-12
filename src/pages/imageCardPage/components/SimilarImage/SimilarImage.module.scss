@@ -1,0 +1,78 @@
+@use '../../../../globalStyle/variables.scss' as v;
+@use '../../../../globalStyle/mixins' as m;
+.SimilarImage{
+    max-width: 1280px;
+    width: 100%;
+    margin-bottom: 50px;
+
+    &_container{
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-auto-rows: auto;
+        column-gap: 24px;
+        row-gap: 24px;
+    }
+    &_img{
+        max-width: 628px;
+        max-height: 384px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &_infoBlock{
+        display: flex;
+        align-items: center;
+        max-height: 55px;
+        position: absolute;
+        margin-left: -150px;
+        margin-top: 24px;
+        visibility: hidden;
+        transition: .3s cubic-bezier(.1, .39, .27, 2.35) .2s;
+        background-color: v.$white-color;
+        border-radius: 8px;
+    }
+    &_authorPhoto{
+        max-width: 55px;
+        min-height: 55px;
+        width: 100%;
+        border-radius: 50%;
+        background-color: v.$grey-200-color; 
+    }
+    &_hoverBlock{
+        width: 100%;
+    }
+     &_hoverBlock:hover &_infoBlock_hover{
+        margin-left: 24px;
+        visibility: visible;
+    }
+     &_hoverBlock:hover &_likeButton_hover{
+        margin-left: calc(628px - 48px - 24px);
+        visibility: visible;
+    }
+    &_username{
+        @include m.Body2;
+        color: v.$black1B-color;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    &_likeButton{
+        position: absolute;
+        margin-top: 24px;
+        visibility: hidden;
+        transition: .3s cubic-bezier(.1, .39, .27, 2.35) .2s;
+        background-color: v.$white-color;
+        border-radius: 8px;
+        width: 48px;
+        height: 48px;
+    }
+    &_more{
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        margin-top: 60px;
+        margin-right: 36px;
+        margin-bottom: 60px;
+        @include m.Link;
+        color: v.$accent-color;
+    }
+}
