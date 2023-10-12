@@ -5,14 +5,16 @@ import { LikeIconGreen, LikeIconWhite } from '../../Icons';
 interface LikeButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   isLiked?: boolean;
   onClick?: () => void;
+  className?: string;
 }
 
 const LikeButton: React.FC<LikeButtonProps> = ({
   isLiked = false,
   onClick,
+  className = '',
   ...rest
 }) => (
-  <button className={styles.button} type='button' onClick={onClick} {...rest}>
+  <button className={`${styles.button} ${className}`} type='button' onClick={onClick} {...rest}>
     {isLiked ? <LikeIconGreen /> : <LikeIconWhite />}
   </button>
 );
@@ -20,6 +22,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
 LikeButton.defaultProps = {
   isLiked: false,
   onClick: () => {},
+  className: '',
 };
 
 export default LikeButton;

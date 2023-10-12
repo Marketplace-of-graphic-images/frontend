@@ -23,6 +23,11 @@
     border-radius: 8px;
   }
 
+  &_border_full &__input {
+    padding: 10px 0 10px 13px;
+  }
+
+
   &_border_black {
     border-color: $black-color;
   }
@@ -89,10 +94,6 @@
     &::placeholder {
       color: rgba(0, 0, 0, 0);
     }
-  }
-
-  &__staticLabel ~ &__input {
-    padding: 10px 0 10px 14px;
   }
 
   &__input:not(:placeholder-shown) ~ &__label,

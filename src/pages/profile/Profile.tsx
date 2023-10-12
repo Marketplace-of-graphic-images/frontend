@@ -1,15 +1,12 @@
 import React from 'react';
 import styles from './profile.module.scss';
 import UserInfo from '../../components/Profile/UserInfo/UserInfo';
-import { useSelector } from '../../services/hooks';
+import Content from '../../components/Profile/Content/Content';
 
-const Profile = () => {
-  const { user } = useSelector((state) => state);
-
-  return (
-    <main className={styles.main}>
-      <UserInfo />
-    </main>
-  );
-};
+const Profile = () => (
+  <main className={styles.main}>
+    <UserInfo />
+    <Content />
+  </main>
+);
 export default Profile;

@@ -19,6 +19,7 @@ import {
 import PrivateRoute from '../services/PrivateRoute';
 import ProfileEdit from '../pages/profile/ProfileEdit/ProfileEdit';
 import checkAuth from '../thunks/chech-auth-thunk';
+/* eslint-disable spaced-comment */
 
 const App = () => {
   const dispatch = useDispatch();
@@ -48,22 +49,32 @@ const App = () => {
               <Route
                 path='yandexauth'
                 element={<YandexAuth />} />
+
               <Route
                 path='/'
                 element={<Main />} />
+
               <Route
                 path='/profile'
                 element={(
                   <PrivateRoute path='/'>
                     <Profile />
                   </PrivateRoute>
+                )}>
+                <Route path=':content' element={<Profile />} />
+              </Route>
+
+              <Route
+                path='/profile/edit'
+                element={(
+                  <PrivateRoute path='/'>
+                    <ProfileEdit />
+                  </PrivateRoute>
                 )} />
+
               <Route
                 path='*'
                 element={<NotFound />} />
-              <Route
-                path='/profile/edit'
-                element={<ProfileEdit />} />
             </Routes>
             <Footer />
           </>

@@ -1,0 +1,44 @@
+@import '../../../../../globalStyle/mixins';
+@import '../../../../../globalStyle/variables';
+
+.joinToAuthorsBanner {
+  display: flex;
+  gap: 33px;
+  width: 100%;
+  padding: 33px;
+  border-radius: 8px;
+  border: 1px solid $white-on-click-color;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  &__title {
+    @include Desktop_H3;
+    color: $black1B-color;
+
+    &_accent {
+      color: $accent-color;
+    }
+  }
+
+  &__buttonsContainer {
+    display: flex;
+  }
+
+  &__notButton {
+    padding: 13px 20px;
+    @include Body2;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 441px;
+    height: 171px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}

@@ -34,7 +34,7 @@ const UniversalButton: React.FC<IUniversalButton> = ({
     }
   };
 
-  const widthValue = (width === 'max-content' || width === 'min-content') ? width : `${String(width)}px`;
+  const widthValue = (Number.isNaN(Number(width))) ? width : `${String(width)}px`;
   
   return (
     <button

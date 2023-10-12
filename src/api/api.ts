@@ -36,9 +36,18 @@ export const registerConfirmUser = (userData) => request('auth/signup-confirmati
 });
 export const checkUserAuth = () => request('users/short_me/');
 
+// user profile
+
 export const getUsersMe = () => request('users/me/');
 
 export const pathUsersMe = (userData) => request('users/me/', {
   method: 'PATCH',
   body: userData,
 });
+
+export const getImages = (
+  queryType: 'author' | 'favorite' | 'hystory',
+  userId: number,
+  itemsOnPage: number,
+  page: number,
+) => request(`image/?${queryType}=${userId}&page=${page}&limit=${itemsOnPage}`);

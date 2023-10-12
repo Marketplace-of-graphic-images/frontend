@@ -15,6 +15,8 @@ import {
   isLoadingOff,
   onLogin,
   onLogout,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
 } from './systemSlice';
 
 import {
@@ -25,6 +27,19 @@ import {
   setConfirmCodeApiErr,
   clearApiErr,
 } from './apiErrorSlice';
+
+import {
+  setMyWorksList,
+  setHistoryList,
+  setFavouritesList,
+  setMyWorksPage,
+  setHistoryPage,
+  setFavouritesPage,
+  setIsMyWorksNext,
+  setHistoryNext,
+  setFavouritesNext,
+  clearAllCardLists,
+} from './profileCardsSlice';
 
 import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
@@ -53,4 +68,16 @@ export {
   clearApiErr,
   setUserDataTemp,
   clearUserDataTemp,
+  setMyWorksList,
+  setHistoryList,
+  setFavouritesList,
+  setMyWorksPage,
+  setHistoryPage,
+  setFavouritesPage,
+  setIsMyWorksNext,
+  setHistoryNext,
+  setFavouritesNext,
+  clearAllCardLists,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
 };

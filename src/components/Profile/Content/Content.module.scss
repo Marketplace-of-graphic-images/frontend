@@ -1,0 +1,52 @@
+@import '../../../globalStyle/variables';
+@import '../../../globalStyle/mixins';
+
+$card-width: 151px;
+$gap: 18px;
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  width: 845px;
+  min-height: 808px;
+
+  @media screen and (min-width: 1280px) and (max-width: 1439px) {
+    width: 658px;
+  }
+
+  @media screen and (min-width: 873px) and (max-width: 1279px) {
+    width: 489px;
+  }
+
+  &__searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    height: 48px;
+  }
+
+  &__navContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 54px;
+
+    @media screen and (max-width: 1279px) {
+      gap: 34px;
+    }
+  }
+
+  &__navLink {
+    @include Link;
+    color: $text-green-color;
+
+    &_active {
+      color: $accent-color;
+      text-decoration: underline;
+    }
+  }
+}

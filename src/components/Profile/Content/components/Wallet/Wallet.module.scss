@@ -1,0 +1,29 @@
+@import '../../../../../globalStyle/mixins';
+@import '../../../../../globalStyle/variables';
+
+.wallet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 736px;
+  width: 100%;
+  padding: 35px 58px;
+  border-radius: 15px;
+  box-shadow: 0 4px 24px 0 rgba(27, 27, 27, 0.08);
+
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    color: $accent-color;
+  }
+
+  &__title {
+    @include Body2;
+  }
+
+  &__text {
+    @include Numbers24;
+  }
+}

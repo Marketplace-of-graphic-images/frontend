@@ -4,6 +4,7 @@ import systemReducer from './systemSlice';
 import userReducer from './userSlice';
 import modalReducer from './modalSlice';
 import apiErrorReducer from './apiErrorSlice';
+import profileCardsReducer from './profileCardsSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     user: userReducer,
     modals: modalReducer,
     apiError: apiErrorReducer,
+    profileCards: profileCardsReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
   // eslint-disable-next-line no-undef

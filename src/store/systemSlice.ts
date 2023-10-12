@@ -5,13 +5,15 @@ type Role = 'guest' | 'user' | 'author';
 type TSystemState = {
   isLoggedIn: boolean,
   userRole: Role,
-  isLoading: boolean
+  isLoading: boolean,
+  isLocalLoading,
 };
 
 const initialState: TSystemState = {
   isLoggedIn: false,
   userRole: 'user' as Role,
   isLoading: true,
+  isLocalLoading: false,
 };
 
 const systemSlice = createSlice({
@@ -22,6 +24,8 @@ const systemSlice = createSlice({
     isLoadingOff: (state:TSystemState) => ({ ...state, isLoading: false }),
     onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),
     onLogout: (state: TSystemState) => ({ ...state, isLoggedIn: false }),
+    isLocalLoadingOn: (state:TSystemState) => ({ ...state, isLocalLoading: true }),
+    isLocalLoadingOff: (state:TSystemState) => ({ ...state, isLocalLoading: false }),
     // временная логика
     setGuestRole: (state: TSystemState) => ({ ...state, userRole: 'guest' as Role }),
     setUserRole: (state: TSystemState) => ({ ...state, userRole: 'user' as Role }),
@@ -38,5 +42,7 @@ export const {
   setGuestRole,
   setUserRole,
   setAuthorRole,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
 } = systemSlice.actions;
 export default systemReducer;
