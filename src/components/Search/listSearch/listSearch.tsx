@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React from 'react';
+import React, { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './listSearch.module.scss';
 
-const ListSearch = () => {
+interface TlistSearch {
+  name:string,
+  list: string[]
+}
+const ListSearch:FC<TlistSearch> = ({ name = 'Тип файла', list }) => {
   const FakeData = [
     'собаки',
     'коты',
@@ -14,8 +18,12 @@ const ListSearch = () => {
   return (
     <div className={styles.container}>
       <select className={styles.select}>
-        <option value='all'>Все ресурсы</option>
-        {FakeData.map((item) => (
+        <option value=''>
+          -- 
+          {name}
+          -- 
+        </option>
+        {list.map((item) => (
           <option key={uuidv4()} value={item}>{item}</option>
         ))}
       </select>

@@ -17,6 +17,8 @@ import {
   isLoadingOff,
   onLogin,
   onLogout,
+  setImageSearchField,
+  clearSearchField,
 } from './systemSlice';
 
 import {
@@ -53,6 +55,8 @@ import {
 } from './mainPageImagesSlice';
 
 export {
+  setImageSearchField,
+  clearSearchField,
   openModalAuth,
   closeModal,
   openModalRegister,

@@ -44,5 +44,7 @@ export const {
   onLogout,
   setUserRole,
   setAuthorRole,
+  setImageSearchField,
+  clearSearchField,
 } = systemSlice.actions;
 export default systemReducer;

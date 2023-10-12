@@ -13,4 +13,11 @@
 .tags_box {
   display: flex;
   margin: 0;
+  gap: 24px;
 }
+.search_not {
+  margin-top: 47px;
+  margin-bottom: 243px;
+  text-align: center;
+@include Link
+} 
