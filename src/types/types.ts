@@ -7,7 +7,7 @@ export type TUser = {
   id: number,
   username: string,
   email: string,
-  role: 'User' | 'Author',
+  role: Role,
   first_name: string,
   last_name: string,
   vk: string,
@@ -38,7 +38,7 @@ export type TAuthor = {
   id: number,
   username: string,
   profile_photo: string | null,
-  role: string,
+  role: Role,
 };
 
 export type TImage = {
@@ -52,6 +52,7 @@ export type TImage = {
   license: TLicense,
   price: number | null,
 };
+
 export type TuserDataTemp = {
   username:string,
   email: string,
@@ -77,3 +78,10 @@ export type TAuthor1 = {
   is_subscribed: boolean
 };
 export type TApiErrors = Record<string, string>;
+
+export type TPopularImagesResponseData = {
+  count: number,
+  next: string,
+  previous: string | null,
+  results: TImage[],
+};
