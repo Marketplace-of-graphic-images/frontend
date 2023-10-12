@@ -8,6 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { ArrowRightIconGreen } from 'ui-lib/Icons';
 import styles from './SimilarImage.module.scss';
+import ImageCardBig from '../../../../components/Template/ImageCardBig/ImageCardBig';
 
 interface TSimilarImage {
   image: TImage1,
@@ -16,13 +17,11 @@ interface TSimilarImage {
 const SimilarImage: FC<TSimilarImage> = (props) => {
   const { image } = props;
   const { 
-    is_favorited, 
     recommended, 
     id, 
   } = image;
-
+  /*
   const [like, setLike] = useState(is_favorited); 
-
   const likeToggle = (cardId: number) => {
     const res : Promise<string | void> = like
       ? removeLike(cardId)
@@ -41,25 +40,14 @@ const SimilarImage: FC<TSimilarImage> = (props) => {
           style: { fontSize: '18px' },
         }))
         .finally(() => setLike(true));
-  };
+  }; */
 
   return (
     <section className={styles.SimilarImage}>
       <div className={styles.SimilarImage_container}>
         <Toaster />
         {recommended?.map((item) => (
-          <div className={styles.SimilarImage_hoverBlock}>
-            <div className={`${styles.SimilarImage_infoBlock} ${styles.SimilarImage_infoBlock_hover}`}>
-              <img src='#' alt='Фото автора' className={styles.SimilarImage_authorPhoto} />
-              <p className={styles.SimilarImage_username}>{item.author.username}</p>
-            </div>
-            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */}
-            <LikeButton isLiked={like} onClick={() => likeToggle(id)} className={`${styles.SimilarImage_likeButton} ${styles.SimilarImage_likeButton_hover}`} />
-            <img
-              src={item.image}
-              alt='картинка'
-              className={styles.SimilarImage_img} />
-          </div>
+          <ImageCardBig card={item} />
 
         ))}
       </div>
