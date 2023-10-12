@@ -4,7 +4,9 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import ImageCardList from './components/ImageCardList/ImageCardList';
 import styles from './Content.module.scss';
 import { useDispatch, useSelector } from '../../../services/hooks';
-import { setMyWorksPage } from '../../../store';
+import {
+  clearAllCardLists, setFavouritesPage, setHistoryPage, setMyWorksPage, 
+} from '../../../store';
 import getImagesThunk from '../../../thunks/get-images-thunk';
 import { UniversalInput } from '../../../ui-lib/Input';
 import { SearchIconGreen } from '../../../ui-lib/Icons';
@@ -52,12 +54,15 @@ const Content = () => {
   }, [content, dispatch, favouritesPage, historyPage, myWorksPage]);
 
   useEffect(() => {
-    console.log(role);
     if (role === 'Author') {
       navigate('/profile/myworks');
     } else {
       navigate('/profile/history');
     }
+    
+    return function cleanAllLists() {
+      dispatch(clearAllCardLists());
+    };
     // eslint-disable-next-line
   }, []);
 
@@ -75,13 +80,13 @@ const Content = () => {
   };
 
   const onMoreHistoryClick = () => {
-    dispatch(setMyWorksPage(myWorksPage + 1));
-    setIsRerender({ ...isRerender, myWorks: false });
+    dispatch(setHistoryPage(historyPage + 1));
+    setIsRerender({ ...isRerender, history: false });
   };
 
   const onMoreMyFavouritesClick = () => {
-    dispatch(setMyWorksPage(myWorksPage + 1));
-    setIsRerender({ ...isRerender, myWorks: false });
+    dispatch(setFavouritesPage(favouritesPage + 1));
+    setIsRerender({ ...isRerender, favourites: false });
   };
   
   return (
