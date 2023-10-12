@@ -7,7 +7,7 @@ export type TUser = {
   id: number,
   username: string,
   email: string,
-  role: 'User' | 'Author',
+  role: Role,
   first_name: string,
   last_name: string,
   vk: string,
@@ -20,6 +20,24 @@ export type TUser = {
   my_subscriptions: number,
   userDataTemp?: TuserDataTemp | null
 };
+
+export type TUserShort = {
+  id: number,
+  username: string,
+  role: 'User' | 'Author',
+  profile_photo: string | null,
+};
+
+export type TImageShort = {
+  id: number;
+  created: Date;
+  author: TUserShort;
+  name: string
+  image: string;
+  is_favorited: boolean;
+  license: 'free' | 'paid';
+  price: number;
+}
 
 export type TTagImage = {
   id: number,
@@ -38,7 +56,7 @@ export type TAuthor = {
   id: number,
   username: string,
   profile_photo: string | null,
-  role: string,
+  role: Role,
 };
 
 export type TImage = {
@@ -52,6 +70,7 @@ export type TImage = {
   license: TLicense,
   price: number | null,
 };
+
 export type TuserDataTemp = {
   username:string,
   email: string,
@@ -60,12 +79,16 @@ export type TuserDataTemp = {
 };
 
 export type TImage1 = {
-  id?: number,
+  id: number,
   name?: string,
   image:string,
   license?: string,
   price?: number,
-  format?: string,
+  extension?: string,
+  is_favorited?: boolean,
+  recommended: any,
+  author: TAuthor1,
+  tags: TTags[],
 };
 
 export type TAuthor1 = {
@@ -76,4 +99,16 @@ export type TAuthor1 = {
   num_of_author_images: number,
   is_subscribed: boolean
 };
+
+export type TTags = {
+  name: string,
+};
+
 export type TApiErrors = Record<string, string>;
+
+export type TPopularImagesResponseData = {
+  count: number,
+  next: string,
+  previous: string | null,
+  results: TImage[],
+};

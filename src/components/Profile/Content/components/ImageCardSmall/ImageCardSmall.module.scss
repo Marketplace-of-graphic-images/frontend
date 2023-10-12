@@ -1,0 +1,33 @@
+@import '../../../../../globalStyle/variables';
+@import '../../../../../globalStyle/mixins';
+
+.imageCardSmall {
+  width: 151px;
+  height: 169px;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: $white-on-click-color;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  &__title {
+    @include Body2;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

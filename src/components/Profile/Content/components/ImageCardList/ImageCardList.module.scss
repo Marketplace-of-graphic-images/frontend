@@ -1,0 +1,62 @@
+@import '../../../../../globalStyle/mixins';
+@import '../../../../../globalStyle/variables';
+
+.imageCardList {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    display: grid;
+    max-height: 555px;
+    overflow-y: scroll;
+
+    &_small {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px 18px;
+
+      @media screen and (min-width: 1280px) and (max-width: 1439px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 1279px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media screen and  (max-width: 1023px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &_big {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+
+      @media screen and (min-width: 1280px) and (max-width: 1439px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (min-width: 1024px) and (max-width: 1279px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and  (max-width: 1023px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+  &__showMoreButton {
+    padding: 12px 36px;
+  }
+
+  & > div {
+    align-self: flex-end;
+  }
+
+  &__empty {
+    margin: 0 auto;
+    padding: 70px 0;
+    @include Body2;
+    color: $grey-200-color;
+  }
+}

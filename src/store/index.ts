@@ -19,6 +19,8 @@ import {
   onLogout,
   setImageSearchField,
   clearSearchField,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
 } from './systemSlice';
 
 import {
@@ -31,8 +33,24 @@ import {
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,
-  
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 } from './apiErrorSlice';
+
+import {
+  setMyWorksList,
+  setHistoryList,
+  setFavouritesList,
+  setMyWorksPage,
+  setHistoryPage,
+  setFavouritesPage,
+  setIsMyWorksNext,
+  setHistoryNext,
+  setFavouritesNext,
+  clearAllCardLists,
+} from './profileCardsSlice';
 
 import {
   setUser, clearUser, setUserDataTemp, clearUserDataTemp, 
@@ -41,6 +59,10 @@ import {
 import {
   setImage, clearImage,
 } from './imageSlice';
+
+import {
+  setAuthor, clearAuthor,
+} from './authorSlice';
 
 import {
   isMainPageImagesLoadingOn,
@@ -78,10 +100,24 @@ export {
   clearApiErr,
   setUserDataTemp,
   clearUserDataTemp,
+  setMyWorksList,
+  setHistoryList,
+  setFavouritesList,
+  setMyWorksPage,
+  setHistoryPage,
+  setFavouritesPage,
+  setIsMyWorksNext,
+  setHistoryNext,
+  setFavouritesNext,
+  clearAllCardLists,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
   openModalShare,
   openModalComplain,
   setImage,
   clearImage,
+  setAuthor,
+  clearAuthor,
   openAuthorModal,
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
@@ -95,4 +131,8 @@ export {
   setPopularGifs,
   setPopularTags,
   clearStoreData,
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 };

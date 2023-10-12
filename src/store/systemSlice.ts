@@ -6,13 +6,15 @@ type TSystemState = {
   userRole: Role,
   isLoading: boolean,
   imageSearchField: string
+  isLocalLoading,
 };
 
 const initialState: TSystemState = {
   isLoggedIn: false,
-  userRole: 'user' as Role,
+  userRole: 'User' as Role,
   isLoading: true,
   imageSearchField: '',
+  isLocalLoading: false,
 };
 
 const systemSlice = createSlice({
@@ -30,6 +32,8 @@ const systemSlice = createSlice({
     isLoadingOff: (state:TSystemState) => ({ ...state, isLoading: false }),
     onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),
     onLogout: (state: TSystemState) => ({ ...state, isLoggedIn: false }),
+    isLocalLoadingOn: (state:TSystemState) => ({ ...state, isLocalLoading: true }),
+    isLocalLoadingOff: (state:TSystemState) => ({ ...state, isLocalLoading: false }),
     // временная логика
     setUserRole: (state: TSystemState) => ({ ...state, userRole: 'User' as Role }),
     setAuthorRole: (state: TSystemState) => ({ ...state, userRole: 'Author' as Role }),
@@ -46,5 +50,7 @@ export const {
   setAuthorRole,
   setImageSearchField,
   clearSearchField,
+  isLocalLoadingOn,
+  isLocalLoadingOff,
 } = systemSlice.actions;
 export default systemReducer;

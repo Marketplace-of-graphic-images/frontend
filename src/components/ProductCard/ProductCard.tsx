@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { FC } from 'react';
 import { TImage1, TAuthor1 } from 'types/types';
 import { 
@@ -15,25 +16,18 @@ import styles from './ProductCard.module.scss';
 
 interface IProductCard {
   ProductImage: TImage1,
-  author: TAuthor1,
 }
 
 const ProductCard: FC<IProductCard> = (props) => {
-  const { ProductImage, author } = props;
+  const { ProductImage } = props;
   const { 
     name,
     image,
     license,
     price,
-    format, 
+    extension,
+    author,
   } = ProductImage;
-  const {
-    is_subscribed,
-    num_of_author_images,
-    profile_photo,
-    role,
-    username,
-  } = author;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -113,7 +107,7 @@ const ProductCard: FC<IProductCard> = (props) => {
               <File />
               <p className={styles.wrapper_aboutFormat}>
                 Тип файла:&nbsp; 
-                <span className={styles.wrapper_aboutType}>{format}</span>
+                <span className={styles.wrapper_aboutType}>{extension}</span>
               </p>
               
             </div>
@@ -130,11 +124,11 @@ const ProductCard: FC<IProductCard> = (props) => {
         </div>
       </div>
       <div className={styles.aboutUser}>
-        <img src={profile_photo} alt='Фото автора' className={styles.aboutUser_avatar} />
+        <img src={author.profile_photo} alt='Фото' className={styles.aboutUser_avatar} />
         <div className={styles.aboutUser_info}>
-          <p className={styles.aboutUser_name}>{username}</p>
+          <p className={styles.aboutUser_name}>{author.username}</p>
           <p className={styles.aboutUser_jobs}>
-            {num_of_author_images}
+            {author.num_of_author_images}
             &nbsp;работы
           </p>
         </div>
