@@ -31,7 +31,10 @@ import {
   setMainImagesDownloadErr,
   setMainTagsDownloadErr,
   clearMainDownloadErr,
-  
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 } from './apiErrorSlice';
 
 import {
@@ -118,4 +121,8 @@ export {
   setPopularGifs,
   setPopularTags,
   clearStoreData,
+  clearConcreteApiErr,
+  setVkApiErr,
+  setTelegramApiErr,
+  setWebsiteApiErr,
 };
