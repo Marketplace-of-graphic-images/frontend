@@ -63,7 +63,12 @@ export const pathUsersMe = (userData) => request('users/me/', {
 
 export const getImageData = (id: number) => request(`image/${id}/`);
 
-export const downloadImage = (id: number, name: string) => fetch(`image/${id}/download/`, { credentials: 'include' })
+export const downloadImage = (id: number, name: string) => fetch(`${process.env.API || api}image/${id}/download/`, { credentials: 'include' })
+  .then((res : Response) => {
+    if(res.ok)
+      {return res}
+    return Promise.reject(res.json());
+  })  
   .then((res : Response) => res.blob())
   // eslint-disable-next-line
   .then((blob) => {
