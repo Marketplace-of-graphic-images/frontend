@@ -1,22 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Role } from 'types/types';
 
 type TSystemState = {
   isLoggedIn: boolean,
   userRole: Role,
-  isLoading: boolean
+  isLoading: boolean,
+  imageSearchField: string
 };
 
 const initialState: TSystemState = {
   isLoggedIn: false,
   userRole: 'user' as Role,
   isLoading: true,
+  imageSearchField: '',
 };
 
 const systemSlice = createSlice({
   name: 'system',
   initialState,
   reducers: {
+    setImageSearchField: (
+      state: TSystemState,
+      action: PayloadAction<string>,
+    ) => ({ ...state, imageSearchField: action.payload }),
+    clearSearchField: (
+      state: TSystemState,
+    ) => ({ ...state, imageSearchField: '' }),
     isLoadingOn: (state:TSystemState) => ({ ...state, isLoading: true }),
     isLoadingOff: (state:TSystemState) => ({ ...state, isLoading: false }),
     onLogin: (state: TSystemState) => ({ ...state, isLoggedIn: true }),

@@ -1,6 +1,8 @@
 import React, { ChangeEventHandler, FC } from 'react';
 import styles from './SearchInput.module.scss';
 import { SearchButton } from '../../../ui-lib/Button';
+import { useDispatch, useSelector } from '../../../services/hooks';
+import searchNameThunk from '../../../thunks/search-name-thunk';
 
 interface SearchFieldProps extends React.ComponentPropsWithoutRef<'input'> {
   data: string;
@@ -8,13 +10,13 @@ interface SearchFieldProps extends React.ComponentPropsWithoutRef<'input'> {
 
 const SearchInput: FC<SearchFieldProps> = ({ data }) => {
   const [inputText, setInputText] = React.useState('');
+  const dispatch = useDispatch();
 
   const onChangeHandler: ChangeEventHandler<HTMLInputElement> = (event) => (
     setInputText(event.target.value)
   );
   const showQuestion = () => {
-    console.log(inputText);
-    alert(!inputText ? 'Введите поисковый запрос' : `Ура! Нашлось: ${inputText}`);
+    dispatch(searchNameThunk(inputText));
   };
   const cleanForm = () => {
     setInputText('');
