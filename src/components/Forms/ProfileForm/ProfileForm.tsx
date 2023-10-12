@@ -44,10 +44,8 @@ const ProfileForm = () => {
   }), [username, email, first_name, last_name, vk, telegram, website]);
 
   useEffect(() => {
-    if (Number.isNaN(id)) {
-      getUsersMeData(dispatch);
-    }
-  }, [dispatch, id]);
+    getUsersMeData(dispatch);
+  }, [dispatch]);
 
   useEffect(() => {
     if (birthday !== null) setDate(new Date(birthday));
