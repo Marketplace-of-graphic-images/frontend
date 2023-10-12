@@ -1,19 +1,21 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import getSimilarImageThunks from 'thunks/get-similarImge-thunks';
 import styles from './ImageCardPage.module.scss';
 import { useDispatch, useSelector } from '../../services/hooks';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import SimilarWorksTags from './components/SimilarWorksTags/SimilarWorksTags';
 import SimilarImage from './components/SimilarImage/SimilarImage';
 
-const image = {
+/* const image = {
   id: 150,
   name: 'Какое-то название',
   image: 'https://pictura.acceleratorpracticum.ru/media/images/206fd83e78bf889729b476f4575cd3db.jpg',
   license: 'free',
   price: 0,
   format: 'JPG',
-};
+  is_favorited: false,
+}; */
 // с бэка приходят параметры не в CamelCase, пришлось ниже выключить Eslint
 const author = {
   id: 2,
@@ -37,14 +39,41 @@ const tags = [ // шесть тегов, больше не нужно.
 
 const ImageCardPage = () => {
   const dispatch = useDispatch();
-  const { userRole, isLoggedIn } = useSelector((state) => state.system);
+  // const { id } = useSelector((state) => state.image);
+  const [imgId, setImgId] = useState();
+  // eslint-disable-next-line @typescript-eslint/no-redeclare
   const { id } = useParams();
-  
+  const { 
+    name, 
+    image, 
+    license, 
+    price, 
+    format, 
+    is_favorited,
+  } = useSelector((state) => state.image);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(getSimilarImageThunks());
+    }
+  }, [dispatch, id]);
+
+  console.log(name);
+  /* const imgData = {
+    ID: id,
+    NAME: name, 
+    IMAGE: image, 
+    LICENSE: license, 
+    PRICE: price, 
+    FORMAT: format, 
+    IS_FAVORITED: is_favorited,
+  }; */
+   
   return (
     <section className={styles.main}>
-      <ProductCard ProductImage={image} author={author} />
+      {/* <ProductCard ProductImage={imgData} author={author} />
       <SimilarWorksTags tags={tags} />
-      <SimilarImage author={author} />
+      <SimilarImage author={author} image={imageOfProduct} /> */}
     </section>
   );
 };

@@ -3,6 +3,8 @@ import { TImage1 } from 'types/types';
 
 const initialState: TImage1 = {
   image: '',
+  is_favorited: false,
+  id: 0,
 };
 
 const imageSlice = createSlice({

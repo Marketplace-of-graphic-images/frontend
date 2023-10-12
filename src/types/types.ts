@@ -61,12 +61,13 @@ export type TuserDataTemp = {
 };
 
 export type TImage1 = {
-  id?: number,
+  id: number,
   name?: string,
   image:string,
   license?: string,
   price?: number,
   format?: string,
+  is_favorited?: boolean,
 };
 
 export type TAuthor1 = {

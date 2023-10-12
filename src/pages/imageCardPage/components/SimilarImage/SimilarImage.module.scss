@@ -7,7 +7,7 @@
 
     &_container{
         display: grid;
-        grid-template-columns: repeat(2, 628px);
+        grid-template-columns: repeat(2, auto);
         grid-auto-rows: auto;
         column-gap: 24px;
         row-gap: 24px;
@@ -45,10 +45,25 @@
         margin-left: 24px;
         visibility: visible;
     }
+     &_hoverBlock:hover &_likeButton_hover{
+        margin-left: calc(628px - 48px - 24px);
+        visibility: visible;
+    }
     &_username{
         @include m.Body2;
         color: v.$black1B-color;
         margin-left: 12px;
         margin-right: 12px;
+    }
+    &_likeButton{
+        position: absolute;
+        margin-left: calc(628px + 150px);
+        margin-top: 24px;
+        visibility: hidden;
+        transition: .3s cubic-bezier(.1, .39, .27, 2.35) .2s;
+        background-color: v.$white-color;
+        border-radius: 8px;
+        width: 48px;
+        height: 48px;
     }
 }
