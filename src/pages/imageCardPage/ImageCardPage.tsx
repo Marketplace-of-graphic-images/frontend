@@ -12,7 +12,6 @@ const ImageCardPage = () => {
 
   const { cardId } = useParams();
   const productImage = useSelector((state) => state.image); 
-  const author = useSelector((state) => state.author);
 
   useEffect(() => {
     dispatch(getSimilarImageThunks(cardId));

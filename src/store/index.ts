@@ -17,8 +17,12 @@ import {
   isLoadingOff,
   onLogin,
   onLogout,
+  setImageSearchField,
+  clearSearchField,
   isLocalLoadingOn,
   isLocalLoadingOff,
+  setSerchImages,
+  clearSerchImages,
 } from './systemSlice';
 
 import {
@@ -75,6 +79,8 @@ import {
 } from './mainPageImagesSlice';
 
 export {
+  setImageSearchField,
+  clearSearchField,
   openModalAuth,
   closeModal,
   openModalRegister,
@@ -131,4 +137,6 @@ export {
   setVkApiErr,
   setTelegramApiErr,
   setWebsiteApiErr,
+  setSerchImages,
+  clearSerchImages,
 };
