@@ -87,6 +87,21 @@ export type TImageFull = {
   in_favorites?: number,
   tags: TTag[],
   slug: string,
+  extension: string,
+  recommended: any,
+};
+export type TImageFull1 = {
+  id: number,
+  created: string,
+  author: TAuthor,
+  name: string,
+  image: string,
+  is_favorited: boolean,
+  license: TLicense,
+  price: number | null,
+  in_favorites?: number,
+  tags: TTag[],
+  slug: string,
   extension: TExtension,
   recommended: TImage[],
 };
