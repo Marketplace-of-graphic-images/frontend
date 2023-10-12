@@ -31,6 +31,9 @@ const imageSlice = createSlice({
       state: TImageFull,
       action: PayloadAction<TImageFull>,
     ) => ({ ...state, ...action.payload }),
+    toggleLike: (
+      state: TImageFull,
+    ) => ({ ...state, is_favorited: !state.is_favorited }),
     clearImage: (state: TImageFull) => ({
       ...state, ...initialState,
     }),
@@ -39,6 +42,6 @@ const imageSlice = createSlice({
   
 const userReducer = imageSlice.reducer;
 export const {
-  setImage, clearImage, 
+  setImage, clearImage, toggleLike,
 } = imageSlice.actions;
 export default userReducer;

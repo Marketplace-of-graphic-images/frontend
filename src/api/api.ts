@@ -62,3 +62,14 @@ export const pathUsersMe = (userData) => request('users/me/', {
 });
 
 export const getImageData = (id: number) => request(`image/${id}/`);
+
+export const downloadImage = (id: number, name: string) => fetch(`image/${id}/download/`, { credentials: 'include' })
+  .then((res : Response) => res.blob())
+  // eslint-disable-next-line
+  .then((blob) => {
+    const el = document.createElement('a');
+    el.setAttribute('href', URL.createObjectURL(blob));
+    el.setAttribute('download', name);
+    el.click();
+  })
+  .catch((err) => console.log(err));
