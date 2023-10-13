@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { FC } from 'react';
-import { TImage1, TAuthor1 } from 'types/types';
+import { TImageFull, TAuthor } from 'types/types';
 import { 
   Back, Downloads, Share, File, License, Buy,
 } from 'ui-lib/Icons';
@@ -10,25 +10,31 @@ import Report from 'ui-lib/Icons/Report/Report';
 import Add from 'ui-lib/Icons/Add/Add';
 import { UniversalButton, LikeButton } from 'ui-lib/Button';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { openModalShare, openModalComplain, setImage } from 'store';
+import { openModalShare, openModalComplain, toggleLike } from 'store';
+import { useDispatch } from 'services/hooks';
+import imageLikeThunk from 'thunks/like-thunk';
+import imageDownloadThunk from 'thunks/download-thunk';
 import styles from './ProductCard.module.scss';
 
 interface IProductCard {
-  ProductImage: TImage1,
+  ProductImage: TImageFull,
+  author: TAuthor,
 }
 
 const ProductCard: FC<IProductCard> = (props) => {
   const { ProductImage } = props;
   const { 
+    id,
     name,
     image,
     license,
     price,
     extension,
+    is_favorited, 
     author,
   } = ProductImage;
 
+  /*  const [isLiked, setIsLiked] = useState(is_favorited); */
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goBack = () => { // На шаг назад, дурацкая и не нужная кнопка 
@@ -37,13 +43,17 @@ const ProductCard: FC<IProductCard> = (props) => {
 
   const Clipboard = () => {
     dispatch(openModalShare());
-    dispatch(setImage(ProductImage));
+    /*  dispatch(setImage(ProductImage)); */
   };
   const Complain = () => {
     dispatch(openModalComplain());
   };
   const Download = () => {
-    window.open(image);
+    dispatch(imageDownloadThunk(id, image));
+  };
+  const ToggleLike = () => {
+    dispatch(imageLikeThunk(id, is_favorited));
+    dispatch(toggleLike());
   };
 
   return (
@@ -64,24 +74,27 @@ const ProductCard: FC<IProductCard> = (props) => {
         </button>
       </div>
       <div className={styles.wrapper}>
-        <span className={styles.card__likeButtonSpan}>
-          <LikeButton className={styles.wrapper_like} />
-        </span>
-        <img className={styles.ProductCard_img} src={image} alt={name} />
+        <div className={styles.wrapper_image}>
+          <img className={styles.ProductCard_img} src={image} alt={name} />
+          <LikeButton 
+            className={styles.wrapper_like} 
+            isLiked={is_favorited} 
+            onClick={ToggleLike} />
+        </div>
         <div className={styles.wrapper_InfoBlock}>
-          {license === 'free' 
-            ? null
-            : (
+          {license !== 'free' 
+            ? (
               <div className={styles.wrapper_price}>
                 <p className={styles.wrapper_text}>Цена</p>
                 <p className={styles.wrapper_price}>{price}</p>
               </div>
-            )}
+            )
+            : null}
           <div className={styles.wrapper_buttons}>
             <button type='button' className={styles.wrapper_share} onClick={Clipboard}>
               <Share />
             </button>
-            {price === 0 
+            {license === 'free' 
               ? (
                 <UniversalButton
                   width={236}

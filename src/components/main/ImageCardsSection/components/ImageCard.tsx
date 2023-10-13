@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import LikeButton from 'ui-lib/Button/LikeButton/LikeButton';
 import { TLicense } from 'types/types';
 import { putLike, removeLike } from 'api/api';
+import imageLikeThunk from 'thunks/like-thunk';
+import { useDispatch } from 'services/hooks';
 import styles from './ImageCard.module.scss';
 
 export interface ImageCardProps {
@@ -17,43 +19,16 @@ export interface ImageCardProps {
   isLoggedIn: boolean;
 }
 
-// async function toggleLike(id : number, isLiked : boolean) : Promise<boolean> {
-//   isLiked
-//     ? removeLike(id).then(()=>set)
-/*  
-  try {
-    isLiked
-      ? await removeLike(id)
-      : await putLike(id);
-    return !isLiked;
-    }
-    catch (e:any) {
-    console.log(e);
-  }
-  return isLiked; */
-// }
-
 const ImageCard : FC<ImageCardProps> = ({
   id, name, image, license, isFavorited, 
   price, authorUsername, authorId, isLoggedIn,
 }) => {
   const [isLiked, setIsLiked] = useState<boolean>(isFavorited);
-
-  function toggleLike(cardId: number): void {
-    const res : Promise<void> = isLiked
-      ? removeLike(cardId)
-        .then(() => setIsLiked(false))
-        .catch((err: string) => console.log(`Не удалось удалить из избранных, ошибка ${err}`))
-        .finally(() => setIsLiked(false))
-      : putLike(cardId)
-        .then(() => setIsLiked(true))
-        .catch((err: string) => console.log(`Не удалось добавить в избранные, ошибка ${err}`))
-        .finally(() => setIsLiked(true));
-  }
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.card}>
-      <Link to='/' className={styles.card__imageLink}>
+      <Link to={`/card/${id}`} className={styles.card__imageLink}>
         <img alt={name} src={image} className={styles.card__img} />
       </Link>
       {license !== 'free' && (
@@ -63,7 +38,11 @@ const ImageCard : FC<ImageCardProps> = ({
         </span>
       )}
       <span className={styles.card__likeButtonSpan}>
-        {isLoggedIn && <LikeButton isLiked={isLiked} onClick={() => toggleLike(id)} />}
+        {isLoggedIn && (
+        <LikeButton 
+          isLiked={isLiked} 
+          onClick={() => { dispatch(imageLikeThunk(id, isLiked)); setIsLiked(!isLiked); }} />
+        )}
       </span>
       <h3 className={styles.card__title}>{name}</h3>
       <Link to='/' className={styles.card__authorLink}>{authorUsername}</Link>

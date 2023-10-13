@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { FC, useState } from 'react';
-import { TImage1 } from 'types/types';
+import { TImage1, TImageFull } from 'types/types';
 import { LikeButton } from 'ui-lib/Button';
 import { putLike, removeLike } from 'api/api';
 import toast, { Toaster } from 'react-hot-toast';
@@ -11,7 +11,7 @@ import styles from './SimilarImage.module.scss';
 import ImageCardBig from '../../../../components/Template/ImageCardBig/ImageCardBig';
 
 interface TSimilarImage {
-  image: TImage1,
+  image: TImageFull,
 }
 
 const SimilarImage: FC<TSimilarImage> = (props) => {

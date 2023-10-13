@@ -68,6 +68,26 @@ export const pathUsersMe = (userData) => request('users/me/', {
   body: userData,
 });
 
+export const getImageData = (id: number) => request(`image/${id}/`);
+
+export const downloadImage = (id: number, name: string) => fetch(`${process.env.API || api}image/${id}/download/`, { credentials: 'include' })
+  .then((res : Response) => {
+    if (res.ok) {
+      return res;
+    }
+    // eslint-disable-next-line
+    return Promise.reject(res.json());
+  })  
+  .then((res : Response) => res.blob())
+  // eslint-disable-next-line
+  .then((blob) => {
+    const el = document.createElement('a');
+    el.setAttribute('href', URL.createObjectURL(blob));
+    el.setAttribute('download', name);
+    el.click();
+  })
+  .catch((err) => console.log(err));
+
 export const getImages = (
   queryType: 'author' | 'favorite' | 'hystory',
   userId: number,

@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
-import { TImage1 } from 'types/types';
+import { TImage1, TImageFull } from 'types/types';
 import { LikeButton } from 'ui-lib/Button';
 import styles from './ImageCardBig.module.scss';
 
 interface TSimilarImage {
-  card: TImage1,
+  card: TImageFull,
 }
 
 const ImageCardBig: FC<TSimilarImage> = ({ card }) => {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Role, TImage1 } from 'types/types';
+import { Role, TImage1, TImageFull } from 'types/types';
 
 type TSystemState = {
   isLoggedIn: boolean,
@@ -7,7 +7,7 @@ type TSystemState = {
   isLoading: boolean,
   imageSearchField: string
   isLocalLoading,
-  serchImages:TImage1[]
+  serchImages:TImageFull[]
 };
 
 const initialState: TSystemState = {
@@ -32,7 +32,7 @@ const systemSlice = createSlice({
     ) => ({ ...state, imageSearchField: '' }),
     setSerchImages: (
       state: TSystemState,
-      action: PayloadAction<TImage1[]>,
+      action: PayloadAction<TImageFull[]>,
     ) => ({ ...state, serchImages: action.payload }),
     clearSerchImages: (
       state: TSystemState,

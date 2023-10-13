@@ -59,7 +59,7 @@ import {
 } from './userSlice';
 
 import {
-  setImage, clearImage,
+  setImage, clearImage, toggleLike,
 } from './imageSlice';
 
 import {
@@ -118,6 +118,7 @@ export {
   openModalComplain,
   setImage,
   clearImage,
+  toggleLike,
   setAuthor,
   clearAuthor,
   openAuthorModal,

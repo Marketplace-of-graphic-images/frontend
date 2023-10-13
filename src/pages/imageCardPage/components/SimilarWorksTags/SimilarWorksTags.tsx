@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { FC } from 'react';
-import { TImage1 } from 'types/types';
+import { TImage1, TImageFull } from 'types/types';
 import styles from './SimilarWorksTags.module.scss';
 
 interface ISimilarWorksTags {
-  tags: TImage1;
+  tags: TImageFull;
 }
 
 const SimilarWorksTags: FC<ISimilarWorksTags> = (props) => {

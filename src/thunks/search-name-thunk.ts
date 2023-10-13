@@ -3,14 +3,14 @@ import { getSearchName } from '../api/api';
 import {
   isLoadingOn, isLoadingOff, setUser, closeModal, setSerchImages,
 } from '../store';
-import { TImage1 } from '../types/types';
+import { TImage1, TImageFull } from '../types/types';
 import { AppThunk } from '../types/store.types';
 
 type TserchResult = {
   count: number;
   next: null | string;
   previous: null | number;
-  results: TImage1[]
+  results: TImageFull[]
 
 }; 
 
