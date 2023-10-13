@@ -17,6 +17,7 @@ const ImageCardPage = () => {
     if (image.id !== Number(cardId)) {
       dispatch(imageDataDownloadThunk(cardId));
     }
+  // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

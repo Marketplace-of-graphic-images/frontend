@@ -72,8 +72,10 @@ export const getImageData = (id: number) => request(`image/${id}/`);
 
 export const downloadImage = (id: number, name: string) => fetch(`${process.env.API || api}image/${id}/download/`, { credentials: 'include' })
   .then((res : Response) => {
-    if(res.ok)
-      {return res}
+    if (res.ok) {
+      return res;
+    }
+    // eslint-disable-next-line
     return Promise.reject(res.json());
   })  
   .then((res : Response) => res.blob())
@@ -85,6 +87,7 @@ export const downloadImage = (id: number, name: string) => fetch(`${process.env.
     el.click();
   })
   .catch((err) => console.log(err));
+
 export const getImages = (
   queryType: 'author' | 'favorite' | 'hystory',
   userId: number,
