@@ -23,7 +23,8 @@
 
   &__title {
     @include Body2;
-    text-align: center;
+    text-align: start;
+    max-width: 151px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

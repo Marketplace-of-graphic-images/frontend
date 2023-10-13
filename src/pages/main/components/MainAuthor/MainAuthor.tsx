@@ -36,7 +36,7 @@ const MainAuthor = () => {
             title='популярных категорий!' />
           <ImageCardsSection cards={popularPhotos} title='Популярные фотографии' link='/' isLoggedIn={isLoggedIn} />
           <ImageCardsSection cards={popularGifs} title='Популярные Gif' link='/' isLoggedIn={isLoggedIn} />
-          <ImageCardsSection cards={popularVectors} title='Популярные векторы' link='/' isLoggedIn={isLoggedIn} />
+          <ImageCardsSection cards={popularVectors} title='Популярные наборы иконок' link='/' isLoggedIn={isLoggedIn} />
         </>
       )}
 

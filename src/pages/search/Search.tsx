@@ -34,7 +34,8 @@ const Search = () => {
         <ListSearch name='Тип ресурса' list={typeResurce} />
       </div>
       <div className={styles.list}>
-        {serchImages.length > 0 && serchImages.map((card) => (<ImageCardBig card={card} />))}
+        {serchImages.length > 0
+         && serchImages.map((card) => (<ImageCardBig key={card.id} card={card} />))}
         {serchImages.length < 0 && (
         <p className={styles.search_not}>
           Ничего не найдено. Попробуйте ввести другой поисковой запрос!

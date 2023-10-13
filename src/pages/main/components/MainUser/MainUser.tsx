@@ -21,7 +21,7 @@ const MainUser = () => {
   } = useSelector((state) => state.mainPageImages);
   
   const { isLoggedIn } = useSelector((state) => state.system);
-
+  const { role } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(mainPageImagesDownloadThunk(isLoggedIn));
   }, [dispatch, isLoggedIn]);
@@ -39,15 +39,11 @@ const MainUser = () => {
             title='популярных категорий!' />
           <ImageCardsSection cards={popularPhotos} title='Популярные фотографии' link='/' isLoggedIn={isLoggedIn} />
           <ImageCardsSection cards={popularGifs} title='Популярные Gif' link='/' isLoggedIn={isLoggedIn} />
-          <ImageCardsSection cards={popularVectors} title='Популярные векторы' link='/' isLoggedIn={isLoggedIn} />
+          <ImageCardsSection cards={popularVectors} title='Популярные наборы иконок' link='/' isLoggedIn={isLoggedIn} />
         </>
       )}
 
       {popularTagsLoaded && <Popular data={popularTags} />}
-
-      <TitleMainSection
-        titleAccent='Погрузитесь в мир'
-        title='популярных категорий!' />
 
       <JoinTheCommunity />
     </>

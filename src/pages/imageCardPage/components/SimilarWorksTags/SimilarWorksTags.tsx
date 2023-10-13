@@ -15,7 +15,7 @@ const SimilarWorksTags: FC<ISimilarWorksTags> = (props) => {
       <ul className={styles.SimilarWorksTags_tagsList}>
         {/* eslint-disable-next-line @typescript-eslint/no-unsafe-call */}
         {tags.tags && tags.tags.map((item) => (
-          <li className={styles.SimilarWorksTags_tag}>{item.name}</li>
+          <li key={item.id} className={styles.SimilarWorksTags_tag}>{item.name}</li>
         ))} 
       </ul>
     </section>

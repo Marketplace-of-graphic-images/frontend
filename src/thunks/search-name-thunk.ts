@@ -24,7 +24,6 @@ const searchNameThunk : AppThunk = (name:string, isTags = false) => async (dispa
       res = await getSearchName(name);
     }
     dispatch(setSerchImages(res.results));
-    console.log(res);
     // return res;
   } catch (error: any) {
     console.log(error);

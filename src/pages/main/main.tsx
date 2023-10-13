@@ -13,8 +13,8 @@ const Main = () => {
   return (
     <main className={styles.main}>
       {!isLoggedIn && <MainGuest />}
-      {(role === 'Author' && isLoggedIn) && <MainUser />}
-      {(role === 'User' && isLoggedIn) && <MainAuthor />}
+      {(role === 'User' && isLoggedIn) && <MainUser />}
+      {(role === 'Author' && isLoggedIn) && <MainAuthor />}
     </main>
   );
 };
