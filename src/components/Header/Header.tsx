@@ -11,8 +11,10 @@ import {
 import { useDispatch, useSelector } from 'services/hooks';
 import { NotificationsNo, NotificationsYes, ProfileIcon } from 'ui-lib/Icons';
 import ButtonWithDropDown, { IButtonWithDropDown } from 'ui-lib/Button/ButtonWithDropDown/ButtonWithDropDown';
+import FileLoadInput from 'ui-lib/Input/FileLoadInput/FileLoadInput';
 import { UniversalButton, LinkWordButton } from 'ui-lib/Button';
 import { Link } from 'react-router-dom';
+import imageUploadThunk from 'thunks/image-upload-thunk';
 import Logo from './components/Logo/Logo';
 import styles from './Header.module.scss';
 import NotificationPopupOnRight from '../Template/NotificationPopupOnRight/NotificationPopupOnRight';
@@ -48,6 +50,12 @@ const Header = () => {
     dispatch(closeModal());
   };
   
+  const uploadFile = (e : React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      dispatch(imageUploadThunk(e.target.files[0]));
+    } 
+  };
+
   const menuLinks: IButtonWithDropDown[] = [
     {
       title: 'Фотографии',
@@ -95,9 +103,15 @@ const Header = () => {
             )}
 
             {role === 'Author' && (
-              <UniversalButton buttonStyle='borderGreen' type='button' width='208' height='47'>
-                Загрузить работу
-              </UniversalButton>
+              <>
+                <FileLoadInput data-role='button' onChange={uploadFile} className={styles.uploadButton} />
+                {false 
+                && (
+                  <UniversalButton buttonStyle='borderGreen' type='button' width='208' height='47'>
+                    Загрузить работу
+                  </UniversalButton>
+                )}
+              </>
             )}
 
             <button type='button' onClick={handleNotificationModal}>
