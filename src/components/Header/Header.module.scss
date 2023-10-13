@@ -41,3 +41,29 @@
     column-gap: 28px;
 }
 
+.uploadButton {
+    min-width: 208px;
+    height: 47px;
+    border: 1px solid $accent-color;
+    border-radius: 8px;
+    color: $accent-color;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background 0.12s ease-in, border 0.12s ease-in, color 0.12s ease-in;
+}
+
+.uploadButton:hover {
+    background-color: $accent-color;
+    color: white;
+}
+
+.uploadButton::after {
+    content: 'Загрузить работу';
+    color: $accent-color;
+    @include Body2;
+}
+
+.uploadButton:hover::after {
+    content: 'Загрузить работу';
+    color: white;
+}

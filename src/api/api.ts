@@ -95,3 +95,8 @@ export const getImages = (
   itemsOnPage: number,
   page: number,
 ) => request(`image/?${queryType}=${userId}&page=${page}&limit=${itemsOnPage}`);
+
+export const uploadImage = (data : FormData) => request('image/', {
+  method: 'POST',
+  body: data,
+});
