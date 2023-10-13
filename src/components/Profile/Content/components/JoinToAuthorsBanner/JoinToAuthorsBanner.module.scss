@@ -2,13 +2,23 @@
 @import '../../../../../globalStyle/variables';
 
 .joinToAuthorsBanner {
-  display: flex;
   gap: 33px;
   width: 100%;
   padding: 33px;
   border-radius: 8px;
   border: 1px solid $white-on-click-color;
+  overflow: hidden;
+  transition: .2s linear;
 
+  &_section-show{
+    display: flex;
+    height: 235px;
+}
+  &_section-hidden{
+    height: 0;
+    border: none;
+    display: none;
+}
   &__container {
     display: flex;
     flex-direction: column;

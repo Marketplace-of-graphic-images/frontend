@@ -7,7 +7,7 @@
 
     &_container{
         display: grid;
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         column-gap: 24px;
         row-gap: 24px;
@@ -27,7 +27,7 @@
         margin-left: -150px;
         margin-top: 24px;
         visibility: hidden;
-        transition: .3s cubic-bezier(.1, .39, .27, 2.35) .2s;
+        transition: .3s cubic-bezier(.1, .39, .27, 1.35) .2s;
         background-color: v.$white-color;
         border-radius: 8px;
     }
@@ -59,7 +59,7 @@
         position: absolute;
         margin-top: 24px;
         visibility: hidden;
-        transition: .3s cubic-bezier(.1, .39, .27, 2.35) .2s;
+        transition: .3s cubic-bezier(.1, .39, .27, 1.1) .2s;
         background-color: v.$white-color;
         border-radius: 8px;
         width: 48px;
