@@ -21,7 +21,7 @@ const MainUser = () => {
   } = useSelector((state) => state.mainPageImages);
   
   const { isLoggedIn } = useSelector((state) => state.system);
-
+  const { role } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(mainPageImagesDownloadThunk(isLoggedIn));
   }, [dispatch, isLoggedIn]);
@@ -44,10 +44,6 @@ const MainUser = () => {
       )}
 
       {popularTagsLoaded && <Popular data={popularTags} />}
-
-      <TitleMainSection
-        titleAccent='Погрузитесь в мир'
-        title='популярных категорий!' />
 
       <JoinTheCommunity />
     </>
