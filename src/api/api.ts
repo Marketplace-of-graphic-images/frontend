@@ -20,11 +20,16 @@ export const authUser = (userData) => request('auth/signin/', {
   body: JSON.stringify(userData),
 });
 
+export const getImageByTag = (id: number) => request(`image/${id}`, { method: 'GET' });
+
 export const getPopularTags = () => request('tags/', { method: 'GET' });
 
 export const getPopularPics = (category : string) => request(`image/?category=${category}`, { method: 'GET' });
 
-export const putLike = (id: number) => request(`image/${id}/favorite/`, { method: 'POST' });
+export const putLike = (id: number) => request(`image/${id}/favorite/`, {
+  method: 'POST',
+});
+export const getSearchName = (name : string) => request(`image/?name=${name}`, { method: 'GET' });
 
 export const removeLike = (id: number) => request(`image/${id}/favorite/`, { method: 'DELETE' });
 
@@ -54,6 +59,8 @@ export const signoutUser = () => request('auth/signout/', {
 
 export const checkUserAuth = () => request('users/short_me/');
 
+// user profile
+
 export const getUsersMe = () => request('users/me/');
 
 export const pathUsersMe = (userData) => request('users/me/', {
@@ -78,3 +85,9 @@ export const downloadImage = (id: number, name: string) => fetch(`${process.env.
     el.click();
   })
   .catch((err) => console.log(err));
+export const getImages = (
+  queryType: 'author' | 'favorite' | 'hystory',
+  userId: number,
+  itemsOnPage: number,
+  page: number,
+) => request(`image/?${queryType}=${userId}&page=${page}&limit=${itemsOnPage}`);

@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/naming-convention */
-import React, { FC, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import React, { FC } from 'react';
 import { TImageFull, TAuthor } from 'types/types';
 import { 
   Back, Downloads, Share, File, License, Buy,
@@ -21,7 +22,7 @@ interface IProductCard {
 }
 
 const ProductCard: FC<IProductCard> = (props) => {
-  const { ProductImage, author } = props;
+  const { ProductImage } = props;
   const { 
     id,
     name,
@@ -30,14 +31,8 @@ const ProductCard: FC<IProductCard> = (props) => {
     price,
     extension,
     is_favorited, 
+    author,
   } = ProductImage;
-  const {
-    is_subscribed,
-    num_of_author_images,
-    profile_photo,
-    role,
-    username,
-  } = author;
 
   /*  const [isLiked, setIsLiked] = useState(is_favorited); */
   const navigate = useNavigate();
@@ -142,11 +137,11 @@ const ProductCard: FC<IProductCard> = (props) => {
         </div>
       </div>
       <div className={styles.aboutUser}>
-        <img src={profile_photo} alt='Фото автора' className={styles.aboutUser_avatar} />
+        <img src={author.profile_photo} alt='Фото' className={styles.aboutUser_avatar} />
         <div className={styles.aboutUser_info}>
-          <p className={styles.aboutUser_name}>{username}</p>
+          <p className={styles.aboutUser_name}>{author.username}</p>
           <p className={styles.aboutUser_jobs}>
-            {num_of_author_images}
+            {author.num_of_author_images}
             &nbsp;работы
           </p>
         </div>

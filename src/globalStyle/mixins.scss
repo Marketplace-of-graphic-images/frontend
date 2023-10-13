@@ -104,6 +104,14 @@
   font-style: normal;
 }
 
+@mixin Numbers24 {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 140%;
+  font-style: normal;
+}
+
 @mixin Desktop_H3 {
   font-family: Raleway-Medium, sans-serif;
   font-size: 21px;

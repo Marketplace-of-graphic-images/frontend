@@ -87,6 +87,7 @@ module.exports = {
 		'no-return-assign': 'off',
 		'jsx-a11y/label-has-associated-control': 'off',
 		'camelcase': 'off',
-		'@typescript-eslint/naming-convention': 'off'
+		'@typescript-eslint/naming-convention': 'off',
+		'ternary/no-unreachable': 'off'
 	},
 };

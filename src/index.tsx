@@ -10,11 +10,9 @@ const rootDiv = document.getElementById('root');
 const rootNode = createRoot(rootDiv as Element);
 
 rootNode.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
 );

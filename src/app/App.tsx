@@ -4,7 +4,7 @@ import Footer from 'components/Footer/Footer';
 import SharePopup from 'components/Template/SharePopup/SharePopup';
 import ComplainPopup from 'components/Template/ComplainPopup/ComplainPopup';
 import { 
-  Main, Profile, YandexAuth, NotFound, ImageCardPage,
+  Main, Profile, YandexAuth, NotFound, ImageCardPage, Search,
 } from '../pages';
 import Popup from '../components/Template/Popup/Popup';
 import Header from '../components/Header/Header';
@@ -23,6 +23,7 @@ import {
 import PrivateRoute from '../services/PrivateRoute';
 import ProfileEdit from '../pages/profile/ProfileEdit/ProfileEdit';
 import checkAuth from '../thunks/chech-auth-thunk';
+/* eslint-disable spaced-comment */
 
 const App = () => {
   const dispatch = useDispatch();
@@ -60,21 +61,34 @@ const App = () => {
                 element={<Main />} />
 
               <Route
-                path='/card/:id'
+                path='/search'
+                element={<Search />} />
+
+              <Route
+                path='/card/:cardId'
                 element={<ImageCardPage />} />
+
               <Route
                 path='/profile'
                 element={(
                   <PrivateRoute path='/'>
                     <Profile />
                   </PrivateRoute>
+                )}>
+                <Route path=':content' element={<Profile />} />
+              </Route>
+
+              <Route
+                path='/profile/edit'
+                element={(
+                  <PrivateRoute path='/'>
+                    <ProfileEdit />
+                  </PrivateRoute>
                 )} />
+
               <Route
                 path='*'
                 element={<NotFound />} />
-              <Route
-                path='/profile/edit'
-                element={<ProfileEdit />} />
             </Routes>
             <Footer />
           </>
