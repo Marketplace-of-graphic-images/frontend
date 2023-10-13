@@ -25,7 +25,7 @@ const Content = () => {
     // clearAllCardLists,
   } = useSelector((state) => state.profileCards);
 
-  const { role } = useSelector((state) => state.user);
+  const { role, id } = useSelector((state) => state.user);
 
   const [isRerender, setIsRerender] = useState({
     myWorks: false, history: false, favourites: false,
@@ -34,17 +34,17 @@ const Content = () => {
   useEffect(() => {
     switch (true) {
       case content === 'myworks' && isMyWorksNext && !isRerender.myWorks:
-        dispatch(getImagesThunk('myworks', 13, 15, myWorksPage));
+        dispatch(getImagesThunk('myworks', id, 15, myWorksPage));
         setIsRerender({ ...isRerender, myWorks: true });
         break;
 
       case content === 'history' && isHistoryNext && !isRerender.history:
-        dispatch(getImagesThunk('history', 13, 15, historyPage));
+        dispatch(getImagesThunk('history', id, 15, historyPage));
         setIsRerender({ ...isRerender, history: true });
         break;
 
       case content === 'favourites' && isFavouritesNext && !isRerender.favourites:
-        dispatch(getImagesThunk('favourites', 13, 4, favouritesPage));
+        dispatch(getImagesThunk('favourites', id, 4, favouritesPage));
         setIsRerender({ ...isRerender, favourites: true });
         break;
 

@@ -22,6 +22,7 @@ const Popular: FC<PopularProps> = ({ data }) => (
             <ImageTagLink 
               key={el.id} 
               id={el.id}
+              slug={el.slug}
 // eslint-disable-next-line
               image={el.tag_images ? el.tag_images[0].image : ''} 
               tagName={el.name} 
