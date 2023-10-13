@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './JoinToAuthorsBanner.module.scss';
 import { UniversalButton } from '../../../../../ui-lib/Button';
 import { greyPlug } from '../../../../../assets/images/pictures';
@@ -6,6 +6,12 @@ import { useDispatch } from '../../../../../services/hooks';
 import { openAuthorModal } from '../../../../../store';
 
 const JoinToAuthorsBanner = () => {
+  const [hiddenSection, setHiddeSection] = useState(false);
+
+  const hideSection = () => {
+    setHiddeSection(true);
+  };
+
   const dispatch = useDispatch();
   
   const openChangeRoleModal = () => {
@@ -13,7 +19,10 @@ const JoinToAuthorsBanner = () => {
   };
   
   return (
-    <article className={styles.joinToAuthorsBanner}>
+    <article className={`${styles.joinToAuthorsBanner} 
+    ${hiddenSection === false 
+      ? styles['joinToAuthorsBanner_section-show']
+      : styles['joinToAuthorsBanner_section-hidden']}`}>
       <div className={styles.joinToAuthorsBanner__container}>
 
         <h2 className={styles.joinToAuthorsBanner__title}>
@@ -29,7 +38,7 @@ const JoinToAuthorsBanner = () => {
             Стать Автором
           </UniversalButton>
 
-          <button type='button' className={styles.joinToAuthorsBanner__notButton}>
+          <button type='button' className={styles.joinToAuthorsBanner__notButton} onClick={hideSection}>
             Не сейчас
           </button>
         </div>

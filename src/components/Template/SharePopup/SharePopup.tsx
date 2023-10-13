@@ -10,28 +10,27 @@ const SharePopup = () => {
     navigator.clipboard.writeText(image)
       .then(() => toast('Ссылка скопирова в буфер обмена', {
         duration: 3000,
-        position: 'bottom-center',
+        position: 'top-center',
         style: { fontSize: '18px' },
       }))
       .catch((err) => toast('ошибка копирования в буфер!', {
         duration: 3000,
-        position: 'bottom-center',
+        position: 'top-center',
         style: { fontSize: '18px' },
       }));
   };
   return (
-    <>
-      <Toaster />
-      <div className={styles.SharePopup}>
-        <h2 className={styles.SharePopup_title}>Поделиться</h2>
-        <div className={styles.SharePopup_container}>
-          <input className={styles.SharePopup_link} value={image} readOnly />
-          <button type='button' className={styles.SharePopup_pasteButton} onClick={copyToClipboard}>
-            <Paste />
-          </button>
-        </div>
+
+    <div className={styles.SharePopup}>
+      <h2 className={styles.SharePopup_title}>Поделиться</h2>
+      <div className={styles.SharePopup_container}>
+        <input className={styles.SharePopup_link} value={image} readOnly />
+        <button type='button' className={styles.SharePopup_pasteButton} onClick={copyToClipboard}>
+          <Paste />
+        </button>
       </div>
-    </>
+    </div>
+
   );
 };
 
