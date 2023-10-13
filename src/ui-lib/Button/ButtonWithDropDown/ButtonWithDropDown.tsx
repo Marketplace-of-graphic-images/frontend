@@ -31,6 +31,7 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
 }) => {
   const dispatch = useDispatch();
   const [dropDownState, setDropDownState] = useState(false);
+  const { profile_photo } = useSelector((state) => state.user);
 
   function useOutsideComponent(ref) {
     useEffect(() => {
@@ -62,7 +63,12 @@ const ButtonWithDropDown: React.FC<IButtonWithDropDown> = ({
         return <ArrowUpIcon />;
       }
       return <ArrowDownIcon />;
-    } return <ProfileIcon className={styles.icon} width='40' height='40' />;
+    } return profile_photo ? (
+      <img
+        alt='профиль'
+        className={styles.icon} 
+        src={profile_photo} />
+    ) : <ProfileIcon className={styles.icon} width='40' height='40' />;
   };
   const signoutUser = () => {
     dispatch(signoutThunk());

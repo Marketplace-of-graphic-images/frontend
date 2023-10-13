@@ -1,5 +1,5 @@
 import { batch } from 'react-redux';
-import { getSearchName } from '../api/api';
+import { getSearchName, getSearchTag } from '../api/api';
 import {
   isLoadingOn, isLoadingOff, setUser, closeModal, setSerchImages,
 } from '../store';
@@ -14,10 +14,15 @@ type TserchResult = {
 
 }; 
 
-const searchNameThunk : AppThunk = (name:string) => async (dispatch) => {
+const searchNameThunk : AppThunk = (name:string, isTags = false) => async (dispatch) => {
   try {
     dispatch(isLoadingOn());
-    const res:TserchResult = await getSearchName(name);
+    let res:TserchResult; 
+    if (isTags) {
+      res = await getSearchTag(name);
+    } else {
+      res = await getSearchName(name);
+    }
     dispatch(setSerchImages(res.results));
     console.log(res);
     // return res;

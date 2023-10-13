@@ -30,6 +30,7 @@ export const putLike = (id: number) => request(`image/${id}/favorite/`, {
   method: 'POST',
 });
 export const getSearchName = (name : string) => request(`image/?name=${name}`, { method: 'GET' });
+export const getSearchTag = (name : string) => request(`image/?tags=${name}`, { method: 'GET' });
 
 export const removeLike = (id: number) => request(`image/${id}/favorite/`, { method: 'DELETE' });
 
