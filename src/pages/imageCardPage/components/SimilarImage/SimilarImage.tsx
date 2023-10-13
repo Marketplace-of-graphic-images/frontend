@@ -47,7 +47,7 @@ const SimilarImage: FC<TSimilarImage> = (props) => {
       <div className={styles.SimilarImage_container}>
         <Toaster />
         {recommended?.map((item) => (
-          <ImageCardBig card={item} />
+          <ImageCardBig key={item.id} card={item} />
         ))}
       </div>
       <div className={styles.SimilarImage_more}>

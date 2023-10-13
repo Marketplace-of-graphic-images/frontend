@@ -11,7 +11,6 @@ import { TImage1, TImageFull } from 'types/types';
 const getSimilarImageThunks: AppThunk = (data: number) => async (dispatch) => {
   try {
     const res: TImageFull = await getImageByTag(data);
-    console.log(data);
 
     batch(() => {
       dispatch(setImage(res));
@@ -19,7 +18,7 @@ const getSimilarImageThunks: AppThunk = (data: number) => async (dispatch) => {
   } catch (err: any) { 
     console.log('Ошибка');
   } finally {
-    console.log('res');
+    dispatch(isLoadingOff);
   }
 };
 export default getSimilarImageThunks;
